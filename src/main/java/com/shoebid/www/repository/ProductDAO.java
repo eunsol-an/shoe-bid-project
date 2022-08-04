@@ -14,8 +14,10 @@ public interface ProductDAO {
 	int delete(long pno);
 	int updateHighestPrice(@Param("highestPrice") long highestPrice,
 			@Param("pno") long pno);
-	int updateReadCount(@Param("i") int i, @Param("pno") long pno);
-	int updateStatus(@Param("status") int status , @Param("pno") long pno);
+	int updateReadCount( @Param("pno") long pno,@Param("i") int i);
+	int updateStatus( @Param("pno") long pno ,@Param("status") int status );
 	ProductVO selectDetail(long pno);
+	String selectNickName(long pno);
+	int selectMaxPrice(long pno);
 }
 

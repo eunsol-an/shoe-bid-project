@@ -27,7 +27,7 @@ public class ProductReposTest {
 	public void insertProductTest() throws Exception{
 		
 		int isOk = pdao.insert(new ProductVO("cate", "pname","description",
-											10L,"img",1000L,"2022-08-02 23:53:00"));
+											3L,"img",1000L,"2022-08-02 23:53:00"));
 		log.info(">>>> insertTest-{}",isOk>0? "ok": "fail");
 	}
 	@Test
