@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoebid.www.repository.QuestionDAO">
+	<insert id="insert" parameterType="qvo">
+		insert into question (pno, writer, content)
+		values (#{pno}, #{writer}, #{content})
+	</insert>
+	<select id="selectList" parameterType="long" resultType="qvo">
+		select q.qno, q.writer, q.pno, q.content, q.reg_at, m.nick_name
+		from question q inner join member m 
+		on (q.writer = m.mno)
+		where q.pno = #{pno}
+	</select>
+	<select id="selectTotalCount" resultType="int">
+		select count(qno) from question where pno = #{pno}
+	</select>
+	<update id="update" parameterType="qvo">
+		update question set
+		content = #{content}, mod_at = now()
+		where qno = #{qno}
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from question where qno = #{qno}
+	</delete>
+</mapper>
