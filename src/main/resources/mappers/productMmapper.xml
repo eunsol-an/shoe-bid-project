@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoebid.www.repository.ProductDAO">
+	<insert id="insert" parameterType="pvo">
+		insert into product
+		(category,
+		pname, description, writer, product_img,
+		reserve_price, end_time)
+		values
+		(#{category}, #{pname}, #{description}, #{writer},
+		#{productImg}, #{reservePrice}, #{endTime})
+	</insert>
+	<select id="selectList" resultType="pvo">
+		select pno, category ,pname ,
+		description , read_count ,writer ,product_img ,
+		status, reserve_price,
+		(select max(bid_price)
+		from buy_bid b
+		where p.pno = b.pno
+		) "highest_price",
+		end_time, mod_at
+		from product p
+		where status = 0
+		order by reg_at desc
+
+	</select>
+	<select id="selectDetail" parameterType="long" resultType="pvo">
+		select * from product
+		where pno = #{pno}
+	</select>
+	<select id="selectNickName" parameterType="long"
+		resultType="string">
+		select m.nick_name
+		from product p left join `member`m
+		on
+		p.writer = m.mno
+		where p.pno= #{pno}
+	</select>
+	<select id="selectMaxPrice" parameterType="long"
+		resultType="int">
+		select max(b.bid_price)
+		from product p left join buy_bid b
+		on p.pno = b.pno
+		where b.pno = #{pno};
+	</select>
+
+	<update id="update" parameterType="pvo">
+		update product set category =
+		#{category},
+		pname = #{pname}, description =#{description},
+		product_img
+		= #{productImg}, reserve_price = #{reservePrice},
+		end_time = #{endTime}
+		where pno = #{pno}
+	</update>
+	<update id="updateHighestPrice">
+		update product set highest_price
+		#{highestPrice}
+		where
+		pno = #{pno}
+	</update>
+	<update id="updateReadCount">
+		update product set read_count = read_count + #{i}
+		where pno = #{pno}
+	</update>
+	<update id="updateStatus">
+		update product set status =# {status}
+		where pno = #{pno}
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from product
+		where pno =
+		#{pno}
+	</delete>
+</mapper>
