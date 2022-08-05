@@ -2,21 +2,21 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.auction.www.repository.ImageFileDAO">
+<mapper namespace="com.shoebid.www.repository.ImageFileDAO">
 	<insert id="insertPImage" parameterType="ivo">
 		insert into image_file
-		(uuid, save_dir, image_name, image_size, pno, reg_at)
-		values (#{uuid}, #{saveDir}, #{imageName}, #{imageSize}, #{pno}, #{regAt})
+		(uuid, save_dir, image_name, image_size, pno)
+		values (#{uuid}, #{saveDir}, #{imageName}, #{imageSize}, #{pno})
 	</insert>
 	<insert id="insertMImage" parameterType="ivo">
 		insert into image_file
 		(uuid, save_dir, image_name, image_size, mno, reg_at)
-		values (#{uuid}, #{saveDir}, #{imageName}, #{imageSize}, #{mno}, #{regAt})
+		values (#{uuid}, #{saveDir}, #{imageName}, #{imageSize}, #{mno})
 	</insert>
 	<insert id="insertRImage" parameterType="ivo">
 		insert into image_file
 		(uuid, save_dir, image_name, image_size, rno, reg_at)
-		values (#{uuid}, #{saveDir}, #{imageName}, #{imageSize}, #{rno}, #{regAt})
+		values (#{uuid}, #{saveDir}, #{imageName}, #{imageSize}, #{rno})
 	</insert>
 	<select id="selectListPImage" parameterType="long" resultType="ivo">
 		select * from image_file where pno = #{pno}

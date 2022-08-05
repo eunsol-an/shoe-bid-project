@@ -2,6 +2,7 @@ package com.shoebid.www.domain;
 
 import java.util.List;
 
+
 import org.apache.ibatis.type.Alias;
 
 import lombok.AllArgsConstructor;
@@ -29,7 +30,7 @@ public class ProductDTO {
 	}
 	
 	//detail
-	public ProductDTO(ProductVO pvo, int maxPrice, String nick_name, List<FImageFileVO> imageList) {
+	public ProductDTO(ProductVO pvo, int maxPrice, String nick_name, List<ImageFileVO> imageList) {
 		this.pvo = pvo;
 		this.maxPrice = maxPrice;
 		this.nick_name = nick_name;

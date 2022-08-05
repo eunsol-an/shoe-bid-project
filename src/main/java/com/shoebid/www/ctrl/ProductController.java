@@ -2,6 +2,7 @@ package com.shoebid.www.ctrl;
 
 import java.util.List;
 
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.myweb.www.domain.PagingVO;
-import com.shoebid.www.domain.FileVO;
+import com.shoebid.www.domain.ImageFileVO;
+import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductVO;
-import com.shoebid.www.handler.FileHandler;
+import com.shoebid.www.handler.ImageFileHandler;
 import com.shoebid.www.service.ProductService;
 
 @RequestMapping("/product/*")
@@ -41,8 +42,8 @@ public class ProductController {
 	@PostMapping("/register")
 	public String register(ProductVO pvo, RedirectAttributes rttr,
 			@RequestParam(name = "fileAttached", required = true) MultipartFile[] files) {
-		List<ImageFileVO> fileList =fhd.getFileList(files);
-		pvo.setProductImg(fileList.get(0).getSiveDir()+"\\"+fileList.get(0).getUuid()+"_th_"+fileList.get(0).getFileName());
+		List<ImageFileVO> fileList =fhd.getImageFileList(files);
+		pvo.setProductImg(fileList.get(0).getSaveDir()+"\\"+fileList.get(0).getUuid()+"_th_"+fileList.get(0).getImageName());
 		 int isUp = psv.register(new ProductDTO(pvo, fileList));
 		return "redirect:/product/list";
 	}

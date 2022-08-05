@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ReportVO;
 import com.shoebid.www.repository.ReportDAO;
 
@@ -21,18 +22,25 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public List<ReportVO> getList() {
-		return rpdao.selectList();
+	public List<ReportVO> getList(PagingVO pgvo) {
+		return rpdao.selectList(pgvo);
 	}
 
 	@Override
 	public ReportVO getDetail(long rpno) {
-		return rpdao.selectDetail(rpno);
+		return rpdao.selectOne(rpno);
 	}
 
 	@Override
 	public int remove(long rpno) {
 		return rpdao.delete(rpno);
 	}
+
+	@Override
+	public int getTotalCount() {
+		return rpdao.selectTotalCount();
+	}
+
+	
 	
 }
