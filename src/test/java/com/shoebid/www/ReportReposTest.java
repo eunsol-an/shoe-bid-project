@@ -1,6 +1,8 @@
 package com.shoebid.www;
 import java.util.List;
 
+
+
 import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ReportVO;
 import com.shoebid.www.repository.ReportDAO;
 
@@ -28,7 +32,7 @@ public class ReportReposTest {
 	}
 	@Test
 	public void getListReportListTest() throws Exception {
-		List<ReportVO> list  = rpdao.selectList();
+		List<ReportVO> list  = rpdao.selectList(new PagingVO());
 		for (ReportVO rpvo : list) {
 			log.info(">>> {},{},{},{},{}",
 					rpvo.getRpno(), rpvo.getMno(), rpvo.getTargetMno(),
@@ -39,5 +43,12 @@ public class ReportReposTest {
 	public void deleteReportTest() throws Exception {
 		int isUp = rpdao.delete(1L);
 		log.info(">>> Test of delete Report : {} ", isUp > 0 ? "OK":"FAIL");
+	}
+	
+	@Test
+	public void insertReportDummies() throws Exception {
+		for (int i = 4; i < 101; i++) {
+			rpdao.insert(new ReportVO(i, i+4,"testTitle"+i,"testContent"+i));
+		}
 	}
 }

@@ -11,44 +11,44 @@ import lombok.ToString;
 @Setter
 @ToString
 @AllArgsConstructor
-@Alias("qvo")
-public class QuestionVO {
+@Alias("avo")
+public class AnswerVO {
+	private long ano;
 	private long qno;
 	private long writer;
-	private long pno;
 	private String content;
 	private String regAt;
 	private String modAt;
 	private String nickName;
 	
-	public QuestionVO() {}
+	public AnswerVO() {}
 	
 	// insert
-	public QuestionVO(long qno, long writer, String content) {
-		this.qno = qno;
+	public AnswerVO(long ano, long writer, String content) {
+		this.ano = ano;
 		this.writer = writer;
 		this.content = content;
 	}
-	
+
 	// list
-	public QuestionVO(long qno, long writer, long pno, String content, String modAt) {
+	public AnswerVO(long ano, long qno, long writer, String content, String modAt) {
+		this.ano = ano;
 		this.qno = qno;
 		this.writer = writer;
-		this.pno = pno;
 		this.content = content;
 		this.modAt = modAt;
 	}
 	
 	// modify
-	public QuestionVO(long qno, String content) {
-		this.qno = qno;
+	public AnswerVO(long ano, String content) {
+		this.ano = ano;
 		this.content = content;
 	}
-	
-	// remove
-	public QuestionVO(long qno) {
-		this.qno = qno;
+
+	// delete
+	public AnswerVO(long ano) {
+		this.ano = ano;
 	}
-	
+
 
 }

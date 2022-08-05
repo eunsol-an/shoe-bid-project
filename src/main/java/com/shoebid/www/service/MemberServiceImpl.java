@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.shoebid.www.domain.MemberVO;
+import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.repository.MemberDAO;
 
 @Service
@@ -26,8 +27,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberVO> getList() {
-		return mdao.selectList();
+	public List<MemberVO> getList(PagingVO pgvo) {
+		return mdao.selectList(pgvo);
 	}
 
 	@Override
@@ -43,6 +44,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int remove(long mno) {
 		return mdao.delete(mno);
+	}
+
+	@Override
+	public int getTotalCount() {
+		return mdao.selectTotalCount();
 	}
 	
 	

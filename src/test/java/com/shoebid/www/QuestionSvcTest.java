@@ -22,7 +22,7 @@ public class QuestionSvcTest {
 		for (int j = 1; j <= 256; j++) {
 			int x = (int) (Math.random() * 256);
 			for (int i = 0; i < x; i++) {
-				qsv.post(new QuestionVO(j, ((int) (Math.random() * 256)), "Question Dummy Content for" + j));
+//				qsv.post(new QuestionVO(j, ((int) (Math.random() * 256)), "Question Dummy Content for" + j));
 			}
 		}
 	}
