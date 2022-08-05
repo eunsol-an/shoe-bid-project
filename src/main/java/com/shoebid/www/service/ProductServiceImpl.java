@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shoebid.www.domain.ImageFileVO;
 import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.ProductDAO;
