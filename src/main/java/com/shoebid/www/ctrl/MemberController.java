@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shoebid.www.domain.MemberVO;
+import com.shoebid.www.domain.PagingVO;
+import com.shoebid.www.handler.PagingHandler;
 import com.shoebid.www.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,12 +40,13 @@ public class MemberController {
 		return "redirect:/";
 	}
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, PagingVO pgvo) {
 		log.info(">>> member list - get");
-		List<MemberVO> list = msv.getList();
-		model.addAttribute("list", list);
+		model.addAttribute("list", msv.getList(pgvo));
+		int totalCount = msv.getTotalCount();
+		model.addAttribute("pgn", new PagingHandler(pgvo, totalCount));
 	}
-	@GetMapping({"/detail", "/modify"})
+	@GetMapping({"/mypage", "/modify"})
 	public void detail(Model model, @RequestParam("mno") long mno) {
 		MemberVO mvo = msv.getDetail(mno);
 		model.addAttribute("mvo",mvo);
@@ -52,7 +55,7 @@ public class MemberController {
 	public String modify(MemberVO mvo) {
 		int isUp = msv.modify(mvo);
 		log.info(">>> member modify - post : {}", isUp > 0 ? "OK":"FAIL");
-		return "redirect:/member/detail?mno="+mvo.getMno();
+		return "redirect:/member/mypage?mno="+mvo.getMno();
 	}
 	@PostMapping("/remove")
 	public String remove(@RequestParam("mno") long mno) {

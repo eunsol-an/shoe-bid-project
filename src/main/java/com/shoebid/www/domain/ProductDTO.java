@@ -17,7 +17,7 @@ import lombok.ToString;
 public class ProductDTO {
 	private ProductVO pvo;
 	private int maxPrice;
-	private String nick_name;
+	private String nickName;
 		
 	private List<ImageFileVO> imageList;
 	
@@ -30,10 +30,10 @@ public class ProductDTO {
 	}
 	
 	//detail
-	public ProductDTO(ProductVO pvo, int maxPrice, String nick_name, List<ImageFileVO> imageList) {
+	public ProductDTO(ProductVO pvo, int maxPrice, String nickName, List<ImageFileVO> imageList) {
 		this.pvo = pvo;
 		this.maxPrice = maxPrice;
-		this.nick_name = nick_name;
+		this.nickName = nickName;
 		this.imageList = imageList;
 	}
 

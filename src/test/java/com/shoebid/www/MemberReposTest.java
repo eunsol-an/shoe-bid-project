@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.shoebid.www.domain.MemberVO;
+import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.repository.MemberDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +42,8 @@ public class MemberReposTest {
 	
 	@Test
 	public void getListMemberListTest() throws Exception {
-		List<MemberVO> list = mdao.selectList();
+		PagingVO pgvo;
+		List<MemberVO> list = mdao.selectList(new PagingVO());
 		for (MemberVO mvo : list) {
 			log.info(">>> {}, {}, {}, {}, {}, {}",
 					mvo.getMno(), mvo.getId(), mvo.getEmail(), mvo.getNickName(), mvo.getGrade(), mvo.getMemberImg());
@@ -53,6 +55,13 @@ public class MemberReposTest {
 		MemberVO mvo = mdao.selectOne(new MemberVO("test2", "1111"));
 		log.info(">>>  {}, {}, {}, {}, {}",
 				mvo.getMno(), mvo.getId(), mvo.getPwd(), mvo.getNickName(), mvo.getRegAt());
+	}
+	
+	@Test
+	public void insertMemberDummies() throws Exception {
+		for (int i = 1; i < 101; i++) {
+			mdao.insert(new MemberVO("test"+i, "test"+i+"test.com", "1111", "nick"+i, null));
+		}
 	}
 	
 	@Test
