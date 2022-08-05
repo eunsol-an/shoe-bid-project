@@ -34,6 +34,7 @@ import com.shoebid.www.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
+
 @RequestMapping("/product/*")
 @Controller
 public class ProductController {
