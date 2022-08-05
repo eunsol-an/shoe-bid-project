@@ -12,19 +12,21 @@
 		(#{category}, #{pname}, #{description}, #{writer},
 		#{productImg}, #{reservePrice}, #{endTime})
 	</insert>
-	<select id="selectList" resultType="pvo">
-		select pno, category ,pname ,
+	<select id="selectList" resultType="pvo" parameterType="pgvo">
+		select a.pno, category ,pname ,
 		description , read_count ,writer ,product_img ,
 		status, reserve_price,
 		(select max(bid_price)
 		from buy_bid b
-		where p.pno = b.pno
+		where a.pno = b.pno
 		) "highest_price",
 		end_time, mod_at
-		from product p
-		where status = 0
-		order by reg_at desc
-
+		from (
+		select pno from product where pno > 0 and status = 0
+		order by pno desc
+		limit #{pageStart}, #{qty}
+		) a left join product b
+		on a.pno = b.pno
 	</select>
 	<select id="selectDetail" parameterType="long" resultType="pvo">
 		select * from product
@@ -40,12 +42,18 @@
 	</select>
 	<select id="selectMaxPrice" parameterType="long"
 		resultType="int">
-		select max(b.bid_price)
+		select ifnull(max(b.bid_price),0)
 		from product p left join buy_bid b
 		on p.pno = b.pno
 		where b.pno = #{pno};
 	</select>
-
+	<select id="selectTotalCount" resultType="int">
+	select count(pno)
+	from product
+	</select>
+	<select id="selectLastPno" resultType="long">
+	select max(pno) from product
+	</select>
 	<update id="update" parameterType="pvo">
 		update product set category =
 		#{category},
