@@ -1,4 +1,4 @@
-package com.shoebid.www.service;
+ package com.shoebid.www.service;
 
 import javax.inject.Inject;
 
@@ -11,10 +11,10 @@ import com.shoebid.www.repository.QuestionDAO;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
-
+	
 	@Inject
 	private QuestionDAO qdao;
-	
+
 	@Override
 	public int post(QuestionVO qvo) {
 		return qdao.insert(qvo);
@@ -22,7 +22,8 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public PagingHandler spread(long pno, PagingVO pgvo) {
-		return new PagingHandler(qdao.selectList(pno, pgvo), pgvo, qdao.selectTotalCount(pno));
+		return new PagingHandler(qdao.selectList(pno, pgvo),
+				pgvo, qdao.selectTotalCount(pno));
 	}
 
 	@Override
@@ -31,8 +32,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public int remove(long qno) {
-		return qdao.delete(qno);
+	public int remove(long cno) {
+		return qdao.delete(cno);
 	}
-
 }

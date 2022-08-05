@@ -1,5 +1,6 @@
 package com.shoebid.www.ctrl;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -34,7 +35,6 @@ import com.shoebid.www.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
-
 @RequestMapping("/product/*")
 @Controller
 public class ProductController {
