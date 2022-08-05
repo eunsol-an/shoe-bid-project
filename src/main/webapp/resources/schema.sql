@@ -58,9 +58,9 @@ CREATE TABLE image_file (
 	save_dir	varchar(1000)	NOT NULL,
 	image_name	varchar(1000)	NOT NULL,
 	image_size bigint not null,
-	pno	bigint	NOT NULL,
-	mno	bigint	NOT NULL,
-	rno	bigint	NOT null,
+	pno	bigint	default NULL,
+	mno	bigint	default NULL,
+	rno	bigint	default null,
 	reg_at datetime default current_timestamp,
 	primary key(uuid)
 ) default CHARSET=utf8mb4;

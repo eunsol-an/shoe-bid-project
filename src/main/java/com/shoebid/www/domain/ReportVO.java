@@ -18,6 +18,8 @@ public class ReportVO {
 	private String reportTitle; 
 	private String reportContent;
 	private String regAt;
+	private String nickName;
+	private String targetNickName;
 	
 	// register
 	public ReportVO(long mno, long targetMno, String reportTitle, String reportContent) {

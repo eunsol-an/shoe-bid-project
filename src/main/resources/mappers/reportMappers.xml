@@ -8,13 +8,33 @@
 		(mno, target_mno, report_title, report_content)
 		values (#{mno}, #{targetMno}, #{reportTitle}, #{reportContent})
 	</insert>
-	<select id="selectOne" resultType="rpvo">
-		select * from report where
+	<select id="selectOne" resultType="rpvo" parameterType="long">
+		select rpno, a.mno, target_mno, report_title, report_content, a.reg_at , m.nick_name, m2.nick_name as target_nick_name 
+		from report a
+		inner join `member` m
+		on a.mno = m.mno
+		inner join `member` m2
+		on a.target_mno = m2.mno
+		where
 		rpno = #{rpno}
 	</select>
-	<select id="selectList" resultType="rpvo">
-	select rpno, mno, target_mno, report_title, reg_at
-	from report
+	
+	<select id="selectList" resultType="rpvo" parameterType="pgvo">
+	select
+	a.rpno, b.mno, target_mno, report_title, b.reg_at , m.nick_name, m2.nick_name as target_nick_name
+	from (
+		select rpno from report where rpno > 0 order by rpno
+		limit #{pageStart}, #{qty}
+	) a left join report b
+	on a.rpno = b.rpno
+	inner join `member` m
+	on b.mno = m.mno
+	inner join `member` m2
+	on b.target_mno = m2.mno
+	</select>
+
+	<select id="selectTotalCount" resultType="int">
+		select count(rpno) from report
 	</select>
 	<delete id="delete" parameterType="long">
 		delete from report where rpno = #{rpno}

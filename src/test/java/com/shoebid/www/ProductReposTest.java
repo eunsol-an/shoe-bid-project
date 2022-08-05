@@ -1,4 +1,5 @@
 package com.shoebid.www;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.ProductDAO;
 
@@ -25,14 +27,17 @@ public class ProductReposTest {
 	
 	@Test
 	public void insertProductTest() throws Exception{
-		
-		int isOk = pdao.insert(new ProductVO("cate", "pname","description",
-											3L,"img",1000L,"2022-08-02 23:53:00"));
+		int isOk= 1;
+		for (int i = 0; i < 50; i++) {
+			
+			 isOk *= pdao.insert(new ProductVO("cate2", "pname1","description",
+					1L,"img",1000L,"2022-08-08 23:53:00"));
+		}
 		log.info(">>>> insertTest-{}",isOk>0? "ok": "fail");
 	}
 	@Test
 	public void ListProductTest() throws Exception{
-		List<ProductVO> list = pdao.selectList();
+		List<ProductVO> list = pdao.selectList(new PagingVO());
 		for (ProductVO pvo : list) {
 			log.info("{}",pvo);
 		}
