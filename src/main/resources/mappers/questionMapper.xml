@@ -8,10 +8,15 @@
 		values (#{pno}, #{writer}, #{content})
 	</insert>
 	<select id="selectList" parameterType="long" resultType="qvo">
-		select q.qno, q.writer, q.pno, q.content, q.reg_at, m.nick_name
-		from question q inner join member m 
-		on (q.writer = m.mno)
-		where q.pno = #{pno}
+		select b.pno, a.qno, writer, content, mod_at, m.nick_name 
+		from (
+			select qno from question
+		  	where pno = #{pno}
+		  	limit #{pgvo.pageStart}, #{pgvo.qty}
+		 ) a left join question b
+		 on a.qno = b.qno 
+		 inner join `member` m
+		 on b.writer = m.mno		
 	</select>
 	<select id="selectTotalCount" resultType="int">
 		select count(qno) from question where pno = #{pno}

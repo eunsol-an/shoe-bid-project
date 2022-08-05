@@ -122,8 +122,8 @@ CREATE TABLE chat (
 	cno	bigint NOT null auto_increment,
 	content	text NOT NULL,
 	read_chk tinyint NOT NULL,
-	send_nick	varchar(100) NOT NULL,
-	recv_nick	varchar(100) NOT NULL,
+	send_nick	bigint NOT NULL,
+	recv_nick	bigint NOT NULL,
 	room bigint NOT NULL,
 	send_at	datetime default current_timestamp,
 	primary key(cno)
