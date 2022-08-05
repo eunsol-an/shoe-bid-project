@@ -58,9 +58,9 @@ CREATE TABLE image_file (
 	save_dir	varchar(1000)	NOT NULL,
 	image_name	varchar(1000)	NOT NULL,
 	image_size bigint not null,
-	pno	bigint	NOT NULL,
-	mno	bigint	NOT NULL,
-	rno	bigint	NOT null,
+	pno	bigint	default NULL,
+	mno	bigint	default NULL,
+	rno	bigint	default null,
 	reg_at datetime default current_timestamp,
 	primary key(uuid)
 ) default CHARSET=utf8mb4;
@@ -122,8 +122,8 @@ CREATE TABLE chat (
 	cno	bigint NOT null auto_increment,
 	content	text NOT NULL,
 	read_chk tinyint NOT NULL,
-	send_nick	varchar(100) NOT NULL,
-	recv_nick	varchar(100) NOT NULL,
+	send_nick	bigint NOT NULL,
+	recv_nick	bigint NOT NULL,
 	room bigint NOT NULL,
 	send_at	datetime default current_timestamp,
 	primary key(cno)

@@ -1,10 +1,13 @@
 package com.shoebid.www.domain;
 
+import org.apache.ibatis.type.Alias;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Alias("pgvo")
 public class PagingVO {
 	private int pageNo;
 	private int qty;
