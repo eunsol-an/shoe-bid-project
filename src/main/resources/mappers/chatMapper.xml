@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoebid.www.repository.ChatDAO">
+	<insert id="insert" parameterType="cvo">
+		insert into chat (content, read_chk, send_nick, recv_nick, room)
+		values (#{content}, #{readChk}, #{sendNick}, #{recvNick}, #{room})
+	</insert>
+	
+	<select id="selectList" parameterType="long" resultType="cvo">
+		select * from chat where room = #{room} order by cno
+		
+	</select>
+	
+	<select id="selectRoomList" parameterType="long" resultType="cvo">
+		select cno, content, read_chk, send_nick, recv_nick, room, send_at, m.nick_name
+		from chat c
+		inner join `member` m
+		on c.recv_nick = m.mno
+		where cno in (select max(cno) from chat group by room)
+		order by cno desc
+	</select>
+	
+	<select id="selectOne" resultType="cvo" parameterType="long">
+	select cno, content, read_chk, send_nick, recv_nick, room, send_at, m.nick_name
+		from chat c
+		inner join `member` m
+		on c.recv_nick = m.mno
+		where cno = #{cno}
+	</select>
+	
+		<update id="update" parameterType="cvo">
+		update chat set
+		read_chk = 0
+		where cno = #{cno}
+	</update>
+	<delete id="delete" parameterType="long">
+		delete from chat where cno = #{cno}
+	</delete>
+</mapper>
