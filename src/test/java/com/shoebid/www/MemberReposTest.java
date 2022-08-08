@@ -25,7 +25,7 @@ public class MemberReposTest {
 	
 	@Test
 	public void deleteMemberTest() throws Exception {
-		int isUp = mdao.delete(6);
+		int isUp = mdao.delete(new MemberVO(6, "2022-08-06 : 03:15:25"));
 		log.info(">>> Test of delete Member : {} ", isUp > 0 ? "OK":"FAIL");
 	}
 	

@@ -17,7 +17,7 @@
                                 <p class="mb-0">Everything is simple with Login.</p>
                             </div>
 
-                            <form method="post">
+                            <form action="/member/login" method="post">
 
                                 <div class="row">
 
@@ -54,7 +54,7 @@
 
                                 </div>
 
-                                <button type="button" class="butn-style2 mt-4">Login</button>
+                                <button type="submit" class="butn-style2 mt-4">로그인</button>
 
                             </form>
 

@@ -2,48 +2,59 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    <mapper namespace="com.shoebid.www.repository.MemberDAO">
-		<insert id="insert" parameterType="mvo">
-			insert into member(id, email, pwd, nick_name)
-			values (#{id}, #{email}, #{pwd}, #{nickName})
-		</insert>
-		
-		<select id="selectOne" parameterType="mvo" resultType="mvo">
-			select *
-			from member
-			where id = #{id}
-			and pwd = #{pwd}
-		</select>
-		<select id="selectList" resultType="mvo" parameterType="pgvo">
-			select 
-			a.mno, id, email, nick_name, grade, report_count
-			from (
-			select mno from member where mno > 0 order by mno
-			limit #{pageStart}, #{qty}
-			) a left join member b
-			on a.mno = b.mno
-		</select>
-		<select id="selectDetail" resultType="mvo" parameterType="long">
-			select * from member where mno = #{mno}
-		</select>
-		<select id="selectTotalCount" resultType="int">
-			select count(mno) from member
-		</select>
-		
-		<update id="update" parameterType="mvo">
-			update member set
-			mno = #{mno},
-			id = #{id},
-			pwd = #{pwd},
-			nick_name = #{nickName},
-			grade = #{grade},
-			report_count = #{reportCount},
-			member_img = #{memberImg}
-			where mno = #{mno}
-		</update>
-		
-		<delete id="delete" parameterType="long">
-			delete from member
-			where mno = #{mno}
-		</delete>
-    </mapper>
+<mapper namespace="com.shoebid.www.repository.MemberDAO">
+	<insert id="insert" parameterType="mvo">
+		insert into member(id, email, pwd, nick_name, member_img)
+		values (#{id}, #{email}, #{pwd}, #{nickName}, #{memberImg})
+	</insert>
+
+	<select id="selectOne" parameterType="mvo" resultType="mvo">
+		select *
+		from member
+		where id = #{id}
+		and pwd = #{pwd}
+	</select>
+	<select id="selectList" resultType="mvo" parameterType="pgvo">
+		select
+		a.mno, id, email, nick_name, grade, report_count,del_at
+		from (
+		select mno from member where mno > 0 and del_at is null order by mno
+		limit #{pageStart}, #{qty}
+		) a left join member b
+		on a.mno = b.mno
+	</select>
+	<select id="selectDetail" resultType="mvo" parameterType="long">
+		select * from member where mno = #{mno}
+	</select>
+	<select id="selectTotalCount" resultType="int">
+		select count(mno) from member where del_at is null
+	</select>
+	<select id="selectId" resultType="int" parameterType="string">
+		select count(id) from member where id = #{id}
+	</select>
+	<select id="selectNickName" resultType="int"
+		parameterType="string">
+		select count(nick_name) from member where nick_name = #{nickName}
+	</select>
+	<select id="selectLastMno" resultType="long">
+		select max(mno) from member
+	</select>
+
+	<update id="update" parameterType="mvo">
+		update member set
+		mno = #{mno},
+		id = #{id},
+		pwd = #{pwd},
+		nick_name = #{nickName},
+		grade = #{grade},
+		report_count = #{reportCount},
+		member_img = #{memberImg}
+		where mno = #{mno}
+	</update>
+
+	<update id="delete" parameterType="mvo">
+		update member set
+		del_at = now()
+		where mno = #{mno}
+	</update>
+</mapper>

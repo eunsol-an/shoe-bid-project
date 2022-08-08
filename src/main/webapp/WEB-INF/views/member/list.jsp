@@ -6,6 +6,8 @@
 
 <!-- TABLES
         ================================================== -->
+        <c:choose>
+        <c:when test="${ses.grade == 99 }">
         <section class="md">
             <div class="container">
                 <div class="row">
@@ -71,5 +73,10 @@
                 </div>
             </div>
         </section>
+        </c:when>
+        <c:otherwise>
+			<h2>권한이 필요한 페이지 입니다.</h2>
+		</c:otherwise>
+        </c:choose>
 
 <jsp:include page="../common/footer.jsp"/>
