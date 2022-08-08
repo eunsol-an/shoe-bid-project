@@ -23,30 +23,30 @@
      <div class="mb-3">
       <label for="pname">상품 이름:</label>
       <input type="text" class="form-control" id="pname" placeholder="상품이름 입력" name="pname" required>
-    </div>  
-    <div class="mb-3 mt-3">
-      <label for="category">카테고리:</label>
-      	<input type="text" class="form-control" id="category" placeholder="카테고리 입력" name="category" required>
-    </div>
+    </div> 
     <div class="mb-3">
+      <label for="category">카테고리</label>
+        <select class="form-select form-control" id="category" aria-label="Default select example" name="category" required>
+          <option value="sneakers">Sneakers</option>
+          <option value="sandals">Sandals</option>
+          <option value="slippers">Slippers</option>
+          <option value="loafers">Loafers</option>
+          <option value="flat">Flat</option>
+          <option value="boots">Boots</option>
+         </select>
+    </div>  
+       <div class="mb-3">
       <label for="price">시작가:</label>
       <input type="text" class="form-control" id="reservePrice" placeholder="시작금액 입력" name="reservePrice" required>
     </div>    
     <div class="mb-3">
-      <div class="form-check">
-  <input type="radio" class="form-check-input" id="radio1" name="endTime" value="1" checked >
-  <label class="form-check-label" for="radio1">1일</label>
-</div>
-<div class="form-check">
-  <input type="radio" class="form-check-input" id="radio2" name="endTime" value="2" >
-  <label class="form-check-label" for="radio2">2일</label>
-</div>
-<div class="form-check">
-  <input type="radio" class="form-check-input" id="radio3" name="endTime" value="3" >
-  <label class="form-check-label" for="radio3">3일</label>
-</div>
+      <label for="endTime">기간:</label>
+        <select class="form-select form-control" id="endTime" aria-label="Default select example" name="endTime" required>
+          <option value="1">1일</option>
+          <option value="2">2일</option>
+          <option value="3">3일</option>
+         </select>
     </div> 
-   
      <div class="mb-3 mt-3">
       <label for="writer">작성자:</label>
       	<input type="text" class="form-control" id="writer" placeholder="" name="writer" required>

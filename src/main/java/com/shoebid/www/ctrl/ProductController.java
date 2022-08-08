@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,7 +49,7 @@ public class ProductController {
 	@GetMapping("/list")
 	public void list(Model model, PagingVO pgvo) {
 		model.addAttribute("list", psv.getList(pgvo));
-		int totalCount = psv.getTotalCount();
+		int totalCount = psv.getTotalCount(pgvo);
 		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
 	}
 	
@@ -69,11 +71,13 @@ public class ProductController {
 		 int isUp = psv.register(new ProductDTO(pvo, fileList));
 		return "redirect:/product/list";
 	}
-	@GetMapping({"/detail", "/modify"})
+	
+	@GetMapping({"/detail", "/modify"}) 
 	public void detail(@RequestParam("pno") long pno, Model model,
 			@ModelAttribute("pgvo") PagingVO pgvo) {
 		model.addAttribute("pdto", psv.getDetail(pno));
 	}
+	
 	@PostMapping("/modify")
 	public String modify(ProductVO pvo,	@RequestParam(name="fileAttached", required = false) MultipartFile[] files,
 			RedirectAttributes rttr,
@@ -86,11 +90,14 @@ public class ProductController {
 		List<ImageFileVO> fileList = null;
 		if(files[0].getSize() > 0) {
 			fileList = fhd.getImageFileList(files);
+			pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
+			log.info(">>>>수정파일 있을경우들어옴");
 		}
-		
 		int isUp = psv.modify(new ProductDTO(pvo, fileList));
 		rttr.addAttribute("pageNo", pgvo.getPageNo());
 		rttr.addAttribute("qty", pgvo.getQty());
+		rttr.addAttribute("type", pgvo.getType());
+		rttr.addAttribute("kw", pgvo.getKw());
 		return "redirect:/product/detail?pno="+pvo.getPno();
 	}
 	@PostMapping("/remove")
@@ -98,6 +105,8 @@ public class ProductController {
 		int isUp = psv.remove(pno);
 		rttr.addAttribute("pageNo", pgvo.getPageNo());
 		rttr.addAttribute("qty", pgvo.getQty());
+		rttr.addAttribute("type", pgvo.getQty());
+		rttr.addAttribute("kw", pgvo.getQty());
 		return "redirect:/product/list";
 	}
 
@@ -105,6 +114,11 @@ public class ProductController {
 	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid){		
 		return psv.removeFile(uuid) > 0 ?
 				new ResponseEntity<String>("1", HttpStatus.OK)
+				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+	} 
+	@PutMapping(value="/{pno}", consumes = "application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> edit(@PathVariable("pno") long cno, @RequestBody ProductVO pvo){
+		return psv.statusProduct(pvo) > 0? new ResponseEntity<String>("1", HttpStatus.OK) 
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
