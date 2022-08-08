@@ -70,6 +70,11 @@ public class MemberVO {
 		this.id = id;
 		this.pwd = pwd;
 	}
+	// remove
+	public MemberVO(long mno, String delAt) {
+		this.mno = mno;
+		this.delAt = delAt;
+	}
 	
 	
 }

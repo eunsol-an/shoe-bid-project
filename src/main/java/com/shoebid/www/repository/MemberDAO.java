@@ -12,6 +12,9 @@ public interface MemberDAO {
 	List<MemberVO> selectList(PagingVO pgvo); //list
 	MemberVO selectDetail(long mno); // detail
 	int update(MemberVO mvo); // modify
-	int delete(long mno); // remove
+	int delete(MemberVO mvo); // remove
 	int selectTotalCount();
+	int selectId(String id); // 아이디 중복검사
+	int selectNickName(String nickName);
+	long selectLastMno();
 }
