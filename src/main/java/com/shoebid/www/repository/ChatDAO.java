@@ -8,4 +8,5 @@ public interface ChatDAO {
 	ChatVO selectOne(long cno);
 	int update(ChatVO cvo);
 	int delete(long cno);
+	int selectLastRoom();
 }

@@ -34,4 +34,8 @@ public class ChatServiceImpl implements ChatService {
 	public ChatVO getDetail(long cno) {
 		return cdao.selectOne(cno);
 	}
+	@Override
+	public int getLastRoom() {
+		return cdao.selectLastRoom();
+	}
 }

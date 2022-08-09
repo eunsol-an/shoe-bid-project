@@ -36,5 +36,9 @@ public class ChatReposTest {
 	public void insertChatDummy4() throws Exception {
 		int isUp = cdao.insert(new ChatVO("4번방", 1, 13, 14, 4));
 	}
+	@Test
+	public void insertChatDummy5() throws Exception {
+		int isUp = cdao.insert(new ChatVO("룸넘버", 1, 15, 16, 043));
+	}
 	
 }

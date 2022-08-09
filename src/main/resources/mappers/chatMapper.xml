@@ -14,28 +14,36 @@
 	</select>
 	
 	<select id="selectRoomList" parameterType="long" resultType="cvo">
-		select cno, content, read_chk, send_nick, recv_nick, room, send_at, m.nick_name
+		select cno, content, read_chk, send_nick, recv_nick, room, send_at, m.nick_name as send_nick_name, m2.nick_name as recv_nick_name
 		from chat c
 		inner join `member` m
-		on c.recv_nick = m.mno
+		on c.send_nick = m.mno
+		inner join `member` m2
+		on c.recv_nick = m2.mno
 		where cno in (select max(cno) from chat group by room)
 		order by cno desc
 	</select>
 	
 	<select id="selectOne" resultType="cvo" parameterType="long">
-	select cno, content, read_chk, send_nick, recv_nick, room, send_at, m.nick_name
+	select cno, content, read_chk, send_nick, recv_nick, room, send_at, m.nick_name as send_nick_name, m2.nick_name as recv_nick_name
 		from chat c
 		inner join `member` m
-		on c.recv_nick = m.mno
+		on c.send_nick = m.mno
+		inner join `member` m2
+		on c.recv_nick = m2.mno
 		where cno = #{cno}
 	</select>
 	
-		<update id="update" parameterType="cvo">
+	<select id="selectLastRoom" resultType="cvo" parameterType="long">
+	select max(room) as maxroom from chat
+	</select>
+	
+		<!-- <update id="update" parameterType="cvo">
 		update chat set
 		read_chk = 0
 		where cno = #{cno}
 	</update>
 	<delete id="delete" parameterType="long">
 		delete from chat where cno = #{cno}
-	</delete>
+	</delete> -->
 </mapper>

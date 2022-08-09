@@ -8,4 +8,5 @@ public interface ChatService {
 	ChatVO getDetail(long cno);
 	int modify(ChatVO cvo);
 	int remove(long cno);
+	int getLastRoom();
 }

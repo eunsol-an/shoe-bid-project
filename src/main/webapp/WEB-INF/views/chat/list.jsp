@@ -12,6 +12,7 @@
 			<ul class="ps-0">
 				<li><a href="/">Home</a></li>
 				<li><a href="/chat/list">message</a></li>
+				<%-- <li><a href="/chat/list?mno=${4 }">tester</a></li> --%>
 			</ul>
 		</div>
 	</div>
@@ -25,13 +26,20 @@
 			<div class="col-lg-5 order-lg-1">
 				<div class="common-block" style="height: 600px; overflow: auto">
 					<c:forEach items="${list }" var="cvo">
+						<c:if test="${ses.mno eq cvo.recvNick || ses.mno eq cvo.sendNick}">
 						<div class="mb-2-3 pb-2-3 border-bottom">
 							<div class="media mb-4 product-review">
 								<div class="media-body">
 									<span style="display: none;">${cvo.cno } </span>
 									<span style="display: none;">${cvo.room } </span>
-									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.nickName }
+									<c:if test="${ses.mno eq cvo.sendNick}">
+									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.recvNickName }
 									</a>
+									</c:if>
+									<c:if test="${ses.mno ne cvo.sendNick}">
+									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.sendNickName }
+									</a>
+									</c:if>
 								</div>
 								<span class="d-block text-primary">${cvo.sendAt } </span>
 							</div>
@@ -39,6 +47,7 @@
 							<span class="mb-0 font-weight-200 text-extra-dark-gray" style="float: right">
 							<a href="/chat/detail?cno=${cvo.cno }">보기</a></span>
 						</div>
+					</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -47,11 +56,21 @@
 			
 			<div class="col-lg-7 order-lg-2 mb-1-9 mb-lg-0">
 				<div class="common-block" style="height: 600px;">
-						<h4></h4>
-					<div class="common-block" style="height: 460px;" id="ctZone">
-					</div>
+						
+							<h4>${10 }(mno)</h4>
+						<h4 style="display: none;">${cvo.cno }</h4>
+						<span id="ctmno" style="display: none;"> ${ses.mno }</span>
+						<span id="mno" style="display: none;">${cvo.mno }</span>
+						<span id="roomVal" style="display: none;">99999${ses.mno }</span>
+						<span id="room" style="display: none;">99999${ses.mno }</span>
+						<span id="readChk" style="display: none;">1</span>
+						<span id="sendNick" style="display: none;">10</span>
+						<span id="recvNick" style="display: none;">${ses.mno }</span>
+						
+					<div class="common-block" style="height: 460px; overflow: auto" id="ctZone"></div>
+					
 					<div class="input-group">
-						<input type="text" class="form-control" name="name" placeholder="content" id="ctText">
+						<input type="text" class="form-control" name="ctText" placeholder="content" id="ctText">
 						<button type="button" class="butn-style4" id="ctSbmBtn">전 송</button>
 					</div>
 				</div>
@@ -60,4 +79,5 @@
 		</div>
 	</div>
 </div>
+<script src="/resources/js/chat.send.js"></script>
 <jsp:include page="../common/footer.jsp" />
