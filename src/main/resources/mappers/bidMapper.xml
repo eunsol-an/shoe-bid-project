@@ -3,6 +3,24 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shoebid.www.repository.BidDAO">
+ 	<sql id="status">
+		<if test="pgvo.type != null">
+		<trim prefix="and (" suffix=")" prefixOverrides="or">
+			<foreach collection="pgvo.typeToArray" item="type">
+			<trim prefix="or">
+				<choose>
+					<when test="type == 'p'.toString()">
+						bid_status = 0
+					</when>
+					<when test="type == 'd'.toString()">
+						bid_status = 1 or bid_status = 2
+					</when>
+				</choose>
+			</trim>
+			</foreach>
+		</trim>
+		</if>
+	</sql>
 	<insert id="insert" parameterType="bvo">
 		insert into buy_bid
 		(buyer, pno, bid_price, bid_status)
@@ -12,6 +30,7 @@
 		select b.bno, b.buyer, b.pno, p.pname, p.product_img, b.bid_price, b.bid_status, b.bid_at
 		from (
 			select bno from buy_bid where bno > 0
+			<include refid="status" />
 			order by bno desc
 			limit #{pgvo.pageStart}, #{pgvo.qty}
 		) a left join buy_bid b on (a.bno = b.bno) 
@@ -19,8 +38,9 @@
 		where b.buyer = #{mno}
 		order by bid_at desc;
 	</select>
-	<select id="selectTotalCount" parameterType="long" resultType="int">
-		select count(bno) from buy_bid where buyer = #{buyer}
+	<select id="selectTotalCount" resultType="int">
+		select count(bno) from buy_bid where buyer = #{mno} and bno > 0
+		<include refid="status" />
 	</select>
 	<update id="updateBidStatus" parameterType="bvo">
 		update buy_bid set bid_status = #{bidStatus}

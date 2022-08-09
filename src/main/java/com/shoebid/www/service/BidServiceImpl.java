@@ -29,8 +29,8 @@ public class BidServiceImpl implements BidService {
 	}
 
 	@Override
-	public int getTotalCount(long buyer) {
-		return bdao.selectTotalCount(buyer);
+	public int getTotalCount(long mno, PagingVO pgvo) {
+		return bdao.selectTotalCount(mno, pgvo);
 	}
 
 }
