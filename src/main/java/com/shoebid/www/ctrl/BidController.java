@@ -48,13 +48,11 @@ public class BidController {
 	public String list(
 			Model model
 			, PagingVO pgvo
-			, @PathVariable("mno") long mno
-			, @RequestParam(name = "pageNo", required = false) Integer pageNo
-			, @RequestParam(name = "qty", required = false) Integer qty) {
+			, @PathVariable("mno") long mno) {
 		log.info(">>> BidController > list - GET");
 		
 		model.addAttribute("list", bsv.getList(mno, pgvo));
-		int totalCount = bsv.getTotalCount(mno);
+		int totalCount = bsv.getTotalCount(mno, pgvo);
 		model.addAttribute("pgn", new PagingHandler(pgvo, totalCount));
 		return "/buy_bid/list";
 	}

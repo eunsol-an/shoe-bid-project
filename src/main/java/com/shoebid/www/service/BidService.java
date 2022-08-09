@@ -9,5 +9,5 @@ import com.shoebid.www.domain.PagingVO;
 public interface BidService {
 	int register(BidVO bvo); // 입찰하기
 	List<BidVO> getList(long mno, PagingVO pgvo);
-	int getTotalCount(long buyer);
+	int getTotalCount(long mno, PagingVO pgvo);
 }

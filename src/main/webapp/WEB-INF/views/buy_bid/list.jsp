@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
@@ -56,6 +57,24 @@
 						<h4 class="mb-0">입찰/낙찰 내역</h4>
 					</div>
 
+					<form class="d-flex col-sm-12 col-md-6 mx-auto"
+						action="/buy_bid/list/1" method="get">
+						<input type="hidden" name="pageNo" value="1"> <input
+							type="hidden" name="qty" value="${pgn.pgvo.qty }">
+						<div class="input-group">
+							<c:set value="${pgn.pgvo.type }" var="typed" />
+							<select class="form-select" name="type">
+								<option ${typed eq null ? 'selected':'' }>선택</option>
+								<option value="pd" ${typed eq 'pd' ? 'selected':'' }>All</option>
+								<option value="p" ${typed eq 'p' ? 'selected':'' }>Progress</option>
+								<option value="d" ${typed eq 'd' ? 'selected':'' }>Done</option>
+							</select>
+							<button class="btn btn-outline-success" type="submit">
+								Search <span class="badge bg-danger">${pgn.totalCount }</span>
+							</button>
+						</div>
+					</form>
+
 					<div class="table-responsive">
 						<table class="table v-align-middle text-center">
 							<thead>
@@ -70,9 +89,9 @@
 							<tbody>
 								<c:forEach var="bvo" items="${list }">
 									<tr>
-										<td><a href="#"><img
-												src="img/products/top-rated/1.jpg" alt="..." /></a></td>
-										<td><a href="#">${bvo.pname }</a></td>
+										<td><a href="/product/detail?pno=${bvo.pno }"><img
+												src="/upload/${fn:replace(bvo.productImg,'\\','/')}" alt="img" /></a></td>
+										<td><a href="/product/detail?pno=${bvo.pno }">${bvo.pname }</a></td>
 										<td class="product-price">${bvo.bidPrice }원</td>
 										<td class="product-quantity">${bvo.bidAt }</td>
 										<td><c:if test="${bvo.bidStatus eq 0 }">
@@ -88,29 +107,25 @@
 							</tbody>
 						</table>
 					</div>
-
-
 					<div
 						class="pagination text-small text-uppercase text-extra-dark-gray">
 						<ul>
 							<c:if test="${pgn.prev }">
 								<li><a
-									href="/buy_bid/list/1?pageNo=${pgn.startPage-1 }&qty=${pgn.pgvo.qty }">«</a></li>
+									href="/buy_bid/list/1?pageNo=${pgn.startPage-1 }&qty=${pgn.pgvo.qty }&type=${pgn.pgvo.type }">«</a></li>
 							</c:if>
 							<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }"
 								var="i">
 								<li class="${pgn.pgvo.pageNo == i ? 'active' : '' }"><a
-									href="/buy_bid/list/1?pageNo=${i }&qty=${pgn.pgvo.qty}">${i }</a></li>
+									href="/buy_bid/list/1?pageNo=${i }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type }">${i }</a></li>
 							</c:forEach>
 							<c:if test="${pgn.next }">
 								<li><a
-									href="/buy_bid/list/1?pageNo=${pgn.endPage+1 }&qty=${pgn.pgvo.qty }">»</a></li>
+									href="/buy_bid/list/1?pageNo=${pgn.endPage+1 }&qty=${pgn.pgvo.qty }&type=${pgn.pgvo.type }">»</a></li>
 							</c:if>
 						</ul>
 					</div>
-
 				</div>
-
 			</div>
 			<!-- end right panel -->
 		</div>
