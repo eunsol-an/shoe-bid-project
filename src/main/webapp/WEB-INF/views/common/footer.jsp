@@ -2,102 +2,168 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-        <!-- FOOTER
+    <!-- FOOTER
         ================================================== -->
-        
-        <footer>
+        <footer class="pt-0 classic-footer">
+
+            <div class="footer-service mb-6 mb-lg-8 py-4 py-lg-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="py-4 px-0 p-lg-4 border-color-light-black borders-bottom border-lg-bottom-0 border-lg-end">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-exchange-alt display-18"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="m-0 text-uppercase display-30">Return &amp; Exchange</h5>
+                                        <p class="m-0 display-30">Lorem ipsum dolor sit amet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="py-4 px-0 p-lg-4 border-color-light-black borders-bottom border-lg-bottom-0 border-lg-end">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-gift display-18"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="m-0 text-uppercase display-30">Receive Gift</h5>
+                                        <p class="m-0 display-30">Lorem ipsum dolor sit amet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="py-4 px-0 p-lg-4">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="far fa-life-ring display-18"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h5 class="m-0 text-uppercase display-30">Fast Support</h5>
+                                        <p class="m-0 display-30">Lorem ipsum dolor sit amet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="container">
-                <div class="row mt-n1-9">
+                <div class="row mt-n2-2">
 
-                    <div class="col-lg-4 col-md-6 mt-1-9">
-                        <img alt="footer-logo" src="img/logos/logo-footer.png" class="mb-1-9">
-                        <ul class="footer-list ps-0">
+                    <div class="col-lg-4 col-md-6 mt-2-2">
+                        <h3>Contact Us</h3>
+                        <ul class="list-style list-unstyled mb-2 ps-0">
                             <li>
-                                <span class="d-inline-block vertical-align-top display-28"><i class="fas fa-map-marker-alt text-primary"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top ps-2">74 Guild Street 542B, Great North Town MT.</span>
+                                <strong>Address:</strong><span class="ps-1">74 Guild Street 542B, Town MT.</span>
                             </li>
                             <li>
-                                <span class="d-inline-block vertical-align-top display-28"><i class="fas fa-mobile-alt text-primary"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top ps-2">(+44) 123 456 789</span>
+                                <strong>Phone: </strong><span class="ps-1">(+44) 123 456 789</span>
                             </li>
                             <li>
-                                <span class="d-inline-block vertical-align-top display-28"><i class="far fa-envelope text-primary"></i></span>
-                                <span class="d-inline-block width-85 vertical-align-top ps-2">addyour@emailhere</span>
+                                <strong>Email: </strong><span class="ps-1">addyour@emailhere</span>
                             </li>
                         </ul>
-                        <div class="footer-social-icons small mt-4">
-                            <ul class="ps-0">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
+
+                        <ul class="list-style-two mb-0 ps-0">
+                            <li>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mt-2-2">
+
+                        <div class="row">
+                            <div class="col-md-6 col-6 pe-lg-0">
+                                <h3>이용안내</h3>
+                                <ul class="list-style list-unstyled ps-0">
+                                    <li><a href="#">이용정책</a></li>
+                                    <li><a href="#">패널티 정책</a></li>
+                                    <li><a href="#">커뮤니티 가이드라인</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-6 pe-lg-0">
+                                <h3>고객지원</h3>
+                                <ul class="list-style list-unstyled ps-0">
+                                    <li><a href="#">공지사항</a></li>
+                                    <li><a href="#">자주 묻는 질문</a></li>
+                                    <li><a href="#">서비스 소개</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 mt-1-9">
-                        <h3 class="footer-title-style2 text-white">이용안내</h3>
-                        <ul class="footer-list ps-0">
-                            <li><a href="#">이용정책</a></li>
-                            <li><a href="#">패널티 정책</a></li>
-                            <li><a href="#">커뮤니티 가이드라인</a></li>
-                        </ul>
-                    </div>
+                    <div class="col-lg-4 col-md-12 mt-2-2">
+                        <div class="ps-lg-1-9">
 
-                    <div class="col-lg-3 col-md-6 mt-1-9">
-                        <h3 class="footer-title-style2 text-white">고객지원</h3>
-                        <ul class="footer-list ps-0">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">자주 묻는 질문</a></li>
-                            <li><a href="#">서비스 소개</a></li>
-                            <li><a href="#">고객센터</a></li>
-                        </ul>
-                    </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6 mb-1-9">
+                                    <h3>News Letter</h3>
+                                    <form method="post">
+                                        <div class="form-group footer-subscribe">
+                                            <input type="email" placeholder="Subscribe with us" id="email" class="form-control">
+                                            <a href="#" class="butn-style2"><i class="fas fa-paper-plane display-27 mt-1"></i></a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <h3>Download Our Mobile Apps</h3>
+                                    <div class="text-start">
+                                        <a href="#" class="btn bordered text-start ms-1 ms-md-0 mt-1 mt-md-0 mb-0 mb-lg-2 mb-xl-0">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <i class="fab fa-apple display-26"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <span class="d-block display-32">Download on the</span>
+                                                    <strong>App Store</strong>
+                                                </div>
+                                            </div>
+                                        </a>
 
-                    <div class="col-lg-2 col-md-6 mt-1-9">
-                        <h3 class="footer-title-style2 text-white">My Account</h3>
-                        <ul class="footer-list ps-0">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order History</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
+                                        <a href="#" class="btn bordered text-start ms-1 ms-lg-0 ms-xl-1 mt-1 mt-md-0">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <i class="fab fa-google-play display-26"></i>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <span class="d-block display-32">Get it on</span>
+                                                    <strong>Google Play</strong>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="footer-bar">
+            <div class="footer-bottom py-1-9 mt-6 mt-lg-8">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
-                            <p class="mb-0">&copy; <span class="current-year"></span> Smartshop is Powered by <a href="#" class="text-light-gray">Chitrakoot Web</a></p>
-                        </div>
-                        <div class="col-lg-4 mb-3 mb-lg-0">
-                            <ul class="footer-app mb-0 ps-0">
-                                <li>
-                                    <a href="#"><img src="/img/content/apps/app-01.png" alt="..." /></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="/img/content/apps/app-02.png" alt="..." /></a>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="/img/content/apps/app-03.png" alt="..." /></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-4">
-                            <ul class="list-style-17 text-center text-lg-end">
-                                <li><img src="img/content/payment-options/visa.png" alt="..."></li>
-                                <li><img src="img/content/payment-options/mastercard.png" alt="..."></li>
-                                <li><img src="img/content/payment-options/paypal.png" alt="..."></li>
-                                <li><img src="img/content/payment-options/amex.png" alt="..."></li>
-                                <li><img src="img/content/payment-options/discover.png" alt="..."></li>
-                                <li><img src="img/content/payment-options/jcb.png" alt="..."></li>
-                            </ul>
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <div class="text-center text-md-start">
+                                <p class="mb-0">&copy; <span class="current-year"></span> Shoe-bid All rights reserved.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -110,6 +176,7 @@
     <!-- SCROLL TO TOP
     ================================================== -->
     <a href="#" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    
 
     <!-- ALL JS INCLUDE
     ================================================== -->
