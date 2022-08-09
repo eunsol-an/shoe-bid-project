@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.shoebid.www.ctrl.ChatController;
 import com.shoebid.www.domain.ChatVO;
+import com.shoebid.www.domain.MemberDTO;
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.service.ChatService;
+import com.shoebid.www.service.MemberService;
+
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/chat/*")
@@ -24,12 +28,25 @@ public class ChatController {
 	@Inject
 	private ChatService csv;
 	
+	/*
+	 * @Inject private MemberService msv;
+	 */
+	
 	
 	
 	@GetMapping("/list")
 	public void list(Model model) {
 		model.addAttribute("list", csv.getList());
 	}
+	
+	
+//	 @GetMapping("/list") public void list(Model model, @RequestParam("mno") long mno) { 
+//		 model.addAttribute("list", csv.getList()); 
+//		 MemberDTO mdto = msv.getDetail(mno); 
+//		 MemberVO mvo = mdto.getMvo(); 
+//		 model.addAttribute("mvo", mvo); 
+//		 }
+	 
 	
 	@GetMapping("/detail")
 	public void detail(@RequestParam("cno") long room, Model model) {

@@ -18,9 +18,10 @@ public class ChatVO {
 	private long recvNick;	
 	private long room;
 	private String sendAt;
-	private String nickName;
+	private String sendNickName;
+	private String recvNickName;
 	private long mno;
-	
+	private long maxroom;
 	//post
 	public ChatVO(String content, int readChk, long sendNick, long recvNick, long room) {
 		this.content = content;

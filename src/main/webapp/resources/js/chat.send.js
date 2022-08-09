@@ -31,21 +31,21 @@ async function postChatToServer(ctData){
     spreadChatFromServer(roomVal).then(result => {
       console.log(result);
       if (result.length) {
-       
+       const sesmno = document.getElementById('ctmno').innerText;
        let tag = '';
         for(const cvo of result){
-          if(cvo.recvNick == 4){
+          if(cvo.recvNick == sesmno){
              tag += `<span class="" style="float: right;">${cvo.content}</span><br>`
             tag += `<span class="" style="float: right; font-size: 14px"">${cvo.sendAt}</span><br>` 
             
           } else  {
             tag += `<span class="" >${cvo.content}</span><br>`
-            tag += `<div class="" float: left; font-size: 14px">${cvo.sendAt}</div><br>`
+            tag += `<span class="" float: left; font-size: 14px">${cvo.sendAt}</span><br>`
           }
-         /*  tag += `<span class="" style="float: right;">${cvo.content}</span><br>`
-            tag += `<div class="" style="float: right; font-size: 14px">${cvo.sendAt}</div><br>`dd */
         }
         document.getElementById('ctZone').innerHTML = tag;
+        var objDiv = document.getElementById("ctZone");
+         objDiv.scrollTop = objDiv.scrollHeight;
       }else{
       }
     });
@@ -59,9 +59,9 @@ document.getElementById('ctSbmBtn').addEventListener('click', (e) => {
       readChk : document.getElementById('readChk').innerText,
       sendNick : document.getElementById('sendNick').innerText,
       recvNick : document.getElementById('recvNick').innerText,
-      room : document.getElementById('readChk').innerText
+      room : parseInt(document.getElementById('roomVal').innerText)
     };
-    console.log(ctData);
+    console.log(typeof document.getElementById('roomVal').innerText);
     postChatToServer(ctData).then(result => {
       if(parseInt(result)){
         ctInputObj.value ="";
