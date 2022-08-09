@@ -36,7 +36,7 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		model.addAttribute("list", psv.getList(pgvo));
-		int totalCount = psv.getTotalCount();
+		int totalCount = psv.getTotalCount(pgvo);
 		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
 		
 		return "home";
