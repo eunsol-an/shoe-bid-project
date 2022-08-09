@@ -42,8 +42,15 @@
 		select count(bno) from buy_bid where buyer = #{mno} and bno > 0
 		<include refid="status" />
 	</select>
-	<update id="updateBidStatus" parameterType="bvo">
-		update buy_bid set bid_status = #{bidStatus}
+	<select id="selectMaxBid" parameterType="pvo" resultType="int">
+		select bno from buy_bid where bid_price = #{highestPrice} and pno = #{pno}
+	</select>
+	<update id="updateBidStatusSuccess" parameterType="long">
+		update buy_bid set bid_status = 1
 		where bno = #{bno}
+	</update>
+	<update id="updateBidStatusFail" parameterType="long">
+		update buy_bid set bid_status = 2
+		where pno = #{pno} and bid_status != 1
 	</update>
 </mapper>
