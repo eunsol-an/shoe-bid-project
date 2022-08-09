@@ -17,7 +17,7 @@
 		<div class="breadcrumbs-info">
 			<ul class="ps-0">
 				<li><a href="home-shop-1.html">Home</a></li>
-				<li><a href="#">Shop Product List</a></li>
+				<li><a href="/product/list">Shop Product List</a></li>
 			</ul>
 		</div>
 
@@ -271,51 +271,26 @@
 				<div class="row g-0 align-items-center bg-light rounded p-3 mb-1-9">
 
 					<div
-						class="col-12 col-md my-1 my-md-0 text-center text-md-start font-weight-600">Showing
-						1–9 of 27 results</div>
-
-					<div class="col-12 col-md-auto">
-
-						<div class="row justify-content-center">
-
-							<div class="col-auto my-1 my-md-0">
-								<label class="m-0">Show:</label> <select
-									class="w-auto d-inline-block form-select">
-									<option value="#?limit=24" selected="selected">24</option>
-									<option value="#?limit=25">25</option>
-									<option value="#?limit=50">50</option>
-									<option value="#?limit=75">75</option>
-									<option value="#?limit=100">100</option>
-								</select>
-							</div>
-
-							<div class="col-auto my-1 my-md-0">
-								<label class="m-0">Sort By:</label> <select
-									class="w-auto d-inline-block form-select">
-									<option value="#?sort=p.sort_order&amp;order=ASC">Default</option>
-									<option value="#?sort=pd.name&amp;order=ASC">Name (A -
-										Z)</option>
-									<option value="#?sort=pd.name&amp;order=DESC">Name (Z
-										- A)</option>
-									<option value="#?sort=p.price&amp;order=ASC" selected="">Price
-										(Low &gt; High)</option>
-									<option value="#?sort=p.price&amp;order=DESC">Price
-										(High &gt; Low)</option>
-									<option value="#?sort=rating&amp;order=DESC">Rating
-										(Highest)</option>
-									<option value="#?sort=rating&amp;order=ASC">Rating
-										(Lowest)</option>
-									<option value="#?sort=p.model&amp;order=ASC">Model (A
-										- Z)</option>
-									<option value="#?sort=p.model&amp;order=DESC">Model (Z
-										- A)</option>
-								</select>
-							</div>
-
+						class="col-12 col-md my-1 my-md-0 text-center text-md-start font-weight-600">
+						 <div class="col-12 col-lg-12 order-3 order-lg-2 categories-search">
+                            <div class="product-search">
+                                <form action="/product/list" method="get">
+                                    <div class="psearch-content">
+                                        <div class="product-cat">
+                                          
+                                        </div>
+                                        <div class="search-wrapper">
+                                            <input type="hidden" name="type" class="search-field" value="sailfb">
+                                            <input type="text" name="kw" class="search-field" placeholder="키워드 검색" value=${pgn.pgvo.kw }>
+                                        </div>
+                                        <button type="submit" class="search-submit"><i class="ti-search d-inline-block d-lg-none"></i><span class="d-none d-lg-inline-block">Search</span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 						</div>
-
+					<div class="col-12 col-md-auto">
 					</div>
-
 				</div>
 				<div class="col-md-6 text-center text-md-end">
 						<a href="/product/register" class="btn btn-info mb-4">register</a>
@@ -324,7 +299,7 @@
 					<div class="row g-0 product-listing">
 						<div class="col-sm-4">
 							<div class="product-img">
-								<a href="/product/detail?pno=${pvo.pno }"> <img
+								<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}"> <img
 									src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="...">
 								</a>
 							</div>
@@ -333,7 +308,7 @@
 							<div class="product-list">
 								<div class="product-description">
 									<h3>
-										<a href="/product/detail?pno=${pvo.pno }">${pvo.pname }</a>
+										<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">${pvo.pname }</a>
 									</h3>
 									<h4 class="price">
 										<span class="regular-price ">시작가:${pvo.reservePrice }</span> <span
@@ -362,15 +337,15 @@
 				<div class="pagination text-small text-uppercase text-extra-dark-gray mt-4">
 					<ul class="ps-0">
 					<c:if test="${pgn.prev }">
-						<li><a href="/product/list?pageNo=${pgn.startPage-1 }&qty=${pgn.pgvo.qty}"><i
+						<li><a href="/product/list?pageNo=${pgn.startPage-1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}"><i
 								class="fas fa-long-arrow-alt-left me-1 d-none d-sm-inline-block"></i>
 								Prev</a></li>
 					</c:if>
 					<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
-						<li class="${pgn.pgvo.pageNo == i ? 'active':'' }"><a href="/product/list?pageNo=${i }&qty=${pgn.pgvo.qty}">${i }</a></li>
+						<li class="${pgn.pgvo.pageNo == i ? 'active':'' }"><a href="/product/list?pageNo=${i }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">${i }</a></li>
 						</c:forEach>
 						<c:if test="${pgn.next }">
-						<li><a href="/product/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.pgvo.qty}">Next <i
+						<li><a href="/product/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">Next <i
 								class="fas fa-long-arrow-alt-right ms-1 d-none d-sm-inline-block"></i></a></li>
 						</c:if>
 					</ul>

@@ -13,6 +13,7 @@ public interface ProductService {
 	ProductDTO getDetail(long pno);
 	int modify(ProductDTO pdto);
 	int remove(long pno);
-	int getTotalCount();
+	int getTotalCount(PagingVO pgvo);
 	int removeFile(String uuid);
+	int statusProduct(ProductVO pvo);
 }

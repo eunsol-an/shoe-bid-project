@@ -14,6 +14,9 @@ import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.ImageFileDAO;
 import com.shoebid.www.repository.ProductDAO;
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Inject
@@ -56,12 +59,13 @@ public class ProductServiceImpl implements ProductService {
 	public int modify(ProductDTO pdto) {
 		int isUp = pdao.updateReadCount(pdto.getPvo().getPno(), -2);
 		isUp =pdao.update(pdto.getPvo());
-		if(pdto.getImageList() != null) {
-			if(isUp>0) {
+		if(pdto.getImageList() != null ) {
+			log.info(">>>>수정파일 있을경우 서비스");
+				isUp = idao.deleteAllPImage(pdto.getPvo().getPno());
 				for (ImageFileVO ivo :pdto.getImageList() ) {
 					ivo.setPno(pdto.getPvo().getPno());
 					isUp *= idao.insertPImage(ivo);
-				}
+					log.info(">>>>수정파일 있을경우 파일서버등록"); 
 			}
 		}
 		return isUp;
@@ -77,13 +81,20 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int getTotalCount() {
-		return pdao.selectTotalCount();
+	public int getTotalCount(PagingVO pgvo) {
+		return pdao.selectTotalCount(pgvo);
 	}
 
 	@Override
 	public int removeFile(String uuid) {
 		return idao.deleteImage(uuid);
+	}
+
+	@Override
+	public int statusProduct(ProductVO pvo) {
+		
+		
+		return pdao.updateStatus(pvo);
 	}
 
 }

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../common/header.jsp"/>  
-<jsp:include page="../common/nav.jsp"/>  
+<jsp:include page="../common/nav.jsp"/>   
         <!-- PAGE TITLE
         ================================================== -->
 
@@ -14,7 +14,8 @@
                     <h1>Shop Product Detail</h1></div>
                 <div class="breadcrumbs-info">
                     <ul class="ps-0">
-                        <li><a href="home-shop-1.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a id="list" href="/product/list?pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}">List</a></li>
                         <li><a href="#">Shop Product Detail</a></li>
                     </ul>
                 </div>
@@ -48,32 +49,29 @@
                             <h2 class="mb-1">${pvo.pname }</h2>
                             <div class="bg-primary separator-line-horrizontal-full mb-4"></div>
                             <p class="rating-text"><span>SKU:</span> <span class="font-500 theme-color" id="pnoVal">${pvo.pno }</span></p>
-                            <h4 class="mb-1">시작시간 : ${pvo.regAt }</h4>
                             <ul class="countdown count-style-one text-center m-0 p-0">
     						<!-- start days -->
-	    						<li><span class="days">00</span>
+	    						<li><span  id="days">00</span>
 							        <p class="timeRefDays text-center">days</p>
 							    </li>
 							    <!-- end days -->
 							    <!-- start hours -->
-							    <li><span class="hours">00</span>
+							    <li><span  id="hours">00</span>
 							        <p class="timeRefHours">hours</p>
 							    </li>
 							    <!-- end hours -->
 							    <!-- start minutes -->
-							    <li><span class="minutes">00</span>
+							    <li><span  id="minutes">00</span>
 							        <p class="timeRefMinutes">minutes</p>
 							    </li>
 							    <!-- end minutes -->
 							    <!-- start seconds -->
-							    <li><span class="seconds">00</span>
+							    <li><span  id="seconds">00</span>
 							        <p class="timeRefSeconds">seconds</p>
 							    </li>
 						    <!-- end seconds -->
 							</ul>
-                            <h3>종료시간 :<span id ="endTime">${pvo.endTime}</span></h3>
                             <div class="mb-4">
-
                                 <div class="d-inline-block me-3 pe-3 borders-end border-color-extra-medium-gray">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
@@ -86,38 +84,28 @@
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <span class="me-3 display-26 font-weight-600 ">시작가 : ${pvo.reservePrice }</span>
+                                <span class="me-3 display-26 font-weight-600" >시작가 : <span class="display-26 font-weight-700 text-primary" id="reservePriceVal">${pvo.reservePrice }</span></span>
                                <span class="display-26 font-weight-700 text-primary">현재가 :</span> <span class="display-26 font-weight-700 text-primary" id="maxPrice">${pdto.maxPrice }</span>
                             </div>
 
                             <div class="row">
-                                <div class="col-5 col-md-3">
-                                    <label>Size:</label>
-
-                                    <select class="mb-4 form-control medium form-select">
-                                        <option value="S">8 GB</option>
-                                        <option value="M">16 GB</option>
-                                        <option value="L">64 GB</option>
-                                        <option value="XL">128 GB</option>
-                                    </select>
-
-                                </div>
-                                <div class="col-5 col-md-3">
-                                    <div class="product-color">
-                                        <label>Color:</label>
-                                        <select class="mb-4 form-control medium form-select">
-                                            <option value="Red">Red</option>
-                                            <option value="Black">Black</option>
-                                            <option value="Beige">Beige</option>
-                                            <option value="White">White</option>
-                                        </select>
+                                <div class="col-5 col-md-4">
+                                    <label>시작시간:</label>
+                                    <div class="mb-4 ">
+                                        <span>${pvo.regAt }</span>
                                     </div>
+
                                 </div>
+                                <div class="col-5 col-md-4">
+                                    <label>종료시간:</label>
+                                    <div class="mb-4 ">
+                                        <span id ="endTime">${pvo.endTime }</span>
+                                    </div>
                             </div>
                             <div class="row">
                                 <div class="col-4 col-lg-2">
                                     <label>Qty:</label>
-                                    <input type="text" value="1" placeholder="1" class="form-control medium mb-4">
+                                   <span> ${pvo.readCount }</span>
                                 </div>
 
                             </div>
@@ -125,25 +113,63 @@
                             <div class="row mb-4">
                                 <div class="col-lg-12">
                                     <button class="butn-style2 me-3 mb-2 mb-md-0"><span><i class="fas fa-shopping-cart me-1"></i> Add to Cart</span></button>
-                                    <button class="butn-style2 dark"><span><i class="fas fa-heart me-1"></i> Add to wishlist</span></button>
+                                    <button type="button" class="butn-style2 me-3 mb-2 mb-md-0"	data-bs-toggle="modal" data-bs-target="#centered">입찰하기</button>
+<!-- Vertically centered -->
+<div class="modal fade" id="centered" tabindex="-1"
+	aria-labelledby="centeredLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="centeredLabel">입찰하기</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form action="/buy_bid/add" method="post"  id="bidAddForm">
+				<div class="form-group">
+			<input type="hidden" name="buyer" value="1">
+			<input type="hidden" name="pno" value="${pvo.pno }">
+			<input type="hidden" name="bidStatus" value="0">
+					<label>입찰 금액 입력</label> <input type="number" class="form-control"
+						name="bidPrice" placeholder="입찰 금액을 입력해주세요" id="bidPriceVal"
+						value="${pvo.reservePrice > pdto.maxPrice ? pvo.reservePrice : pdto.maxPrice  }">
+				</div>
+			</form>
+				<div class="form-check">
+					<input class="form-check-input is-checked" type="checkbox" value=""
+						id="flexCheckDefault"> 
+						<label class="form-check-label is-checked"
+						for="flexCheckDefault"> 입찰은 취소할 수 없습니다. 모든 약관에 동의합니다.</label>
+						<p class="text-center text-danger" id="errorMsg"></p>
+				</div>
+			</div>
+			<div class="modal-footer">
+			
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-primary" id="addBtn" disabled>입찰하기</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
                                 </div>
                             </div>
 
                             <div class="row">
- 									<ul class="social-icon-style1 ps-0">
-                                        <li>read : ${pvo.readCount }</li>
-                                    </ul>
                                 <div class="col-lg-7">
-									<a href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}" id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0" style="display: none;">수정</a>
+									<a href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}" id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0" style="display: none;">수정</a>
 									<button  class="butn-style2 me-3 mb-2 mb-md-0" id="modBtnFake">수정</button>
-                                                 <button type="button" class="butn-style2 dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="Remove">삭제</button>
+                                    <button type="button" class="butn-style2 dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="Remove">삭제</button>
                                       <form action="" method="post" id="productRmForm"  style="display: none;">
                                     <input type="hidden" id="pno" value="" name="pno">
                                     <input type="hidden" value="${pgvo.pageNo }" name="pageNo">  	
   									<input type="hidden" value="${pgvo.qty }" name="qty"> 
+  									<input type="hidden" value="${pgvo.type }" name="type"> 
+  									<input type="hidden" value="${pgvo.kw }" name="kw"> 
                                     </form>
+                                    
                                    <!-- static Modal -->
-                            
 									<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 									    <div class="modal-dialog">
 									        <div class="modal-content">
@@ -184,14 +210,7 @@
                                 <div>
 
                                     <p>${pvo.description }</p>
-                                    <ul class="primary-list mb-4 ps-0">
-                                        <li>Sed ut perspiciatis unde omnis iste</li>
-                                        <li>Inventore veritatis et quasi architecto</li>
-                                        <li>Voluptatem accusantium doloremque</li>
-                                        <li>Quasi architecto in ea voluptate veli</li>
-                                    </ul>
-                                    <p class="m-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto in ea voluptate velit.</p>
-
+                                   
                                 </div>
                                 <div>
                                     <div class="row">
@@ -412,6 +431,7 @@
                     </div>
                 </div>
                 </div>
+                </div>
                 </section>
 <script src="/resources/js/product.detail.js"></script>
 <script>
@@ -428,5 +448,4 @@
   let endTime = new Date(document.getElementById("endTime").innerText);
   console.log(endTime);
 </script>
-          
 <jsp:include page="../common/footer.jsp"/>  

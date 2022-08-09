@@ -16,11 +16,11 @@ public interface ProductDAO {
 	int updateHighestPrice(@Param("highestPrice") long highestPrice,
 			@Param("pno") long pno);
 	int updateReadCount( @Param("pno") long pno,@Param("i") int i);
-	int updateStatus( @Param("pno") long pno ,@Param("status") int status );
+	int updateStatus(ProductVO pvo );
 	ProductVO selectDetail(long pno);
 	String selectNickName(long pno);
 	int selectMaxPrice(long pno);
-	int selectTotalCount();
+	int selectTotalCount(PagingVO pgvo);
 	long selectLastPno();
 }
 
