@@ -18,9 +18,10 @@ public interface ProductDAO {
 	int updateReadCount( @Param("pno") long pno,@Param("i") int i);
 	int updateStatus(ProductVO pvo );
 	ProductVO selectDetail(long pno);
-	String selectNickName(long pno);
+	String selectNickName(long pno); 
 	int selectMaxPrice(long pno);
 	int selectTotalCount(PagingVO pgvo);
-	long selectLastPno();
+	long selectLastPno(); 
+	List<ProductVO> selectAllList(); 
 }
 

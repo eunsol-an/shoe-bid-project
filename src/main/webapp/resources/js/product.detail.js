@@ -67,10 +67,9 @@ let timeInterval = setInterval( function time() {
       document.getElementById("seconds").innerText= formatTime(seconds);
     if(now > endTime){
         clearInterval(timeInterval);
-        document.getElementById("days").innerText ='00';
-      document.getElementById("hours").innerText= '00';
-      document.getElementById("minutes").innerText= '00';
-      document.getElementById("seconds").innerText= '00';
+       document.getElementById("timeBoard").innerHTML =`<li><span  id="days">상품경매가 종료되었습니다</span></li>`;
+
+      
 
       let maxPriceVal =document.getElementById("maxPrice").innerText
       let statuVal= maxPriceVal >0 ? 1 : 2;
@@ -82,10 +81,7 @@ let timeInterval = setInterval( function time() {
       }
       updateProductStatus(statusData).then(result =>{
         if(result>0){
-       alert(parseInt(statuVal) == 1?"상품 마감 : 낙찰되었습니다": "상품 마감 : 유찰되었습니다");
-       document.getElementById("list").click();
         }
-
       })
     }
 }, 1000);
@@ -103,9 +99,6 @@ document.getElementById('addBtn').addEventListener('click', (e) => {
   let bidPrice =document.getElementById("bidPriceVal");
   let reservePrice =parseInt(document.getElementById("reservePriceVal").innerText);
   let maxPrice =parseInt(document.getElementById("maxPrice").innerText);
-  console.log("시작가 ",reservePrice)
-  console.log("현재가 ",maxPrice )
-  console.log("입찰가 ", bidPrice.value)
 if(parseInt(bidPrice.value) > reservePrice){
   if(parseInt(bidPrice.value) > maxPrice){
     document.getElementById('bidAddForm').submit();

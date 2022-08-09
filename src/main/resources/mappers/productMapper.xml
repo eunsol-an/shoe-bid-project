@@ -61,7 +61,7 @@
 		from (
 		select pno from product where pno > 0 and status = 0
 		<include refid="search" />
-		order by pno desc
+		order by end_time
 		limit #{pageStart}, #{qty}
 		) a left join product b
 		on a.pno = b.pno
@@ -88,11 +88,23 @@
 	<select id="selectTotalCount" resultType="int" parameterType="pgvo">
 	select count(pno)
 	from product
-	where pno > 0
+	where pno > 0 and status = 0
 	 <include refid="search" />
 	</select>
 	<select id="selectLastPno" resultType="long">
 	select max(pno) from product
+	</select>
+	<select id="selectAllList" resultType="pvo">
+	select a.pno, category ,pname ,
+		description , read_count ,writer ,product_img ,
+		status, reserve_price,
+		ifnull(
+		(select max(bid_price)
+		from buy_bid b
+		where a.pno = b.pno
+		),0) "highest_price",
+		end_time, mod_at
+		from product a
 	</select>
 	<update id="update" parameterType="pvo">
 		update product set category =

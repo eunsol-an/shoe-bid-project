@@ -49,7 +49,7 @@
                             <h2 class="mb-1">${pvo.pname }</h2>
                             <div class="bg-primary separator-line-horrizontal-full mb-4"></div>
                             <p class="rating-text"><span>SKU:</span> <span class="font-500 theme-color" id="pnoVal">${pvo.pno }</span></p>
-                            <ul class="countdown count-style-one text-center m-0 p-0">
+                            <ul id="timeBoard" class="countdown count-style-one text-center m-0 p-0">
     						<!-- start days -->
 	    						<li><span  id="days">00</span>
 							        <p class="timeRefDays text-center">days</p>
@@ -73,13 +73,17 @@
 							</ul>
                             <div class="mb-4">
                                 <div class="d-inline-block me-3 pe-3 borders-end border-color-extra-medium-gray">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                                    
                                      <div class="d-inline-block">
-                                    <a class="text-primary" href="/member/detail?mno=${pvo.writer }">${pdto.nickName }</a>
+                                       <div class="dropdown">
+									    <button type="button" class="text-primary dropdown-toggle" data-bs-toggle="dropdown">
+									      ${pdto.nickName }
+									    </button>
+									    <ul class="dropdown-menu">
+									      <li><a class="dropdown-item" href="/member/detail?mno=${pvo.writer }">Normal</a></li>
+									      <li><a class="dropdown-item" href="#">Active</a></li>
+									    </ul>
+									  </div>
                                 </div>
                                 </div>
                             </div>
@@ -109,53 +113,61 @@
                                 </div>
 
                             </div>
-
                             <div class="row mb-4">
                                 <div class="col-lg-12">
+                          <c:choose>
+                         	 <c:when test="${pvo.status == 0 }">
                                     <button class="butn-style2 me-3 mb-2 mb-md-0"><span><i class="fas fa-shopping-cart me-1"></i> Add to Cart</span></button>
                                     <button type="button" class="butn-style2 me-3 mb-2 mb-md-0"	data-bs-toggle="modal" data-bs-target="#centered">입찰하기</button>
-<!-- Vertically centered -->
-<div class="modal fade" id="centered" tabindex="-1"
-	aria-labelledby="centeredLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="centeredLabel">입찰하기</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-				<form action="/buy_bid/add" method="post"  id="bidAddForm">
-				<div class="form-group">
-			<input type="hidden" name="buyer" value="1">
-			<input type="hidden" name="pno" value="${pvo.pno }">
-			<input type="hidden" name="bidStatus" value="0">
-					<label>입찰 금액 입력</label> <input type="number" class="form-control"
-						name="bidPrice" placeholder="입찰 금액을 입력해주세요" id="bidPriceVal"
-						value="${pvo.reservePrice > pdto.maxPrice ? pvo.reservePrice : pdto.maxPrice  }">
-				</div>
-			</form>
-				<div class="form-check">
-					<input class="form-check-input is-checked" type="checkbox" value=""
-						id="flexCheckDefault"> 
-						<label class="form-check-label is-checked"
-						for="flexCheckDefault"> 입찰은 취소할 수 없습니다. 모든 약관에 동의합니다.</label>
-						<p class="text-center text-danger" id="errorMsg"></p>
-				</div>
-			</div>
-			<div class="modal-footer">
-			
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary" id="addBtn" disabled>입찰하기</button>
-			</div>
-			
-		</div>
-	</div>
-</div>
+                              </c:when>
+                              <c:otherwise>
+                            	
+                            
+                            </c:otherwise>
+                            </c:choose>
+								<!-- Vertically centered -->
+								<div class="modal fade" id="centered" tabindex="-1"
+									aria-labelledby="centeredLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="centeredLabel">입찰하기</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												<form action="/buy_bid/add" method="post"  id="bidAddForm">
+												<div class="form-group">
+											<input type="hidden" name="buyer" value="1">
+											<input type="hidden" name="pno" value="${pvo.pno }">
+											<input type="hidden" name="bidStatus" value="0">
+													<label>입찰 금액 입력</label> <input type="number" class="form-control"
+														name="bidPrice" placeholder="입찰 금액을 입력해주세요" id="bidPriceVal"
+														value="${pvo.reservePrice > pdto.maxPrice ? pvo.reservePrice : pdto.maxPrice  }">
+												</div>
+											</form>
+												<div class="form-check">
+													<input class="form-check-input is-checked" type="checkbox" value=""
+														id="flexCheckDefault"> 
+														<label class="form-check-label is-checked"
+														for="flexCheckDefault"> 입찰은 취소할 수 없습니다. 모든 약관에 동의합니다.</label>
+														<p class="text-center text-danger" id="errorMsg"></p>
+												</div>
+											</div>
+											<div class="modal-footer">
+											
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">닫기</button>
+												<button type="button" class="btn btn-primary" id="addBtn" disabled>입찰하기</button>
+											</div>
+											
+										</div>
+									</div>
+								</div>
                                 </div>
                             </div>
-
+                            
+					
                             <div class="row">
                                 <div class="col-lg-7">
 									<a href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}" id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0" style="display: none;">수정</a>
