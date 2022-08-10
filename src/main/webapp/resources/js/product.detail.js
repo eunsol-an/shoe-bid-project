@@ -20,10 +20,10 @@ if(e.target.classList.contains("xzoom-gallery5")){
 }
 })
 
-document.getElementById("modBtnFake").addEventListener("click",(e)=>{
-    e.preventDefault();
+document.addEventListener("click",(e)=>{
+   if(e.target.classList.contains('modBtnFake')){
 document.getElementById("modBtn").click();
-
+   }
 });
 
 
@@ -74,6 +74,9 @@ let timeInterval = setInterval( function time() {
       let maxPriceVal =document.getElementById("maxPrice").innerText
       let statuVal= maxPriceVal >0 ? 1 : 2;
       let pnoVal = document.getElementById("pnoVal").innerText;
+      console.log(maxPriceVal);
+      console.log(pnoVal);
+      console.log(maxPriceVal);
       const statusData ={
         pno:pnoVal,
         highestPrice:maxPriceVal,
@@ -81,6 +84,11 @@ let timeInterval = setInterval( function time() {
       }
       updateProductStatus(statusData).then(result =>{
         if(result>0){
+          if(ifdocument.getElementById("bidModa")!=null){
+            document.getElementById("bidModa").disabled=true;
+          }
+          
+        
         }
       })
     }

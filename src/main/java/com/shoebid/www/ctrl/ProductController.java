@@ -117,7 +117,7 @@ public class ProductController {
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	} 
 	@PutMapping(value="/{pno}", consumes = "application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> edit(@PathVariable("pno") long cno, @RequestBody ProductVO pvo){
+	public ResponseEntity<String> edit(@PathVariable("pno") long pno, @RequestBody ProductVO pvo){
 		return psv.statusProduct(pvo) > 0? new ResponseEntity<String>("1", HttpStatus.OK) 
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
