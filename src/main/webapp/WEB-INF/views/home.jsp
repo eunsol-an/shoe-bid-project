@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row mt-n1-9 text-center">
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=s" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-4.png" alt="...">
                     </div>
@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=a" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-5.png" alt="...">
                     </div>
@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=i" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-6.png" alt="...">
                     </div>
@@ -45,7 +45,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=l" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-7.png" alt="...">
                     </div>
@@ -53,7 +53,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=f" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-8.png" alt="...">
                     </div>
@@ -61,7 +61,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=b" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-9.png" alt="...">
                     </div>

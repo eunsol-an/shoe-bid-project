@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
@@ -23,19 +24,73 @@
 
 	</div>
 </section>
+<!-- CATEGORY
+================================================== -->
+<section class="pt-1 pb-3">
+    <div class="container">
+        <div class="row  text-center">
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
+                <a href="/product/list?type=s" class="categoty-style2">
+                    <div class="category-icon mb-4">
+                        <img src="/resources/bootstrap/img/icons/icon-4.png" alt="...">
+                    </div>
+                    <h3 class="font-weight-500 mb-0">Sneakers</h3>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
+                <a href="/product/list?type=a" class="categoty-style2">
+                    <div class="category-icon mb-4">
+                        <img src="/resources/bootstrap/img/icons/icon-5.png" alt="...">
+                    </div>
+                    <h3 class="font-weight-500 mb-0">Sandals</h3>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
+                <a href="/product/list?type=i" class="categoty-style2">
+                    <div class="category-icon mb-4">
+                        <img src="/resources/bootstrap/img/icons/icon-6.png" alt="...">
+                    </div>
+                    <h3 class="font-weight-500 mb-0">Slippers</h3>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
+                <a href="/product/list?type=l" class="categoty-style2">
+                    <div class="category-icon mb-4">
+                        <img src="/resources/bootstrap/img/icons/icon-7.png" alt="...">
+                    </div>
+                    <h3 class="font-weight-500 mb-0">Loafers</h3>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
+                <a href="/product/list?type=f" class="categoty-style2">
+                    <div class="category-icon mb-4">
+                        <img src="/resources/bootstrap/img/icons/icon-8.png" alt="...">
+                    </div>
+                    <h3 class="font-weight-500 mb-0">Flat</h3>
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
+                <a href="/product/list?type=b" class="categoty-style2">
+                    <div class="category-icon mb-4">
+                        <img src="/resources/bootstrap/img/icons/icon-9.png" alt="...">
+                    </div>
+                    <h3 class="font-weight-500 mb-0">Boots</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- PRODUCT LIST
         ================================================== -->
-<section class="md">
-	<div class="container">
-		
-			<!-- start sidebar panel -->
-			
-			<!-- end sidebar panel -->
-
-			<!-- right panel section -->
+<section class="pt-2" >
+	<div class="container ">
 			<div
 				class="col-lg-12 col-12 ps-lg-1-9 order-1 order-lg-2 mb-1-9 mb-lg-0">
-
+				<c:if test="${ses.mno ne null && ses ne null }">
+				<div class="col-md-1  text-md-end">
+						<a href="/product/register" class="btn btn-info mb-4">register</a>
+                  </div>
+                  </c:if>
 				<div class="row g-0 align-items-center bg-light rounded p-3 mb-1-9">
 
 					<div
@@ -48,7 +103,6 @@
                                           
                                         </div>
                                         <div class="search-wrapper">
-                                            <input type="hidden" name="type" class="search-field" value="sailfb">
                                             <input type="text" name="kw" class="search-field" placeholder="키워드 검색" value=${pgn.pgvo.kw }>
                                         </div>
                                         <button type="submit" class="search-submit"><i class="ti-search d-inline-block d-lg-none"></i><span class="d-none d-lg-inline-block">Search</span></button>
@@ -58,11 +112,10 @@
                         </div>
 						</div>
 					<div class="col-12 col-md-auto">
+					
 					</div>
 				</div>
-				<div class="col-md-6 text-center text-md-end">
-						<a href="/product/register" class="btn btn-info mb-4">register</a>
-                                </div>
+				
 		 	<c:forEach items="${list }" var="pvo">
 					<div class="row g-0 product-listing">
 						<div class="col-sm-4">
@@ -79,8 +132,8 @@
 										<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">${pvo.pname }</a>
 									</h3>
 									<h4 class="price">
-										<span class="regular-price ">시작가:${pvo.reservePrice }</span> <span
-											class="offer-price">현재가:${pvo.highestPrice }</span>
+										<span class="offer-price ">시작가 : <fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span> <span
+											class="regular-price">현재가 : <fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</span>
 									</h4>
 									<p>종료시간 : ${pvo.endTime }</p>
 								</div>
@@ -88,10 +141,6 @@
 									<ul class="ps-0">
 										<li><a href="#" class="btn-link" title="Add To Wishlist"><i
 												class="far fa-heart"></i></a></li>
-										<li><a href="#" class="butn-style2" title="Add to Cart">Add
-												to Cart</a></li>
-										<li><a href="#" class="btn-link" title="Add To Compare"><i
-												class="fas fa-random"></i></a></li>
 									</ul>
 								</div>
 							</div>

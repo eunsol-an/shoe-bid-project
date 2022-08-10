@@ -53,10 +53,10 @@
 
                                         <li><a href="/product/list">Shop</a>
                                             <ul>
-                                                <li><a href="#">Sneakers</a></li>
-                                                <li><a href="#">Sandals/Slippers</a></li>
-                                                <li><a href="#">Loafers/Flat</a></li>
-                                                <li><a href="#">Boots</a></li>
+                                                <li><a href="/product/list?type=s">Sneakers</a></li>
+                                                <li><a href="/product/list?type=ai">Sandals/Slippers</a></li>
+                                                <li><a href="/product/list?type=lf">Loafers/Flat</a></li>
+                                                <li><a href="/product/list?type=b">Boots</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">About</a>
