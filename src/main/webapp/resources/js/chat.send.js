@@ -35,12 +35,23 @@ async function postChatToServer(ctData){
        let tag = '';
         for(const cvo of result){
           if(cvo.recvNick == sesmno){
-             tag += `<span class="" style="float: right;">${cvo.content}</span><br>`
-            tag += `<span class="" style="float: right; font-size: 14px"">${cvo.sendAt}</span><br>` 
+              
+            tag += `<div class="item mymsg">`
+            tag += `<div class="box">`
+            tag += ` <p class="msg">${cvo.content}</p>`
+            tag += `<div class="box">`
+            tag += `<span class="time">${cvo.sendAt}</span>`
+            tag += `</div>`
+            tag += `</div>`
+            tag += `</div>`
             
           } else  {
-            tag += `<span class="" >${cvo.content}</span><br>`
-            tag += `<span class="" float: left; font-size: 14px">${cvo.sendAt}</span><br>`
+            tag += `<div class="item">`
+            tag += `<div class="box">`
+            tag += ` <p class="msg">${cvo.content}</p>`
+            tag += `<span class="time">${cvo.sendAt}</span>`
+            tag += `</div>`
+            tag += `</div>`
           }
         }
         document.getElementById('ctZone').innerHTML = tag;
@@ -70,3 +81,9 @@ document.getElementById('ctSbmBtn').addEventListener('click', (e) => {
     });
  
 });
+
+
+
+
+
+
