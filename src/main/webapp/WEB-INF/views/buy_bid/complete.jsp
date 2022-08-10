@@ -38,7 +38,7 @@
                         입찰 내역은 마이페이지에서 확인하실 수 있습니다.
                     </p>
 
-                    <a href="/buy_bid/list/1" class="butn-style2 wide m-1">입찰내역확인</a>
+                    <a href="/buy_bid/list/${ses.mno }" class="butn-style2 wide m-1">입찰내역확인</a>
                     <a href="/product/list" class="butn-style2 wide m-1">다른상품둘러보기</a>
 
                 </div>

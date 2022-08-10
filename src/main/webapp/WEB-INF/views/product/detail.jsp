@@ -138,7 +138,7 @@
 											<div class="modal-body">
 												<form action="/buy_bid/add" method="post"  id="bidAddForm">
 												<div class="form-group">
-											<input type="hidden" name="buyer" value="1">
+											<input type="hidden" name="buyer" value="${ses.mno }">
 											<input type="hidden" name="pno" value="${pvo.pno }">
 											<input type="hidden" name="bidStatus" value="0">
 													<label>입찰 금액 입력</label> <input type="number" class="form-control"
