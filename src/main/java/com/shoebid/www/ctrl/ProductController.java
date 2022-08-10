@@ -66,7 +66,7 @@ public class ProductController {
         pvo.setEndTime(df.format(cal.getTime()).toString());
         log.info(">>>end_time-->{}",df.format(cal.getTime()));
 			
-		List<ImageFileVO> fileList =fhd.getImageFileList(files);
+		List<ImageFileVO> fileList =fhd.getImageFileList(files, true);
 		pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 		 int isUp = psv.register(new ProductDTO(pvo, fileList));
 		return "redirect:/product/list";
@@ -89,7 +89,7 @@ public class ProductController {
         pvo.setEndTime(df.format(cal.getTime()).toString());
 		List<ImageFileVO> fileList = null;
 		if(files[0].getSize() > 0) {
-			fileList = fhd.getImageFileList(files);
+			fileList = fhd.getImageFileList(files, true);
 			pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 			log.info(">>>>수정파일 있을경우들어옴");
 		}

@@ -54,7 +54,7 @@ public class MemberController {
 	@PostMapping("/register")
 	public String register(MemberVO mvo, RedirectAttributes rttr,
 			@RequestParam(name = "fileAttached") MultipartFile[] files) {
-		List<ImageFileVO> fileList = fhd.getImageFileList(files);
+		List<ImageFileVO> fileList = fhd.getImageFileList(files, false);
 		mvo.setMemberImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+fileList.get(0).getImageName());
 		int isUp = msv.register(new MemberDTO(mvo, fileList));
 		log.info(">>> member register - post : {}", isUp > 0 ? "OK":"FAIL");
@@ -78,7 +78,7 @@ public class MemberController {
 			RedirectAttributes rttr) {
 		List<ImageFileVO> fileList = null;
 		if(files[0].getSize() > 0) {
-			fileList = fhd.getImageFileList(files);
+			fileList = fhd.getImageFileList(files, false);
 		}
 		int isUp = msv.modify(new MemberDTO(mvo, fileList));
 		log.info(">>> member modify - post : {}", isUp > 0 ? "OK":"FAIL");
