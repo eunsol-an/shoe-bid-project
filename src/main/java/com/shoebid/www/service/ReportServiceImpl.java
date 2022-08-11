@@ -6,8 +6,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ReportVO;
+import com.shoebid.www.repository.MemberDAO;
 import com.shoebid.www.repository.ReportDAO;
 
 @Service
@@ -15,9 +17,12 @@ public class ReportServiceImpl implements ReportService {
 
 	@Inject
 	private ReportDAO rpdao;
+	@Inject
+	private MemberDAO mdao;
 	
 	@Override
 	public int register(ReportVO rpvo) {
+		int isUp = mdao.updateReportCount(rpvo);
 		return rpdao.insert(rpvo);
 	}
 

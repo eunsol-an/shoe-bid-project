@@ -16,12 +16,7 @@
 	</select>
 	<select id="selectList" resultType="mvo" parameterType="pgvo">
 		select
-		a.mno, id, email, nick_name, grade, del_at, 
-		(select count(target_mno) 
-		from `member` m  
-		right join report r 
-		on m.mno = r.target_mno 
-		where r.target_mno = a.mno) as report_count
+		a.mno, id, email, nick_name, grade, del_at, report_count
 		from (
 		select mno from member where mno > 0 and del_at is null order by mno
 		limit #{pageStart}, #{qty}
@@ -60,6 +55,11 @@
 		report_count = #{reportCount},
 		member_img = #{memberImg}
 		where mno = #{mno}
+	</update>
+	<update id="updateReportCount" parameterType="rpvo">
+		update member set
+		report_count = report_count +1
+		where mno = #{targetMno}
 	</update>
 
 	<update id="delete" parameterType="mvo">

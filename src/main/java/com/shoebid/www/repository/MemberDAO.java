@@ -2,9 +2,11 @@ package com.shoebid.www.repository;
 
 import java.util.List;
 
-import com.shoebid.www.domain.MemberDTO;
+import org.apache.ibatis.annotations.Param;
+
 import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
+import com.shoebid.www.domain.ReportVO;
 
 
 public interface MemberDAO {
@@ -19,4 +21,5 @@ public interface MemberDAO {
 	int selectNickName(String nickName);
 	long selectLastMno();
 	long selectReportCount();
+	int updateReportCount(ReportVO rpvo);
 }
