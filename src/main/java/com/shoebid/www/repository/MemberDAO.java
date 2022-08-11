@@ -2,6 +2,7 @@ package com.shoebid.www.repository;
 
 import java.util.List;
 
+import com.shoebid.www.domain.MemberDTO;
 import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 
@@ -17,4 +18,5 @@ public interface MemberDAO {
 	int selectId(String id); // 아이디 중복검사
 	int selectNickName(String nickName);
 	long selectLastMno();
+	long selectReportCount();
 }
