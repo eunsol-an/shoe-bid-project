@@ -46,7 +46,9 @@ try {
 }
 }
 
-
+function stringNumberToInt(stringNumber){
+  return parseInt(stringNumber.replace(/,/g , ''));
+}
 
 function formatTime(time) {
     return time <10 ? '0' + time : time
@@ -71,24 +73,21 @@ let timeInterval = setInterval( function time() {
 
       
 
-      let maxPriceVal =document.getElementById("maxPrice").innerText
+      let maxPriceVal =stringNumberToInt(document.getElementById("maxPrice").innerText)
       let statuVal= maxPriceVal >0 ? 1 : 2;
+      console.log(maxPriceVal)
       let pnoVal = document.getElementById("pnoVal").innerText;
-      console.log(maxPriceVal);
-      console.log(pnoVal);
-      console.log(maxPriceVal);
       const statusData ={
         pno:pnoVal,
-        highestPrice:maxPriceVal,
+        highestPrice: maxPriceVal.toString(),
         status:statuVal
       }
       updateProductStatus(statusData).then(result =>{
         if(result>0){
-          if(ifdocument.getElementById("bidModa")!=null){
-            document.getElementById("bidModa").disabled=true;
+          if(document.getElementById("bidModal")!=null&& document.getElementById("interestBtn")!= null){
+            document.getElementById("bidModal").remove()
+            document.getElementById("interestBtn").remove()
           }
-          
-        
         }
       })
     }
@@ -104,25 +103,24 @@ document.getElementById('flexCheckDefault').addEventListener('click', (e) => {
 });
 
 document.getElementById('addBtn').addEventListener('click', (e) => {
-  let bidPrice =document.getElementById("bidPriceVal");
-  let reservePrice =parseInt(document.getElementById("reservePriceVal").innerText);
-  let maxPrice =parseInt(document.getElementById("maxPrice").innerText);
-if(parseInt(bidPrice.value) > reservePrice){
-  if(parseInt(bidPrice.value) > maxPrice){
+  let bidPrice = stringNumberToInt(document.getElementById("bidPriceVal").value);
+  let reservePrice =stringNumberToInt(document.getElementById("reservePriceVal").innerText);
+  let maxPrice =stringNumberToInt(document.getElementById("maxPrice").innerText);
+  console.log(bidPrice)
+  console.log(reservePrice)
+  console.log(maxPrice)
+if(bidPrice > reservePrice){
+  if(bidPrice > maxPrice){
     document.getElementById('bidAddForm').submit();
   }else{
     document.getElementById("errorMsg").innerText = "현재가 보다 높은 입찰가를 입력해주세요"
-    bidPrice.value ='';
-    bidPrice.focus();
+    document.getElementById("bidPriceVal").value ='';
+    document.getElementById("bidPriceVal").focus();
   }
 }else{
   document.getElementById("errorMsg").innerText = "시작가 보다 높은 입찰가를 입력해주세요";
-  bidPrice.value ='';
-  bidPrice.focus();
+  document.getElementById("bidPriceVal").value ='';
+  document.getElementById("bidPriceVal").focus();
 
 }
-
-
-
-
 });

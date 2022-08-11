@@ -45,6 +45,29 @@
 		</when>
 	</choose>
 	</sql>
+	<sql id="sellSearch">
+	<choose>
+<when test="pgvo.type != null">
+	<trim prefix="and (" suffix=")" prefixOverrides="OR">
+				<foreach collection="pgvo.typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 'p'.toString()">
+							status = 0
+							</when>
+							<when test="type == 's'.toString()">
+							status = 1
+							</when>
+							<when test="type == 'f'.toString()">
+							status = 2
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+			</when>
+			</choose>
+	</sql>
 	<insert id="insert" parameterType="pvo">
 		insert into product
 		(category,
@@ -96,6 +119,12 @@
 	where pno > 0 and status = 0
 	 <include refid="search" />
 	</select>
+	<select id="selectSellTotalCount" resultType="int">
+	select count(pno)
+	from product
+	where pno > 0 and writer = #{mno}
+	 <include refid="sellSearch" />
+	</select>
 	<select id="selectLastPno" resultType="long">
 	select max(pno) from product
 	</select>
@@ -110,6 +139,22 @@
 		),0) "highest_price",
 		end_time, mod_at
 		from product a
+	</select>
+	<select id="selectSallList" resultType="pvo">
+	select p.pno, category ,pname , description , read_count 
+	,p.writer ,product_img , status, reserve_price,
+	(select max(bid_price)
+		from buy_bid b
+		where p.pno = b.pno
+		) "highest_price",	
+		end_time, mod_at, b.buyer buyer_mno, m.nick_name  buyer_nick
+	from  product p 
+	left join buy_bid b on (p.highest_price = b.bid_price) 
+	left  join `member` m 
+	on (m.mno = b.buyer)
+	where writer = #{mno} <include refid="sellSearch" />
+	limit #{pgvo.pageStart}, #{pgvo.qty}
+	
 	</select>
 	<update id="update" parameterType="pvo">
 		update product set category =

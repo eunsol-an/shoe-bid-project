@@ -91,18 +91,15 @@ public class ProductServiceImpl implements ProductService {
 		return pdao.selectTotalCount(pgvo);
 	}
 
-	@Override
-	public int removeFile(String uuid) {
-		return idao.deleteImage(uuid);
-	}
 	@Transactional
 	@Override
 	public int statusProduct(ProductVO pvo) {
+		int isOk =0;
+		if(pvo.getHighestPrice()>0) {
 			long bno = bdao.selectMaxBid(pvo);
-			log.info(">>>>>>>>>>>>>>>>>>pvo{}",pvo);
-			int isOk =bdao.updateBidStatusSuccess(bno);
-			log.info(">>>>>>>>>>>>>>>>>>bno{}",bno);
-			isOk = bdao.updateBidStatusFail(pvo.getPno());
+			 isOk =bdao.updateBidStatusSuccess(bno);
+			 isOk = bdao.updateBidStatusFail(pvo.getPno());
+		}
 			isOk = pdao.updateStatus(pvo);
 		return isOk;
 	}
@@ -134,6 +131,14 @@ public class ProductServiceImpl implements ProductService {
 				e.printStackTrace();
 			}
 		}
+	}
+	@Override
+	public List<ProductVO> getSellList(PagingVO pgvo, long mno) {
+		return pdao.selectSallList(pgvo, mno);
+	}
+	@Override
+	public int getSellTotalCount(PagingVO pgvo, long mno) {
+		return pdao.selectSellTotalCount(pgvo,mno);
 	}
 
 }

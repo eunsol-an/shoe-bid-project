@@ -95,9 +95,9 @@
                            
                             <div class="mb-4">
                                 <span class="me-3 display-26 font-weight-600" >시작가 : <span class="display-26 font-weight-700" id="reservePriceVal">
-                                <fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span></span>
-                               <span class="display-26 font-weight-700 text-primary">현재가 :</span> <span class="display-26 font-weight-700 text-primary" id="maxPrice">
-                               <fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" />원</span>
+                                <fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" /></span>원</span>
+                               <span class="display-26 font-weight-700 text-primary">현재가 :<span class="display-26 font-weight-700 text-primary" id="maxPrice"><fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" /> 
+                               </span>원</span>
                             </div>
 
                             <div class="row">
@@ -126,7 +126,7 @@
                                 
                           <c:choose>
                          	 <c:when test="${pvo.status == 0 && ses.mno ne pvo.writer && ses ne null}">
-                                    <button class="butn-style2 me-3 mb-2 mb-md-0"><span><i class="fas fa-shopping-cart me-1"></i> Add to Cart</span></button>
+                                    <button id="interestBtn" class="butn-style2 me-3 mb-2 mb-md-0"><span><i class="fas fa-shopping-cart me-1"></i> Add to Cart</span></button>
                                     <button type="button" id="bidModal" class="butn-style2 me-3 mb-2 mb-md-0" data-bs-toggle="modal" data-bs-target="#centered">입찰하기</button>
                               </c:when>
                              <c:when test="${ses eq null }">

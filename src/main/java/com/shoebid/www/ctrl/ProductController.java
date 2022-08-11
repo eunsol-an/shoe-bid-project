@@ -52,6 +52,19 @@ public class ProductController {
 		int totalCount = psv.getTotalCount(pgvo);
 		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
 	}
+	@GetMapping("/sellList/{mno}")
+	public String sellList(Model model,   PagingVO pgvo, @PathVariable("mno") long mno){
+		model.addAttribute("list", psv.getSellList(pgvo,mno));
+		int totalCount = psv.getSellTotalCount(pgvo,mno);
+		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
+		return "/product/sellList";
+	}
+//	@GetMapping("/sellList")
+//	public void sellList(Model model,  @RequestParam("mno") long mno, PagingVO pgvo){
+//		model.addAttribute("list", psv.getSellList(pgvo,mno));
+//		int totalCount = psv.getSellTotalCount(pgvo,mno);
+//		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
+//	}
 	
 	@GetMapping("/register")
 	public void register() {}
@@ -110,14 +123,8 @@ public class ProductController {
 		return "redirect:/product/list";
 	}
 
-	@DeleteMapping(value = "/file/{uuid}", produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> removeFile(@PathVariable("uuid") String uuid){		
-		return psv.removeFile(uuid) > 0 ?
-				new ResponseEntity<String>("1", HttpStatus.OK)
-				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	} 
 	@PutMapping(value="/{pno}", consumes = "application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> edit(@PathVariable("pno") long pno, @RequestBody ProductVO pvo){
+	public ResponseEntity<String> editStatus(@PathVariable("pno") long pno, @RequestBody ProductVO pvo){
 		return psv.statusProduct(pvo) > 0? new ResponseEntity<String>("1", HttpStatus.OK) 
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
