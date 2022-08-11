@@ -63,12 +63,26 @@
                                         </li>
                                         <li><a href="#">Mypage</a>
                                             <ul>
+                                            <c:if test="${ses.mno eq null }">
                                                 <li><a href="/member/login">Login</a></li>
-                                                <li><a href="/member/register">Register</a></li>
+                                            </c:if>
+                                            <c:if test="${ses.mno ne null }">
+                                                <li><a href="/member/logout">Logout</a></li>
+                                                <li><a href="/member/mypage?mno=${ses.mno }">My Profile</a></li>
+                                            </c:if>
+                                            <c:if test="${ses.mno eq null }">
+                                                <li><a href="/member/register">Member Register</a></li>
+                                            </c:if>
+                                            <c:if test="${ses.grade == 99 }">
                                                 <li><a href="/member/list">Member List</a></li>
+                                            </c:if>
+                                            <c:if test="${ses.mno ne null }">
                                                 <li><a href="/product/register">Product Register</a></li>
                                                 <li><a href="/report/register">Report Register</a></li>
+                                            </c:if>
+                                            <c:if test="${ses.grade == 99 }">
                                                 <li><a href="/report/list">Report List</a></li>
+                                            </c:if>
                                             </ul>
                                         </li>
                                     </ul>

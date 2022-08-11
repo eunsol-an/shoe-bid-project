@@ -56,12 +56,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int modify(MemberDTO mdto) {
 		int isUp = mdao.update(mdto.getMvo());
-		if(mdto.getImageList() != null) {
-			if(isUp>0) {
+			if(mdto.getImageList() != null) {
+				isUp = idao.deleteAllMImage(mdto.getMvo().getMno());
 				for (ImageFileVO ivo :mdto.getImageList() ) {
 					ivo.setMno(mdto.getMvo().getMno());
-					isUp *= idao.insertPImage(ivo);
-				}
+					isUp *= idao.insertMImage(ivo);
 			}
 		}
 		return isUp;

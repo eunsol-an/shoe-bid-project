@@ -28,24 +28,24 @@ public class ChatController {
 	@Inject
 	private ChatService csv;
 	
-	/*
-	 * @Inject private MemberService msv;
-	 */
+
+ @Inject private MemberService msv;
+
 	
 	
 	
-	@GetMapping("/list")
-	public void list(Model model) {
-		model.addAttribute("list", csv.getList());
-	}
+//	@GetMapping("/list")
+//	public void list(Model model) {
+//		model.addAttribute("list", csv.getList());
+//	}
 	
 	
-//	 @GetMapping("/list") public void list(Model model, @RequestParam("mno") long mno) { 
-//		 model.addAttribute("list", csv.getList()); 
-//		 MemberDTO mdto = msv.getDetail(mno); 
-//		 MemberVO mvo = mdto.getMvo(); 
-//		 model.addAttribute("mvo", mvo); 
-//		 }
+	 @GetMapping("/list") public void list(Model model, @RequestParam("mno") long mno) { 
+		 model.addAttribute("list", csv.getList()); 
+		 MemberDTO mdto = msv.getDetail(mno); 
+		 MemberVO mvo = mdto.getMvo(); 
+		 model.addAttribute("mvo", mvo); 
+		 }
 	 
 	
 	@GetMapping("/detail")

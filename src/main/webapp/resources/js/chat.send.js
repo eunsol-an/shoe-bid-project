@@ -64,7 +64,11 @@ async function postChatToServer(ctData){
 
 document.getElementById('ctSbmBtn').addEventListener('click', (e) => {
   const ctInputObj = document.getElementById('ctText');
- 
+  const sesmno = document.getElementById('ctmno').innerText;
+  const mvomno = document.getElementById('sendNick').innerText;
+  if(sesmno == mvomno){
+    document.getElementById('ctSbmBtn').disabled = true;
+  }
     let ctData = {
       content : document.getElementById('ctText').value,
       readChk : document.getElementById('readChk').innerText,
@@ -72,7 +76,6 @@ document.getElementById('ctSbmBtn').addEventListener('click', (e) => {
       recvNick : document.getElementById('recvNick').innerText,
       room : parseInt(document.getElementById('roomVal').innerText)
     };
-    console.log(typeof document.getElementById('roomVal').innerText);
     postChatToServer(ctData).then(result => {
       if(parseInt(result)){
         ctInputObj.value ="";

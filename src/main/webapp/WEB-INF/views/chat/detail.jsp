@@ -11,7 +11,7 @@
 		<div class="breadcrumbs-info">
 			<ul class="ps-0">
 				<li><a href="/">Home</a></li>
-				<li><a href="/chat/list">message</a></li>
+				<li><a href="/chat/list?mno=${ses.mno}">message</a></li>
 				
 			</ul>
 		</div>
@@ -86,14 +86,6 @@
 		</div>
 	</div>
 </div>
-<script src="/resources/js/chat.send.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-	getChatList(document.getElementById('roomVal').innerText);
-	
-});
-
-</script>
 <style>
         .chat_wrap { border:1px solid lightgray;  padding:5px; font-size:13px;}
         .chat_wrap .inner{border-radius:5px; padding:10px;}
@@ -107,4 +99,10 @@ document.addEventListener('DOMContentLoaded', function(){
         .chat_wrap .item.mymsg .box .time{right:auto; left:-135px; top: -30px; width:130px;}
         .chat_wrap .item.on .box{margin:0; opacity: 1;} 
 </style>
+<script src="/resources/js/chat.send.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	getChatList(document.getElementById('roomVal').innerText);
+});
+</script>
 <jsp:include page="../common/footer.jsp" />
