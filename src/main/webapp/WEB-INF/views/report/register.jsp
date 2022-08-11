@@ -32,20 +32,18 @@
 							<div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>회원 닉네임 : test200</label>
+                                            <label>회원 닉네임 : ${ses.nickName }</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>신고대상 닉네임 : test201</label>
+                                            <label>신고대상 닉네임 : ${mvo.nickName }</label>
                                         </div>
                                     </div>
                                 </div>
 							<div class="col-12 mb-2">
-								<%-- <input type="hidden" name="mno" value="${ses.mno }">
-								<input type="hidden" name="targetMno" value="${mvo.mno }"> --%>
-								<input type="text" name="mno" value=500>
-								<input type="text" name="targetMno" value=600>
+								<input type="hidden" name="mno" value=${ses.mno }>
+								<input type="hidden" name="targetMno" value=${mvo.mno }>
 								<div class="form-group">
 									<label>제목</label> 
 									<input type="text" class="form-control" name="reportTitle" placeholder="reportTitle">

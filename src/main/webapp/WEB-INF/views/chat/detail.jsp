@@ -20,6 +20,7 @@
 
 
 <div class="container mt-5 mb-5">
+<a href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
 	<div>
 		<div class="row">
 			<div class="col-lg-5 order-lg-1">
@@ -68,17 +69,23 @@
 						<span id="mno" style="display: none;">${cvo.mno }</span>
 						<span id="room" style="display: none;">${cvo.room }</span>
 						<span id="readChk" style="display: none;">${1 }</span>
-						<span id="sendNick" style="display: none;">${cvo.sendNick }</span>
+						<c:if test="${ses.mno eq cvo.sendNick}">
+							<span id="sendNick" style="display: none;">${cvo.recvNick }</span>
+						</c:if>
+						<c:if test="${ses.mno ne cvo.sendNick}">
+							<span id="sendNick" style="display: none;">${cvo.sendNick }</span>
+						</c:if>
 						<span id="recvNick" style="display: none;">${ses.mno }</span>
 						
 					<div class="common-block chat_wrap" style="height: 460px; overflow-y: auto" id="ctZone">
 					<div class="inner"></div>
 					</div>
-					
+					<c:if test="${ses.mno ne mvo.mno}">
 					<div class="input-group">
 						<input type="text" class="form-control" name="ctText" placeholder="content" id="ctText">
 						<button type="button" class="butn-style4" id="ctSbmBtn">전 송</button>
 					</div>
+					</c:if>
 					</c:if>
 				</div>
 			</div>

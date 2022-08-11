@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shoebid.www.domain.MemberDTO;
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ReportVO;
 import com.shoebid.www.handler.PagingHandler;
+import com.shoebid.www.service.MemberService;
 import com.shoebid.www.service.ReportService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +28,16 @@ public class ReportController {
 	@Inject
 	private ReportService rpsv;
 	
+	@Inject
+	private MemberService msv;
+	
 	@GetMapping("/register")
-	public void register() {		
+	public void register(Model model, @RequestParam("mno") long mno) {	
+		MemberDTO mdto = msv.getDetail(mno); 
+		 MemberVO mvo = mdto.getMvo(); 
+		 model.addAttribute("mvo", mvo); 
 	}
+	
 	@PostMapping("/register")
 	public String register(ReportVO rpvo, RedirectAttributes rttr) {
 		
