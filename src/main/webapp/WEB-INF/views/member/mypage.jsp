@@ -10,7 +10,7 @@
 <section class="page-title-section bg-img cover-background"
 	data-background="img/bg/page-title.jpg">
 	<div class="container">
-<c:set var="mvo" value="${mdto.mvo }"/>
+		<c:set var="mvo" value="${mdto.mvo }" />
 		<div class="title-info">
 			<h1>My Profile</h1>
 		</div>
@@ -39,10 +39,11 @@
 
 						<div class="text-center">
 							<div class="pb-3">
-						<c:forEach items="${mdto.imageList }" var="ivo">
-								<img class="img-fluid rounded-circle img-thumbnail"
-									src="/upload/${fn:replace(mdto.imageList[0].saveDir,'\\','/')}/${mdto.imageList[0].uuid }_${mdto.imageList[0].imageName }" alt="...">
-							</c:forEach>
+								<c:forEach items="${mdto.imageList }" var="ivo">
+									<img class="img-fluid rounded-circle img-thumbnail"
+										src="/upload/${fn:replace(mdto.imageList[0].saveDir,'\\','/')}/${mdto.imageList[0].uuid }_${mdto.imageList[0].imageName }"
+										alt="...">
+								</c:forEach>
 							</div>
 							<h6 class="mb-0 display-28">${mvo.nickName }</h6>
 							<small>가입일 ${mvo.regAt }</small>
@@ -50,14 +51,17 @@
 					</div>
 
 					<div class="list-group">
-						<a class="list-group-items" href="account-orders.html"><i
-							class="ti-bag pe-2"></i>입찰내역<span class="badge badge-pill">6</span></a>
-						<a class="list-group-items active" href="account-profile.html"><i
-							class="ti-user pe-2"></i>내정보</a> <a class="list-group-items"
-							href="account-wishlist.html"><i class="ti-heart pe-2"></i>찜목록<span
-							class="badge badge-pill">3</span></a> <a class="list-group-items"
-							href="account-tickets.html"><i class="ti-tag pe-2"></i>My
-							Tickets<span class="badge badge-pill">4</span></a>
+						<a class="list-group-items" href="/buy_bid/list/${ses.mno }">
+							<i class="ti-bag pe-2"></i>입찰내역</a>
+						<a class="list-group-items active" href="/member/mypage?mno=${ses.mno }">
+							<i class="ti-user pe-2"></i>내정보</a>
+						<a class="list-group-items" href="account-wishlist.html">
+							<i class="ti-heart pe-2"></i>찜목록</a> 
+						<a class="list-group-items" href="/chat/list?mno=${ses.mno }">
+							<i class="ti-tag pe-2"></i>쪽지함</a>
+						<a class="list-group-items" href="account-tickets.html">
+							<i class="ti-tag pe-2"></i>신고내용
+							<span class="badge badge-pill">4</span></a>
 					</div>
 
 				</div>
@@ -131,17 +135,20 @@
 						</div>
 
 					</div> -->
-
-					<button type="button" class="butn-style2 mt-4">
-						<a href="/member/modify?mno=${mvo.mno }">회원정보 수정</a>
-					</button>
-					<button type="button" class="butn-style2 mt-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="Remove">회원탈퇴</button>
-					<form action="" id="memberRmForm" style="display: none;"
-						method="post">
-						<input type="hidden" id="membernum" value="" name="mno">
-						<input type="hidden" value="${pgvo.pageNo }" name="pageNo">  	
-  									<input type="hidden" value="${pgvo.qty }" name="qty">
-					</form>
+					<c:if test="${ses.mno ==mdto.mvo.mno || ses.grade == 99}">
+						<button type="button" class="butn-style2 mt-4">
+							<a href="/member/modify?mno=${mvo.mno }">회원정보 수정</a>
+						</button>
+						<button type="button" class="butn-style2 mt-4"
+							data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+							id="Remove">회원탈퇴</button>
+						<form action="" id="memberRmForm" style="display: none;"
+							method="post">
+							<input type="hidden" id="membernum" value="" name="mno">
+							<input type="hidden" value="${pgvo.pageNo }" name="pageNo">
+							<input type="hidden" value="${pgvo.qty }" name="qty">
+						</form>
+					</c:if>
 					<!-- static Modal -->
 
 					<div class="modal fade" id="staticBackdrop"
@@ -156,8 +163,7 @@
 								</div>
 								<div class="modal-body">정말 탈퇴하시겠습니까?</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-primary"
-										id="memberRemove">예</button>
+									<button type="button" class="btn btn-primary" id="memberRemove">예</button>
 									<button type="button" class="btn btn-secondary"
 										data-bs-dismiss="modal">아니요</button>
 								</div>
