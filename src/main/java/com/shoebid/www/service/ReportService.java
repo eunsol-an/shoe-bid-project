@@ -2,6 +2,7 @@ package com.shoebid.www.service;
 
 import java.util.List;
 
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ReportVO;
 
