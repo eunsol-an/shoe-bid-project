@@ -11,8 +11,7 @@
 		<div class="breadcrumbs-info">
 			<ul class="ps-0">
 				<li><a href="/">Home</a></li>
-				<li><a href="/chat/list">message</a></li>
-				<%-- <li><a href="/chat/list?mno=${4 }">tester</a></li> --%>
+				<li><a href="/chat/list?mno=${ses.mno}">message</a></li>
 			</ul>
 		</div>
 	</div>
@@ -33,12 +32,10 @@
 									<span style="display: none;">${cvo.cno } </span>
 									<span style="display: none;">${cvo.room } </span>
 									<c:if test="${ses.mno eq cvo.sendNick}">
-									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.recvNickName }
-									</a>
+									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.recvNickName }</a>
 									</c:if>
 									<c:if test="${ses.mno ne cvo.sendNick}">
-									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.sendNickName }
-									</a>
+									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.sendNickName }</a>
 									</c:if>
 								</div>
 								<span class="d-block text-primary">${cvo.sendAt } </span>
@@ -56,63 +53,34 @@
 			
 			<div class="col-lg-7 order-lg-2 mb-1-9 mb-lg-0">
 				<div class="common-block" style="height: 600px;">
-						
-							<h4>${mvo.mno}</h4>
+						<c:if test="${ses.mno ne mvo.mno}">
+							<h4>${mvo.nickName}</h4>
+						</c:if>
 						<h4 style="display: none;">${cvo.cno }</h4>
-						<span id="ctmno" style="display: none;"> ${ses.mno }</span>
-						<span id="mno" style="display: none;">${cvo.mno }</span>
+						<span id="ctmno" style="display: none;">${ses.mno }</span>
+						<span id="mno" style="display: none;">${mvo.mno }</span>
 						<span id="roomVal" style="display: none;">99999${ses.mno }${mvo.mno}</span>
 						<span id="room" style="display: none;">99999${ses.mno }${mvo.mno}</span>
 						<span id="readChk" style="display: none;">1</span>
-						<span id="sendNick" style="display: none;">2${mvo.mno}</span>
+						<span id="sendNick" style="display: none;">${mvo.mno}</span>
 						<span id="recvNick" style="display: none;">${ses.mno }</span>
 						
 					<div class="common-block chat_wrap" style="height: 460px; overflow: auto" id="ctZone">
 					<div class="inner">
-                               <!--  <div class="item mymsg">
-                                    <div class="box">
-                                        <p class="msg">Hello!</p>
-                                    </div>
-                                    <div class="box">
-                                        <span class="time" >2022-08-09 13:59:39</span>
-                                    </div>
-                                </div> -->
-                                <div class="item">
-                                    <div class="box">
-                                        <p class="msg">Hello</p>
-                                        <span class="time" >2022-08-09 13:59:39</span>
-                                    </div>
-                                </div>
-                                <!-- <div class="item mymsg">
-                                    <div class="box">
-                                        <p class="msg">ipsum dolor sit amet</p>
-                                    </div>
-                                    <div class="box">
-                                        <span class="time" >2022-08-09 13:59:39</span>
-                                    </div>
-                                </div> -->
-                                <div class="item">
-                                    <div class="box">
-                                        <p class="msg">lorem</p>
-                                        <span class="time" >2022-08-09 13:59:39</span>
-                                    </div>
-                                </div>
-                               
-                              
-                            </div>
+                    </div>
 					</div>
+					<c:if test="${ses.mno ne mvo.mno}">
 					<div class="input-group">
 						<input type="text" class="form-control" name="ctText" placeholder="content" id="ctText">
 						<button type="button" class="butn-style4" id="ctSbmBtn">전 송</button>
 					</div>
-					
+					</c:if>
 				</div>
 			</div>
 			
 		</div>
 	</div>
 </div>
-<script src="/resources/js/chat.send.js"></script>
 <style>
         .chat_wrap { border:1px solid lightgray;  padding:5px; font-size:13px;}
         .chat_wrap .inner{border-radius:5px; padding:10px;}
@@ -126,6 +94,5 @@
         .chat_wrap .item.mymsg .box .time{right:auto; left:-135px; top: -30px; width:130px;}
         .chat_wrap .item.on .box{margin:0; opacity: 1;} 
 </style>
-
-
+<script src="/resources/js/chat.send.js"></script>
 <jsp:include page="../common/footer.jsp" />
