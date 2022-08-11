@@ -23,5 +23,7 @@ public interface ProductDAO {
 	int selectTotalCount(PagingVO pgvo);
 	long selectLastPno(); 
 	List<ProductVO> selectAllList(); 
+	List<ProductVO> selectSallList(@Param("pgvo") PagingVO pgvo, @Param("mno") long mno);
+	int selectSellTotalCount(@Param("pgvo") PagingVO pgvo, @Param("mno") long mno); 
 }
 

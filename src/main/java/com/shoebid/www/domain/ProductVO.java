@@ -28,6 +28,8 @@ public class ProductVO {
 	private String endTime;
 	private String  regAt;
 	private String modAt;
+	private Long buyerMno;
+	private String buyerNick;
 	
 	public ProductVO(String category, String pname, String description, long writer, String productImg,
 			long reservePrice, String endTime) {

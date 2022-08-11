@@ -28,7 +28,6 @@
 </section>
 <!-- PRODUCT DETAILS
         ================================================== -->
-
 <section class="md">
 	<div class="container">
 
@@ -75,11 +74,11 @@
 					<div class="mb-4">
 						<div class="mb-2">
 							<span class="me-5 display-28">시작가</span>
-							<span class="display-23 font-weight-700" id="reservePriceVal"><fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span>
+							<span class="display-23 font-weight-700" id="reservePriceVal"><fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" /></span>원
 						</div>
 						<div>
 							<span class="me-5 display-28">현재가</span>
-							<span class="display-23 font-weight-700 text-primary" id="maxPrice"><fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" />원</span>
+							<span class="display-23 font-weight-700 text-primary" id="maxPrice"><fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" /></span>원
 						</div>
 					</div>
 					
@@ -142,7 +141,6 @@
 											class="butn-style2 me-3 mb-2 mb-md-0 mt-2">로그인 후 이용해주세요</a>
 									</c:when>
 								</c:choose>
-
 								<!-- Vertically centered -->
 								<div class="modal fade" id="centered" tabindex="-1"
 									aria-labelledby="centeredLabel" aria-hidden="true">
