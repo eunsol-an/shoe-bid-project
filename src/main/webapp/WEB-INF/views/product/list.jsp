@@ -22,7 +22,7 @@
 				<c:if test="${pgn.pgvo.type eq 's'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Sneakers</a></li></c:if>
 				<c:if test="${pgn.pgvo.type eq 'a'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Sandals</a></li></c:if>
 				<c:if test="${pgn.pgvo.type eq 'i'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Slippers</a></li></c:if>
-				<c:if test="${pgn.pgvo.type eq 'l'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Loafers</a></li></c:if>
+				<c:if test="${pgn.pgvo.type eq 'l'}"><li><a href="/product/list?protype=${pgn.pgvo.type}">Loafers</a></li></c:if>
 				<c:if test="${pgn.pgvo.type eq 'f'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Flat</a></li></c:if>
 				<c:if test="${pgn.pgvo.type eq 'b'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Boots</a></li></c:if>
 			</ul>
