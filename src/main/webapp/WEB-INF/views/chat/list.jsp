@@ -18,8 +18,8 @@
 </section>
 
 
-
 <div class="container mt-5 mb-5">
+<a href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
 	<div>
 		<div class="row">
 			<div class="col-lg-5 order-lg-1">
@@ -54,9 +54,9 @@
 			<div class="col-lg-7 order-lg-2 mb-1-9 mb-lg-0">
 				<div class="common-block" style="height: 600px;">
 						<c:if test="${ses.mno ne mvo.mno}">
-							<h4>${mvo.nickName}</h4>
+							<h4>${cvo.cno }</h4>
 						</c:if>
-						<h4 style="display: none;">${cvo.cno }</h4>
+						<h4>${cvo.cno }</h4>
 						<span id="ctmno" style="display: none;">${ses.mno }</span>
 						<span id="mno" style="display: none;">${mvo.mno }</span>
 						<span id="roomVal" style="display: none;">99999${ses.mno }${mvo.mno}</span>
