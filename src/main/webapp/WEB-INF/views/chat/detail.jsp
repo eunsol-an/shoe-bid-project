@@ -54,7 +54,7 @@
 			
 			
 			<div class="col-lg-7 order-lg-2 mb-1-9 mb-lg-0">
-				<div class="common-block" style="height: 600px;" id="mydiv">
+				<div class="common-block" style="height: 600px; " id="mydiv">
 					<c:if test="${ses.mno eq cvo.recvNick || ses.mno eq cvo.sendNick}">
 						<c:if test="${ses.mno eq cvo.sendNick}">
 							<h4>${cvo.recvNickName }</h4>
@@ -64,7 +64,6 @@
 						</c:if>
 						<h4 style="display: none;">${cvo.cno }</h4>
 						<span id="ctmno" style="display: none;"> ${ses.mno }</span>
-						
 						<span id="roomVal" style="display: none;">${cvo.room }</span>
 						<span id="mno" style="display: none;">${cvo.mno }</span>
 						<span id="room" style="display: none;">${cvo.room }</span>
@@ -72,7 +71,9 @@
 						<span id="sendNick" style="display: none;">${cvo.sendNick }</span>
 						<span id="recvNick" style="display: none;">${ses.mno }</span>
 						
-					<div class="common-block" style="height: 460px; overflow: auto" id="ctZone"></div>
+					<div class="common-block chat_wrap" style="height: 460px; overflow-y: auto" id="ctZone">
+					<div class="inner"></div>
+					</div>
 					
 					<div class="input-group">
 						<input type="text" class="form-control" name="ctText" placeholder="content" id="ctText">
@@ -92,11 +93,18 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 });
 
-/* document.addEventListener('click', (e) => {
-	if(e.target.classList.contains("roomBtn")){
-	getChatList(e.target.dataset.room);
-	}
-	
-}); */
 </script>
+<style>
+        .chat_wrap { border:1px solid lightgray;  padding:5px; font-size:13px;}
+        .chat_wrap .inner{border-radius:5px; padding:10px;}
+        .chat_wrap .item{margin-top:15px}
+        .chat_wrap .item:first-child{margin-top:0px}
+        .chat_wrap .item .box{display:inline-block; max-width:280px; position:relative;}
+        .chat_wrap .item .box .msg {background:whitesmoke; border-radius:0px 10px 10px 10px; padding:9px; text-align:left; margin: 0 0 20px;}
+        .chat_wrap .item .box .time {font-size:11px;  position:absolute; bottom:1px; width:130px;}
+        .chat_wrap .item.mymsg{text-align:right }
+        .chat_wrap .item.mymsg .box .msg{background-color:#03a9f5; border-radius:10px 0px 10px 10px; color:white;}
+        .chat_wrap .item.mymsg .box .time{right:auto; left:-135px; top: -30px; width:130px;}
+        .chat_wrap .item.on .box{margin:0; opacity: 1;} 
+</style>
 <jsp:include page="../common/footer.jsp" />

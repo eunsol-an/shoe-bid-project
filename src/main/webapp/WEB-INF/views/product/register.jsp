@@ -47,10 +47,7 @@
           <option value="3">3일</option>
          </select>
     </div> 
-     <div class="mb-3 mt-3">
-      <label for="writer">작성자:</label>
-      	<input type="text" class="form-control" id="writer" placeholder="" name="writer" required>
-    </div>
+      	<input type="hidden" class="form-control" id="writer" placeholder="" name="writer" value=${ses.mno }>
     <div class="mb-3">
       <label for="description">상품설명:</label>
       <textarea rows="5" class="form-control" name="description" required></textarea>

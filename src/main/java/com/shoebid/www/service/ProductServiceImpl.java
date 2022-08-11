@@ -17,6 +17,7 @@ import com.shoebid.www.domain.ImageFileVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductVO;
+import com.shoebid.www.repository.BidDAO;
 import com.shoebid.www.repository.ImageFileDAO;
 import com.shoebid.www.repository.ProductDAO;
 
@@ -26,9 +27,11 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Inject
-	ProductDAO pdao;
+	private ProductDAO pdao;
 	@Inject
 	private ImageFileDAO idao;
+	@Inject
+	private BidDAO bdao;
 
 	@Transactional
 	@Override
@@ -92,15 +95,21 @@ public class ProductServiceImpl implements ProductService {
 	public int removeFile(String uuid) {
 		return idao.deleteImage(uuid);
 	}
-
+	@Transactional
 	@Override
 	public int statusProduct(ProductVO pvo) {
-		
-		return pdao.updateStatus(pvo);
+			long bno = bdao.selectMaxBid(pvo);
+			log.info(">>>>>>>>>>>>>>>>>>pvo{}",pvo);
+			int isOk =bdao.updateBidStatusSuccess(bno);
+			log.info(">>>>>>>>>>>>>>>>>>bno{}",bno);
+			isOk = bdao.updateBidStatusFail(pvo.getPno());
+			isOk = pdao.updateStatus(pvo);
+		return isOk;
 	}
 
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	private void getAllList() {
+		int isOk=0;
 		List<ProductVO> list = pdao.selectAllList();
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (ProductVO pvo : list) {
@@ -112,8 +121,13 @@ public class ProductServiceImpl implements ProductService {
 					if (pvo.getHighestPrice() > 0) {
 						pvo.setStatus(1);
 					} else {
-						pvo.setStatus(2);
+						pvo.setStatus(2); 
 					}
+					if(pvo.getHighestPrice()>0) {
+					long bno = bdao.selectMaxBid(pvo);
+					isOk =bdao.updateBidStatusSuccess(bno);
+					}
+					isOk = bdao.updateBidStatusFail(pvo.getPno());
 					pdao.updateStatus(pvo);
 				}
 			} catch (ParseException e) {

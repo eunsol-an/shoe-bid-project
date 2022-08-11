@@ -57,22 +57,55 @@
 			<div class="col-lg-7 order-lg-2 mb-1-9 mb-lg-0">
 				<div class="common-block" style="height: 600px;">
 						
-							<h4>${10 }(mno)</h4>
+							<h4>${mvo.mno}</h4>
 						<h4 style="display: none;">${cvo.cno }</h4>
 						<span id="ctmno" style="display: none;"> ${ses.mno }</span>
 						<span id="mno" style="display: none;">${cvo.mno }</span>
-						<span id="roomVal" style="display: none;">99999${ses.mno }</span>
-						<span id="room" style="display: none;">99999${ses.mno }</span>
+						<span id="roomVal" style="display: none;">99999${ses.mno }${mvo.mno}</span>
+						<span id="room" style="display: none;">99999${ses.mno }${mvo.mno}</span>
 						<span id="readChk" style="display: none;">1</span>
-						<span id="sendNick" style="display: none;">10</span>
+						<span id="sendNick" style="display: none;">2${mvo.mno}</span>
 						<span id="recvNick" style="display: none;">${ses.mno }</span>
 						
-					<div class="common-block" style="height: 460px; overflow: auto" id="ctZone"></div>
-					
+					<div class="common-block chat_wrap" style="height: 460px; overflow: auto" id="ctZone">
+					<div class="inner">
+                               <!--  <div class="item mymsg">
+                                    <div class="box">
+                                        <p class="msg">Hello!</p>
+                                    </div>
+                                    <div class="box">
+                                        <span class="time" >2022-08-09 13:59:39</span>
+                                    </div>
+                                </div> -->
+                                <div class="item">
+                                    <div class="box">
+                                        <p class="msg">Hello</p>
+                                        <span class="time" >2022-08-09 13:59:39</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="item mymsg">
+                                    <div class="box">
+                                        <p class="msg">ipsum dolor sit amet</p>
+                                    </div>
+                                    <div class="box">
+                                        <span class="time" >2022-08-09 13:59:39</span>
+                                    </div>
+                                </div> -->
+                                <div class="item">
+                                    <div class="box">
+                                        <p class="msg">lorem</p>
+                                        <span class="time" >2022-08-09 13:59:39</span>
+                                    </div>
+                                </div>
+                               
+                              
+                            </div>
+					</div>
 					<div class="input-group">
 						<input type="text" class="form-control" name="ctText" placeholder="content" id="ctText">
 						<button type="button" class="butn-style4" id="ctSbmBtn">전 송</button>
 					</div>
+					
 				</div>
 			</div>
 			
@@ -80,4 +113,19 @@
 	</div>
 </div>
 <script src="/resources/js/chat.send.js"></script>
+<style>
+        .chat_wrap { border:1px solid lightgray;  padding:5px; font-size:13px;}
+        .chat_wrap .inner{border-radius:5px; padding:10px;}
+        .chat_wrap .item{margin-top:15px}
+        .chat_wrap .item:first-child{margin-top:0px}
+        .chat_wrap .item .box{display:inline-block; max-width:250px; position:relative;}
+        .chat_wrap .item .box .msg {background:whitesmoke; border-radius:0px 10px 10px 10px; padding:9px; text-align:left; margin: 0 0 20px;}
+        .chat_wrap .item .box .time {font-size:11px;  position:absolute; bottom:1px; width:130px;}
+        .chat_wrap .item.mymsg{text-align:right }
+        .chat_wrap .item.mymsg .box .msg{background-color:#03a9f5; border-radius:10px 0px 10px 10px; color:white;}
+        .chat_wrap .item.mymsg .box .time{right:auto; left:-135px; top: -30px; width:130px;}
+        .chat_wrap .item.on .box{margin:0; opacity: 1;} 
+</style>
+
+
 <jsp:include page="../common/footer.jsp" />

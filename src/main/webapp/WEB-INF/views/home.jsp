@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row mt-n1-9 text-center">
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=s" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-4.png" alt="...">
                     </div>
@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=a" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-5.png" alt="...">
                     </div>
@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=i" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-6.png" alt="...">
                     </div>
@@ -45,7 +45,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=l" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-7.png" alt="...">
                     </div>
@@ -53,7 +53,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=f" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-8.png" alt="...">
                     </div>
@@ -61,7 +61,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
-                <a href="shop-categories.html" class="categoty-style2">
+                <a href="/product/list?type=b" class="categoty-style2">
                     <div class="category-icon mb-4">
                         <img src="/resources/bootstrap/img/icons/icon-9.png" alt="...">
                     </div>
@@ -77,90 +77,31 @@
 <section>
     <div class="container">
         <div class="text-center mb-1-9 mb-lg-2-3">
-            <h2 class="mb-0">Just Dropped</h2>
+            <h2 class="mb-0">New In</h2>
+            <p class="text-muted">최신 경매 상품</p>
         </div>
         <div class="row mt-n1-9">
         <c:forEach items="${list }" var="pvo">
             <div class="col-sm-6 col-lg-3 mt-1-9">
                 <div class="product-grid-four">
-                    <div class="product-img">
+                    <div class="product-img rounded-3">
                         <a href="/product/detail?pno=${pvo.pno }"><img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
                     </div>
-                    <h3 class="h6"><a href="/product/detail?pno=${pvo.pno }">${pvo.pname }</a></h3>
-                    <div class="font-weight-600 display-29 text-muted">시작가:
-                    <fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</div>
-                    <div class="font-weight-600 display-29 text-muted">현재가:
-                    <fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</div>
-                    <div class="font-weight-600 display-29 text-muted">종료시간:${pvo.endTime }</div>
+                    <div class="ms-2">
+	                    <h3 class="h6"><a href="/product/detail?pno=${pvo.pno }">${pvo.pname }</a></h3>
+	                    <div>
+							<span class="badge bg-secondary">시작가</span>
+							<span class="display-29 text-muted text-decoration-line-through"><fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span>
+						</div>
+						<div>
+							<span class="badge bg-primary">현재가</span>
+							<span class="font-weight-600 display-29 text-muted"><fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</span>
+						</div>
+	                    <%-- <div class="display-29 text-muted">종료시간:${pvo.endTime }</div> --%>
+                    </div>
                 </div>
             </div>
         </c:forEach>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-12.jpg" alt="..."></a>
-                        <span class="product-label bg-primary">new</span>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Armchair And Pillow</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$400.50</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-13.jpg" alt="..."></a>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Industrial Iron Table Lamp</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$350.10</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-14.jpg" alt="..."></a>
-                        <span class="product-label bg-danger">sale</span>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Living Room Sofa</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$500.40</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-15.jpg" alt="..."></a>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Modern Office Chair</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$150.00</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-16.jpg" alt="..."></a>
-                        <span class="product-label bg-danger">sale</span>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Light Lamp On White Wall</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$200.00</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-17.jpg" alt="..."></a>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Top Round Chair</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$340.10</span>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mt-1-9">
-                <div class="product-grid-four">
-                    <div class="product-img">
-                        <a href="shop-product-detail.html"><img src="/resources/bootstrap/img/products/featured-products/product-18.jpg" alt="..."></a>
-                    </div>
-                    <h3 class="h6"><a href="shop-product-detail.html">Wooden Round Table</a></h3>
-                    <span class="font-weight-600 display-29 text-muted">$270.90</span>
-                </div>
-            </div>
         </div>
     </div>
 </section>

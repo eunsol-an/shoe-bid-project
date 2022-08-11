@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../common/header.jsp"/>  
 <jsp:include page="../common/nav.jsp"/>   
         <!-- PAGE TITLE
@@ -43,12 +44,32 @@
                         </div>
                         <!-- product left end -->
                     </div>
-<c:set var="pvo" value="${pdto.pvo }"/>
+					<c:set var="pvo" value="${pdto.pvo }"/>
                     <div class="col-lg-7 ps-lg-2-3">
+                     
                         <div class="product-detail">
                             <h2 class="mb-1">${pvo.pname }</h2>
                             <div class="bg-primary separator-line-horrizontal-full mb-4"></div>
-                            <p class="rating-text"><span>SKU:</span> <span class="font-500 theme-color" id="pnoVal">${pvo.pno }</span></p>
+                            <p class="rating-text"><span>SKU:</span> <span class="font-500 theme-color" id="pnoVal">${pvo.pno }</span> </p>
+                            
+                    <div class="row">
+                        <div class="col-1 col-md-6">
+                            <div class="top-bar-info">
+                              <ul class="top-nav ps-0">
+                                <li class="nav-item dropdown">
+                                    <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle">${pdto.nickName }</i></a>
+                                    <ul class="dropdown-menu p-q">
+                                        <li>
+                                            <a href="/chat/list?mno=${pvo.writer }" class="dropdown-item">쪽지보내기</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown-item">신고하기</a>
+                                        </li>
+                                    </ul>
+                            </ul>
+                            </div>
+                        </div>
+                </div>
                             <ul id="timeBoard" class="countdown count-style-one text-center m-0 p-0">
     						<!-- start days -->
 	    						<li><span  id="days">00</span>
@@ -71,25 +92,12 @@
 							    </li>
 						    <!-- end seconds -->
 							</ul>
+                           
                             <div class="mb-4">
-                                <div class="d-inline-block me-3 pe-3 borders-end border-color-extra-medium-gray">
-                                    
-                                     <div class="d-inline-block">
-                                       <div class="dropdown">
-									    <button type="button" class="text-primary dropdown-toggle" data-bs-toggle="dropdown">
-									      ${pdto.nickName }
-									    </button>
-									    <ul class="dropdown-menu">
-									      <li><a class="dropdown-item" href="/member/detail?mno=${pvo.writer }">Normal</a></li>
-									      <li><a class="dropdown-item" href="#">Active</a></li>
-									    </ul>
-									  </div>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <span class="me-3 display-26 font-weight-600" >시작가 : <span class="display-26 font-weight-700 text-primary" id="reservePriceVal">${pvo.reservePrice }</span></span>
-                               <span class="display-26 font-weight-700 text-primary">현재가 :</span> <span class="display-26 font-weight-700 text-primary" id="maxPrice">${pdto.maxPrice }</span>
+                                <span class="me-3 display-26 font-weight-600" >시작가 : <span class="display-26 font-weight-700" id="reservePriceVal">
+                                <fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span></span>
+                               <span class="display-26 font-weight-700 text-primary">현재가 :</span> <span class="display-26 font-weight-700 text-primary" id="maxPrice">
+                               <fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" />원</span>
                             </div>
 
                             <div class="row">
@@ -115,16 +123,17 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-lg-12">
+                                
                           <c:choose>
-                         	 <c:when test="${pvo.status == 0 }">
+                         	 <c:when test="${pvo.status == 0 && ses.mno ne pvo.writer && ses ne null}">
                                     <button class="butn-style2 me-3 mb-2 mb-md-0"><span><i class="fas fa-shopping-cart me-1"></i> Add to Cart</span></button>
-                                    <button type="button" class="butn-style2 me-3 mb-2 mb-md-0"	data-bs-toggle="modal" data-bs-target="#centered">입찰하기</button>
+                                    <button type="button" id="bidModal" class="butn-style2 me-3 mb-2 mb-md-0" data-bs-toggle="modal" data-bs-target="#centered">입찰하기</button>
                               </c:when>
-                              <c:otherwise>
-                            	
-                            
-                            </c:otherwise>
+                             <c:when test="${ses eq null }">
+                             <a href="/member/login" class="butn-style2 me-3 mb-2 mb-md-0 mt-2">로그인 후 이용해주세요</a>
+                             </c:when>
                             </c:choose>
+                            
 								<!-- Vertically centered -->
 								<div class="modal fade" id="centered" tabindex="-1"
 									aria-labelledby="centeredLabel" aria-hidden="true">
@@ -138,7 +147,7 @@
 											<div class="modal-body">
 												<form action="/buy_bid/add" method="post"  id="bidAddForm">
 												<div class="form-group">
-											<input type="hidden" name="buyer" value="1">
+											<input type="hidden" name="buyer" value="${ses.mno }">
 											<input type="hidden" name="pno" value="${pvo.pno }">
 											<input type="hidden" name="bidStatus" value="0">
 													<label>입찰 금액 입력</label> <input type="number" class="form-control"
@@ -170,8 +179,9 @@
 					
                             <div class="row">
                                 <div class="col-lg-7">
+                                <c:if test="${ses.mno eq pvo.writer }">
 									<a href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}" id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0" style="display: none;">수정</a>
-									<button  class="butn-style2 me-3 mb-2 mb-md-0" id="modBtnFake">수정</button>
+									<button  class="butn-style2 me-3 mb-2 mb-md-0 modBtnFake" id="">수정</button>
                                     <button type="button" class="butn-style2 dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="Remove">삭제</button>
                                       <form action="" method="post" id="productRmForm"  style="display: none;">
                                     <input type="hidden" id="pno" value="" name="pno">
@@ -180,7 +190,7 @@
   									<input type="hidden" value="${pgvo.type }" name="type"> 
   									<input type="hidden" value="${pgvo.kw }" name="kw"> 
                                     </form>
-                                    
+                                    </c:if>
                                    <!-- static Modal -->
 									<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 									    <div class="modal-dialog">
@@ -446,18 +456,20 @@
                 </div>
                 </section>
 <script src="/resources/js/product.detail.js"></script>
+<!-- <script src="/resources/js/buy_bid.add.js"></script> -->
 <script>
   document.addEventListener('DOMContentLoaded', function(){
  let maxPrice = document.getElementById('maxPrice').innerText;
- //maxPrice.substring(maxPrice.lastIndexOf(":"));
- 
- console.log(parseInt(maxPrice));
+ let modBtn =document.getElementById('modBtnFake')
+  let productRemove =document.getElementById('Remove')
+  
   if(parseInt(maxPrice) >0){
-  let modBtn =document.getElementById('modBtnFake').disabled = true;
-  let productRemove =document.getElementById('Remove').disabled = true;
+	  if(modBtn != null){
+  modBtn.disabled = true;
+  productRemove.disabled = true;
+	  }
    }
    });
-  let endTime = new Date(document.getElementById("endTime").innerText);
-  console.log(endTime);
 </script>
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <jsp:include page="../common/footer.jsp"/>  
