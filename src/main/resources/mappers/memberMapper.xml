@@ -16,7 +16,12 @@
 	</select>
 	<select id="selectList" resultType="mvo" parameterType="pgvo">
 		select
-		a.mno, id, email, nick_name, grade, report_count,del_at
+		a.mno, id, email, nick_name, grade, del_at, 
+		(select count(target_mno) 
+		from `member` m  
+		right join report r 
+		on m.mno = r.target_mno 
+		where r.target_mno = a.mno) as report_count
 		from (
 		select mno from member where mno > 0 and del_at is null order by mno
 		limit #{pageStart}, #{qty}
@@ -38,6 +43,11 @@
 	</select>
 	<select id="selectLastMno" resultType="long">
 		select max(mno) from member
+	</select>
+	<select id="selectReportCount" resultType="long">
+		select count(mno)
+		from report
+		where mno = #{mno}
 	</select>
 
 	<update id="update" parameterType="mvo">

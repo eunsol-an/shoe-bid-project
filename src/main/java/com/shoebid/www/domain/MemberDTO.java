@@ -15,12 +15,19 @@ import lombok.ToString;
 public class MemberDTO {
 	private MemberVO mvo;
 	private List<ImageFileVO> imageList;
+	private PagingVO pgvo;
 	
 	public MemberDTO() {}
 
 	public MemberDTO(MemberVO mvo, List<ImageFileVO> imageList) {
 		this.mvo = mvo;
 		this.imageList = imageList;
+	}
+
+	public MemberDTO(MemberVO mvo, List<ImageFileVO> imageList, PagingVO pgvo) {
+		this.mvo = mvo;
+		this.imageList = imageList;
+		this.pgvo = pgvo;
 	}
 	
 	
