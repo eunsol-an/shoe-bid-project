@@ -79,6 +79,7 @@ public class MemberController {
 		List<ImageFileVO> fileList = null;
 		if(files[0].getSize() > 0) {
 			fileList = fhd.getImageFileList(files, false);
+			mvo.setMemberImg(fileList.get(0).getSaveDir()+"\\"+fileList.get(0).getUuid()+fileList.get(0).getImageName());
 		}
 		int isUp = msv.modify(new MemberDTO(mvo, fileList));
 		log.info(">>> member modify - post : {}", isUp > 0 ? "OK":"FAIL");
@@ -124,7 +125,6 @@ public class MemberController {
 	@PostMapping(value = "/idDupleCheck", consumes = "application/json",
 				produces = {MediaType.TEXT_PLAIN_VALUE})
 	public String idDupleCheck(@RequestBody HashMap<String, String> map) {
-		// ajax > email : ?
 		log.info(">>> {}", map.get("id"));
 		int isExist = msv.idDupleCheck(map.get("id"));		
 		return isExist > 0 ? "1" : "0";
@@ -133,7 +133,6 @@ public class MemberController {
 	@PostMapping(value = "/nickNameDupleCheck", consumes = "application/json",
 	produces = {MediaType.TEXT_PLAIN_VALUE})
 	public String nickNameDupleCheck(@RequestBody HashMap<String, String> map) {
-		// ajax > email : ?
 		log.info(">>> {}", map.get("nickName"));
 		int isExist = msv.nickNameDupleCheck(map.get("nickName"));		
 		return isExist > 0 ? "1" : "0";

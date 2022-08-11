@@ -44,12 +44,15 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="login-remember">
-                                            <label class="form-check-label" for="login-remember">Keep me signed in</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 text-start text-md-end">
-                                        <a href="account-password-recovery.html" class="m-link-muted">Forgot password?</a>
+                                    <button type="button" class="butn-style2 mt-4">
+                                    	<a href="account-password-recovery.html" class="m-link-muted">아이디찾기</a>
+                                    </button>
+                                    <button type="button" class="butn-style2 mt-4">
+                                        <a href="account-password-recovery.html" class="m-link-muted">비밀번호찾기</a>
+                                    </button>
                                     </div>
 
                                 </div>
