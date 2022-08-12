@@ -40,6 +40,17 @@
 				<div class="product-search">
 					<form action="/product/list" method="get">
 						<div class="psearch-content">
+                                    <div class="col-auto  my-md-0">
+                                        <select class="w-auto d-inline-block form-select" name="orderBy">
+                                            <option value="reg">선택</option>
+                                            <option value="reg" ${pgn.pgvo.orderBy eq 'reg' ? 'selected':'' }>등록순</option>
+                                            <option value="end" ${pgn.pgvo.orderBy eq 'end' ? 'selected':'' }>마감순</option>
+                                            <option value="highestUp" ${pgn.pgvo.orderBy eq 'highestUp' ? 'selected':'' }>현재가격순↑</option>
+                                            <option value="highestDown" ${pgn.pgvo.orderBy eq 'highestDown' ? 'selected':'' }>현재가격순↓</option>
+                                            <option value="reserveUp" ${pgn.pgvo.orderBy eq 'reserveUp' ? 'selected':'' }>시작가순↑</option>
+                                            <option value="reserveDown" ${pgn.pgvo.orderBy eq 'reserveDown' ? 'selected':'' }>시작가순↓</option>
+                                        </select>
+                                    </div>
 							<div class="search-wrapper">
 								<input type="text" name="kw"
 									class="search-field border-start rounded" value=${pgn.pgvo.kw }>
@@ -56,7 +67,7 @@
 		<div class="row  text-center">
 			<div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
 				<a href="/product/list?type=s" class="categoty-style2">
-					<h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+					<h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
 						Sneakers</h3>
 				</a>
 			</div>

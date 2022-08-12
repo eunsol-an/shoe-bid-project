@@ -68,6 +68,33 @@
 			</when>
 			</choose>
 	</sql>
+	<sql id="order">
+	<choose>
+		<when test="orderBy != null">
+				<if test="orderBy == 'end'.toString()">
+					order by end_time 
+					</if>
+					<if test="orderBy == 'reg'.toString()">
+					order by mod_at desc
+					</if>
+					<if test="orderBy == 'highestDown'.toString()">
+					order by highest_price
+					</if>
+					<if test="orderBy == 'highestUp'.toString()">
+					order by highest_price desc
+					</if>
+					<if test="orderBy == 'reserveDown'.toString()">
+					order by reserve_price
+					</if>
+					<if test="orderBy == 'reserveUp'.toString()">
+					order by reserve_price desc
+					</if>
+		</when>
+		<otherwise>
+		order by mod_at desc
+		</otherwise>
+	</choose>
+	</sql>
 	<insert id="insert" parameterType="pvo">
 		insert into product
 		(category,
@@ -81,18 +108,18 @@
 		select a.pno, category ,pname ,
 		description , read_count ,writer ,product_img ,
 		status, reserve_price,
-		(select max(bid_price)
+		ifnull((select max(bid_price)
 		from buy_bid b
 		where a.pno = b.pno
-		) "highest_price",
+		),0) "highest_price",
 		end_time, mod_at
 		from (
 		select pno from product where pno > 0 and status = 0
 		<include refid="search" />
-		order by end_time
 		limit #{pageStart}, #{qty}
 		) a left join product b
 		on a.pno = b.pno
+		<include refid="order" />
 	</select>
 	<select id="selectDetail" parameterType="long" resultType="pvo">
 		select * from product
