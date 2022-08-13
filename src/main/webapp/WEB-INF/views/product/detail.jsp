@@ -66,7 +66,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li><a class="dropdown-item" href="#">회원정보보기</a></li>
 							<li><a class="dropdown-item" href="/chat/list?mno=${pvo.writer }">채팅하기</a></li>
-							<li><a class="dropdown-item" href="#">신고하기</a></li>
+							<li><a class="dropdown-item" href="/report/register?mno=${pvo.writer }">신고하기</a></li>
 						</ul>
 					</div>
 					
@@ -128,13 +128,26 @@
 								<c:choose>
 									<c:when
 										test="${pvo.status == 0 && ses.mno ne pvo.writer && ses ne null}">
-										<button class="butn-style2 me-3 mb-2 mb-md-0">
-											<span><i class="fas fa-shopping-cart me-1"></i> Add to
-												Cart</span>
-										</button>
+										
+											
 										<button type="button" id="bidModal"
 											class="butn-style2 me-3 mb-2 mb-md-0" data-bs-toggle="modal"
 											data-bs-target="#centered">입찰하기</button>
+										<c:if test="${itck eq 0}">
+										<button type="button" id="itSbmBtn"
+											class="butn-style2 me-3 mb-2 mb-md-0" ><i class="far fa-heart"></i></button>
+											<!-- <i class="far fa-heart" id="itSbmBtn" style="cursor:pointer;"></i> -->
+											<span id="readCk" style="display: none;">true</span>
+											<span id="mnoVal" style="display: none;">${ses.mno }</span>
+											<span id="pnoVal" style="display: none;">${pvo.pno }</span>
+										</c:if>
+										<c:if test="${itck eq 1}">
+										<button type="button" id="itDelBtn"
+											class="butn-style2 me-3 mb-2 mb-md-0" ><i class="fas fa-heart"></i></button>
+											<span id="readCk" style="display: none;">true</span>
+											<span id="mnoVal" style="display: none;">${ses.mno }</span>
+											<span id="pnoVal" style="display: none;">${pvo.pno }</span>
+											</c:if>
 									</c:when>
 									<c:when test="${ses eq null }">
 										<a href="/member/login"
@@ -465,6 +478,7 @@
 	</div>
 </section>
 <script src="/resources/js/product.detail.js"></script>
+<script src="/resources/js/interest.register.js"></script>
 <!-- <script src="/resources/js/buy_bid.add.js"></script> -->
 <script>
 	document.addEventListener('DOMContentLoaded', function() {

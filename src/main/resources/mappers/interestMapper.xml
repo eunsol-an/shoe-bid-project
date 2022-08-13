@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoebid.www.repository.InterestDAO">
+	<insert id="insert" parameterType="itvo">
+		insert into interest
+		(mno, pno)
+		values (#{mno}, #{pno})
+	</insert>
+	<select id="selectList" resultType="itvo">
+	select
+		a.ino, b.mno, b.pno , p.pname, p.product_img, p.reg_at, p.end_time, p.reserve_price
+		from (
+			select ino from interest where ino > 0 order by ino desc
+			limit #{pgvo.pageStart}, #{pgvo.qty}
+		) a left join interest b
+		on a.ino = b.ino
+		inner join product p 
+		on (b.pno = p.pno)
+		where b.mno = #{mno}
+		
+	</select>
+	<delete id="delete" parameterType="itvo">
+		delete from interest where pno = #{pno} and mno = #{mno}
+	</delete>
+	<select id="selectTotalCount" resultType="int" parameterType="long">
+		select count(ino) from interest where mno = #{mno}
+	</select>
+	<select id="itCheck" resultType="int" >
+	select count(ino) as itck
+	from interest
+	where pno = #{pno} and mno = #{mno};
+	</select>
+</mapper>
