@@ -2,7 +2,6 @@ package com.shoebid.www.repository;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
@@ -22,4 +21,5 @@ public interface MemberDAO {
 	long selectLastMno();
 	long selectReportCount();
 	int updateReportCount(ReportVO rpvo);
+	List<MemberVO> findId(String email);
 }

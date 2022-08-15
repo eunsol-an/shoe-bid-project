@@ -1,12 +1,10 @@
 package com.shoebid.www.ctrl;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
@@ -136,5 +134,19 @@ public class MemberController {
 		log.info(">>> {}", map.get("nickName"));
 		int isExist = msv.nickNameDupleCheck(map.get("nickName"));		
 		return isExist > 0 ? "1" : "0";
+	}
+	@GetMapping("/searchID")
+	public void searchID() {
+		log.info(">>> MemberController > searchID - GET");
+	}
+	@PostMapping("/searchID")
+	@ResponseBody
+	public String searchID(@RequestParam(value = "email", required = false) String email, Model model, MemberVO mvo) {
+		model.addAttribute("list", msv.findId(email));
+		return "redirect:/member/searchIDResult";
+	}
+	@PostMapping("/searchIDResult")
+	public void searchIDResult(Model model, @RequestParam(value = "email", required = false) String email, MemberVO mvo) {
+		model.addAttribute("list", msv.findId(email));
 	}
 }
