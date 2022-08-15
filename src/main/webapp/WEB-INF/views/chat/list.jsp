@@ -48,12 +48,13 @@
 				<div class="common-block" style="height: 600px;">
 						<c:if test="${ses.mno ne mvo.mno}">
 							<h4>${cvo.cno }</h4>
+						<h4>${mvo.nickName }</h4>
 						</c:if>
 						<h4>${cvo.cno }</h4>
 						<span id="ctmno" style="display: none;">${ses.mno }</span>
 						<span id="mno" style="display: none;">${mvo.mno }</span>
-						<span id="roomVal" style="display: none;">99999${ses.mno }${mvo.mno}</span>
-						<span id="room" style="display: none;">99999${ses.mno }${mvo.mno}</span>
+						<span id="roomVal" style="display: none;">${ses.mno }00000${mvo.mno}</span>
+						<span id="room" style="display: none;">${ses.mno }00000${mvo.mno}</span>
 						<span id="readChk" style="display: none;">1</span>
 						<span id="sendNick" style="display: none;">${mvo.mno}</span>
 						<span id="recvNick" style="display: none;">${ses.mno }</span>
