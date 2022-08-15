@@ -1,12 +1,10 @@
 package com.shoebid.www.ctrl;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
@@ -79,7 +77,7 @@ public class MemberController {
 		List<ImageFileVO> fileList = null;
 		if(files[0].getSize() > 0) {
 			fileList = fhd.getImageFileList(files, false);
-			mvo.setMemberImg(fileList.get(0).getSaveDir()+"\\"+fileList.get(0).getUuid()+fileList.get(0).getImageName());
+			mvo.setMemberImg(fileList.get(0).getSaveDir()+"\\"+fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 		}
 		int isUp = msv.modify(new MemberDTO(mvo, fileList));
 		log.info(">>> member modify - post : {}", isUp > 0 ? "OK":"FAIL");
@@ -136,5 +134,19 @@ public class MemberController {
 		log.info(">>> {}", map.get("nickName"));
 		int isExist = msv.nickNameDupleCheck(map.get("nickName"));		
 		return isExist > 0 ? "1" : "0";
+	}
+	@GetMapping("/searchID")
+	public void searchID() {
+		log.info(">>> MemberController > searchID - GET");
+	}
+	@PostMapping("/searchID")
+	@ResponseBody
+	public String searchID(@RequestParam(value = "email", required = false) String email, Model model, MemberVO mvo) {
+		model.addAttribute("list", msv.findId(email));
+		return "redirect:/member/searchIDResult";
+	}
+	@PostMapping("/searchIDResult")
+	public void searchIDResult(Model model, @RequestParam(value = "email", required = false) String email, MemberVO mvo) {
+		model.addAttribute("list", msv.findId(email));
 	}
 }

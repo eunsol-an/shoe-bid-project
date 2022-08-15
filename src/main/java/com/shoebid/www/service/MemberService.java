@@ -17,4 +17,5 @@ public interface MemberService {
 	int idDupleCheck(String id);
 	int nickNameDupleCheck(String nickName);
 	int removeFile(String uuid);
+	List<MemberVO> findId(String email);
 }

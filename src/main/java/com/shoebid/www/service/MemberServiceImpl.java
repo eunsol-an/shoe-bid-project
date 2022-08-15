@@ -90,6 +90,11 @@ public class MemberServiceImpl implements MemberService {
 	public int removeFile(String uuid) {
 		return idao.deleteImage(uuid);
 	}
+
+	@Override
+	public List<MemberVO> findId(String email) {
+		return mdao.findId(email);
+	}
 	
 	
 }
