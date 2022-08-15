@@ -26,9 +26,9 @@
 					<c:forEach items="${list }" var="id">
 						<p class="mb-0">입력하신 정보로 아래의 아이디를 찾았습니다</p>
 						<c:if test="${id ne null }">
-						<p class="mb-0">회원님의 아이디는 ${id } 입니다</p>
-								<p class="mb-0">회원님의 아이디는 ${fn:substring(id, 0, 3)}
-								<c:forEach begin="4" end="${fn:length(id) }" step="1">
+								<c:set var = "length" value = "${fn:length(id)}"/>
+								<p class="mb-0">회원님의 아이디는 ${fn:substring(id, 0, length-3) }
+								<c:forEach begin="${fn:length(id)-2 }" end="${fn:length(id) }" step="1">
 								*
 								</c:forEach> 입니다</p>
 						</c:if>

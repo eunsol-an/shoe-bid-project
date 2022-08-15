@@ -77,7 +77,7 @@ public class MemberController {
 		List<ImageFileVO> fileList = null;
 		if(files[0].getSize() > 0) {
 			fileList = fhd.getImageFileList(files, false);
-			mvo.setMemberImg(fileList.get(0).getSaveDir()+"\\"+fileList.get(0).getUuid()+fileList.get(0).getImageName());
+			mvo.setMemberImg(fileList.get(0).getSaveDir()+"\\"+fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 		}
 		int isUp = msv.modify(new MemberDTO(mvo, fileList));
 		log.info(">>> member modify - post : {}", isUp > 0 ? "OK":"FAIL");
