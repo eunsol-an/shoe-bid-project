@@ -3,23 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
-<section class="page-title-section bg-img cover-background" data-background="img/bg/page-title.jpg">
+
+
+<section>
 	<div class="container">
-		<div class="title-info">
-			<h1>Message</h1>
-		</div>
-		<div class="breadcrumbs-info">
-			<ul class="ps-0">
-				<li><a href="/">Home</a></li>
-				<li><a href="/chat/list?mno=${ses.mno}">message</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
-
-
+	<div class="col-lg-10 mx-auto">
+					<div class="inner-title">
+					<a href="/member/mypage?mno=${ses.mno }" style="float:right">My Page</a>
+						<h4 class="mb-0 font-weight-500 text-extra-dark-gray">Chatting<a class="h6 ms-2" href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a></h4>
+					</div>
 <div class="container mt-5 mb-5">
-<a href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a>
 	<div>
 		<div class="row">
 			<div class="col-lg-5 order-lg-1">
@@ -77,10 +70,12 @@
 					</c:if>
 				</div>
 			</div>
-			
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+</section>
 <style>
         .chat_wrap { border:1px solid lightgray;  padding:5px; font-size:13px;}
         .chat_wrap .inner{border-radius:5px; padding:10px;}

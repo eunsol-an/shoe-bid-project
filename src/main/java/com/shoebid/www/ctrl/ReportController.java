@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,13 +44,21 @@ public class ReportController {
 		
 		int isUp = rpsv.register(rpvo);
 		log.info(">>> report register {} - post : {}", isUp > 0 ? "OK":"FAIL");
-		return "redirect:/report/list";
+		return "redirect:/";
 	}
-	@GetMapping("/list")
-	public void list(Model model, PagingVO pgvo) {
-		model.addAttribute("list", rpsv.getList(pgvo));
-		int totalCount = rpsv.getTotalCount();
+	@GetMapping("/list/{mno}")
+	public String list(Model model, PagingVO pgvo , @PathVariable("mno") long mno) {
+		model.addAttribute("list", rpsv.getList(mno, pgvo));
+		int totalCount = rpsv.getTotalCount(mno);
 		model.addAttribute("pgn", new PagingHandler(pgvo, totalCount));
+		return "/report/list";
+	}
+	@GetMapping("/listall/{mno}")
+	public String listall(Model model, PagingVO pgvo , @PathVariable("mno") long mno) {
+		model.addAttribute("listall", rpsv.getAllList(mno, pgvo));
+		int totalCount = rpsv.getTotalAllCount(mno);
+		model.addAttribute("pgn", new PagingHandler(pgvo, totalCount));
+		return "/report/listall";
 	}
 	@GetMapping("/detail")
 	public void detail(@RequestParam("rpno") long rpno, Model model) {

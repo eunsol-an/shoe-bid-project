@@ -29,15 +29,7 @@ public class ReportSvcTest {
 		int isUp = rpsv.register(new ReportVO(4, 5,"testTitle3","testContent4"));
 		log.info(">>> Test of register Report : {} ", isUp > 0 ? "OK":"FAIL");
 	}
-	@Test
-	public void getListReportListTest() throws Exception {
-		List<ReportVO> list  = rpsv.getList(new PagingVO());
-		for (ReportVO rpvo : list) {
-			log.info(">>> {},{},{},{},{}",
-					rpvo.getRpno(), rpvo.getMno(), rpvo.getTargetMno(),
-					rpvo.getReportTitle(), rpvo.getRegAt());
-		}
-	}
+	
 	@Test
 	public void removeReportTest() throws Exception {
 		int isUp = rpsv.remove(3);

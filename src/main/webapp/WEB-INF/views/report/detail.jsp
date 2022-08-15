@@ -4,28 +4,21 @@
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
-<section class="page-title-section bg-img cover-background" data-background="img/bg/page-title.jpg">
-	<div class="container">
-		<div class="title-info">
-			<h1>REPORT</h1>
-		</div>
-		<div class="breadcrumbs-info">
-			<ul class="ps-0">
-				<li><a href="/">Home</a></li>
-				<li><a href="/report/list">신고 리스트</a></li>
-				<li><a href="#">신고 내용</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
 
+<section>
+	<div class="container">
+	<div class="col-lg-8 mx-auto">
+					<div class="inner-title">
+					<a href="/report/list/${ses.mno }" style="float:right">list</a>
+						<h4 class="mb-0 font-weight-500 text-extra-dark-gray">신고내용</h4>
+					</div>
 <div class="container mb-5 mt-5">
 	<div class="row">
-		<div class="col-lg-8 mx-auto">
+		<div class="col-lg-11 mx-auto">
 			<div class="common-block">
-				<div class="inner-title">
+				<!-- <div class="inner-title">
 					<h2 class="mb-0 display-26 display-lg-24">신고 내용</h2>
-				</div>
+				</div> -->
 				<!-- order tracking form -->
 				<div class="row">
 					<div class="col-sm-6">
@@ -40,7 +33,7 @@
 							</div>
 						</div>
 						<div class="col-sm-6">
-							<div class="form-group">
+							<div class="form-group" style="float:right">
 								<span>신고대상 회원 : ${rpvo.targetNickName}</span>
 							</div>
 						</div>
@@ -69,7 +62,9 @@
 							</div>
 						</div>
 					</div>
+					<c:if test="${ses.grade == 99}">
 					<a class="butn-style2" id="reportRemove">삭제하기</a>
+					</c:if>
 				</div>
 
 				<!-- end order tracking form -->
@@ -82,7 +77,9 @@
 				</form>
 	</div>
 </div>
-
+	</div>
+</div>
+</section>
 <script src="/resources/js/report.detail.js"></script>
 
 <jsp:include page="../common/footer.jsp" />

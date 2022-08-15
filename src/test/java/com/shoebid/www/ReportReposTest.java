@@ -30,15 +30,7 @@ public class ReportReposTest {
 		int isUp = rpdao.insert(new ReportVO(3, 4,"testTitle2","testContent2"));
 		log.info(">>> Test of register Reportr : {} ", isUp > 0 ? "OK":"FAIL");
 	}
-	@Test
-	public void getListReportListTest() throws Exception {
-		List<ReportVO> list  = rpdao.selectList(new PagingVO());
-		for (ReportVO rpvo : list) {
-			log.info(">>> {},{},{},{},{}",
-					rpvo.getRpno(), rpvo.getMno(), rpvo.getTargetMno(),
-					rpvo.getReportTitle(), rpvo.getRegAt());
-		}
-	}
+	
 	@Test
 	public void deleteReportTest() throws Exception {
 		int isUp = rpdao.delete(1L);
