@@ -64,6 +64,10 @@ async function postChatToServer(ctData){
 
 document.getElementById('ctSbmBtn').addEventListener('click', (e) => {
   const ctInputObj = document.getElementById('ctText');
+  if(ctInputObj.value == null || ctInputObj.value == ''){
+    ctInputObj.focus();
+    return false;
+  } else {
     let ctData = {
       content : document.getElementById('ctText').value,
       readChk : document.getElementById('readChk').innerText,
@@ -77,6 +81,8 @@ document.getElementById('ctSbmBtn').addEventListener('click', (e) => {
         getChatList(document.getElementById('roomVal').innerText);
       }
     });
+
+  }
  
 });
 
