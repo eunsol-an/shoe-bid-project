@@ -19,12 +19,27 @@
 		rpno = #{rpno}
 	</select>
 	
-	<select id="selectList" resultType="rpvo" parameterType="pgvo">
+	<select id="selectList" resultType="rpvo">
 	select
 	a.rpno, b.mno, target_mno, report_title, b.reg_at , m.nick_name, m2.nick_name as target_nick_name
 	from (
 		select rpno from report where rpno > 0 order by rpno
-		limit #{pageStart}, #{qty}
+		limit #{pgvo.pageStart}, #{pgvo.qty}
+	) a left join report b
+	on a.rpno = b.rpno
+	inner join `member` m
+	on b.mno = m.mno
+	inner join `member` m2
+	on b.target_mno = m2.mno
+	where b.mno = #{mno}
+	</select>
+	
+	<select id="selectAllList" resultType="rpvo">
+	select
+	a.rpno, b.mno, target_mno, report_title, b.reg_at , m.nick_name, m2.nick_name as target_nick_name
+	from (
+		select rpno from report where rpno > 0 order by rpno
+		limit #{pgvo.pageStart}, #{pgvo.qty}
 	) a left join report b
 	on a.rpno = b.rpno
 	inner join `member` m
@@ -33,9 +48,13 @@
 	on b.target_mno = m2.mno
 	</select>
 
-	<select id="selectTotalCount" resultType="int">
+	<select id="selectTotalCount" resultType="int" parameterType="long">
+		select count(rpno) from report where mno = #{mno}
+	</select>
+	<select id="selectAllTotalCount" resultType="int" parameterType="long">
 		select count(rpno) from report
 	</select>
+	
 	<delete id="delete" parameterType="long">
 		delete from report where rpno = #{rpno}
 	</delete>

@@ -27,10 +27,15 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public List<ReportVO> getList(PagingVO pgvo) {
-		return rpdao.selectList(pgvo);
+	public List<ReportVO> getList(long mno, PagingVO pgvo) {
+		return rpdao.selectList(mno, pgvo);
 	}
-
+	
+	@Override
+	public List<ReportVO> getAllList(long mno, PagingVO pgvo) {
+		return rpdao.selectAllList(mno, pgvo);
+	}
+	
 	@Override
 	public ReportVO getDetail(long rpno) {
 		return rpdao.selectOne(rpno);
@@ -42,9 +47,15 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public int getTotalCount() {
-		return rpdao.selectTotalCount();
+	public int getTotalCount(long mno) {
+		return rpdao.selectTotalCount(mno);
 	}
+
+	@Override
+	public int getTotalAllCount(long mno) {
+		return rpdao.selectAllTotalCount(mno);
+	}
+
 
 	
 	

@@ -13,40 +13,32 @@
 		<div class="row justify-content-center">
 
 			<!-- left panel -->
-			<div class="col-lg-3 col-sm-9 mb-2-3 mb-lg-0">
-
-				<div class="account-pannel rounded">
-
-					<div class="p-4">
-
-						<div class="text-center">
-							<div class="pb-3">
-								<img class="img-fluid rounded-circle img-thumbnail"
-									src="img/avatar/t-3.jpg" alt="...">
-							</div>
-							<h6 class="mb-0 display-28">Peter Parker</h6>
-							<small>Joined February 06, 2017</small>
-							<div class="reward-points">
-								<i class="ti-star text-primary pe-1"></i> Points: 7386
-							</div>
-						</div>
-					</div>
-
-					<div class="list-group">
-						<a class="list-group-items" href="account-orders.html"><i
-							class="ti-bag pe-2"></i>Orders<span class="badge badge-pill">6</span></a>
-						<a class="list-group-items" href="account-profile.html"><i
-							class="ti-user pe-2"></i>Profile</a> <a class="list-group-items"
-							href="account-address.html"><i class="ti-location-pin pe-2"></i>Addresses</a>
-						<a class="list-group-items active" href="account-wishlist.html"><i
-							class="ti-heart pe-2"></i>찜 내역<span class="badge badge-pill"></span></a>
-						<a class="list-group-items" href="account-tickets.html"><i
-							class="ti-tag pe-2"></i>My Tickets<span class="badge badge-pill">4</span></a>
-					</div>
-
-				</div>
-
-			</div>
+			<div class="col-lg-2 col-sm-9 mb-2-3 mb-lg-0">
+	
+                 <div class="side-bar">
+                     <div class="widget border-0">
+                         <div class="mb-3">
+                             <h5><i class="ti-user pe-2"></i>내 정보</h5>
+                         </div>
+                         <ul class="list-discount list-unstyled mb-0">
+                             <li><a href="/member/mypage?mno=${ses.mno }">프로필정보</a></li>
+                             <li><a href="/chat/list?mno=${ses.mno }">채팅하기</a></li>
+                             <li><a href="/report/list/${ses.mno }">신고내역</a></li>
+                         </ul>
+                     </div>
+                     <div class="widget border-0">
+                         <div class="mb-3">
+                             <h5><i class="ti-bag pe-2"></i>쇼핑 정보</h5>
+                         </div>
+                         <ul class="list-discount list-unstyled mb-0">
+                             <li><a href="/buy_bid/list/${ses.mno }">입찰내역</a></li>
+                             <li><a href="/product/sellList/${ses.mno }">판매내역</a></li>
+                             <li><a href="/interest/list/${ses.mno }">관심상품</a></li>
+                             <li><a href="#">리뷰관리</a></li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
 			<!-- end left panel -->
 
 			<!-- right panel -->
@@ -74,10 +66,12 @@
 								<c:forEach var="itvo" items="${list }">
 								<c:if test="${ses.mno eq itvo.mno}">
 									<tr class="bg-transparent">
-										<td><img
-												src="/upload/${fn:replace(itvo.productImg,'\\','/')}" alt="img" style="width:200px;"/></td>
+										<td>
+										<a class="h5 mt-4" href="/product/detail?pno=${itvo.pno }&mno=${ses.mno}"><img
+												src="/upload/${fn:replace(itvo.productImg,'\\','/')}" alt="img" style="width:200px;"/></a>
+										</td>
 										<td class="text-start">
-										<a class="h5 mt-4" href="/product/detail?pno=${itvo.pno }">${itvo.pname }</a>
+										<a class="h5 mt-4" href="/product/detail?pno=${itvo.pno }&mno=${ses.mno}">${itvo.pname }</a>
 											
 											<div class="h6 mt-4">시작가 : <fmt:formatNumber value="${itvo.reservePrice }" pattern="#,###" />원</div>
 										</td>
