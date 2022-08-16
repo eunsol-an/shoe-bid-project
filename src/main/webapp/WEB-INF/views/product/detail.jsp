@@ -176,7 +176,7 @@
 															금액 입력</label> <input type="number" class="form-control"
 															name="bidPrice" placeholder="입찰 금액을 입력해주세요"
 															id="bidPriceVal"
-															value="${pvo.reservePrice > pdto.maxPrice ? pvo.reservePrice : pdto.maxPrice  }">
+															>
 													</div>
 												</form>
 												<div class="form-check">
