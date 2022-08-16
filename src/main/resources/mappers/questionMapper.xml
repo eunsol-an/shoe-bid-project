@@ -3,30 +3,59 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shoebid.www.repository.QuestionDAO">
+	<!-- 댓글쓰기 -->
 	<insert id="insert" parameterType="qvo">
 		insert into question (pno, writer, content)
 		values (#{pno}, #{writer}, #{content})
 	</insert>
-	<select id="selectList" parameterType="long" resultType="qvo">
-		select b.pno, a.qno, writer, content, mod_at, m.nick_name 
+	<!-- 답글쓰기 -->
+	 <insert id="insertAns" parameterType="qvo">
+		insert into question (pno, parent, writer, content)
+		values (#{pno}, #{parent}, #{writer}, #{content})
+	</insert>
+	<select id="selectList" resultType="qvo">
+		select b.pno, a.qno, b.parent, writer, content, mod_at, m.nick_name, b.is_deleted,
+		 b.is_answer, m.member_img
 		from (
 			select qno from question
-		  	where pno = #{pno}
-		  	limit #{pgvo.pageStart}, #{pgvo.qty}
-		 ) a left join question b
+		  	where pno = #{pno} and parent = 0
+		  	order by qno desc
+		  	limit #{pgvo.pageStart}, #{pgvo.qty} 
+		 ) a left join question b 
 		 on a.qno = b.qno 
-		 inner join `member` m
-		 on b.writer = m.mno		
+		 left join `member` m
+		 on b.writer = m.mno
+		
+	</select>	
+	
+	 <select id="selectAns" resultType="qvo" parameterType="long">
+		select p.pno, p.qno, p.parent, writer, content, mod_at, m.nick_name, p.is_deleted,
+		 p.is_answer, m.member_img 
+		 from question p 
+		 left join `member` m
+		 on p.writer = m.mno
+		 where parent = #{qno}		
 	</select>
-	<select id="selectTotalCount" resultType="int">
-		select count(qno) from question where pno = #{pno}
+
+	<select id="selectTotalCount" resultType="int" parameterType="long">
+		select count(qno) from question where pno = #{pno} and parent =0
 	</select>
 	<update id="update" parameterType="qvo">
 		update question set
-		content = #{content}, mod_at = now()
+			content = #{content},
+			mod_at = now()
+			where qno = #{qno}
+			
+	</update>
+	<update id="updateIsDeleted" parameterType="long">
+		update question set
+		is_deleted = '1'
 		where qno = #{qno}
 	</update>
-	<delete id="delete" parameterType="long">
-		delete from question where qno = #{qno}
-	</delete>
+	<update id="updateIsAnswer" parameterType="long">
+		update question set
+		is_answer = '1'
+		where qno = #{parent}
+	</update> 
+	
 </mapper>

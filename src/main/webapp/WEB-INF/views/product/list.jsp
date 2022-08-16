@@ -17,14 +17,14 @@
 		</div>
 		<div class="breadcrumbs-info text-center">
 			<ul class="ps-0">
-				<li><a href="home-shop-1.html">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="/product/list">All</a></li>
-				<c:if test="${pgn.pgvo.type eq 's'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Sneakers</a></li></c:if>
-				<c:if test="${pgn.pgvo.type eq 'a'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Sandals</a></li></c:if>
-				<c:if test="${pgn.pgvo.type eq 'i'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Slippers</a></li></c:if>
-				<c:if test="${pgn.pgvo.type eq 'l'}"><li><a href="/product/list?protype=${pgn.pgvo.type}">Loafers</a></li></c:if>
-				<c:if test="${pgn.pgvo.type eq 'f'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Flat</a></li></c:if>
-				<c:if test="${pgn.pgvo.type eq 'b'}"><li><a href="/product/list?type=${pgn.pgvo.type}">Boots</a></li></c:if>
+				<c:if test="${pgn.ppgvo.type eq 's'}"><li><a href="/product/list?type=${pgn.ppgvo.type}">Sneakers</a></li></c:if>
+				<c:if test="${pgn.ppgvo.type eq 'a'}"><li><a href="/product/list?type=${pgn.ppgvo.type}">Sandals</a></li></c:if>
+				<c:if test="${pgn.ppgvo.type eq 'i'}"><li><a href="/product/list?type=${pgn.ppgvo.type}">Slippers</a></li></c:if>
+				<c:if test="${pgn.ppgvo.type eq 'l'}"><li><a href="/product/list?type=${pgn.ppgvo.type}">Loafers</a></li></c:if>
+				<c:if test="${pgn.ppgvo.type eq 'f'}"><li><a href="/product/list?type=${pgn.ppgvo.type}">Flat</a></li></c:if>
+				<c:if test="${pgn.ppgvo.type eq 'b'}"><li><a href="/product/list?type=${pgn.ppgvo.type}">Boots</a></li></c:if>
 			</ul>
 		</div>
 
@@ -43,17 +43,17 @@
                                     <div class="col-auto  my-md-0">
                                         <select class="w-auto d-inline-block form-select" name="orderBy">
                                             <option value="reg">선택</option>
-                                            <option value="reg" ${pgn.pgvo.orderBy eq 'reg' ? 'selected':'' }>등록순</option>
-                                            <option value="end" ${pgn.pgvo.orderBy eq 'end' ? 'selected':'' }>마감순</option>
-                                            <option value="highestUp" ${pgn.pgvo.orderBy eq 'highestUp' ? 'selected':'' }>현재가격순↑</option>
-                                            <option value="highestDown" ${pgn.pgvo.orderBy eq 'highestDown' ? 'selected':'' }>현재가격순↓</option>
-                                            <option value="reserveUp" ${pgn.pgvo.orderBy eq 'reserveUp' ? 'selected':'' }>시작가순↑</option>
-                                            <option value="reserveDown" ${pgn.pgvo.orderBy eq 'reserveDown' ? 'selected':'' }>시작가순↓</option>
+                                            <option value="reg" ${pgn.ppgvo.orderBy eq 'reg' ? 'selected':'' }>등록순</option>
+                                            <option value="end" ${pgn.ppgvo.orderBy eq 'end' ? 'selected':'' }>마감순</option>
+                                            <option value="highestUp" ${pgn.ppgvo.orderBy eq 'highestUp' ? 'selected':'' }>현재가격순↑</option>
+                                            <option value="highestDown" ${pgn.ppgvo.orderBy eq 'highestDown' ? 'selected':'' }>현재가격순↓</option>
+                                            <option value="reserveUp" ${pgn.ppgvo.orderBy eq 'reserveUp' ? 'selected':'' }>시작가순↑</option>
+                                            <option value="reserveDown" ${pgn.ppgvo.orderBy eq 'reserveDown' ? 'selected':'' }>시작가순↓</option>
                                         </select>
                                     </div>
 							<div class="search-wrapper">
 								<input type="text" name="kw"
-									class="search-field border-start rounded" value=${pgn.pgvo.kw }>
+									class="search-field border-start rounded" value=${pgn.ppgvo.kw }>
 							</div>
 							<button type="submit" class="search-submit"
 								style="min-width: auto;">
@@ -126,13 +126,13 @@
 							<div class="col-sm-6 col-lg-3 mt-1-9">
 								<div class="product-grid-four">
 									<div class="product-img rounded-3">
-										<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">
+										<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.ppgvo.pageNo }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}">
 											<img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="...">
 										</a>
 									</div>
 									<div class="ms-2">
 										<h3 class="h6">
-											<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">${pvo.pname }</a>
+											<a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.ppgvo.pageNo }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}">${pvo.pname }</a>
 										</h3>
 										<div>
 											<span class="badge bg-secondary">시작가</span>
@@ -157,17 +157,17 @@
 				<ul class="ps-0">
 					<c:if test="${pgn.prev }">
 						<li><a
-							href="/product/list?pageNo=${pgn.startPage-1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}"><i
+							href="/product/list?pageNo=${pgn.startPage-1 }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}&orderBy=${pgn.ppgvo.orderBy}"><i
 								class="fas fa-long-arrow-alt-left me-1 d-none d-sm-inline-block"></i>
 								Prev</a></li>
 					</c:if>
 					<c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
-						<li class="${pgn.pgvo.pageNo == i ? 'active':'' }"><a
-							href="/product/list?pageNo=${i }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">${i }</a></li>
+						<li class="${pgn.ppgvo.pageNo == i ? 'active':'' }"><a
+							href="/product/list?pageNo=${i }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}&orderBy=${pgn.ppgvo.orderBy}">${i }</a></li>
 					</c:forEach>
 					<c:if test="${pgn.next }">
 						<li><a
-							href="/product/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.pgvo.qty}&type=${pgn.pgvo.type}&kw=${pgn.pgvo.kw}">Next
+							href="/product/list?pageNo=${pgn.endPage + 1 }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}&orderBy=${pgn.ppgvo.orderBy}">Next
 								<i
 								class="fas fa-long-arrow-alt-right ms-1 d-none d-sm-inline-block"></i>
 						</a></li>

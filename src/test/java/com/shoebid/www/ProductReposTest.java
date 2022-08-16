@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.shoebid.www.domain.PagingVO;
+import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.ProductDAO;
 
@@ -28,16 +29,16 @@ public class ProductReposTest {
 	@Test
 	public void insertProductTest() throws Exception{
 		int isOk= 1;
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 100; i++) {
 			
-			 isOk *= pdao.insert(new ProductVO("cate2", "pname1","description",
-					1L,"img",1000L,"2022-08-08 23:53:00"));
+			 isOk *= pdao.insert(new ProductVO("sneakers", "pname1","description",
+					1L,"img",1000L,"2022-08-16 23:53:00"));
 		}
 		log.info(">>>> insertTest-{}",isOk>0? "ok": "fail");
 	}
 	@Test
 	public void ListProductTest() throws Exception{
-		List<ProductVO> list = pdao.selectList(new PagingVO());
+		List<ProductVO> list = pdao.selectList(new ProductPagingVO());
 		for (ProductVO pvo : list) {
 			log.info("{}",pvo);
 		}

@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.shoebid.www.domain.ImageFileVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
+import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.BidDAO;
 import com.shoebid.www.repository.ImageFileDAO;
@@ -46,9 +47,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
-	public List<ProductVO> getList(PagingVO pgvo) {
+	public List<ProductVO> getList(ProductPagingVO ppgvo) {
 		getAllList();
-		return pdao.selectList(pgvo);
+		return pdao.selectList(ppgvo);
 	}
  
 	@Transactional(isolation = Isolation.READ_COMMITTED)
@@ -87,8 +88,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int getTotalCount(PagingVO pgvo) {
-		return pdao.selectTotalCount(pgvo);
+	public int getTotalCount(ProductPagingVO ppgvo) {
+		return pdao.selectTotalCount(ppgvo);
 	}
 
 	@Transactional

@@ -30,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.shoebid.www.domain.ImageFileVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
+import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.handler.ImageFileHandler;
 import com.shoebid.www.handler.PagingHandler;
@@ -47,10 +48,10 @@ public class ProductController {
 	private ImageFileHandler fhd;
 	
 	@GetMapping("/list")
-	public void list(Model model, PagingVO pgvo) {
-		model.addAttribute("list", psv.getList(pgvo));
-		int totalCount = psv.getTotalCount(pgvo);
-		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
+	public void list(Model model, ProductPagingVO ppgvo) {
+		model.addAttribute("list", psv.getList(ppgvo));
+		int totalCount = psv.getTotalCount(ppgvo);
+		model.addAttribute("pgn",new PagingHandler(ppgvo, totalCount));
 	}
 	@GetMapping("/sellList/{mno}")
 	public String sellList(Model model,   PagingVO pgvo, @PathVariable("mno") long mno){
