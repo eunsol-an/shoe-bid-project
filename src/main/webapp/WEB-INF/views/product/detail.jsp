@@ -206,7 +206,7 @@
 							<div class="col-lg-7">
 								<c:if test="${ses.mno eq pvo.writer }">
 									<a
-										href="/product/modify?pno=${pvo.pno }&pageNo=${ppgvo.pageNo }&qty=${ppgvo.qty}&type=${ppgvo.type}&kw=${ppgvo.kw}&${ppgvo.orderBy}"
+										href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}&orderBy=${pgvo.orderBy}&mno=0"
 										id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0"
 										style="display: none;">수정</a>
 									<button class="butn-style2 me-3 mb-2 mb-md-0 modBtnFake" id="">수정</button>
@@ -216,11 +216,11 @@
 									<form action="" method="post" id="productRmForm"
 										style="display: none;">
 										<input type="hidden" id="pno" value="" name="pno"> <input
-											type="hidden" value="${ppgvo.pageNo }" name="pageNo">
-										<input type="hidden" value="${ppgvo.qty }" name="qty">
-										<input type="hidden" value="${ppgvo.type }" name="type">
-										<input type="hidden" value="${ppgvo.kw }" name="kw">
-										<input type="hidden" value="${ppgvo.orderBy }" name="orderBy">
+											type="hidden" value="${pgvo.pageNo }" name="pageNo">
+										<input type="hidden" value="${pgvo.qty }" name="qty">
+										<input type="hidden" value="${pgvo.type }" name="type">
+										<input type="hidden" value="${pgvo.kw }" name="kw">
+										<input type="hidden" value="${pgvo.orderBy }" name="orderBy">
 									</form>
 								</c:if>
 								<!-- static Modal -->

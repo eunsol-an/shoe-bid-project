@@ -93,16 +93,16 @@ public class ProductController {
 	
 	@GetMapping({"/detail", "/modify"}) 
 	public void detail(@RequestParam("pno") long pno, @RequestParam(name="mno", required = false) long mno, Model model,
-			@ModelAttribute("pgvo") ProductPagingVO ppgvo) {
+			@ModelAttribute("pgvo") ProductPagingVO pgvo) {
 		model.addAttribute("pdto", psv.getDetail(pno));
 		log.info(" >>> productCt {} ", itsv.getItCheck(pno, mno));
 			model.addAttribute("itck", itsv.getItCheck(pno, mno));
 	}
+
 	
 	@PostMapping("/modify")
 	public String modify(ProductVO pvo,	@RequestParam(name="fileAttached", required = false) MultipartFile[] files,
-			RedirectAttributes rttr,
-			ProductPagingVO ppgvo) {
+			RedirectAttributes rttr, ProductPagingVO ppgvo) {
 		Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -119,15 +119,19 @@ public class ProductController {
 		rttr.addAttribute("qty", ppgvo.getQty());
 		rttr.addAttribute("type", ppgvo.getType());
 		rttr.addAttribute("kw", ppgvo.getKw());
+		rttr.addAttribute("orderBy", ppgvo.getOrderBy());
+		rttr.addAttribute("mno", 0);
 		return "redirect:/product/detail?pno="+pvo.getPno();
 	}
 	@PostMapping("/remove")
 	public String remove(@RequestParam("pno") long pno, RedirectAttributes rttr, ProductPagingVO ppgvo) {
+		log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>댜출");
 		int isUp = psv.remove(pno);
 		rttr.addAttribute("pageNo", ppgvo.getPageNo());
 		rttr.addAttribute("qty", ppgvo.getQty());
 		rttr.addAttribute("type", ppgvo.getQty());
 		rttr.addAttribute("kw", ppgvo.getQty());
+		rttr.addAttribute("orderBy", ppgvo.getOrderBy());
 		return "redirect:/product/list";
 	}
 
