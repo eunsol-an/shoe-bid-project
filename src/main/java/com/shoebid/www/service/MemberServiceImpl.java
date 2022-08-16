@@ -118,7 +118,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberVO chooseNickName(long mno) {
+	public String chooseNickName(long mno) {
 		return mdao.chooseNickName(mno);
 	}
 	
