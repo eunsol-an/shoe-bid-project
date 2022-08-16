@@ -44,6 +44,11 @@
 		from report
 		where mno = #{mno}
 	</select>
+	<select id="findId" resultType="String" parameterType="String">
+		select id
+		from member
+		where email = #{email}
+	</select>
 
 	<update id="update" parameterType="mvo">
 		update member set

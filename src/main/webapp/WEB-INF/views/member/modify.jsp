@@ -71,6 +71,31 @@
 							</div>
 
 						</div>
+						<input type="hidden" value="${mdto.mvo.grade }" name="grade">
+						<input type="hidden" value="${mdto.mvo.reportCount }" name="reportCount">
+						<c:if test="${ses.grade == 99 }">
+						<div class="row">
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+									<label>등급</label> <input type="text" class="form-control"
+										name="grade" value="${mdto.mvo.grade }">
+								</div>
+
+							</div>
+
+							<div class="col-sm-6">
+
+								<div class="form-group">
+									<label>신고횟수</label> <input type="text" class="form-control"
+										name="reportCount" value="${mdto.mvo.reportCount }">
+								</div>
+
+							</div>
+
+						</div>
+						</c:if>
 
 						<div class="row">
 
@@ -97,7 +122,7 @@
 						</div>
 
 						<button type="submit" class="butn-style2 mt-4" id="regBtn" disabled="disabled">회원정보수정</button>
-
+						
 					</form>
 
 				</div>

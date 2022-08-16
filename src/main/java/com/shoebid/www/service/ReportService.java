@@ -8,8 +8,10 @@ import com.shoebid.www.domain.ReportVO;
 
 public interface ReportService {
 	int register(ReportVO rpvo);
-	List<ReportVO> getList(PagingVO pgvo);
+	List<ReportVO> getList(long mno, PagingVO pgvo);
+	List<ReportVO> getAllList(long mno, PagingVO pgvo);
 	ReportVO getDetail(long rpno);
 	int remove(long rpno);
-	int getTotalCount();
+	int getTotalCount(long mno);
+	int getTotalAllCount(long mno);
 }

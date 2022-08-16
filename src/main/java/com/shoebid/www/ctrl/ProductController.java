@@ -28,12 +28,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shoebid.www.domain.ImageFileVO;
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.handler.ImageFileHandler;
 import com.shoebid.www.handler.PagingHandler;
+import com.shoebid.www.service.InterestService;
 import com.shoebid.www.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +45,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController {
 	@Inject
 	private ProductService psv;
+	
+	@Inject
+	private InterestService itsv;
 	
 	@Inject
 	private ImageFileHandler fhd;
@@ -87,9 +92,11 @@ public class ProductController {
 	}
 	
 	@GetMapping({"/detail", "/modify"}) 
-	public void detail(@RequestParam("pno") long pno, Model model,
+	public void detail(@RequestParam("pno") long pno, @RequestParam(name="mno", required = false) long mno, Model model,
 			@ModelAttribute("pgvo") PagingVO pgvo) {
 		model.addAttribute("pdto", psv.getDetail(pno));
+		log.info(" >>> productCt {} ", itsv.getItCheck(pno, mno));
+			model.addAttribute("itck", itsv.getItCheck(pno, mno));
 	}
 	
 	@PostMapping("/modify")
