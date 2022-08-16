@@ -13,46 +13,13 @@
 		<div class="row justify-content-center">
 
 			<!-- left panel -->
-			<div class="col-lg-3 col-sm-9 mb-2-3 mb-lg-0">
-
-				<div class="account-pannel rounded">
-
-					<div class="p-4">
-
-						<div class="text-center">
-							<div class="pb-3">
-								<img class="img-fluid rounded-circle img-thumbnail"
-									src="img/avatar/t-3.jpg" alt="...">
-							</div>
-							<h6 class="mb-0 display-28">Peter Parker</h6>
-							<small>Joined February 06, 2017</small>
-							<div class="reward-points">
-								<i class="ti-star text-primary pe-1"></i> Points: 7386
-							</div>
-						</div>
-					</div>
-
-					<div class="list-group">
-						<a class="list-group-items" href="account-orders.html"><i
-							class="ti-bag pe-2"></i>Orders<span class="badge badge-pill">6</span></a>
-						<a class="list-group-items" href="account-profile.html"><i
-							class="ti-user pe-2"></i>Profile</a> <a class="list-group-items"
-							href="account-address.html"><i class="ti-location-pin pe-2"></i>Addresses</a>
-						<a class="list-group-items active" href="account-wishlist.html"><i
-							class="ti-heart pe-2"></i>입찰/낙찰내역<span class="badge badge-pill">3</span></a>
-						<a class="list-group-items" href="account-tickets.html"><i
-							class="ti-tag pe-2"></i>My Tickets<span class="badge badge-pill">4</span></a>
-					</div>
-
-				</div>
-
-			</div>
+			<jsp:include page="../common/mypageMenu.jsp"/>
 			<!-- end left panel -->
 
 			<!-- right panel -->
-			<div class="col-lg-9">
+			<div class="col-lg-10">
 
-				<div>
+				<div class="common-block border-0">
 
 					<div class="inner-title">
 						<h4 class="mb-0">입찰/낙찰 내역</h4>
