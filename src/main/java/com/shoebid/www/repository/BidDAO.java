@@ -16,6 +16,6 @@ public interface BidDAO {
 	int selectMaxBid(ProductVO pvo);
 	int updateBidStatusFail(long pno);
 	int updateBidStatusSuccess(long bno);
-	
+	String selectBuyerNick(long pno);
 	
 }

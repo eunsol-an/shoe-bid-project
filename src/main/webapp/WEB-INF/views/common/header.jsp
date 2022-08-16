@@ -37,6 +37,9 @@
 
     <!-- custom css -->
     <link href="/resources/bootstrap/css/custom.css" rel="stylesheet">
+    
+    <!-- star css -->
+    <link href="/resources/bootstrap/css/star.css" rel="stylesheet">
 
 </head>
 

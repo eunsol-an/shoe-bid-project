@@ -63,7 +63,6 @@ CREATE TABLE image_file (
 	image_size bigint NOT NULL,
 	pno	bigint default NULL,
 	mno	bigint default NULL,
-	rno	bigint default null,
 	reg_at datetime default current_timestamp,
 	primary key(uuid)
 ) default CHARSET=utf8mb4;
@@ -125,10 +124,10 @@ DROP TABLE IF EXISTS review;
 CREATE TABLE review (
 	rvno bigint	NOT NULL auto_increment,
 	pno	bigint NOT NULL,
-	mno	bigint NOT NULL,
+	send_mno bigint NOT NULL,
+	recv_mno bigint NOT NULL,
 	content text NOT NULL,
 	score int NOT NULL,
-	review_img VARCHAR(3000) NOT NULL,
 	reg_at datetime	default current_timestamp,
 	primary key(rvno)
 ) default CHARSET=utf8mb4;

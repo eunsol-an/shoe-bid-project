@@ -27,7 +27,7 @@
 		values (#{buyer}, #{pno}, #{bidPrice}, #{bidStatus})
 	</insert>
 	<select id="selectList" resultType="bvo">
-		select b.bno, b.buyer, b.pno, p.pname, p.product_img, b.bid_price, b.bid_status, b.bid_at
+		select b.bno, b.buyer, b.pno, p.pname, p.writer, p.product_img, b.bid_price, b.bid_status, b.bid_at
 		from (
 			select bno from buy_bid where bno > 0
 			<include refid="status" />
@@ -44,6 +44,12 @@
 	</select>
 	<select id="selectMaxBid" parameterType="pvo" resultType="int">
 		select bno from buy_bid where bid_price = #{highestPrice} and pno = #{pno}
+	</select>
+	<select id="selectBuyerNick" parameterType="long" resultType="string">
+		select m.nick_name
+		from buy_bid b inner join member m
+		on b.buyer = m.mno
+		where bid_status = 1 and pno = #{pno}
 	</select>
 	<update id="updateBidStatusSuccess" parameterType="long">
 		update buy_bid set bid_status = 1

@@ -10,4 +10,5 @@ public interface BidService {
 	int register(BidVO bvo); // 입찰하기
 	List<BidVO> getList(long mno, PagingVO pgvo);
 	int getTotalCount(long mno, PagingVO pgvo);
+	String getBuyerNick(long pno);
 }

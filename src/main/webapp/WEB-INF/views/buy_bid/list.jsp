@@ -100,7 +100,7 @@
 												<div>경매진행중</div>
 											</c:if> <c:if test="${bvo.bidStatus eq 1 }">
 												<div>낙찰완료</div>
-												<a href="#" class="butn-style2 small text-nowrap">거래후기 남기기</a>
+												<a href="/review/register?pno=${bvo.pno }&mno=${bvo.writer }" class="butn-style2 small text-nowrap">거래후기 남기기</a>
 											</c:if> <c:if test="${bvo.bidStatus eq 2 }">
 												<div>낙찰실패</div>
 											</c:if></td>

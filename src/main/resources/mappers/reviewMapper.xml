@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoebid.www.repository.ReviewDAO">
+	<sql id="sendOrRecv">
+		<if test="pgvo.type != null">
+		<trim prefix="and (" suffix=")" prefixOverrides="or">
+			<foreach collection="pgvo.typeToArray" item="type">
+			<trim prefix="or">
+				<choose>
+					<when test="type == 's'.toString()">
+						send_mno = #{mno}
+					</when>
+					<when test="type == 'r'.toString()">
+						recv_mno = #{mno}
+					</when>
+				</choose>
+			</trim>
+			</foreach>
+		</trim>
+		</if>
+	</sql>
+	<insert id="insert" parameterType="rvvo">
+		insert into review 
+		(pno, send_mno, recv_mno, content, score) 
+		values (#{pno}, #{sendMno}, #{recvMno}, #{content}, #{score})
+	</insert>
+	<select id="selectList" resultType="rvvo">
+		select a.rvno, b.pno, p.pname
+		, send_mno, m.nick_name as send_nick, recv_mno, m2.nick_name as recv_nick
+		, content, score, b.reg_at
+		from (
+			select rvno from review where rvno > 0
+			<include refid="sendOrRecv" />
+			order by rvno desc
+			limit #{pgvo.pageStart}, #{pgvo.qty}
+		) a left join review b
+		on a.rvno = b.rvno
+		left join product p
+		on b.pno = p.pno
+		left join member m 
+		on b.send_mno = m.mno
+		left join member m2
+		on b.recv_mno = m2.mno
+	</select>
+	<select id="selectTotalCount" parameterType="long" resultType="int">
+		select count(rvno) from review where rvno > 0
+		<include refid="sendOrRecv" />
+	</select>
+	<select id="selectDetail" parameterType="long" resultType="rvvo">
+		select rvno, pno
+		, send_mno, m.nick_name as send_nick, recv_mno, m2.nick_name as recv_nick
+		, content, score, r.reg_at
+		from review r
+		left join member m 
+		on r.send_mno = m.mno
+		left join member m2
+		on r.recv_mno = m2.mno
+		where rvno = #{rvno}
+	</select>
+	<update id="update" parameterType="rvvo">
+		update review set 
+		content = #{content}, score = #{score}
+		where rvno = #{rvno}
+	</update>
+</mapper>

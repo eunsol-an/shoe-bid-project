@@ -21,6 +21,7 @@ public class BidVO {
 	private String nickName;
 	private String pname;
 	private String productImg;
+	private String writer;
 	
 	public BidVO() {}
 

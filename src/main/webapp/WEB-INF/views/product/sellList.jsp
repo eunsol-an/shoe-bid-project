@@ -104,7 +104,7 @@
 												<div>경매진행중</div>
 											</c:if> <c:if test="${pvo.status eq 1 }">
 												<div>낙찰</div>
-												<a href="#" class="butn-style2 small text-nowrap">거래후기 남기기</a>
+												<a href="/review/register?pno=${pvo.pno }&mno=${pvo.buyerMno }" class="butn-style2 small text-nowrap">거래후기 남기기</a>
 											</c:if> <c:if test="${pvo.status eq 2 }">
 												<div>유찰</div>
 											</c:if></td>
