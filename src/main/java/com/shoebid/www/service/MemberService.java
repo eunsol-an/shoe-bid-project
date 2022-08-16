@@ -16,6 +16,12 @@ public interface MemberService {
 	int getTotalCount();
 	int idDupleCheck(String id);
 	int nickNameDupleCheck(String nickName);
+	int emailDupleCheck(String email);
 	int removeFile(String uuid);
 	List<MemberVO> findId(String email);
+	MemberVO searchPwd(MemberVO mvo);
+	int modifyPwd(String id, String email, String pwd);
+	int modifyPwd(MemberVO mvo);
+	MemberVO chooseNickName(long mno);
+	
 }

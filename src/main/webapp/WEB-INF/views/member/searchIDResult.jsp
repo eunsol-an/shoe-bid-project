@@ -30,7 +30,8 @@
 								<p class="mb-0">회원님의 아이디는 ${fn:substring(id, 0, length-3) }
 								<c:forEach begin="${fn:length(id)-2 }" end="${fn:length(id) }" step="1">
 								*
-								</c:forEach> 입니다</p>
+								</c:forEach> 입니다<br>
+								전체아이디는 관리자에게 문의해 주세요</p>
 						</c:if>
 					</c:forEach>
 						</c:otherwise>

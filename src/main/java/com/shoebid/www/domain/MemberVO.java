@@ -75,6 +75,12 @@ public class MemberVO {
 		this.mno = mno;
 		this.delAt = delAt;
 	}
+	public MemberVO(String id, String email, String pwd) {
+		this.id = id;
+		this.email = email;
+		this.pwd = pwd;
+	}
+	
 	
 	
 }

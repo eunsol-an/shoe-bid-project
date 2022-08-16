@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,6 +86,11 @@ public class MemberServiceImpl implements MemberService {
 	public int nickNameDupleCheck(String nickName) {
 		return mdao.selectNickName(nickName);
 	}
+	
+	@Override
+	public int emailDupleCheck(String email) {
+		return mdao.selectEmail(email);
+	}
 
 	@Override
 	public int removeFile(String uuid) {
@@ -94,6 +100,26 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberVO> findId(String email) {
 		return mdao.findId(email);
+	}
+
+	@Override
+	public MemberVO searchPwd(MemberVO mvo) {
+		return mdao.searchPwd(mvo);
+	}
+
+	@Override
+	public int modifyPwd(String id, String email, String pwd) {
+		return mdao.modifyPwd(id, email, pwd);
+	}
+
+	@Override
+	public int modifyPwd(MemberVO mvo) {
+		return mdao.modifyPwd(mvo.getId(), mvo.getEmail(), mvo.getPwd());
+	}
+
+	@Override
+	public MemberVO chooseNickName(long mno) {
+		return mdao.chooseNickName(mno);
 	}
 	
 	
