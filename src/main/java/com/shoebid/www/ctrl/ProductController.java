@@ -93,7 +93,7 @@ public class ProductController {
 	
 	@GetMapping({"/detail", "/modify"}) 
 	public void detail(@RequestParam("pno") long pno, @RequestParam(name="mno", required = false) long mno, Model model,
-			@ModelAttribute("pgvo") PagingVO pgvo) {
+			@ModelAttribute("pgvo") ProductPagingVO ppgvo) {
 		model.addAttribute("pdto", psv.getDetail(pno));
 		log.info(" >>> productCt {} ", itsv.getItCheck(pno, mno));
 			model.addAttribute("itck", itsv.getItCheck(pno, mno));
@@ -102,7 +102,7 @@ public class ProductController {
 	@PostMapping("/modify")
 	public String modify(ProductVO pvo,	@RequestParam(name="fileAttached", required = false) MultipartFile[] files,
 			RedirectAttributes rttr,
-			PagingVO pgvo) {
+			ProductPagingVO ppgvo) {
 		Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -115,19 +115,19 @@ public class ProductController {
 			log.info(">>>>수정파일 있을경우들어옴");
 		}
 		int isUp = psv.modify(new ProductDTO(pvo, fileList));
-		rttr.addAttribute("pageNo", pgvo.getPageNo());
-		rttr.addAttribute("qty", pgvo.getQty());
-		rttr.addAttribute("type", pgvo.getType());
-		rttr.addAttribute("kw", pgvo.getKw());
+		rttr.addAttribute("pageNo", ppgvo.getPageNo());
+		rttr.addAttribute("qty", ppgvo.getQty());
+		rttr.addAttribute("type", ppgvo.getType());
+		rttr.addAttribute("kw", ppgvo.getKw());
 		return "redirect:/product/detail?pno="+pvo.getPno();
 	}
 	@PostMapping("/remove")
-	public String remove(@RequestParam("pno") long pno, RedirectAttributes rttr, PagingVO pgvo) {
+	public String remove(@RequestParam("pno") long pno, RedirectAttributes rttr, ProductPagingVO ppgvo) {
 		int isUp = psv.remove(pno);
-		rttr.addAttribute("pageNo", pgvo.getPageNo());
-		rttr.addAttribute("qty", pgvo.getQty());
-		rttr.addAttribute("type", pgvo.getQty());
-		rttr.addAttribute("kw", pgvo.getQty());
+		rttr.addAttribute("pageNo", ppgvo.getPageNo());
+		rttr.addAttribute("qty", ppgvo.getQty());
+		rttr.addAttribute("type", ppgvo.getQty());
+		rttr.addAttribute("kw", ppgvo.getQty());
 		return "redirect:/product/list";
 	}
 

@@ -21,7 +21,7 @@
 			<ul class="ps-0">
 				<li><a href="/">Home</a></li>
 				<li><a id="list"
-					href="/product/list?pageNo=${ppgvo.pageNo }&qty=${ppgvo.qty}&type=${ppgvo.type}&kw=${ppgvo.kw}">List</a></li>
+					href="/product/list?pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}&orderBy=${pgvo.orderBy}">List</a></li>
 				<li><a href="#">Shop Product Detail</a></li>
 			</ul>
 		</div>

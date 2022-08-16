@@ -85,20 +85,16 @@
             <div class="col-sm-6 col-lg-3 mt-1-9">
                 <div class="product-grid-four">
                     <div class="product-img rounded-3">
-                    <c:if test="${ses ne null }">
-                        <a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno }"><img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
-                        </c:if>
-                    <c:if test="${ses eq null }">
-                        <a href="/product/detail?pno=${pvo.pno }&mno=0"><img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
-                        </c:if>
+                    
+                        <a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno :'0'} "><img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
+                        
+                    
                     </div>
                     <div class="ms-2">
-                     <c:if test="${ses ne null }">
-	                    <h3 class="h6"><a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno }">${pvo.pname }</a></h3>
-	                    </c:if>
-                     <c:if test="${ses eq null }">
-	                    <h3 class="h6"><a href="/product/detail?pno=${pvo.pno }&mno=0">${pvo.pname }</a></h3>
-	                    </c:if>
+                     
+	                    <h3 class="h6"><a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno :'0'}">${pvo.pname }</a></h3>
+	             
+                    
 	                    <div>
 							<span class="badge bg-secondary">시작가</span>
 							<span class="display-29 text-muted text-decoration-line-through"><fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span>
