@@ -22,6 +22,6 @@ public interface MemberService {
 	MemberVO searchPwd(MemberVO mvo);
 	int modifyPwd(String id, String email, String pwd);
 	int modifyPwd(MemberVO mvo);
-	MemberVO chooseNickName(long mno);
+	String chooseNickName(long mno);
 	
 }
