@@ -102,13 +102,13 @@ document.getElementById('flexCheckDefault').addEventListener('click', (e) => {
   }
 });
 
-document.getElementById('bidModal').addEventListener('click', (e) => {
-  let reservePrice =stringNumberToInt(document.getElementById("reservePriceVal").innerText);
-  let maxPrice =stringNumberToInt(document.getElementById("maxPrice").innerText);
- 
-    document.getElementById("bidPriceVal").value = maxPrice > 0? maxPrice+parseInt(1000) : reservePrice+parseInt(1000)
-
-});
+if(document.getElementById('bidModal') != null) {
+  document.getElementById('bidModal').addEventListener('click', (e) => {
+    let reservePrice =stringNumberToInt(document.getElementById("reservePriceVal").innerText);
+    let maxPrice =stringNumberToInt(document.getElementById("maxPrice").innerText);
+      document.getElementById("bidPriceVal").value = maxPrice > 0? maxPrice+parseInt(1000) : reservePrice+parseInt(1000)
+  });
+}
 
 document.getElementById('addBtn').addEventListener('click', (e) => {
   let bidPrice = stringNumberToInt(document.getElementById("bidPriceVal").value);
@@ -117,8 +117,8 @@ document.getElementById('addBtn').addEventListener('click', (e) => {
   console.log(bidPrice)
   console.log(reservePrice)
   console.log(maxPrice)
-if(bidPrice > reservePrice+parseInt(1000)){
-  if(bidPrice > maxPrice+parseInt(1000)){
+if(bidPrice > reservePrice+parseInt(999)){
+  if(bidPrice > maxPrice+parseInt(999)){
     document.getElementById('bidAddForm').submit();
   }else{
     document.getElementById("errorMsg").innerText = maxPrice+parseInt(1000)+" 보다 높은 입찰가를 입력해주세요"
