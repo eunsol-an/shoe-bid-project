@@ -48,7 +48,7 @@
 					</button>
 					</c:if>
 					<button type="button" class="butn-style2 mt-4"
-						onclick="location.href='/member/searchpwd';">비밀번호찾기</button>
+						onclick="location.href='/member/searchPwd';">비밀번호찾기</button>
 					<button type="button" class="butn-style2 mt-4"
 						onclick="location.href='/';">취소</button>
 
