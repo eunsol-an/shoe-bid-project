@@ -51,6 +51,7 @@
 									<th>입찰내용</th>
 									<th>입찰일시</th>
 									<th>상태</th>
+									<th>판매자</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -71,6 +72,12 @@
 											</c:if> <c:if test="${bvo.bidStatus eq 2 }">
 												<div>낙찰실패</div>
 											</c:if></td>
+										<td> <!-- 여기부터 수정 -->
+											<div>${bvo.nickName }</div>
+											<c:if test="${bvo.bidStatus eq 1}">
+											<a href="/chat/list?mno=${bvo.writer }" class="butn-style2 small text-nowrap">채팅하기</a>
+											</c:if>
+											</td>
 									</tr>
 								</c:forEach>
 							</tbody>
