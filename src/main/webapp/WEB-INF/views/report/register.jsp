@@ -4,19 +4,7 @@
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
-<section class="page-title-section bg-img cover-background" data-background="img/bg/page-title.jpg">
-	<div class="container">
-		<div class="title-info">
-			<h1>REPORT</h1>
-		</div>
-		<div class="breadcrumbs-info">
-			<ul class="ps-0">
-				<li><a href="/">Home</a></li>
-				<li><a href="#">신고하기</a></li>
-			</ul>
-		</div>
-	</div>
-</section>
+
 
 <section>
 	<div class="container">
@@ -46,7 +34,7 @@
 								<input type="hidden" name="targetMno" value=${mvo.mno }>
 								<div class="form-group">
 									<label>제목</label> 
-									<input type="text" class="form-control" name="reportTitle" placeholder="reportTitle">
+									<input type="text" class="form-control" name="reportTitle" placeholder="제목">
 								</div>
 							</div>
 							<div class="col-12 mb-2">

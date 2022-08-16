@@ -54,7 +54,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${list }" var="rpvo">
-				<%-- <c:if test="${ses.mno eq rpvo.mno || ses.grade == 99}"> --%>
+				<%-- <c:if test="${ses.mno eq rpvo.mno}"> --%>
 				<tr>
 					<td>${rpvo.rpno }</td>
 					<td>${rpvo.nickName }</td>
@@ -63,7 +63,7 @@
 						href="/report/detail?rpno=${rpvo.rpno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}">${rpvo.reportTitle}</a></td>
 					<td>${rpvo.regAt}</td>
 				</tr>
-				<%-- </c:if> --%>
+				<%-- </c:if>  --%>
 				</c:forEach>
 			</tbody>
 		</table>
