@@ -9,6 +9,8 @@ import com.shoebid.www.domain.QuestionVO;
 import com.shoebid.www.handler.PagingHandler;
 import com.shoebid.www.repository.QuestionDAO;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class QuestionServiceImpl implements QuestionService {
 	
@@ -17,9 +19,16 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public int post(QuestionVO qvo) {
+		log.info(">>>>>qvo.getIsAnswer() = {}",qvo.getParent());
+		int isUp = 0;
+		if(qvo.getParent()>0) {
+			 isUp = qdao.updateIsAnswer(qvo.getParent());
+			 return qdao.insertAns(qvo);
+		}
 		return qdao.insert(qvo);
 	}
-
+	
+	
 	@Override
 	public PagingHandler spread(long pno, PagingVO pgvo) {
 		return new PagingHandler(qdao.selectList(pno, pgvo),
@@ -31,8 +40,17 @@ public class QuestionServiceImpl implements QuestionService {
 		return qdao.update(qvo);
 	}
 
+
+	
+
 	@Override
-	public int remove(long cno) {
-		return qdao.delete(cno);
+	public QuestionVO getSelectAns(long parent) {
+		return qdao.selectAns(parent);
+	}
+
+
+	@Override
+	public int modifyIsDeleted(long qno) {
+		return qdao.updateIsDeleted(qno);
 	}
 }

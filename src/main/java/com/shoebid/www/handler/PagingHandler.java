@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import com.shoebid.www.domain.QuestionVO;
 import com.shoebid.www.domain.PagingVO;
+import com.shoebid.www.domain.ProductPagingVO;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ public class PagingHandler {
 	
 	private int totalCount; 
 	private PagingVO pgvo; 
+	private ProductPagingVO ppgvo;
 	private List<QuestionVO> questionList;
 	
 	public PagingHandler(PagingVO pgvo, int totalCount) {
@@ -36,7 +38,21 @@ public class PagingHandler {
 		this.prev = startPage > 1;
 		this.next = endPage < realEndPage;
 	}
+	
+	public PagingHandler(ProductPagingVO ppgvo, int totalCount) {
+		this.ppgvo = ppgvo;
+		this.totalCount = totalCount;
 
+		this.endPage = (int) (Math.ceil(ppgvo.getPageNo() / (10 * 1.0))) * 10;
+		this.startPage = endPage -9;
+		int realEndPage = (int) (Math.ceil((totalCount * 1.0) / ppgvo.getQty()));
+		if (realEndPage < this.endPage) {
+			this.endPage = realEndPage;
+		}
+		this.prev = startPage > 1; 
+		this.next = endPage < realEndPage;
+	}
+	
 	public PagingHandler(List<QuestionVO> questionList,
 			PagingVO pgvo, int totalCount) {
 		this(pgvo, totalCount);

@@ -11,7 +11,9 @@
 <section class="page-title-section bg-img cover-background"
 	data-background="img/bg/page-title.jpg">
 	<div class="container">
-
+	<c:set var="pvo" value="${pdto.pvo }" />
+<span class="input-group-text" id="ses" style="display: none">${ses.mno }</span>
+<span class="input-group-text" id="pvoWriter" style="display: none">${pvo.writer }</span>
 		<div class="title-info">
 			<h1>Shop Product Detail</h1>
 		</div>
@@ -19,7 +21,7 @@
 			<ul class="ps-0">
 				<li><a href="/">Home</a></li>
 				<li><a id="list"
-					href="/product/list?pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}">List</a></li>
+					href="/product/list?pageNo=${ppgvo.pageNo }&qty=${ppgvo.qty}&type=${ppgvo.type}&kw=${ppgvo.kw}">List</a></li>
 				<li><a href="#">Shop Product Detail</a></li>
 			</ul>
 		</div>
@@ -49,7 +51,7 @@
 				</div>
 				<!-- product left end -->
 			</div>
-			<c:set var="pvo" value="${pdto.pvo }" />
+			
 			<div class="col-lg-7 ps-lg-2-3">
 
 				<div class="product-detail">
@@ -204,7 +206,7 @@
 							<div class="col-lg-7">
 								<c:if test="${ses.mno eq pvo.writer }">
 									<a
-										href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}"
+										href="/product/modify?pno=${pvo.pno }&pageNo=${ppgvo.pageNo }&qty=${ppgvo.qty}&type=${ppgvo.type}&kw=${ppgvo.kw}&${ppgvo.orderBy}"
 										id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0"
 										style="display: none;">수정</a>
 									<button class="butn-style2 me-3 mb-2 mb-md-0 modBtnFake" id="">수정</button>
@@ -214,10 +216,11 @@
 									<form action="" method="post" id="productRmForm"
 										style="display: none;">
 										<input type="hidden" id="pno" value="" name="pno"> <input
-											type="hidden" value="${pgvo.pageNo }" name="pageNo">
-										<input type="hidden" value="${pgvo.qty }" name="qty">
-										<input type="hidden" value="${pgvo.type }" name="type">
-										<input type="hidden" value="${pgvo.kw }" name="kw">
+											type="hidden" value="${ppgvo.pageNo }" name="pageNo">
+										<input type="hidden" value="${ppgvo.qty }" name="qty">
+										<input type="hidden" value="${ppgvo.type }" name="type">
+										<input type="hidden" value="${ppgvo.kw }" name="kw">
+										<input type="hidden" value="${ppgvo.orderBy }" name="orderBy">
 									</form>
 								</c:if>
 								<!-- static Modal -->
@@ -258,7 +261,7 @@
 					<div class="horizontaltab tab-style-two">
 						<ul class="resp-tabs-list hor_1 text-start">
 							<li><i class="ti-line-dashed d-md-block d-none"></i>Description</li>
-							<li><i class="ti-more d-md-block d-none"></i>Additional Info</li>
+							<li ><i class="ti-more d-md-block d-none" ></i>QnA<span id="qnaQty"></span></li>
 							<li><i class="ti-star d-md-block d-none"></i>Reviews (2)</li>
 						</ul>
 						<div class="resp-tabs-container hor_1">
@@ -269,59 +272,47 @@
 							</div>
 							<div>
 								<div class="row">
-									<div class="col-lg-6 mb-1-9 mb-lg-0">
+									<div class="col-lg-12 mb-1-9 mb-lg-0">
 
-										<h3 class="display-29">Information:</h3>
-										<ul class="primary-list mb-1-9">
-											<li><strong>Weight:</strong> 15 grams</li>
-											<li><strong>Dimensions:</strong> 8.03 x 1.27 x 2.54 Cm</li>
-											<li><strong>Size:</strong> 64 GB</li>
-											<li><strong>Color:</strong> White</li>
-											<li><strong>Guarantee:</strong> 5 Years</li>
-										</ul>
+									
+									<!-- form -->
+							<div class="col-lg-12 mb-1-9 mb-lg-0">
+                            <div class="common-block ">
+                            <div class="inner-title">
+                                <h4 class="mb-0">QnA</h4>
+                            </div>
+								<!-- <!— comment —> -->
+								  <form class="mb-5">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" name="writer"  value=${ses.mno } id="questionWriter">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mb-4">
+                                        <label>Message</label>
+                                        <div class="form-group mb-1">
+                                            <textarea rows="2" class="form-control" name="content" placeholder="Tell us a few words" id="questionText"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="butn-style2" id="questionSbmBtn">Send Message</button>
+                            </form>
+								<div class="comments-area mb-3" id="qnaZone"></div>
+								
+								<div class="text-center" style="visibility: hidden;"> 
+									<button type="button" data-page="1" id="moreBtn" class="btn btn-light">MORE +</button>
+								</div>
+								
+								</div>
+								<!-- <!— end comment—> -->
+								
+                            
+                        </div>
 
-										<p class="mb-0">Sed ut perspiciatis unde omnis iste natus
-											error sit voluptatem accusantium doloremque laudantium, totam
-											rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-											quasi architecto in ea voluptate velit.</p>
-
-									</div>
-									<div class="col-lg-6 ps-lg-1-9">
-
-										<div class="table-responsive">
-											<table class="table bordered">
-												<thead>
-													<tr>
-														<th>Shipping Options</th>
-														<th>Delivery Time</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Standard Shipping</td>
-														<td>Delivery in 5 - 7 working days</td>
-														<td>$8.00</td>
-													</tr>
-													<tr>
-														<td>Express Shipping</td>
-														<td>28 August 2022</td>
-														<td>$12.00</td>
-													</tr>
-													<tr>
-														<td>1 - 2 day Shipping</td>
-														<td>27 August 2022</td>
-														<td>$12.00</td>
-													</tr>
-													<tr>
-														<td>Free Shipping</td>
-														<td>25 August 2022</td>
-														<td>$0.00</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-
+                            <!-- !- end form -> -->
 									</div>
 								</div>
 
@@ -406,20 +397,20 @@
 													<div class="col-sm-6">
 
 														<div class="form-group">
-															<label>Your Name</label> <input type="text"
-																class="form-control" name="name"
-																placeholder="Your name here">
+															 <input type="text"
+																class="form-control" name="writer" 
+																value="${ses.mno }">
 														</div>
 
 													</div>
 
 													<div class="col-sm-6">
 
-														<div class="form-group">
-															<label>Your Email</label> <input type="email"
-																class="form-control" name="email"
+														<!-- <div class="form-group">
+															<label>닉네임</label> <input type="email"
+																class="form-control" name=""
 																placeholder="Your email here">
-														</div>
+														</div> -->
 
 													</div>
 
@@ -478,6 +469,7 @@
 	</div>
 </section>
 <script src="/resources/js/product.detail.js"></script>
+<script src="/resources/js/product.qna.js"></script>
 <script src="/resources/js/interest.register.js"></script>
 <!-- <script src="/resources/js/buy_bid.add.js"></script> -->
 <script>
@@ -492,6 +484,7 @@
 				productRemove.disabled = true;
 			}
 		}
+	getQuestionList(document.getElementById('pnoVal').innerText);
 	});
 </script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>

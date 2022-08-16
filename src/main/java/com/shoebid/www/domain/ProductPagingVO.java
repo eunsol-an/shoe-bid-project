@@ -1,0 +1,38 @@
+package com.shoebid.www.domain;
+
+import org.apache.ibatis.type.Alias;
+
+import lombok.Getter;
+import lombok.Setter;
+
+
+
+
+	@Getter
+	@Setter
+	@Alias("ppgvo")
+	public class ProductPagingVO {
+		private int pageNo;
+		private int qty;
+		
+		private String type;
+		private String kw;
+		private String orderBy; 
+		
+		public  ProductPagingVO() {
+			this(1,12);
+		}
+		
+		public ProductPagingVO(int pageNo, int qty) {
+			this.pageNo = pageNo;
+			this.qty = qty;
+		}
+		public int getPageStart() {
+			return (this.pageNo - 1) * qty;
+		}
+		public String[] getTypeToArray() {
+			return this.type == null ? new String[] {} : this.type.split("");
+		}
+
+}
+

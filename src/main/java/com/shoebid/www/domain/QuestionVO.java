@@ -14,41 +14,51 @@ import lombok.ToString;
 @Alias("qvo")
 public class QuestionVO {
 	private long qno;
-	private long writer;
 	private long pno;
+	private long parent;
 	private String content;
+	private long writer;
 	private String regAt;
 	private String modAt;
 	private String nickName;
+	private int isDeleted;
+	private int isAnswer;
+	private String memberImg;
+
 	
-	public QuestionVO() {}
-	
+	public QuestionVO() {} 
+
 	// insert
-	public QuestionVO(long qno, long writer, String content) {
-		this.qno = qno;
-		this.writer = writer;
+	public QuestionVO(long pno, long parent, String content, long writer) {
+		this.pno = pno;
+		this.parent = parent;
 		this.content = content;
-	}
-	
-	// list
-	public QuestionVO(long qno, long writer, long pno, String content, String modAt) {
-		this.qno = qno;
 		this.writer = writer;
+	}
+	public QuestionVO(long pno,  String content, long writer) {
 		this.pno = pno;
 		this.content = content;
+		this.writer = writer;
+	}
+
+	// list
+	public QuestionVO(long qno, long pno, long parent, String content, long writer, String modAt) {
+		this.qno = qno;
+		this.pno = pno;
+		this.parent = parent;
+		this.content = content;
+		this.writer = writer;
 		this.modAt = modAt;
 	}
-	
+
 	// modify
 	public QuestionVO(long qno, String content) {
 		this.qno = qno;
 		this.content = content;
 	}
-	
+
 	// remove
 	public QuestionVO(long qno) {
 		this.qno = qno;
 	}
-	
-
 }

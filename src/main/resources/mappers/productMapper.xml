@@ -89,6 +89,9 @@
 					<if test="orderBy == 'reserveUp'.toString()">
 					order by reserve_price desc
 					</if>
+					<if test="orderBy == ''">
+					order by mod_at desc
+					</if>
 		</when>
 		<otherwise>
 		order by mod_at desc
@@ -104,7 +107,7 @@
 		(#{category}, #{pname}, #{description}, #{writer},
 		#{productImg}, #{reservePrice}, #{endTime})
 	</insert>
-	<select id="selectList" resultType="pvo" parameterType="pgvo">
+	<select id="selectList" resultType="pvo" parameterType="ppgvo">
 		select a.pno, category ,pname ,
 		description , read_count ,writer ,product_img ,
 		status, reserve_price,
@@ -116,10 +119,10 @@
 		from (
 		select pno from product where pno > 0 and status = 0
 		<include refid="search" />
+		<include refid="order" />
 		limit #{pageStart}, #{qty}
 		) a left join product b
 		on a.pno = b.pno
-		<include refid="order" />
 	</select>
 	<select id="selectDetail" parameterType="long" resultType="pvo">
 		select * from product
@@ -140,7 +143,7 @@
 		on p.pno = b.pno
 		where b.pno = #{pno};
 	</select>
-	<select id="selectTotalCount" resultType="int" parameterType="pgvo">
+	<select id="selectTotalCount" resultType="int" parameterType="ppgvo">
 	select count(pno)
 	from product
 	where pno > 0 and status = 0

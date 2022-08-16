@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoebid.www.domain.PagingVO;
+import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.handler.PagingHandler;
 import com.shoebid.www.service.ProductService;
 
@@ -32,12 +33,12 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, PagingVO pgvo) {
+	public String home(Locale locale, Model model, ProductPagingVO ppgvo) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		model.addAttribute("list", psv.getList(pgvo));
-		int totalCount = psv.getTotalCount(pgvo);
-		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
+		model.addAttribute("list", psv.getList(ppgvo));
+		int totalCount = psv.getTotalCount(ppgvo);
+		model.addAttribute("pgn",new PagingHandler(ppgvo, totalCount));
 		
 		return "home";
 	}
