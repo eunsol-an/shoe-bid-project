@@ -33,4 +33,9 @@ public class BidServiceImpl implements BidService {
 		return bdao.selectTotalCount(mno, pgvo);
 	}
 
+	@Override
+	public String getBuyerNick(long pno) {
+		return bdao.selectBuyerNick(pno);
+	}
+
 }
