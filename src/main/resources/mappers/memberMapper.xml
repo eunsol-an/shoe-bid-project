@@ -36,6 +36,10 @@
 		parameterType="string">
 		select count(nick_name) from member where nick_name = #{nickName}
 	</select>
+	<select id="selectEmail" resultType="int"
+		parameterType="string">
+		select count(email) from member where email = #{email}
+	</select>
 	<select id="selectLastMno" resultType="long">
 		select max(mno) from member
 	</select>
@@ -49,6 +53,23 @@
 		from member
 		where email = #{email}
 	</select>
+	<select id="searchPwd" parameterType="mvo" resultType="mvo">
+		select id, email
+		from member
+		where id = #{id} and email = #{email}
+	</select>
+	<select id="chooseNickName" parameterType="long" resultType="String">
+		select nick_name
+		from member
+		where mno = {mno}
+	</select>
+	
+	
+	<update id="modifyPwd" parameterType="mvo">
+		update member set
+		pwd = #{pwd}
+		where id = #{id} and email = #{email}
+	</update>
 
 	<update id="update" parameterType="mvo">
 		update member set

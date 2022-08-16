@@ -59,7 +59,8 @@
 									<label>이메일</label> <input type="email" class="form-control"
 										name="email" placeholder="Your email here" id="email"
 										required="required">
-									<button type="button">이메일 본인 인증</button>
+									<button type="button" class="btn btn-success"
+									id="emailDupleCheck">이메일 중복확인</button>
 									<div class="check_font" id="emailCheck"></div>
 								</div>
 

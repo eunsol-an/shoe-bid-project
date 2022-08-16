@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -135,18 +136,58 @@ public class MemberController {
 		int isExist = msv.nickNameDupleCheck(map.get("nickName"));		
 		return isExist > 0 ? "1" : "0";
 	}
+	@ResponseBody
+	@PostMapping(value = "/emailDupleCheck", consumes = "application/json",
+	produces = {MediaType.TEXT_PLAIN_VALUE})
+	public String emailDupleCheck(@RequestBody HashMap<String, String> map) {
+		log.info(">>> {}", map.get("email"));
+		int isExist = msv.emailDupleCheck(map.get("email"));		
+		return isExist > 0 ? "1" : "0";
+	}
 	@GetMapping("/searchID")
 	public void searchID() {
 		log.info(">>> MemberController > searchID - GET");
 	}
 	@PostMapping("/searchID")
 	@ResponseBody
-	public String searchID(@RequestParam(value = "email", required = false) String email, Model model, MemberVO mvo) {
+	public String searchID(@RequestParam(value = "email", required = false) String email, Model model) {
 		model.addAttribute("list", msv.findId(email));
 		return "redirect:/member/searchIDResult";
 	}
 	@PostMapping("/searchIDResult")
 	public void searchIDResult(Model model, @RequestParam(value = "email", required = false) String email, MemberVO mvo) {
 		model.addAttribute("list", msv.findId(email));
+	}
+	@GetMapping("/searchPwd")
+	public void searchPwd() {
+		log.info(">>> MemberController > searchPwd - GET");
+	}
+	@GetMapping("/notFoundPwd")
+	public void notFoundPwd() {
+		
+	}
+	@PostMapping("/searchPwd")
+	public String searchPwd(Model model, MemberVO mvo, RedirectAttributes rttr) {
+		MemberVO searchmvo = msv.searchPwd(mvo);
+		if(searchmvo == null ) {
+			return "redirect:/member/notFoundPwd";
+		}
+		rttr.addAttribute("id", searchmvo.getId());
+		rttr.addAttribute("email", searchmvo.getEmail());
+		return "redirect:/member/modifyPwd";
+	}
+	@GetMapping("/modifyPwd")
+	public void modifyPwd(Model model, MemberVO mvo) {
+		model.addAttribute("mvo", mvo);
+	}
+	@PostMapping("/modifyPwd")
+	public String modifyPwd(@RequestParam(name = "id") String id, @RequestParam(name  = "email") String email, @RequestParam(name = "pwd", required = false) String pwd, MemberVO mvo, Model model) {
+		mvo.setPwd(pwd);
+		int isUp = msv.modifyPwd(new MemberVO(id, email, pwd));
+		return "redirect:/member/modifyPwdResult";
+	}
+	@GetMapping("modifyPwdResult")
+	public void modifyPwdResult() {
+		
 	}
 }

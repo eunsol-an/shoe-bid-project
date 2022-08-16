@@ -54,7 +54,7 @@
                                     	<a href="/member/searchID" class="m-link-muted">아이디찾기</a>
                                     </button>
                                     <button type="button" class="butn-style2 mt-4">
-                                        <a href="account-password-recovery.html" class="m-link-muted">비밀번호찾기</a>
+                                        <a href="/member/searchPwd" class="m-link-muted">비밀번호재설정</a>
                                     </button>
                                     </div>
 

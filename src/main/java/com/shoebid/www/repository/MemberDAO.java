@@ -2,6 +2,7 @@ package com.shoebid.www.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 
 import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
@@ -17,9 +18,13 @@ public interface MemberDAO {
 	int delete(MemberVO mvo); // remove
 	int selectTotalCount();
 	int selectId(String id); // 아이디 중복검사
-	int selectNickName(String nickName);
+	int selectNickName(String nickName); // 닉네임 중복검사
+	int selectEmail(String email); // 이메일 중복검사
 	long selectLastMno();
 	long selectReportCount();
 	int updateReportCount(ReportVO rpvo);
 	List<MemberVO> findId(String email);
+	MemberVO searchPwd(MemberVO mvo);
+	int modifyPwd(@Param("id") String id, @Param("email") String email, @Param("pwd") String pwd);
+	MemberVO chooseNickName(long mno);
 }
