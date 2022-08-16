@@ -23,7 +23,7 @@
 	select
 	a.rpno, b.mno, target_mno, report_title, b.reg_at , m.nick_name, m2.nick_name as target_nick_name
 	from (
-		select rpno from report where rpno > 0 order by rpno
+		select rpno from report where rpno > 0 order by rpno desc
 		limit #{pgvo.pageStart}, #{pgvo.qty}
 	) a left join report b
 	on a.rpno = b.rpno
@@ -38,7 +38,7 @@
 	select
 	a.rpno, b.mno, target_mno, report_title, b.reg_at , m.nick_name, m2.nick_name as target_nick_name
 	from (
-		select rpno from report where rpno > 0 order by rpno
+		select rpno from report where rpno > 0 order by rpno desc
 		limit #{pgvo.pageStart}, #{pgvo.qty}
 	) a left join report b
 	on a.rpno = b.rpno

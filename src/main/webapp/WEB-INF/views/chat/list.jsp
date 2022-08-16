@@ -9,8 +9,8 @@
 	<div class="container">
 	<div class="col-lg-10 mx-auto">
 					<div class="inner-title">
-					<a href="/member/mypage?mno=${ses.mno }" style="float:right">My Page</a>
-						<h4 class="mb-0 font-weight-500 text-extra-dark-gray">Chatting<a class="h6 ms-2" href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a></h4>
+					<a href="/member/mypage?mno=${ses.mno }" style="float:right"><i class="fa-solid fa-circle-chevron-left"></i>&nbsp;&nbsp;My Page</a>
+						<h4 class="mb-0 font-weight-500 text-extra-dark-gray">Message<a class="h6 ms-2" href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a></h4>
 					</div>
 <div class="container mt-5 mb-5">
 	<div>
@@ -78,14 +78,14 @@
 </div>
 </section>
 <style>
-        .chat_wrap { border:1px solid lightgray;  padding:5px; font-size:13px;}
+        .chat_wrap { border:1px solid lightgray;  padding:0px 10px 0 10px; font-size:15px;}
         .chat_wrap .inner{border-radius:5px; padding:10px;}
-        .chat_wrap .item{margin-top:15px}
+        .chat_wrap .item{margin-top:0px}
         .chat_wrap .item:first-child{margin-top:0px}
-        .chat_wrap .item .box{display:inline-block; max-width:250px; position:relative;}
-        .chat_wrap .item .box .msg {background:whitesmoke; border-radius:0px 10px 10px 10px; padding:9px; text-align:left; margin: 0 0 20px;}
+        .chat_wrap .item .box{display:inline-block; max-width:280px; position:relative; bottom: 5px;}
+        .chat_wrap .item .box .msg {background:whitesmoke; border-radius:0px 10px 10px 10px; padding:9px; text-align:left; margin: 10px 0 20px;}
         .chat_wrap .item .box .time {font-size:11px;  position:absolute; bottom:1px; width:130px;}
-        .chat_wrap .item.mymsg{text-align:right }
+        .chat_wrap .item.mymsg{text-align:right; margin-bottom: -20px;}
         .chat_wrap .item.mymsg .box .msg{background-color:#03a9f5; border-radius:10px 0px 10px 10px; color:white;}
         .chat_wrap .item.mymsg .box .time{right:auto; left:-135px; top: -30px; width:130px;}
         .chat_wrap .item.on .box{margin:0; opacity: 1;} 
