@@ -27,7 +27,7 @@
 		values (#{buyer}, #{pno}, #{bidPrice}, #{bidStatus})
 	</insert>
 	<select id="selectList" resultType="bvo">
-		select b.bno, b.buyer, b.pno, p.pname, p.writer, p.product_img, b.bid_price, b.bid_status, b.bid_at
+		select b.bno, b.buyer, b.pno, p.pname, p.writer, p.product_img, m.nick_name, b.bid_price, b.bid_status, b.bid_at
 		from (
 			select bno from buy_bid where bno > 0
 			<include refid="status" />
@@ -35,6 +35,7 @@
 			limit #{pgvo.pageStart}, #{pgvo.qty}
 		) a left join buy_bid b on (a.bno = b.bno) 
 		inner join product p on (b.pno = p.pno)
+		inner join member m on (p.writer = m.mno)
 		where b.buyer = #{mno}
 		order by bid_at desc;
 	</select>
