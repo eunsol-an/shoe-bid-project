@@ -18,7 +18,7 @@
                         <div class="common-block">
 
                             <div class="inner-title">
-                                <h4 class="mb-0">후기작성</h4>
+                                <h4 class="mb-0">${nickName }님에게 보내는 후기</h4>
                             </div>
 
                             <form action="/review/register" method="post">

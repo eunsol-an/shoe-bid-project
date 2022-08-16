@@ -61,7 +61,7 @@
 	<select id="chooseNickName" parameterType="long" resultType="String">
 		select nick_name
 		from member
-		where mno = {mno}
+		where mno = #{mno}
 	</select>
 	
 	
