@@ -72,7 +72,7 @@
 											</c:if> <c:if test="${bvo.bidStatus eq 2 }">
 												<div>낙찰실패</div>
 											</c:if></td>
-										<td> <!-- 여기부터 수정 -->
+										<td>
 											<div>${bvo.nickName }</div>
 											<c:if test="${bvo.bidStatus eq 1}">
 											<a href="/chat/list?mno=${bvo.writer }" class="butn-style2 small text-nowrap">채팅하기</a>

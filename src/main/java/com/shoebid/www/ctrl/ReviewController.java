@@ -19,6 +19,7 @@ import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ReviewVO;
 import com.shoebid.www.handler.PagingHandler;
 import com.shoebid.www.service.BidService;
+import com.shoebid.www.service.MemberService;
 import com.shoebid.www.service.ProductService;
 import com.shoebid.www.service.ReviewService;
 
@@ -37,12 +38,16 @@ public class ReviewController {
 	@Inject
 	private BidService bsv;
 	
+	@Inject
+	private MemberService msv;
+	
 	@GetMapping("/register")
 	public void register(Model model, @RequestParam("pno") long pno, @RequestParam("mno") long mno) {
 		ProductDTO pdto = psv.getDetail(pno);
 		model.addAttribute("pdto", pdto); // 상품 디테일정보
 		model.addAttribute("recvMno", mno); // 후기 보내는 상대 회원의 mno
 		model.addAttribute("buyerNick", bsv.getBuyerNick(pno)); // 낙찰자의 닉네임
+		model.addAttribute("nickName", msv.chooseNickName(mno));
 	}
 	
 	@PostMapping("/register")
