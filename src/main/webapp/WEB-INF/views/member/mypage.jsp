@@ -14,31 +14,7 @@
 		<div class="row justify-content-center">
 
 			<!-- left panel -->
-			<div class="col-lg-2 col-sm-9 mb-2-3 mb-lg-0">
-                 <div class="side-bar">
-                     <div class="widget border-0">
-                         <div class="mb-3">
-                             <h5><i class="ti-user pe-2"></i>내 정보</h5>
-                         </div>
-                         <ul class="list-discount list-unstyled mb-0">
-                             <li><a href="/member/mypage?mno=${ses.mno }">프로필정보</a></li>
-                             <li><a href="/chat/list?mno=${ses.mno }">채팅하기</a></li>
-                             <li><a href="/report/list">신고내역</a></li>
-                         </ul>
-                     </div>
-                     <div class="widget border-0">
-                         <div class="mb-3">
-                             <h5><i class="ti-bag pe-2"></i>쇼핑 정보</h5>
-                         </div>
-                         <ul class="list-discount list-unstyled mb-0">
-                             <li><a href="/buy_bid/list/${ses.mno }">입찰내역</a></li>
-                             <li><a href="/product/sellList/${ses.mno }">판매내역</a></li>
-                             <li><a href="#">관심상품</a></li>
-                             <li><a href="#">리뷰관리</a></li>
-                         </ul>
-                     </div>
-                 </div>
-             </div>
+			<jsp:include page="../common/mypageMenu.jsp"/>
 			<!-- end left panel -->
 
 			<!-- right panel -->
