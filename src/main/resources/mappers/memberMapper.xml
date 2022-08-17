@@ -13,6 +13,7 @@
 		from member
 		where id = #{id}
 		and pwd = #{pwd}
+		and del_at is null
 	</select>
 	<select id="selectList" resultType="mvo" parameterType="pgvo">
 		select
