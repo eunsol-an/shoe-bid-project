@@ -13,6 +13,26 @@
         <!-- HEADER
         ================================================== -->
         <header class="fixed header-light-nav header-02">
+        
+        	<div id="top-bar" class="bg-transparent py-1">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="container">
+                            <ul class="top-nav display-31 px-2">
+                            	<c:if test="${ses.mno eq null }">
+                                <li><a href="/member/login">로그인</a></li>
+                                <li><a href="/member/register">회원가입</a></li>
+                                </c:if>
+                                <c:if test="${ses.mno ne null }">
+                                <li>${ses.nickName } 님</li>
+                                <li><a href="/member/logout">로그아웃</a></li>
+                                </c:if>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="navbar-default">
 
@@ -52,38 +72,16 @@
                                     <ul class="navbar-nav ms-auto" id="nav" style="display: none;">
 
                                         <li><a href="/product/list">Shop</a>
-                                            <ul>
-                                                <li><a href="/product/list?type=s">Sneakers</a></li>
-                                                <li><a href="/product/list?type=ai">Sandals/Slippers</a></li>
-                                                <li><a href="/product/list?type=lf">Loafers/Flat</a></li>
-                                                <li><a href="/product/list?type=b">Boots</a></li>
-                                            </ul>
                                         </li>
                                         <li><a href="#">About</a>
                                         </li>
-                                        <li><a href="#">Mypage</a>
-                                            <ul>
-                                            <c:if test="${ses.mno eq null }">
-                                                <li><a href="/member/login">Login</a></li>
-                                            </c:if>
-                                            <c:if test="${ses.mno ne null }">
-                                                <li><a href="/member/logout">Logout</a></li>
-                                                <li><a href="/member/mypage?mno=${ses.mno }">My Profile</a></li>
-                                            </c:if>
-                                            <c:if test="${ses.mno eq null }">
-                                                <li><a href="/member/register">Member Register</a></li>
-                                            </c:if>
-                                            <c:if test="${ses.grade == 99 }">
-                                                <li><a href="/member/list">Member List</a></li>
-                                            </c:if>
-                                            <c:if test="${ses.mno ne null }">
-                                                <li><a href="/product/register">Product Register</a></li>
-                                                <li><a href="/report/register">Report Register</a></li>
-                                            </c:if>
-                                            <c:if test="${ses.grade == 99 }">
-                                                <li><a href="/report/list">Report List</a></li>
-                                            </c:if>
-                                            </ul>
+                                        <li>
+                                        <c:if test="${ses.mno eq null }">
+                                        <a href="/member/login">Mypage</a>
+                                        </c:if>
+                                        <c:if test="${ses.mno ne null }">
+                                        <a href="/member/mypage?mno=${ses.mno }">Mypage</a>
+                                        </c:if>
                                         </li>
                                     </ul>
                                     <!-- end menu area -->

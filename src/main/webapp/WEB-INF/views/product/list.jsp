@@ -67,7 +67,7 @@
       <div class="row  text-center">
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=s" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
                   Sneakers</h3>
             </a>
          </div>
