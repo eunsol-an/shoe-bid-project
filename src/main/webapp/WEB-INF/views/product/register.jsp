@@ -19,7 +19,7 @@
 	</div>
 </section>
 <div class="container">
-<form action="/product/register" method="post" enctype="multipart/form-data">
+<form action="/product/register" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 mt-3 mb-3">
      <div class="mb-3">
       <label for="pname">상품 이름:</label>
       <input type="text" class="form-control" id="pname" placeholder="상품이름 입력" name="pname" required>
@@ -54,7 +54,7 @@
     </div>
    <input type="file" class="form-control" name="fileAttached" 
    accept=".gif, .jpg, .png, .jpeg, .gif"  multiple required>
-    <button type="submit" class="btn btn-primary" id="regBtn">Submit</button>
+    <button type="submit" class="btn btn-primary mt-3" id="regBtn">Submit</button>
   </form>
 </div>
 
