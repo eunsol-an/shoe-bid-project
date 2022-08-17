@@ -26,6 +26,7 @@
                                 <c:if test="${ses.mno ne null }">
                                 <li>${ses.nickName } 님</li>
                                 <li><a href="/member/logout">로그아웃</a></li>
+                                <li><a href="/product/register">경매등록</a></li>
                                 </c:if>
                             </ul>
 
