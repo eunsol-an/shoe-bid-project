@@ -37,7 +37,9 @@
 								</div>
 								<span class="d-block text-primary">${cvo.sendAt } </span>
 							</div>
+							<div style="height: 50px; overflow: hidden">
 							<span class="mb-0 font-weight-200 text-extra-dark-gray" >${cvo.content } </span>
+							</div>
 							<span class="mb-0 font-weight-200 text-extra-dark-gray" style="float:  right" id="readBtn">
 							<a href="/chat/detail?cno=${cvo.cno }" >보기</a></span>
 						</div>
