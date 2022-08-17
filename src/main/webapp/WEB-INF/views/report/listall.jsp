@@ -44,7 +44,7 @@
 		</table>
 		<c:if test="${listall.size() eq 0}">
 										<div class="text-center">
-											<p class="lead mb-4 mt-3">추가하신 관심 상품이 없습니다.</p>
+											<p class="lead mb-4 mt-3">신고 내역이 없습니다.</p>
 											<a class="h6 mt-3" href="/">HOME</a>
 										</div>
 									</c:if>
