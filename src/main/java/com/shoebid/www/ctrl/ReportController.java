@@ -44,7 +44,7 @@ public class ReportController {
 		
 		int isUp = rpsv.register(rpvo);
 		log.info(">>> report register {} - post : {}", isUp > 0 ? "OK":"FAIL");
-		return "redirect:/";
+		return "redirect:/report/list/" + rpvo.getMno();
 	}
 	@GetMapping("/list/{mno}")
 	public String list(Model model, PagingVO pgvo , @PathVariable("mno") long mno) {
