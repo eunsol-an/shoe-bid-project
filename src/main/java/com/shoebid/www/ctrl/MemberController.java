@@ -91,9 +91,11 @@ public class MemberController {
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	@PostMapping("/remove")
-	public String remove(MemberVO mvo) {
+	public String remove(MemberVO mvo, HttpSession ses) {
 		int isUp = msv.remove(mvo);
 		log.info(">>> member remove - post : {}", isUp > 0 ? "OK":"FAIL");
+		ses.removeAttribute("ses");
+		ses.invalidate();
 		return "redirect:/";
 	}
 	@GetMapping("/login")
