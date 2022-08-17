@@ -81,24 +81,17 @@ CREATE TABLE buy_bid (
 DROP TABLE IF EXISTS question;
 CREATE TABLE question (
 	qno bigint NOT NULL auto_increment,
+	pno bigint NOT NULL references product(pno) on delete cascade,
+	parent bigint,
+	content text NOT NULL,
 	writer bigint NOT NULL,
-	pno bigint NOT NULL,
-	content text,
 	reg_at datetime default current_timestamp,
 	mod_at datetime default current_timestamp,
-	primary key(qno)
+	is_deleted char(1) default '0' NOT NULL,
+	is_answer char(1) default '0' NOT NULL,
+	primary key (qno)
 ) default CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS answer;
-CREATE TABLE answer (
-	ano	bigint NOT NULL auto_increment,
-	qno	bigint NOT NULL,
-	writer bigint NOT NULL,
-	content text NOT NULL,
-	reg_at datetime default current_timestamp,
-	mod_at datetime	default current_timestamp,
-	primary key(ano)
-) default CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS interest;
 CREATE TABLE interest (
