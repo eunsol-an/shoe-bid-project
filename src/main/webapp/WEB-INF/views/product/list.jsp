@@ -81,37 +81,37 @@ position: absolute;
       <div class="row  text-center">
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=s" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">${pgn.ppgvo.type eq 's'?'>':''}
                   Sneakers</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=a" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">${pgn.ppgvo.type eq 'a'?'>':''}
                   Sandals</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=i" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">${pgn.ppgvo.type eq 'i'?'>':''}
                   Slippers</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=l" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">${pgn.ppgvo.type eq 'l'?'>':''}
                   Loafers</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=f" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">${pgn.ppgvo.type eq 'f'?'>':''}
                   Flat</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=b" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">${pgn.ppgvo.type eq 'b'?'>':''}
                   Boots</h3>
             </a>
          </div>

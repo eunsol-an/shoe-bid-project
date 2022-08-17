@@ -109,15 +109,13 @@ function getQuestionList(pnoVal, pageNo = 1) {
       document.getElementById('qnaZone').innerHTML += html;
 
     } else {
-      // 리스트가 존재하지 않을 때 DOM
+      document.getElementById('qnaZone').innerText="질문이 없습니다."
     }
     const moreBtn = document.getElementById('moreBtn');
     if (pageNo < parseInt(Math.ceil(result.totalCount / 10.0))) {
       moreBtn.style.visibility = 'visible';
       let pageIdx = moreBtn.dataset.page;
-      console.log(pageIdx);
       moreBtn.dataset.page = parseInt(pageIdx) + 1;
-      console.log(moreBtn.dataset.page);
     } else {
       moreBtn.style.visibility = 'hidden';
     }
@@ -154,7 +152,6 @@ document.getElementById('questionSbmBtn').addEventListener('click', (e) => {
       writer: document.getElementById('questionWriter').value,
       content: questionInputObj.value
     };
-    console.log(questionData);
     postQuestionToServer(questionData).then(result => {
       if (parseInt(result)) {
         alert('질문을 등록하였습니다');
@@ -221,7 +218,6 @@ document.addEventListener('click', (e) => {
     const qnoVal = e.target.dataset.qno;
     const div = e.target.closest('div');
     divContent = div.previousSibling.innerText;
-    console.log(divContent);
     let tag = '';
     tag += '<div class="col-12 mb-2">';
     tag += '<div class="form-group mb-1">';
@@ -238,8 +234,6 @@ document.addEventListener('click', (e) => {
     const getBtn = reply.querySelector('.getAnsBtn');
     const modBtn = reply.querySelector('.questionMod');
     const delBtn = reply.querySelector('.questionDel');
-    console.log(reply);
-    console.log(modBtn);
     modBtn.style.visibility = 'hidden';
     delBtn.style.visibility = 'hidden';
     if (getBtn != null) {
@@ -272,11 +266,7 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.classList.contains("cancelModSbmBtn")) {
     const div = e.target.closest('div')
-    console.log(div);
     const contentVal = div.children[0].children[0].children[0].value;
-    console.log(contentVal);
-    // cancelModSbmBtn 눌렀을 때 닫기(closeAnsBtn), 수정(answerMod), 삭제(questionDel) 보이게 =>O
-    // 답변이 보이는 상태에서 질문을 취소하면, 내용이 사라짐ㅡㅡ 
 
     const commentInfo = e.target.closest('.comment-info');
     if (commentInfo.querySelector('.closeAnsBtn') != null) {
@@ -303,7 +293,6 @@ document.addEventListener('click', (e) => {
       if (postBtn != null) {
         postBtn.style.visibility = 'visible';
       }
-      console.log(divContent);
       div.innerText = divContent;
       
     }
@@ -400,10 +389,6 @@ document.addEventListener('click', (e) => {
     textVal = div.children[1].innerText;
     const qno = e.target.dataset.qno;
     const parent = div.children[2].innerText;
-    console.log("div", div);
-    console.log("contentVal", textVal);
-    console.log("qno", qno);
-    console.log("parent", parent);
     let tag = '';
     tag += '<div class="col-12 mb-2">';
     tag += '<div class="form-group mb-1">';
@@ -430,9 +415,6 @@ document.addEventListener('click', (e) => {
     let qnoVal = e.target.dataset.qno;
     let parent = document.querySelector('.answerModifiedText').dataset.parent;
     const div = e.target.closest('div')
-    console.log("div", div);
-    console.log("parent", parent);
-    console.log("qno", qnoVal);
 
     if (textVal == '') {
       alert('수정 내용을 입력하세요');
@@ -467,7 +449,6 @@ document.addEventListener('click', (e) => {
     e.preventDefault();
     const pnoVal = document.getElementById('pnoVal').innerText;
     const page = e.target.dataset.page;
-    console.log("페이지", page);
     getQuestionList(pnoVal, parseInt(page));
   }
 });

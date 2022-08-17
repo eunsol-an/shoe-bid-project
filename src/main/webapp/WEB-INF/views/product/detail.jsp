@@ -5,8 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
-<link href="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/css/plugins/xzoom.css" rel="stylesheet">
-<link href="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/css/plugins/magnific-popup.css" rel="stylesheet">
 <!-- PAGE TITLE
         ================================================== -->
 <style>
@@ -217,7 +215,7 @@
 										href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}&orderBy=${pgvo.orderBy}&mno=0"
 										id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0"
 										style="display: none;">수정</a>
-									<button class="butn-style2 me-3 mb-2 mb-md-0 modBtnFake" id="">수정</button>
+									<button class="butn-style2 me-3 mb-2 mb-md-0 modBtnFake" id="modBtnFake">수정</button>
 									<button type="button" class="butn-style2 dark"
 										data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 										id="Remove">삭제</button>
@@ -492,21 +490,18 @@
 <script src="/resources/js/interest.register.js"></script>
 <!-- <script src="/resources/js/buy_bid.add.js"></script> -->
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		let maxPrice = document.getElementById('maxPrice').innerText;
-		let modBtn = document.getElementById('modBtnFake')
-		let productRemove = document.getElementById('Remove')
-
-		if (parseInt(maxPrice) > 0) {
-			if (modBtn != null) {
-				modBtn.disabled = true;
-				productRemove.disabled = true;
-			}
-		}
+document.addEventListener('DOMContentLoaded', function() {
+	  let maxPrice =stringNumberToInt(document.getElementById('maxPrice').innerText);
+	  let modBtn = document.getElementById('modBtnFake')
+	  let productRemove = document.getElementById('Remove')
+	  if (parseInt(maxPrice) > 0) {
+	    if (modBtn != null) {
+	      modBtn.disabled = true;
+	      productRemove.disabled = true;
+	    }
+	  }
 	getQuestionList(document.getElementById('pnoVal').innerText);
 	});
 </script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-<script src="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/js/xzoom.js"></script>
-<script src="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/js/jquery.magnific-popup.min.js"></script>
 <jsp:include page="../common/footer.jsp" />
