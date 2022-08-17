@@ -103,7 +103,7 @@ async function emailDupleCheckFromServer(emailVal){
 document.getElementById('emailDupleCheck').addEventListener('click', (e) => {
   e.preventDefault();
   let emailInputed = document.getElementById('email');
-  let emailVal = nickNameInputed.value;
+  let emailVal = emailInputed.value;
 
   if(emailVal == ''){
     alert('이메일을 입력하세요!');
