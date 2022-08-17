@@ -38,7 +38,7 @@ async function postChatToServer(ctData){
               
             tag += `<div class="item mymsg">`
             tag += `<div class="box">`
-            tag += ` <p class="msg">${cvo.content}</p>`
+            tag += ` <p class="msg text-break">${cvo.content}</p>`
             tag += `<div class="box">`
             tag += `<span class="time">${cvo.sendAt}</span>`
             tag += `</div>`
@@ -48,7 +48,7 @@ async function postChatToServer(ctData){
           } else  {
             tag += `<div class="item">`
             tag += `<div class="box">`
-            tag += ` <p class="msg">${cvo.content}</p>`
+            tag += ` <p class="msg text-break">${cvo.content}</p>`
             tag += `<span class="time">${cvo.sendAt}</span>`
             tag += `</div>`
             tag += `</div>`
