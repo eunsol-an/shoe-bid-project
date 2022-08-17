@@ -15,8 +15,6 @@ if(e.target.classList.contains("xzoom-gallery5")){
     let mainImageZone = document.getElementById('xzoom-magnific');
     let subimgSrc =e.target.getAttribute("src").toString();
     mainImageZone.src=subimgSrc;
-    console.log(mainImageZone)
-    console.log(subimgSrc)
 }
 })
 
@@ -129,6 +127,13 @@ if(bidPrice > reservePrice+parseInt(999)){
   document.getElementById("errorMsg").innerText = reservePrice+parseInt(1000)+" 시작가 보다 높은 입찰가를 입력해주세요";
   document.getElementById("bidPriceVal").value ='';
   document.getElementById("bidPriceVal").focus();
-
 }
 });
+
+document.getElementById('xzoom-magnific').addEventListener('click',(e)=>{
+  let src= e.target.getAttribute("src");
+  console.log(src);
+  document.getElementById('modalImg').setAttribute("src",src)
+  document.getElementById('imgModalBtn').click();
+
+})

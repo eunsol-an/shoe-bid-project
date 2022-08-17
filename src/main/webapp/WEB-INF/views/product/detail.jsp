@@ -5,24 +5,32 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
+<link href="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/css/plugins/xzoom.css" rel="stylesheet">
+<link href="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/css/plugins/magnific-popup.css" rel="stylesheet">
 <!-- PAGE TITLE
         ================================================== -->
-
+<style>
+.img{
+   width:500px;
+ height:500px; 
+   object-fit : cover;  
+}
+</style> 
 <section class="page-title-section bg-img cover-background"
-	data-background="img/bg/page-title.jpg">
+	data-background="/resources/bootstrap/img/bg/page-title.png">
 	<div class="container">
 	<c:set var="pvo" value="${pdto.pvo }" />
 <span class="input-group-text" id="ses" style="display: none">${ses.mno }</span>
 <span class="input-group-text" id="pvoWriter" style="display: none">${pvo.writer }</span>
-		<div class="title-info">
-			<h1>Shop Product Detail</h1>
+		<div class="title-info text-center">
+			<h1>Item Detail</h1>
 		</div>
-		<div class="breadcrumbs-info">
+		<div class="breadcrumbs-info text-center">
 			<ul class="ps-0">
 				<li><a href="/">Home</a></li>
 				<li><a id="list"
 					href="/product/list?pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}&orderBy=${pgvo.orderBy}">List</a></li>
-				<li><a href="#">Shop Product Detail</a></li>
+				<li><a href="#">Item Detail</a></li>
 			</ul>
 		</div>
 
@@ -39,12 +47,12 @@
 
 				<!-- product left start -->
 				<div class="xzoom-container">
-					<img class="mb-1-9 mx-auto border rounded" id="xzoom-magnific"
+					<img class="img mb-1-9 mx-auto border rounded" id="xzoom-magnific"
 						src="/upload/${fn:replace(pdto.imageList[0].saveDir,'\\','/')}/${pdto.imageList[0].uuid }_${pdto.imageList[0].imageName }"
 						alt="..." />
 					<div class="xzoom-thumbs no-margin">
 						<c:forEach items="${pdto.imageList }" var="ivo">
-							<img class="xzoom-gallery5" width="80"
+							<img class="xzoom-gallery5" style="width: 60px; height: 60px; "
 								src="/upload/${fn:replace(ivo.saveDir,'\\','/')}/${ivo.uuid }_${ivo.imageName }">
 						</c:forEach>
 					</div>
@@ -253,7 +261,26 @@
 				</div>
 			</div>
 			<!-- end product section -->
+			
+			<!-- Img Modal-->
+<button type="button" id="imgModalBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" style="display: none;">
+    Open modal
+  </button>
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
 
+      <!-- Img Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <img class="mb-1-9 mx-auto" id="modalImg" src="" alt="..." style="border: 0;"/>
+      
+    </div>
+  </div>
+</div>
 			<!-- product description -->
 			<div class="row justify-content-center mb-6 mb-md-7">
 
@@ -403,15 +430,7 @@
 														</div>
 
 													</div>
-
 													<div class="col-sm-6">
-
-														<!-- <div class="form-group">
-															<label>닉네임</label> <input type="email"
-																class="form-control" name=""
-																placeholder="Your email here">
-														</div> -->
-
 													</div>
 
 												</div>
@@ -488,4 +507,6 @@
 	});
 </script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/js/xzoom.js"></script>
+<script src="/resources/dist/Smartshop - Multipurpose eCommerce Template + Admin/smartshop/js/jquery.magnific-popup.min.js"></script>
 <jsp:include page="../common/footer.jsp" />

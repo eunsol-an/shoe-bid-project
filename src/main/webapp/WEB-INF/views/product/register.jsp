@@ -4,22 +4,22 @@
 <jsp:include page="../common/header.jsp"/>  
 <jsp:include page="../common/nav.jsp"/>  
 <section class="page-title-section bg-img cover-background"
-	data-background="img/bg/page-title.jpg">
+	data-background="/resources/bootstrap/img/bg/page-title.png">
 	<div class="container">
 
-		<div class="title-info">
-			<h1>Shop Product Register</h1>
+		<div class="title-info text-center">
+			<h1>New Item</h1>
 		</div>
-		<div class="breadcrumbs-info">
+		<div class="breadcrumbs-info text-center">
 			<ul class="ps-0">
 				<li><a href="home-shop-1.html">Home</a></li>
-				<li><a href="#">Shop Product Register</a></li>
+				<li><a href="#">New Item</a></li>
 			</ul>
 		</div>
 	</div>
 </section>
 <div class="container">
-<form action="/product/register" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 mt-3 mb-3">
+<form action="/product/register" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 my-5">
      <div class="mb-3">
       <label for="pname">상품 이름:</label>
       <input type="text" class="form-control" id="pname" placeholder="상품이름 입력" name="pname" required>

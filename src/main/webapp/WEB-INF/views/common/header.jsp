@@ -40,7 +40,6 @@
     
     <!-- star css -->
     <link href="/resources/bootstrap/css/star.css" rel="stylesheet">
-
 </head>
 
 

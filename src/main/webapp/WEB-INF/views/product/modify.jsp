@@ -4,28 +4,29 @@
 <jsp:include page="../common/header.jsp"/>  
 <jsp:include page="../common/nav.jsp"/>  
 <section class="page-title-section bg-img cover-background"
-	data-background="img/bg/page-title.jpg">
+	data-background="/resources/bootstrap/img/bg/page-title.png">
 	<div class="container">
 
-		<div class="title-info">
-			<h1>Shop Product Modify</h1>
+		<div class="title-info text-center">
+			<h1>Item Modify</h1>
 		</div>
-		<div class="breadcrumbs-info">
+		<div class="breadcrumbs-info text-center">
 			<ul class="ps-0">
 				<li><a href="home-shop-1.html">Home</a></li>
-				<li><a href="#">Shop Product Modify</a></li>
+				<li><a href="#">Item Modify</a></li>
 			</ul>
 		</div>
 	</div>
 </section>
 <div class="container"> 
-<form action="/product/modify" method="post" enctype="multipart/form-data">
+<form action="/product/modify" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 my-5">
      <div class="mb-3">
      <input type="hidden" value="${pdto.pvo.pno }" name="pno">
 	<input type="hidden" value="${pgvo.pageNo }" name="pageNo">
 	<input type="hidden" value="${pgvo.qty }" name="qty">
 	<input type="hidden" value="${pgvo.type }" name="type">
 	<input type="hidden" value="${pgvo.kw }" name="kw">
+	<input type="hidden" value="${pgvo.orderBy }" name="oerderby">
       <label for="pname">상품 이름:</label>
       <input type="text" class="form-control" id="pname" placeholder="상품이름 입력" name="pname" value=${pdto.pvo.pname } required>
     </div>  
@@ -62,5 +63,4 @@
     <button type="submit" class="btn btn-primary" id="regBtn">Submit</button>
   </form>
 </div>
-<script src="/resources/js/product.modify.js"></script>
 <jsp:include page="../common/footer.jsp"/>  
