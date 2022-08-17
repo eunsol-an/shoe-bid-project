@@ -16,13 +16,11 @@
     <meta name="description" content="Smartshop - Multipurpose eCommerce Template + Admin" />
     
     <!-- title  -->
-    <title>ShoeBid - 팔았슈 다사슈</title>
+    <title>SHOE-BID | 신발 경매는 슈비드</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="/resources/bootstrap/img/logos/favicon.png">
-    <link rel="apple-touch-icon" href="/resources/bootstrap/img/logos/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/resources/bootstrap/img/logos/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/resources/bootstrap/img/logos/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" href="/resources/bootstrap/img/logos/apple-touch-icon.png">
 
     <!-- plugins -->
     <link rel="stylesheet" href="/resources/bootstrap/css/plugins.css">
