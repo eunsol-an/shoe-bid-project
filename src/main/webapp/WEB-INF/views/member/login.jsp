@@ -66,5 +66,12 @@
                 </div>
             </div>
         </section>
+<script>
+let notLogin = '<c:out value="${notLogin}"/>';
 
+if (parseInt(notLogin)){
+	alert("아이디또는 비밀번호를 다시 확인하세요 SHOE-BIE에 등록되지 않은 아이디거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+}
+
+</script>
 <jsp:include page="../common/footer.jsp"/>
