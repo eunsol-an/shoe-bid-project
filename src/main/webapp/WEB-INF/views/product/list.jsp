@@ -159,7 +159,7 @@ position: absolute;
                                  <span class="badge bg-primary">현재가</span>
                                  <span class="font-weight-600 display-29 text-muted"><fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</span>
                               </div>
-                              <%-- <div class="display-29 text-muted">종료시간:${pvo.endTime }</div> --%>
+                              <div class="display-29 text-muted mt-2"><i class="far fa-clock"></i> ${pvo.endTime }</div>
                            </div>
                         </div>
                      </div>
