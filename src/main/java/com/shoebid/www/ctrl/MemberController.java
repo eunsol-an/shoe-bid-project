@@ -82,6 +82,7 @@ public class MemberController {
 		}
 		int isUp = msv.modify(new MemberDTO(mvo, fileList));
 		log.info(">>> member modify - post : {}", isUp > 0 ? "OK":"FAIL");
+		rttr.addFlashAttribute("modify", 1);
 		return "redirect:/member/mypage?mno="+mvo.getMno();
 	}
 	@DeleteMapping(value = "/file/{uuid}", produces = MediaType.TEXT_PLAIN_VALUE)
