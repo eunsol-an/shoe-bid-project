@@ -227,15 +227,8 @@
 <script>
 let isLogout = '<c:out value="${isLogout}"/>';
 
-
-
-
 if (parseInt(isLogout)){
 	alert("로그아웃 되었습니다");
 }
-
-
-
 </script>
-
 <jsp:include page="common/footer.jsp" />

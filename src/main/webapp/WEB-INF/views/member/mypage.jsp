@@ -152,6 +152,13 @@
 		</div>
 	</div>
 </section>
+<script>
+let modify = '<c:out value="${modify}"/>';
+
+if (parseInt(modify)){
+	alert("회원정보가 수정되었습니다");
+}
+</script>
 <script src="/resources/js/member.mypage.js"></script>
 
 <jsp:include page="../common/footer.jsp" />
