@@ -6,15 +6,14 @@
 
 <section class="md">
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center">
 
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
 
                         <div class="common-block">
 
                             <div class="inner-title">
                                 <h4 class="mb-0">로그인</h4>
-                                <p class="mb-0">Everything is simple with Login.</p>
                             </div>
 
                             <form action="/member/login" method="post">
@@ -42,25 +41,21 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-check">
+                                    <div class="col-sm-12">
+                                        <div class="form-check" style="text-align: center">
+                                        <button type="submit" class="butn-style2 mt-4 mb-4">로그인</button>
+                                        <ul style="text-align: center">
+                                        	<li style="display: inline;"><a href="/member/register">회원가입</a></li>&emsp;
+                                        	<li style="display: inline;"><a href="/member/searchID">아이디찾기</a></li>&emsp;
+                                        	<li style="display: inline;"><a href="/member/searchPwd">비밀번호재설정</a>
+                                        </ul>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 text-start text-md-end">
-                                    <button type="button" class="butn-style2 mt-4">
-                                    	<a href="/member/register" class="m-link-muted">회원가입</a>
-                                    </button>
-                                    <button type="button" class="butn-style2 mt-4">
-                                    	<a href="/member/searchID" class="m-link-muted">아이디찾기</a>
-                                    </button>
-                                    <button type="button" class="butn-style2 mt-4">
-                                        <a href="/member/searchPwd" class="m-link-muted">비밀번호재설정</a>
-                                    </button>
-                                    </div>
+                                    
 
                                 </div>
 
-                                <button type="submit" class="butn-style2 mt-4">로그인</button>
+                                
 
                             </form>
 
