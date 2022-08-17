@@ -309,8 +309,8 @@
                                 <h4 class="mb-0">QnA</h4>
                             </div>
 								<!-- <!— comment —> -->
-								  <form class="mb-5">
-                                <div class="row">
+								 <form class="mb-5">
+								  <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <input type="hidden" class="form-control" name="writer"  value=${ses.mno } id="questionWriter">
@@ -318,14 +318,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-12 mb-4">
-                                        <label>Message</label>
+                                    <div class="col-12 mb-2">
+                                        <label>상품 문의하기</label>
                                         <div class="form-group mb-1">
-                                            <textarea rows="2" class="form-control" name="content" placeholder="Tell us a few words" id="questionText"></textarea>
+                                            <textarea rows="2" class="form-control" name="content" placeholder="문의 내용을 입력하세요." id="questionText" style="resize: none;"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="butn-style2" id="questionSbmBtn">Send Message</button>
+                                <button type="button" class="butn-style2" id="questionSbmBtn" style="float: right;">완료</button>
                             </form>
 								<div class="comments-area mb-3" id="qnaZone"></div>
 								
