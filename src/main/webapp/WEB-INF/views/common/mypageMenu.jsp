@@ -31,7 +31,7 @@
     	<c:otherwise>
     		<div class="widget border-0">
             <div class="mb-3">
-                <h5><i class="ti-settings pe-2"></i>관리자 전용</h5>
+                <h5><a href="/member/mypage?mno=${ses.mno }"><i class="ti-settings pe-2"></i>관리자 전용</a></h5>
             </div>
             <ul class="list-discount list-unstyled mb-0">
                 <li><a href="/member/list">회원관리</a></li>
