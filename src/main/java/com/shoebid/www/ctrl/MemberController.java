@@ -112,6 +112,7 @@ public class MemberController {
 			rttr.addFlashAttribute("isLogin", 1);
 			return "redirect:/";
 		}else {
+			rttr.addFlashAttribute("notLogin", 1);
 			return "redirect:/member/login";
 		}
 	}
