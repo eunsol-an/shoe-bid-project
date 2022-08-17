@@ -48,7 +48,6 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public List<ProductVO> getList(ProductPagingVO ppgvo) {
-		getAllList();
 		return pdao.selectList(ppgvo);
 	}
  
@@ -105,34 +104,6 @@ public class ProductServiceImpl implements ProductService {
 		return isOk;
 	}
 
-	@Transactional(isolation = Isolation.READ_COMMITTED)
-	private void getAllList() {
-		int isOk=0;
-		List<ProductVO> list = pdao.selectAllList();
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		for (ProductVO pvo : list) {
-			try {
-				Date now = new Date();
-				Date endTime = df.parse(pvo.getEndTime());
-				int result = now.compareTo(endTime);
-				if (result > 0) {
-					if (pvo.getHighestPrice() > 0) {
-						pvo.setStatus(1);
-					} else {
-						pvo.setStatus(2); 
-					}
-					if(pvo.getHighestPrice()>0) {
-					long bno = bdao.selectMaxBid(pvo);
-					isOk =bdao.updateBidStatusSuccess(bno);
-					}
-					isOk = bdao.updateBidStatusFail(pvo.getPno());
-					pdao.updateStatus(pvo);
-				}
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	@Override
 	public List<ProductVO> getSellList(PagingVO pgvo, long mno) {
 		return pdao.selectSallList(pgvo, mno);

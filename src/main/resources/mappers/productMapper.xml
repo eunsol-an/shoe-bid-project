@@ -169,6 +169,7 @@
 		),0) "highest_price",
 		end_time, mod_at
 		from product a
+		where status = 0
 	</select>
 	<select id="selectSallList" resultType="pvo">
 	select p.pno, category ,pname , description , read_count 
@@ -183,6 +184,7 @@
 	left  join `member` m 
 	on (m.mno = b.buyer)
 	where writer = #{mno} <include refid="sellSearch" />
+	order by mod_at desc
 	limit #{pgvo.pageStart}, #{pgvo.qty}
 	
 	</select>
