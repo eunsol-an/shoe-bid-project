@@ -23,7 +23,7 @@
 				<div class="common-block border-0">
 
 					<div class="inner-title">
-						<h4 class="mb-0">Profile</h4>
+						<h4 class="mb-0">내 정보</h4>
 					</div>
 
 					<div class="row">

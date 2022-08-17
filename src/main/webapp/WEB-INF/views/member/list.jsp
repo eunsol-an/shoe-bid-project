@@ -16,6 +16,7 @@
 				<!-- end left panel -->
 				<!-- right panel -->
                 <div class="col-lg-10">
+                <div class="common-block border-0">
 
                     <div class="position-relative elements-block">
 
@@ -73,6 +74,7 @@
 
                     </div>
 
+				</div>
                 </div>
                 <!-- end right panel -->
                 </div>
