@@ -8,6 +8,20 @@
 <jsp:include page="../common/nav.jsp" />
 <!-- PAGE TITLE
         ================================================== -->
+<style>
+.box{
+  width: 300px;
+ height: 300px; 
+ position: relative;
+}
+.img{
+position: absolute;
+
+   width:100%;
+ height:100%; 
+   object-fit : cover;  
+}
+</style>
 <section class="page-title-section bg-img cover-background border-0"
    data-background="/resources/bootstrap/img/bg/page-title.png">
    <div class="container">
@@ -73,31 +87,31 @@
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=a" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
                   Sandals</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=i" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
                   Slippers</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=l" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
                   Loafers</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=f" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
                   Flat</h3>
             </a>
          </div>
          <div class="col-sm-6 col-md-4 col-lg-2 mt-1-9">
             <a href="/product/list?type=b" class="categoty-style2">
-               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">>
+               <h3 class="font-weight-500 mb-0 bg-light rounded-pill py-3">
                   Boots</h3>
             </a>
          </div>
@@ -123,11 +137,11 @@
             <div class="container">
                <div class="row mt-n1-9">
                   <c:forEach items="${list }" var="pvo">
-                     <div class="col-sm-6 col-lg-3 mt-1-9">
+                     <div class="col-sm-6 col-lg-3 mt-1-9 ">
                         <div class="product-grid-four">
-                           <div class="product-img rounded-3">
+                           <div class="product-img rounded-3 box">
                     <a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.ppgvo.pageNo }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}&mno=${ses.mno>0? ses.mno: '0'}&orderBy=${pgn.ppgvo.orderBy}">
-                                 <img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="...">
+                                 <img class="img" src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="...">
                               </a>
                            </div>
                            <div class="ms-2">
