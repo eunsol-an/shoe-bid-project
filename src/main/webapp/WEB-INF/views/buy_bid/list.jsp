@@ -63,7 +63,7 @@
 											<a href="/product/detail?pno=${bvo.pno }">${bvo.pname }</a>
 											<div class="h6 mt-4">입찰가 : <fmt:formatNumber value="${bvo.bidPrice }" pattern="#,###" />원</div>
 										</td>
-										<td class="product-quantity">${bvo.bidAt }</td>
+										<td class="product-quantity">${fn:substring(bvo.bidAt, 0, (fn:length(bvo.bidAt)-3)) }</td>
 										<td><c:if test="${bvo.bidStatus eq 0 }">
 												<div>경매진행중</div>
 											</c:if> <c:if test="${bvo.bidStatus eq 1 }">

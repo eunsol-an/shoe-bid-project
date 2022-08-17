@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
@@ -27,7 +28,7 @@
 							<div class="col-12">
 								<span>신고 회원 : ${rpvo.nickName }&emsp; </span>
 								<span>신고대상 회원 : ${rpvo.targetNickName} </span>
-								<span style="float:right">${rpvo.regAt}</span>
+								<span style="float:right">${fn:substring(rpvo.regAt, 0, (fn:length(rpvo.regAt)-3)) }</span>
 						</div>
 					</div>
 					

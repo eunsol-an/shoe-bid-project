@@ -64,7 +64,7 @@
 											<a href="/product/detail?pno=${pvo.pno }">${pvo.pname }</a>
 											<div class="h6 mt-4">입찰가 : <fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</div>
 										</td>
-										<td class="product-quantity">${pvo.endTime }</td>
+										<td class="product-quantity">${fn:substring(pvo.endTime, 0, (fn:length(pvo.endTime)-3)) }</td>
 										<td><c:if test="${pvo.status eq 0 }">
 												<div>경매진행중</div>
 											</c:if> <c:if test="${pvo.status eq 1 }">

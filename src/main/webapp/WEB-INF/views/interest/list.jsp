@@ -50,8 +50,8 @@
 											
 											<div class="h6 t-4 mt-2" style="line-height: 1.3em">시작가 <br> <fmt:formatNumber value="${itvo.reservePrice }" pattern="#,###" />원</div>
 										</td>
-										<td class="product-quantity">${itvo.regAt }</td>
-										<td>${itvo.endTime }</td>
+										<td class="product-quantity">${fn:substring(itvo.regAt, 0, (fn:length(itvo.regAt)-3)) }</td>
+										<td>${fn:substring(itvo.endTime, 0, (fn:length(itvo.endTime)-3)) }</td>
 										<td><button type="button" id="itDelBtn"
 											class="butn-style2 small">삭제</button>
 											<span id="readCk" style="display: none;">false</span>
