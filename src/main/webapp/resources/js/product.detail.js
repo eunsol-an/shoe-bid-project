@@ -1,3 +1,17 @@
+document.addEventListener('DOMContentLoaded', function() {
+  let maxPrice =stringNumberToInt(document.getElementById('maxPrice').innerText);
+  let modBtn = document.getElementById('modBtnFake')
+  let productRemove = document.getElementById('Remove')
+
+  if (maxPrice > 0) {
+    if (modBtn != null) {
+      modBtn.disabled = true;
+      productRemove.disabled = true;
+    }
+  }
+});
+
+
 document.getElementById("productRemove").addEventListener("click",(e)=>{
     e.preventDefault();
     
@@ -112,9 +126,6 @@ document.getElementById('addBtn').addEventListener('click', (e) => {
   let bidPrice = stringNumberToInt(document.getElementById("bidPriceVal").value);
   let reservePrice =stringNumberToInt(document.getElementById("reservePriceVal").innerText);
   let maxPrice =stringNumberToInt(document.getElementById("maxPrice").innerText);
-  console.log(bidPrice)
-  console.log(reservePrice)
-  console.log(maxPrice)
 if(bidPrice > reservePrice+parseInt(999)){
   if(bidPrice > maxPrice+parseInt(999)){
     document.getElementById('bidAddForm').submit();
