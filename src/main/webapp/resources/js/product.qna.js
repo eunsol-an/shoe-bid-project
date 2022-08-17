@@ -39,7 +39,7 @@ function getQuestionList(pnoVal, pageNo = 1) {
               </div>
             </div>`;
         if (qvo.isDeleted == 1) {
-          html += `<div>작성자에 의해 삭제된 질문입니다.</div>`;
+          html += `<div class="ms-5">작성자에 의해 삭제된 질문입니다.</div>`;
         } else {
           html += `<div class="contentVal ms-5">${qvo.content}</div>`;
         }
@@ -86,7 +86,6 @@ function getQuestionList(pnoVal, pageNo = 1) {
         } else {
           html += `<div class="ms-5">${qvo.content}</div>`;
         }
-        console.log()
         if (parseInt(qvo.isAnswer) == 0) {
           html += `<div class="reply ms-5">`
           if (qvo.isDeleted == 0 && pvoWriter == sesWriter) {
@@ -269,7 +268,7 @@ document.addEventListener('click', (e) => {
     const contentVal = div.children[0].children[0].children[0].value;
 
     const commentInfo = e.target.closest('.comment-info');
-    if (commentInfo.querySelector('.closeAnsBtn') != null) {
+    if (commentInfo.querySelector('.answerMod') != null) {
       const close = commentInfo.querySelector('.closeAnsBtn');
       const mod = commentInfo.querySelector('.answerMod');
       const del = commentInfo.querySelector('.questionDel');
@@ -283,8 +282,6 @@ document.addEventListener('click', (e) => {
       const getBtn = reply.querySelector('.getAnsBtn');
       const modBtn = reply.querySelector('.questionMod');
       const delBtn = reply.querySelector('.questionDel');
-      console.log(reply);
-      console.log(modBtn);
       modBtn.style.visibility = 'visible';
       delBtn.style.visibility = 'visible';
       if (getBtn != null) {
@@ -349,7 +346,6 @@ document.addEventListener('click', (e) => {
     const ansResult = div.nextSibling;
 
     spreadAnswerFromServer(parent).then(result => {
-      console.log(result.content);
       let html = '';
       html += `<div class="comment-box ms-5 mt-3">
     <div class="comment-info">
@@ -364,7 +360,7 @@ document.addEventListener('click', (e) => {
         </div>
       </div>`;
       if (result.isDeleted == 1) {
-        html += `<div>작성자에 의해 삭제 된 답글입니다.</div>`;
+        html += `<div class="ms-5">작성자에 의해 삭제 된 답글입니다.</div>`;
       } else {
         html += `<div class="contentVal ms-5">${result.content}</div>`;
       }
@@ -431,7 +427,7 @@ document.addEventListener('click', (e) => {
           
           textVal = "";
         }
-        div.innerHTML = `<div class="contentVal ms-5">${questionData.content}</div>`;
+        div.innerHTML = `${questionData.content}`;
       });
     // modAnsSbmBtn 눌렀을 때 닫기(closeAnsBtn), 수정(answerMod), 삭제(questionDel) 보이게 => O
 
