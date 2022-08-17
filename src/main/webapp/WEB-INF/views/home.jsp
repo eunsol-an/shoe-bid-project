@@ -225,16 +225,10 @@
     </div>
 </section>
 <script>
-let isLogin = '<c:out value="${isLogin}"/>';
-let notLogin = '<c:out value="${notLogin}"/>';
 let isLogout = '<c:out value="${isLogout}"/>';
 
-if (parseInt(isLogin)) {
-	alert("로그인 성공");
-}
-if (parseInt(notLogin)){
-	alert("회원정보가 일치하지 않습니다");
-}
+
+
 
 if (parseInt(isLogout)){
 	alert("로그아웃 되었습니다");
