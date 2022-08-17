@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
@@ -36,7 +37,7 @@
 					<td>${rpvo.targetNickName}</td>
 					<td><a
 						href="/report/detail?rpno=${rpvo.rpno }&pageNo=${pgn.pgvo.pageNo }&qty=${pgn.pgvo.qty}">${rpvo.reportTitle}</a></td>
-					<td>${rpvo.regAt}</td>
+					<td>${fn:substring(rpvo.regAt, 0, (fn:length(rpvo.regAt)-3)) }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
