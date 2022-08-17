@@ -48,7 +48,7 @@
 										<td class="text-start">
 										<a class="h5 mt-4" href="/product/detail?pno=${itvo.pno }&mno=${ses.mno}">${itvo.pname }</a>
 											
-											<div class="h6 mt-4">시작가 : <fmt:formatNumber value="${itvo.reservePrice }" pattern="#,###" />원</div>
+											<div class="h6 t-4 mt-2" style="line-height: 1.3em">시작가 <br> <fmt:formatNumber value="${itvo.reservePrice }" pattern="#,###" />원</div>
 										</td>
 										<td class="product-quantity">${itvo.regAt }</td>
 										<td>${itvo.endTime }</td>
