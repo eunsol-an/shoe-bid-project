@@ -88,7 +88,12 @@
 		report_count = report_count +1
 		where mno = #{targetMno}
 	</update>
-
+	<update id="updateGrade">
+		update member set
+		grade = grade + #{i}
+		where mno = #{mno}
+	</update>	
+	
 	<update id="delete" parameterType="mvo">
 		update member set
 		del_at = now()
