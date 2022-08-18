@@ -7,13 +7,6 @@
 <jsp:include page="../common/nav.jsp" />
 <!-- PAGE TITLE
         ================================================== -->
-<style>
-.img{
-   width:500px;
- height:500px; 
-   object-fit : cover;  
-}
-</style> 
 <section class="page-title-section bg-img cover-background"
 	data-background="/resources/bootstrap/img/bg/page-title.png">
 	<div class="container">
@@ -45,7 +38,7 @@
 
 				<!-- product left start -->
 				<div class="xzoom-container">
-					<img class="img mb-1-9 mx-auto border rounded" id="xzoom-magnific"
+					<img class="img_detail mb-1-9 mx-auto border rounded" id="xzoom-magnific"
 						src="/upload/${fn:replace(pdto.imageList[0].saveDir,'\\','/')}/${pdto.imageList[0].uuid }_${pdto.imageList[0].imageName }"
 						alt="..." />
 					<div class="xzoom-thumbs no-margin">
