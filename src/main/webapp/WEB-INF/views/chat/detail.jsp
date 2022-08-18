@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
 
@@ -35,7 +36,7 @@
 									</a>
 									</c:if>
 								</div>
-								<span class="d-block text-primary">${cvo.sendAt } </span>
+								<span class="d-block text-primary">${fn:substring(cvo.sendAt, 0, (fn:length(cvo.sendAt)-3)) }</span>
 							</div>
 							<div style="height: 50px; overflow: hidden">
 							<span class="mb-0 font-weight-200 text-extra-dark-gray" >${cvo.content } </span>
