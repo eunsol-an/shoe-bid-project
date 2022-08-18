@@ -29,7 +29,7 @@ CREATE TABLE member (
 	email varchar(100) NOT NULL,
 	pwd	varchar(100) NOT NULL,
 	nick_name varchar(100) NOT NULL,
-	grade int default '0',
+	grade int default '1',
 	report_count int default '0',
 	member_img varchar(1000) default '0',
 	reg_at datetime	default current_timestamp,
@@ -82,16 +82,15 @@ DROP TABLE IF EXISTS question;
 CREATE TABLE question (
 	qno bigint NOT NULL auto_increment,
 	pno bigint NOT NULL references product(pno) on delete cascade,
-	parent bigint,
+	parent bigint default 0,
 	content text NOT NULL,
 	writer bigint NOT NULL,
 	reg_at datetime default current_timestamp,
 	mod_at datetime default current_timestamp,
-	is_deleted char(1) default '0' NOT NULL,
-	is_answer char(1) default '0' NOT NULL,
+	is_deleted tinyint default 0,
+	is_answer tinyint default 0,
 	primary key (qno)
 ) default CHARSET=utf8mb4;
-
 
 DROP TABLE IF EXISTS interest;
 CREATE TABLE interest (
