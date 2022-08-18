@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
@@ -20,9 +22,11 @@ public class ReportServiceImpl implements ReportService {
 	@Inject
 	private MemberDAO mdao;
 	
+	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public int register(ReportVO rpvo) {
 		int isUp = mdao.updateReportCount(rpvo);
+		int isUps = mdao.updateGrade(rpvo.getTargetMno(), -1);
 		return rpdao.insert(rpvo);
 	}
 
