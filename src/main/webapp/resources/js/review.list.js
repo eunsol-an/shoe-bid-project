@@ -17,7 +17,6 @@ async function getReviewListFromServer(mno, pageNo) {
 
 function spreadReviewList(result) {
     for (const rvvo of result.reviewList) {
-        console.log(rvvo);
         let html = `<tr class="bg-transparent">
                         <td>
                             <div class="text-warning">`;
@@ -53,7 +52,6 @@ function spreadReviewList(result) {
 // 리뷰 리스트 출력하기
 function printReviewList() {
     let pvoWriter = document.getElementById('pvoWriter').innerText;
-    console.log(pvoWriter);
     const reviewTable = document.getElementById('reviewTable');
     const reviewEmpty = document.getElementById('reviewEmpty');
     getReviewListFromServer(pvoWriter, page=1).then(result => {

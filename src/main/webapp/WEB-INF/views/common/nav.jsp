@@ -14,7 +14,7 @@
         ================================================== -->
         <header class="fixed header-light-nav header-02">
         
-        	<div id="top-bar" class="bg-transparent py-1">
+        	<div id="top-bar" class="py-1">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="container">
@@ -74,7 +74,7 @@
 
                                         <li><a href="/product/list">Shop</a>
                                         </li>
-                                        <li><a href="#">About</a>
+                                        <li><a href="/about">About</a>
                                         </li>
                                         <li>
                                         <c:if test="${ses.mno eq null }">
