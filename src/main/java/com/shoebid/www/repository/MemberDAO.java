@@ -27,4 +27,5 @@ public interface MemberDAO {
 	MemberVO searchPwd(MemberVO mvo);
 	int modifyPwd(@Param("id") String id, @Param("email") String email, @Param("pwd") String pwd);
 	String chooseNickName(long mno);
+	int updateGrade(@Param("mno") long mno, @Param("i") int i);
 }
