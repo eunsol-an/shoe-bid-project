@@ -28,7 +28,7 @@
 	<input type="hidden" value="${pgvo.kw }" name="kw">
 	<input type="hidden" value="${pgvo.orderBy }" name="oerderby">
       <label for="pname">상품 이름:</label>
-      <input type="text" class="form-control" id="pname" placeholder="상품이름 입력" name="pname" value=${pdto.pvo.pname } required>
+      <input type="text" class="form-control" id="pname" placeholder="상품이름 입력" name="pname" value="${pdto.pvo.pname }" required>
     </div>  
     <c:set value="${pdto.pvo.category }" var="category"/>
     <div class="mb-3">
