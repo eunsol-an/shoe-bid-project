@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ReviewVO;
+import com.shoebid.www.handler.PagingHandler;
 import com.shoebid.www.repository.MemberDAO;
 import com.shoebid.www.repository.ReviewDAO;
 
@@ -35,6 +36,13 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<ReviewVO> getList(long mno, PagingVO pgvo) {
 		return rvdao.selectList(mno, pgvo);
+	}
+	
+	@Override
+	public PagingHandler getList(PagingVO pgvo, long mno) {
+		return new PagingHandler(rvdao.selectList(mno, pgvo)
+				, rvdao.selectTotalCount(mno, pgvo)
+				, pgvo);
 	}
 
 	@Override
