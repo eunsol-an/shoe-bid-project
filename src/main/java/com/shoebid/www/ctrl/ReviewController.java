@@ -70,6 +70,15 @@ public class ReviewController {
 		return "/review/list";
 	}
 	
+	@GetMapping(value = "/list/{mno}/{pageNo}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<PagingHandler> list(@PathVariable("mno") long mno
+			, @PathVariable("pageNo") int pageNo) {
+		log.info(">>> ReviewController > list - GET");
+		PagingVO pgvo = new PagingVO(pageNo, 10);
+		pgvo.setType("r");
+		return new ResponseEntity<PagingHandler>(rvsv.getList(pgvo, mno), HttpStatus.OK);
+	}
+	
 	@GetMapping("/modify")
 	public void modify(Model model, @RequestParam("pno") long pno, @RequestParam("mno") long mno, @RequestParam("rvno") long rvno) {
 		ProductDTO pdto = psv.getDetail(pno);

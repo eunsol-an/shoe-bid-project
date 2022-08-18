@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.shoebid.www.domain.QuestionVO;
+import com.shoebid.www.domain.ReviewVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductPagingVO;
 
@@ -20,6 +21,7 @@ public class PagingHandler {
 	private PagingVO pgvo; 
 	private ProductPagingVO ppgvo;
 	private List<QuestionVO> questionList;
+	private List<ReviewVO> reviewList;
 	
 	public PagingHandler(PagingVO pgvo, int totalCount) {
 		this.pgvo = pgvo;
@@ -57,5 +59,11 @@ public class PagingHandler {
 			PagingVO pgvo, int totalCount) {
 		this(pgvo, totalCount);
 		this.questionList = questionList;
+	}
+	
+	public PagingHandler(List<ReviewVO> reviewList, 
+			int totalCount, PagingVO pgvo) {
+		this(pgvo, totalCount);
+		this.reviewList = reviewList;
 	}
 }
