@@ -6,53 +6,7 @@
         ================================================== -->
         <footer class="pt-0 classic-footer">
 
-            <div class="footer-service mb-6 mb-lg-8 py-4 py-lg-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="py-4 px-0 p-lg-4 border-color-light-black borders-bottom border-lg-bottom-0 border-lg-end">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-exchange-alt display-18"></i>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h5 class="m-0 text-uppercase display-30">Return &amp; Exchange</h5>
-                                        <p class="m-0 display-30">Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="py-4 px-0 p-lg-4 border-color-light-black borders-bottom border-lg-bottom-0 border-lg-end">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-gift display-18"></i>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h5 class="m-0 text-uppercase display-30">Receive Gift</h5>
-                                        <p class="m-0 display-30">Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="py-4 px-0 p-lg-4">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="far fa-life-ring display-18"></i>
-                                    </div>
-                                    <div class="flex-grow-1 ms-3">
-                                        <h5 class="m-0 text-uppercase display-30">Fast Support</h5>
-                                        <p class="m-0 display-30">Lorem ipsum dolor sit amet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row mt-n2-2">
 
                     <div class="col-lg-4 col-md-6 mt-2-2">
@@ -155,13 +109,14 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
 
-            <div class="footer-bottom py-1-9 mt-6 mt-lg-8">
+            <div class="footer-bottom py-8 mt-6 mt-lg-8">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 mb-3 mb-md-0">
                             <div class="text-center text-md-start">
+                            	<a href="/" class="navbar-brand logodefault"><img id="logo" src="/resources/bootstrap/img/logos/logo_shoebid.png" alt="logo"></a>
                                 <p class="mb-0">&copy; <span class="current-year"></span> Shoe-bid All rights reserved.</p>
                             </div>
                         </div>

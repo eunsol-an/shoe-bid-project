@@ -74,7 +74,7 @@
 
 <!-- FEATURED PRODUCTS
 ================================================== -->
-<section>
+<section class="pt-5">
     <div class="container">
         <div class="text-center mb-1-9 mb-lg-2-3">
             <h2 class="mb-0">New In</h2>
@@ -113,39 +113,29 @@
 </section>
 
 <!-- OFFER BANNER
-================================================== -->
-<section class="pt-0">
-    <div class="container-fluid px-lg-1-9 px-xl-6 px-xxl-13">
-        <div class="row mt-n4">
-            <div class="col-md-6 mt-4">
-                <div class="offer-style02">
-                    <img src="/resources/bootstrap/img/bg/bg-5.jpg" alt="...">
-                    <div class="text-center position-absolute top-10 start-0 end-0">
-                        <span class="text-uppercase font-weight-500 text-white letter-spacing-2 d-block mb-2 mb-sm-3">new arrivals</span>
-                        <h2 class="h1 mb-2 text-white">Featured Deals</h2>
-                        <p class="text-white font-weight-600 display-29 d-none d-sm-block">Save on what's hot right now.</p>
-                        <a href="shop-product-grid.html" class="butn-style4 sm">Shop Now<span></span></a>
+        ================================================== -->
+        <section class="py-0">
+            <div class="container">
+                <div class="row mt-n4">
+                    <div class="col-md-6 mt-4">
+                        <div class="bg-img cover-background py-2-3 py-md-6 px-1-6 px-md-1-9" data-background="/resources/bootstrap/img/bg/banner-1.png">
+                            <h4 class="mb-1-9">경매? 그거 어떻게 하는건데?<br><span class="">SHOE-BID 이용 방법 보러가기!</span></h4>
+                            <a href="/about" class="btn btn-sm btn-dark"><span>서비스 안내</span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <div class="bg-img cover-background py-2-3 py-md-6 px-1-6 px-md-1-9" data-background="/resources/bootstrap/img/bg/banner-2.png">
+                            <h4 class="mb-1-9">신발, 타이어보다 싸다!<br><span class="">스니커즈 구경하러가기!</span></h4>
+                            <a href="/product/list?type=s" class="btn btn-sm btn-dark"><span>둘러보기</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-4">
-                <div class="offer-style02">
-                    <img src="/resources/bootstrap/img/bg/bg-6.jpg" alt="...">
-                    <div class="text-center position-absolute top-10 start-0 end-0">
-                        <span class="text-uppercase font-weight-600 text-white letter-spacing-2 d-block mb-2 mb-sm-3">up to 50% off</span>
-                        <h2 class="h1 mb-2 text-white">Summer Sale</h2>
-                        <p class="text-white font-weight-600 display-29 d-none d-sm-block">Save on what's hot right now.</p>
-                        <a href="shop-product-grid.html" class="butn-style4 sm">Shop Now<span></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 <!-- SERVICES
 ================================================== -->
-<section class="p-0">
+<!-- <section class="p-0">
     <div class="container">
         <div class="row mt-n4">
             <div class="col-sm-6 col-lg-3 mt-4">
@@ -178,7 +168,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- LOOKBOOk
 ================================================== -->
@@ -187,38 +177,14 @@
         <div class="row align-items-center">
             <div class="col-lg-7 mb-1-9 mb-lg-0">
                 <div class="pe-xl-1-9 position-relative">
-                    <img src="img/content/01.jpg" alt="...">
-                    <div class="lookbook d-none d-sm-block">
-                        <span class="lookbook-icon"><i class="fa-solid fa-plus"></i></span>
-                        <div class="lookbook-content">
-                            <div class="d-flex">
-                                <img src="img/content/lookbook-01.jpg" alt="...">
-                                <div class="ms-3">
-                                    <h3 class="h6 mb-0"><a href="shop-product-detail.html">Light Lamp</a></h3>
-                                    <p class="mb-0">$100.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="lookbook second">
-                        <span class="lookbook-icon"><i class="fa-solid fa-plus"></i></span>
-                        <div class="lookbook-content">
-                            <div class="d-flex">
-                                <img src="img/content/lookbook-02.jpg" alt="...">
-                                <div class="ms-3">
-                                    <h3 class="h6 mb-0"><a href="shop-product-detail.html">Dining Chair</a></h3>
-                                    <p class="mb-0">$200.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="/resources/bootstrap/img/bg/banner-3.png" style="border-radius:40px;">
                 </div>
             </div>
             <div class="col-lg-5">
                 <div class="ps-xl-6">
-                    <h2 class="h1 w-xl-80 mb-1-6 mb-lg-1-9">Discover the furniture design of your dreams</h2>
-                    <p class="mb-1-6 mb-lg-1-9">From curvaceous armchairs finished in sumptuous soft velvet, to statement art deco inspired console tables, bar trolleys and stylish side tables</p>
-                    <a href="shop-product-detail.html" class="text-uppercase small border-bottom border-color-black text-dark">shop the look</a>
+                    <h2 class="h1 w-xl-80 mb-1-6 mb-lg-1-9">오늘 단 하루!<br>럭키드로우!</h2>
+                    <p class="mb-1-6 mb-lg-1-9">슈비드와 오프 블랙의 콜라보 한정판 제품입니다<br>신규 회원 가입시 럭키드로우 자동 응모됩니다</p>
+                    <a href="/member/register" class="text-uppercase small border-bottom border-color-black text-dark">회원가입</a>
                 </div>
             </div>
         </div>
