@@ -27,6 +27,10 @@ async function postChatToServer(ctData){
     }
   }
 
+function trimSendAt(sendAt){
+  return sendAt.substring(0, sendAt.length-3);
+}
+
   function getChatList(roomVal){
     spreadChatFromServer(roomVal).then(result => {
       console.log(result);
@@ -40,7 +44,7 @@ async function postChatToServer(ctData){
             tag += `<div class="box">`
             tag += ` <p class="msg text-break">${cvo.content}</p>`
             tag += `<div class="box">`
-            tag += `<span class="time">${cvo.sendAt}</span>`
+            tag += `<span class="time">${trimSendAt(cvo.sendAt)}</span>`
             tag += `</div>`
             tag += `</div>`
             tag += `</div>`
@@ -49,7 +53,7 @@ async function postChatToServer(ctData){
             tag += `<div class="item">`
             tag += `<div class="box">`
             tag += ` <p class="msg text-break">${cvo.content}</p>`
-            tag += `<span class="time">${cvo.sendAt}</span>`
+            tag += `<span class="time">${trimSendAt(cvo.sendAt)}</span>`
             tag += `</div>`
             tag += `</div>`
           }
