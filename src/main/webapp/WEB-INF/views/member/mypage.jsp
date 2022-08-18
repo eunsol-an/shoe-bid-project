@@ -64,7 +64,25 @@
 					</div>
 					<div class="col-lg-2 col-md-2 col-sm-12 p-4 ms-auto text-center">
 						<div>회원등급</div>
-						<h3>${mvo.grade }</h3>
+						<h3>
+							<c:choose>
+								<c:when test="${mvo.grade<= 20 }">
+									맨발
+								</c:when>
+								<c:when test="${mvo.grade <= 40 }">
+									양말
+								</c:when>
+								<c:when test="${mvo.grade <= 60 }">
+									슬리퍼
+								</c:when>
+								<c:when test="${mvo.grade <= 80 }">
+									운동화
+								</c:when>
+								<c:otherwise>
+									날개달린 운동화
+								</c:otherwise>
+							</c:choose>
+						</h3>
 					</div>
 
 
