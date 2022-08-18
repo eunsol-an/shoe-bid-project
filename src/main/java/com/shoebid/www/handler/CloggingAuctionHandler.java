@@ -13,8 +13,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shoebid.www.domain.BidVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.BidDAO;
+import com.shoebid.www.repository.MemberDAO;
 import com.shoebid.www.repository.ProductDAO;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +31,8 @@ public class CloggingAuctionHandler {
 	private ProductDAO pdao;
 	@Inject
 	private BidDAO bdao;
+	@Inject
+	private MemberDAO mdao;
 	
 	@Transactional
 	@Scheduled(cron = "0/10 * * * * *")
@@ -48,8 +52,10 @@ public class CloggingAuctionHandler {
 						pvo.setStatus(2); 
 					}
 					if(pvo.getHighestPrice()>0) {
-					long bno = bdao.selectMaxBid(pvo);
-					int isOk =bdao.updateBidStatusSuccess(bno);
+					BidVO bvo = bdao.selectMaxBid(pvo);
+					int isOk =bdao.updateBidStatusSuccess(bvo.getBno());
+						isOk= mdao.updateGrade(pvo.getWriter(), 3);
+						isOk= mdao.updateGrade(bvo.getBuyer(), 3);
 					}
 					int isOk = bdao.updateBidStatusFail(pvo.getPno());
 					pdao.updateStatus(pvo);

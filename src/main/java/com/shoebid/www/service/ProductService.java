@@ -15,7 +15,6 @@ public interface ProductService {
 	int modify(ProductDTO pdto);
 	int remove(long pno);
 	int getTotalCount(ProductPagingVO ppgvo);
-	int statusProduct(ProductVO pvo);
 	List<ProductVO> getSellList(PagingVO pgvo, long mno);
 	int getSellTotalCount(PagingVO pgvo, long mno);
 }

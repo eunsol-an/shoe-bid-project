@@ -82,26 +82,10 @@ let timeInterval = setInterval( function time() {
     if(now > endTime){
         clearInterval(timeInterval);
        document.getElementById("timeBoard").innerHTML =`<li><span  id="days">상품경매가 종료되었습니다</span></li>`;
-
-      
-
-      let maxPriceVal =stringNumberToInt(document.getElementById("maxPrice").innerText)
-      let statuVal= maxPriceVal >0 ? 1 : 2;
-      console.log(maxPriceVal)
-      let pnoVal = document.getElementById("pnoVal").innerText;
-      const statusData ={
-        pno:pnoVal,
-        highestPrice: maxPriceVal.toString(),
-        status:statuVal
-      }
-      updateProductStatus(statusData).then(result =>{
-        if(result>0){
-          if(document.getElementById("bidModal")!=null&& document.getElementById("interestBtn")!= null){
-            document.getElementById("bidModal").remove()
-            document.getElementById("interestBtn").remove()
-          }
+       if(document.getElementById("bidModal")!=null&& document.getElementById("interestBtn")!= null){
+         document.getElementById("bidModal").remove()
+         document.getElementById("interestBtn").remove()
         }
-      })
     }
 }, 1000);
 

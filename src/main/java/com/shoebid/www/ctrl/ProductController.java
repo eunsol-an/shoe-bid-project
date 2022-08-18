@@ -65,12 +65,6 @@ public class ProductController {
 		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
 		return "/product/sellList";
 	}
-//	@GetMapping("/sellList")
-//	public void sellList(Model model,  @RequestParam("mno") long mno, PagingVO pgvo){
-//		model.addAttribute("list", psv.getSellList(pgvo,mno));
-//		int totalCount = psv.getSellTotalCount(pgvo,mno);
-//		model.addAttribute("pgn",new PagingHandler(pgvo, totalCount));
-//	}
 	
 	@GetMapping("/register")
 	public void register() {}
@@ -83,7 +77,6 @@ public class ProductController {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         cal.add(Calendar.DATE, Integer.parseInt(pvo.getEndTime()));
         pvo.setEndTime(df.format(cal.getTime()).toString());
-        log.info(">>>end_time-->{}",df.format(cal.getTime()));
 			
 		List<ImageFileVO> fileList =fhd.getImageFileList(files, true);
 		pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
@@ -95,7 +88,6 @@ public class ProductController {
 	public void detail(@RequestParam("pno") long pno, @RequestParam(name="mno", required = false) long mno, Model model,
 			@ModelAttribute("pgvo") ProductPagingVO pgvo) {
 		model.addAttribute("pdto", psv.getDetail(pno));
-		log.info(" >>> productCt {} ", itsv.getItCheck(pno, mno));
 			model.addAttribute("itck", itsv.getItCheck(pno, mno));
 	}
 
@@ -112,7 +104,6 @@ public class ProductController {
 		if(files[0].getSize() > 0) {
 			fileList = fhd.getImageFileList(files, true);
 			pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
-			log.info(">>>>수정파일 있을경우들어옴");
 		}
 		int isUp = psv.modify(new ProductDTO(pvo, fileList));
 		rttr.addAttribute("pageNo", ppgvo.getPageNo());
@@ -125,7 +116,6 @@ public class ProductController {
 	}
 	@PostMapping("/remove")
 	public String remove(@RequestParam("pno") long pno, RedirectAttributes rttr, ProductPagingVO ppgvo) {
-		log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>댜출");
 		int isUp = psv.remove(pno);
 		rttr.addAttribute("pageNo", ppgvo.getPageNo());
 		rttr.addAttribute("qty", ppgvo.getQty());
@@ -135,9 +125,4 @@ public class ProductController {
 		return "redirect:/product/list";
 	}
 
-	@PutMapping(value="/{pno}", consumes = "application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> editStatus(@PathVariable("pno") long pno, @RequestBody ProductVO pvo){
-		return psv.statusProduct(pvo) > 0? new ResponseEntity<String>("1", HttpStatus.OK) 
-				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
 }
