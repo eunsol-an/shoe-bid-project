@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shoebid.www.domain.BidVO;
 import com.shoebid.www.domain.ImageFileVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
@@ -20,6 +21,7 @@ import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.BidDAO;
 import com.shoebid.www.repository.ImageFileDAO;
+import com.shoebid.www.repository.MemberDAO;
 import com.shoebid.www.repository.ProductDAO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +35,8 @@ public class ProductServiceImpl implements ProductService {
 	private ImageFileDAO idao;
 	@Inject
 	private BidDAO bdao;
+	@Inject
+	private MemberDAO mdao;
 
 	@Transactional
 	@Override
@@ -89,19 +93,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int getTotalCount(ProductPagingVO ppgvo) {
 		return pdao.selectTotalCount(ppgvo);
-	}
-
-	@Transactional
-	@Override
-	public int statusProduct(ProductVO pvo) {
-		int isOk =0;
-		if(pvo.getHighestPrice()>0) {
-			long bno = bdao.selectMaxBid(pvo);
-			 isOk =bdao.updateBidStatusSuccess(bno);
-			 isOk = bdao.updateBidStatusFail(pvo.getPno());
-		}
-			isOk = pdao.updateStatus(pvo);
-		return isOk;
 	}
 
 	@Override

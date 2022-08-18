@@ -43,8 +43,8 @@
 		select count(bno) from buy_bid where buyer = #{mno} and bno > 0
 		<include refid="status" />
 	</select>
-	<select id="selectMaxBid" parameterType="pvo" resultType="int">
-		select bno from buy_bid where bid_price = #{highestPrice} and pno = #{pno}
+	<select id="selectMaxBid" parameterType="pvo" resultType="bvo">
+		select bno, buyer from buy_bid where bid_price = #{highestPrice} and pno = #{pno}
 	</select>
 	<select id="selectBuyerNick" parameterType="long" resultType="string">
 		select m.nick_name

@@ -13,7 +13,7 @@ public interface BidDAO {
 	List<BidVO> selectList(@Param("mno") long mno, @Param("pgvo") PagingVO pgvo); // 특정 회원의 입찰 리스트
 	int selectTotalCount(@Param("mno") long mno, @Param("pgvo") PagingVO pgvo); // 페이징을 위한 특정 회원의 전체 입찰 갯수
 	int updateBidStatus(BidVO bvo); // 경매 종료 후 입찰상태 변경
-	int selectMaxBid(ProductVO pvo);
+	BidVO selectMaxBid(ProductVO pvo);
 	int updateBidStatusFail(long pno);
 	int updateBidStatusSuccess(long bno);
 	String selectBuyerNick(long pno);
