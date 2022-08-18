@@ -3,10 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
+
+<c:choose>
+<c:when test="${ses.grade == 0 }">
 <section class="md">
 	<div class="container">
 		<div class="row justify-content-center">
-
 			<!-- left panel -->
 			<jsp:include page="../common/mypageMenu.jsp" />
 			<!-- end left panel -->
@@ -74,4 +76,30 @@
 
 	</div>
 </section>
+</c:when>
+
+<c:otherwise>
+<section class="md">
+			    <div class="container">
+			        <div class="row justify-content-center">
+			            <div class="col-lg-8">
+			
+			                <div class="text-center p-5">
+			
+			                    <div class="mb-5">
+			                        <h2>권한이 필요한 페이지입니다.</h2>
+			                    </div>
+			
+			                    <a href="/member/mypage?mno=${ses.mno }" class="btn btn-dark wide m-1"><span><i class="fas fa-arrow-left me-2"></i>마이페이지로 돌아가기</span></a>
+			                    <a href="/product/list" class="btn btn-dark wide m-1"><span>다른 상품 둘러보기<i class="fas fa-arrow-right me-2"></i></span></a>
+			
+			                </div>
+			
+			            </div>
+			        </div>
+			    </div>
+			</section>
+</c:otherwise>
+</c:choose>
+
 <jsp:include page="../common/footer.jsp" />
