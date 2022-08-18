@@ -7,7 +7,7 @@
 <!-- TABLES
         ================================================== -->
         <c:choose>
-        <c:when test="${ses.grade == 99 }">
+        <c:when test="${ses.grade == 0 }">
         <section class="md">
             <div class="container">
                 <div class="row justify-content-center">

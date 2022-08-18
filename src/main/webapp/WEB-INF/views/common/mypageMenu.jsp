@@ -5,7 +5,7 @@
 <div class="col-lg-2 col-sm-9 mb-2-3 mb-lg-0">
     <div class="side-bar">
     	<c:choose>
-    	<c:when test="${ses.grade ne 99 }">
+    	<c:when test="${ses.grade ne 0 }">
     		<div class="widget border-0">
             <div class="mb-3">
                 <h5><i class="ti-user pe-2"></i>내 정보</h5>
