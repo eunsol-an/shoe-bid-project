@@ -1,0 +1,41 @@
+.btn-light-style {
+  display: inline-block;
+  font-size: 13px;
+  padding: 6px 18px;
+  line-height: 20px;
+  border: 2px solid #fff;
+  background: #fff;
+  border-radius: 4px;
+  color: #212529;
+ 
+}
+
+.mgs-caution {
+	font-size: 12px;
+}
+
+.input-style {
+	border-radius: 0px;
+	border-bottom: #dee2e6 1px solid;
+	border-left: medium none;
+	border-right: medium none;
+	border-top: medium none;
+ 	line-height: 15px;
+ 	height: 15px;
+	
+}
+.font-12 {
+	font-size: 12px;
+	margin-top: 15px;
+  	color: #1E2022;
+	font-weight: 600;
+}
+.font-13 {
+	font-size: 13px;
+	margin-top: 15px;
+  	color: #dee2e6;;
+	font-weight: 600;	
+}
+.height-100 {
+	height:100px;
+}

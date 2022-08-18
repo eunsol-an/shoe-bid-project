@@ -8,12 +8,12 @@
             <div class="container">
                 <div class="row justify-content-center">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-4 mx-auto">
 
-                        <div class="common-block">
-
-                            <div class="inner-title">
-                                <h4 class="mb-0">로그인</h4>
+                        <div class="common-block border-0">
+                        
+                            <div class="mb-5">
+                                <h4 class="mb-0 text-center">로그인</h4>
                             </div>
 
                             <form action="/member/login" method="post">
@@ -23,8 +23,10 @@
                                     <div class="col-sm-12">
 
                                         <div class="form-group">
-                                            <label>아이디</label>
-                                            <input type="text" class="form-control" name="id" placeholder="아이디">
+                                        <div class="height-100">
+                                            <label class="font-12">아이디</label>
+                                            <input type="text" class="form-control input-style" name="id" placeholder="아이디">
+                                        </div>
                                         </div>
 
                                     </div>
@@ -32,8 +34,10 @@
                                     <div class="col-sm-12">
 
                                         <div class="form-group">
-                                            <label>비밀번호</label>
-                                            <input type="password" class="form-control" name="pwd" placeholder="비밀번호">
+                                        <div class="height-100">
+                                            <label class="font-12">비밀번호</label>
+                                            <input type="password" class="form-control input-style" name="pwd" placeholder="비밀번호">
+                                        </div>
                                         </div>
 
                                     </div>
@@ -42,11 +46,11 @@
 
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="form-check" style="text-align: center">
-                                        <button type="submit" class="butn-style2 mt-4 mb-4">로그인</button>
-                                        <ul style="text-align: center">
-                                        	<li style="display: inline;"><a href="/member/register">회원가입</a></li>&emsp;
-                                        	<li style="display: inline;"><a href="/member/searchID">아이디찾기</a></li>&emsp;
+                                        <div style="text-align: center" class="font-13">
+                                        <button type="submit" class="col-sm-12 btn btn-dark mt-2 mb-0 display-30 py-3">로그인</button>
+                                        <ul style="text-align: center" class="p-0 font-13">
+                                        	<li style="display: inline;"><a href="/member/register">회원가입</a></li>&nbsp;|
+                                        	<li style="display: inline;"><a href="/member/searchID">아이디찾기</a></li>&nbsp;|
                                         	<li style="display: inline;"><a href="/member/searchPwd">비밀번호재설정</a>
                                         </ul>
                                         </div>
