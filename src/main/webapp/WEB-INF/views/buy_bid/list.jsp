@@ -57,10 +57,10 @@
 							<tbody>
 								<c:forEach var="bvo" items="${list }">
 									<tr class="bg-transparent">
-										<td><a href="/product/detail?pno=${bvo.pno }"><img
+										<td><a href="/product/detail?pno=${bvo.pno }&mno=${ses.mno}"><img
 												src="/upload/${fn:replace(bvo.productImg,'\\','/')}" alt="img" style="width:200px;"/></a></td>
 										<td class="text-start">
-											<a href="/product/detail?pno=${bvo.pno }">${bvo.pname }</a>
+											<a href="/product/detail?pno=${bvo.pno }&mno=${ses.mno}">${bvo.pname }</a>
 											<div class="h6 mt-4">입찰가 : <fmt:formatNumber value="${bvo.bidPrice }" pattern="#,###" />원</div>
 										</td>
 										<td class="product-quantity">${fn:substring(bvo.bidAt, 0, (fn:length(bvo.bidAt)-3)) }</td>
