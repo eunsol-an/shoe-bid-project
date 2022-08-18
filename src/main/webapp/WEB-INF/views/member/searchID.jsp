@@ -15,34 +15,33 @@
                         <div class="common-block">
 
                             <div class="inner-title">
-                                <h4 class="mb-0">Forgot your ID?</h4>
-                                <p class="mb-0">Forgot your email empowers you.</p>
+                                <h4 class="mb-0">아이디찾기</h4>
                             </div>
 
                             <form method="post" action="/member/searchIDResult" >
 
                                 <div class="row">
 
-                                    <div class="col-sm-12 mb-2">
+                                    <div class="col-sm-12">
 
                                         <div class="form-group">
-                                            <label>Enter Your Email Address</label>
+                                            <label>이메일을 입력해주세요</label>
                                             <input type="email" class="form-control" name="email" placeholder="이메일을 입력해주세요" id="email">
+											<div id="emailCheck"></div>
                                         </div>
 
                                     </div>
 
                                 </div>
-								<div id="emailCheck"></div>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <a href="/member/login" class="m-link-muted">로그인</a>
+                                <button type="submit" class="butn-style2 mt-4" id="findBtn">아이디찾기</button>
+                                <button type="button" class="butn-style2 mt-4" onclick="location.href='/';">취소</button>
                                     </div>
 
                                 </div>
 
-                                <button type="submit" class="butn-style2 mt-4" id="findBtn">아이디찾기</button>
-                                <button type="button" class="butn-style2 mt-4" onclick="location.href='/';">취소</button>
                             </form>
 
                         </div>
