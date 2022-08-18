@@ -8,20 +8,6 @@
 <jsp:include page="../common/nav.jsp" />
 <!-- PAGE TITLE
         ================================================== -->
-<style>
-.box{
-  width: 300px;
- height: 300px; 
- position: relative;
-}
-.img{
-position: absolute;
-
-   width:100%;
- height:100%; 
-   object-fit : cover;  
-}
-</style>
 <section class="page-title-section bg-img cover-background border-0"
    data-background="/resources/bootstrap/img/bg/page-title.png">
    <div class="container">
@@ -137,14 +123,14 @@ position: absolute;
             <div class="container">
                <div class="row mt-n1-9">
                   <c:forEach items="${list }" var="pvo">
-                     <div class="col-sm-6 col-lg-3 mt-1-9 ">
+                     <div class="col-sm-6 col-lg-3 mt-1-9 listBox">
                         <div class="product-grid-four">
                            <div class="product-img rounded-3 box">
                     <a href="/product/detail?pno=${pvo.pno }&pageNo=${pgn.ppgvo.pageNo }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}&mno=${ses.mno>0? ses.mno: '0'}&orderBy=${pgn.ppgvo.orderBy}">
                                  <img class="img" src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="...">
                               </a>
                            </div>
-                           <div class="ms-2">
+                           <div class="ms-2 contentbox">
                            
                               <h3 class="h6">
                                  <a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno: '0'}&pageNo=${pgn.ppgvo.pageNo }&qty=${pgn.ppgvo.qty}&type=${pgn.ppgvo.type}&kw=${pgn.ppgvo.kw}&orderBy=${pgn.ppgvo.orderBy}">${pvo.pname }</a>

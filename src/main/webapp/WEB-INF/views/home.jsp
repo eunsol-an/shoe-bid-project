@@ -82,11 +82,11 @@
         </div>
         <div class="row mt-n1-9">
         <c:forEach items="${list }" var="pvo">
-            <div class="col-sm-6 col-lg-3 mt-1-9">
+            <div class="col-sm-6 col-lg-3 mt-1-9 listBox">
                 <div class="product-grid-four">
-                    <div class="product-img rounded-3">
+                    <div class="product-img rounded-3 box">
                     
-                        <a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno :'0'} "><img src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
+                        <a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno :'0'} "><img class="img" src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
                         
                     
                     </div>

@@ -38,6 +38,8 @@
     
     <!-- star css -->
     <link href="/resources/bootstrap/css/star.css" rel="stylesheet">
+    <!-- productList css -->
+    <link href="/resources/css/product.list.css" rel="stylesheet">
 </head>
 
 
