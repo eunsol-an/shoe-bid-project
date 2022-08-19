@@ -16,6 +16,7 @@ async function getReviewListFromServer(mno, pageNo) {
 }
 
 function spreadReviewList(result) {
+    document.getElementById('reviewQty').innerText = ` (${result.totalCount})`;
     for (const rvvo of result.reviewList) {
         let html = `<tr class="bg-transparent">
                         <td>

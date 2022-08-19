@@ -89,21 +89,22 @@
 					<div class="dropdown mb-5">
 						<a class="dropdown-toggle"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
-							aria-expanded="false"><img src="/resources/bootstrap/img/avatar/user-dropdown.jpg" alt="..." class="rounded-circle"><span class="d-inline-block mt-1 ms-1 display-28">${pdto.nickName }</span></a>
+							aria-expanded="false"><img src="/upload/${fn:replace(pdto.mvo.memberImg,'\\','/')}" alt="..." class="rounded-circle" style="width:36px; height:36px"><span class="d-inline-block mt-1 ms-1 display-28">${pdto.mvo.nickName }</span></a>
+						<c:if test="${ses.mno ne null }">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">회원정보보기</a></li>
 							<li><a class="dropdown-item" href="/chat/list?mno=${pvo.writer }">채팅하기</a></li>
 							<li><a class="dropdown-item" href="/report/register?mno=${pvo.writer }">신고하기</a></li>
 						</ul>
+						</c:if>
 					</div>
 					
 
 					<div class="mb-4">
-						<div class="mb-2">
+						<div class="mb-1">
 							<span class="me-5 display-28">시작가</span>
 							<span class="display-23 font-weight-700" id="reservePriceVal"><fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" /></span>원
 						</div>
-						<div>
+						<div class="mb-1">
 							<span class="me-5 display-28">현재가</span>
 							<span class="display-23 font-weight-700 text-primary" id="maxPrice"><fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" /></span>원
 						</div>
@@ -129,26 +130,26 @@
 						<!-- end seconds -->
 					</ul>
 
-					<div class="row">
+					<div class="row mt-2">
 						<div class="col-5 col-md-4">
-							<label>시작시간:</label>
+							<!-- <label>시작시간:</label> -->
 							<div class="mb-4 ">
-								<span>${pvo.regAt }</span>
+								<i class="far fa-clock"></i> <span>${pvo.regAt } ~</span>
 							</div>
 
 						</div>
 						<div class="col-5 col-md-4">
-							<label>종료시간:</label>
+							<!-- <label>종료시간:</label> -->
 							<div class="mb-4 ">
-								<span id="endTime">${pvo.endTime }</span>
+								<i class="far fa-clock"></i> <span id="endTime">${pvo.endTime }</span>
 							</div>
 						</div>
-						<div class="row">
+						<%-- <div class="row">
 							<div class="col-4 col-lg-2">
 								<label>Qty:</label> <span> ${pvo.readCount }</span>
 							</div>
 
-						</div>
+						</div> --%>
 						<div class="row mb-4">
 							<div class="col-lg-12">
 
@@ -158,13 +159,13 @@
 										
 											
 										<button type="button" id="bidModal"
-											class="butn-style2 me-3 mb-2 mb-md-0" data-bs-toggle="modal"
+											class="btn btn-dark me-3 mb-2 mb-md-0" data-bs-toggle="modal"
 											data-bs-target="#centered">입찰하기</button>
 										
 									</c:when>
 									<c:when test="${ses eq null }">
 										<a href="/member/login"
-											class="butn-style2 me-3 mb-2 mb-md-0 mt-2">로그인 후 이용해주세요</a>
+											class="btn btn-dark me-3 mb-2 mb-md-0 mt-2">로그인 후 이용해주세요</a>
 									</c:when>
 								</c:choose>
 								<!-- Vertically centered -->
@@ -194,7 +195,7 @@
 													<input class="form-check-input is-checked" type="checkbox"
 														value="" id="flexCheckDefault"> <label
 														class="form-check-label is-checked" for="flexCheckDefault">
-														입찰은 취소할 수 없습니다. 모든 약관에 동의합니다.</label>
+														입찰은 취소할 수 없습니다. 신중하게 결정해주세요.</label>
 													<p class="text-center text-danger" id="errorMsg"></p>
 												</div>
 											</div>
@@ -202,7 +203,7 @@
 
 												<button type="button" class="btn btn-secondary"
 													data-bs-dismiss="modal">닫기</button>
-												<button type="button" class="btn btn-primary" id="addBtn"
+												<button type="button" class="btn btn-dark" id="addBtn"
 													disabled>입찰하기</button>
 											</div>
 
@@ -218,10 +219,10 @@
 								<c:if test="${ses.mno eq pvo.writer }">
 									<a
 										href="/product/modify?pno=${pvo.pno }&pageNo=${pgvo.pageNo }&qty=${pgvo.qty}&type=${pgvo.type}&kw=${pgvo.kw}&orderBy=${pgvo.orderBy}&mno=0"
-										id="modBtn" class="butn-style2 me-3 mb-2 mb-md-0"
+										id="modBtn" class="btn btn-dark me-3 mb-2 mb-md-0"
 										style="display: none;">수정</a>
 									<button class="butn-style2 me-3 mb-2 mb-md-0 modBtnFake" id="modBtnFake">수정</button>
-									<button type="button" class="butn-style2 dark"
+									<button type="button" class="btn btn-dark"
 										data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 										id="Remove">삭제</button>
 									<form action="" method="post" id="productRmForm"
@@ -274,25 +275,25 @@
     <div class="modal-content">
 
       <!-- Img Modal Header -->
-      <div class="modal-header">
+      <div class="modal-header border-0">
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
-      <img class="mb-1-9 mx-auto" id="modalImg" src="" alt="..." style="border: 0;"/>
+      <img class="mb-1-9 mx-auto" id="modalImg" src="" alt="..." />
       
     </div>
   </div>
 </div>
 			<!-- product description -->
-			<div class="row justify-content-center mb-6 mb-md-7">
+			<div class="row justify-content-center mb-6 mb-md-7 mt-7">
 
 				<div class="col-12">
 					<div class="horizontaltab tab-style-two">
 						<ul class="resp-tabs-list hor_1 text-start">
-							<li><i class="ti-line-dashed d-md-block d-none"></i>Description</li>
+							<li><i class="ti-line-dashed d-md-block d-none"></i>상품설명</li>
 							<li ><i class="ti-more d-md-block d-none" ></i>QnA<span id="qnaQty"></span></li>
-							<li><i class="ti-star d-md-block d-none"></i>Reviews (2)</li>
+							<li><i class="ti-star d-md-block d-none"></i>판매자후기<span id="reviewQty"></span></li>
 						</ul>
 						<div class="resp-tabs-container hor_1">
 							<div>
@@ -370,7 +371,7 @@
 													</tbody>
 												</table>
 												<div id="reviewEmpty" style="display:none;">
-													<p class="text-center">리뷰가 없습니다.</p>
+													<p class="text-center">후기가 없습니다.</p>
 												</div>
 												<div class="text-center" id="moreBtnZone"></div>
 											</div>

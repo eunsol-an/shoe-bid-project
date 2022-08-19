@@ -170,6 +170,46 @@
     </div>
 </section> -->
 
+<!-- FEATURED PRODUCTS
+================================================== -->
+<section>
+    <div class="container">
+        <div class="text-center mb-1-9 mb-lg-2-3">
+            <h2 class="mb-0">Close Soon</h2>
+            <p class="text-muted">경매 마감 임박 상품</p>
+        </div>
+        <div class="row mt-n1-9">
+        <c:forEach items="${list }" var="pvo">
+            <div class="col-sm-6 col-lg-3 mt-1-9 listBox">
+                <div class="product-grid-four">
+                    <div class="product-img rounded-3 box">
+                    
+                        <a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno :'0'} "><img class="img" src="/upload/${fn:replace(pvo.productImg,'\\','/')}" alt="..."></a>
+                        
+                    
+                    </div>
+                    <div class="ms-2">
+                     
+	                    <h3 class="h6"><a href="/product/detail?pno=${pvo.pno }&mno=${ses.mno>0? ses.mno :'0'}">${pvo.pname }</a></h3>
+	             
+                    
+	                    <div>
+							<span class="badge bg-secondary">시작가</span>
+							<span class="display-29 text-muted text-decoration-line-through"><fmt:formatNumber value="${pvo.reservePrice }" pattern="#,###" />원</span>
+						</div>
+						<div>
+							<span class="badge bg-primary">현재가</span>
+							<span class="font-weight-600 display-29 text-muted"><fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</span>
+						</div>
+	                    <div class="display-29 text-muted mt-2"><i class="far fa-clock"></i> ${pvo.endTime }</div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+        </div>
+    </div>
+</section>
+
 <!-- LOOKBOOk
 ================================================== -->
 <section>
