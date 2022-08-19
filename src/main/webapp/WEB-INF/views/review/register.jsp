@@ -43,7 +43,7 @@
                                         <h4><a href="/product/detail?pno=${pvo.pno }">${pvo.pname }</a></h4>
                                         <div>
                                         	<span class="me-2 display-30">판매자</span>
-                                        	<span>${pdto.nickName }</span>
+                                        	<span>${pdto.mvo.nickName }</span>
                                        	</div>
                                         <div>
                                         	<span class="me-2 display-30">낙찰자</span>
