@@ -13,9 +13,9 @@
 	<jsp:include page="../common/mypageMenu.jsp"/>
 	<!-- end left panel -->
 	<!-- right panel -->
-	<div class="col-lg-10">
+	<div class="col-lg-9">
 	<div class="common-block border-0">
-			<div class="inner-title">
+			<div class="mb-5">
 				<h4 class="mb-0">신고 내역</h4>
 			</div>
 					

@@ -15,15 +15,15 @@
 			<!-- end left panel -->
 
 			<!-- right panel -->
-			<div class="col-lg-10">
+			<div class="col-lg-9">
 
 				<div class="common-block border-0">
 
-					<div class="inner-title">
-						<h4 class="mb-0">후기 내역</h4>
+					<div class="mb-5">
+						<h4 class="mb-0">후기 내역 (${pgn.totalCount })</h4>
 					</div>
 
-					<form class="d-flex col-sm-12 col-md-6 mx-auto"
+					<form class="d-flex col-sm-12 col-md-2 ms-auto"
 						action="/review/list/${ses.mno }" method="get">
 						<input type="hidden" name="pageNo" value="1"> <input
 							type="hidden" name="qty" value="${pgn.pgvo.qty }">
@@ -33,8 +33,8 @@
 								<option value="r" ${typed eq 'r' ? 'selected':'' }>받은후기</option>
 								<option value="s" ${typed eq 's' ? 'selected':'' }>보낸후기</option>
 							</select>
-							<button class="btn butn-style2" type="submit">
-								보기 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">${pgn.totalCount }</span>
+							<button class="btn btn-sm btn-dark" type="submit">
+								<i class="ti-search"></i>
 							</button>
 						</div>
 					</form>

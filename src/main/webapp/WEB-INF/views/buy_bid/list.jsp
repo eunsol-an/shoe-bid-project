@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/nav.jsp" />
+
 <!-- ACCOUNT WISHLIST
 ================================================== -->
 <section class="md">
@@ -16,18 +17,19 @@
 			<!-- end left panel -->
 
 			<!-- right panel -->
-			<div class="col-lg-10">
+			<div class="col-lg-9">
 
 				<div class="common-block border-0">
 
-					<div class="inner-title">
-						<h4 class="mb-0">입찰/낙찰 내역</h4>
+					<div class="mb-5">
+						<h4 class="mb-0">입찰/낙찰 내역 (${pgn.totalCount })</h4>
 					</div>
 
-					<form class="d-flex col-sm-12 col-md-6 mx-auto"
+
+					<form class="d-flex col-sm-12 col-md-2 ms-auto"
 						action="/buy_bid/list/${ses.mno }" method="get">
-						<input type="hidden" name="pageNo" value="1"> <input
-							type="hidden" name="qty" value="${pgn.pgvo.qty }">
+						<input type="hidden" name="pageNo" value="1" class="input-style"> <input
+							type="hidden" name="qty" value="${pgn.pgvo.qty }" class="input-style">
 						<div class="input-group">
 							<c:set value="${pgn.pgvo.type }" var="typed" />
 							<select class="form-select" name="type">
@@ -36,27 +38,29 @@
 								<option value="p" ${typed eq 'p' ? 'selected':'' }>진행중</option>
 								<option value="d" ${typed eq 'd' ? 'selected':'' }>종료</option>
 							</select>
-							<button class="btn butn-style2" type="submit">
-								보기 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">${pgn.totalCount }</span>
+							<button class="btn btn-sm btn-dark" type="submit">
+								<i class="ti-search"></i>
 							</button>
 						</div>
 					</form>
 
+
 					<div class="table-responsive mt-5">
-						<table class="table v-align-middle text-center">
-							<thead>
-								<tr>
-									<th>상품이미지</th>
-									<th>입찰내용</th>
-									<th>입찰일시</th>
-									<th>상태</th>
-									<th>판매자</th>
+						<table class="table v-align-middle text-center mb-4">
+							<thead class="font-14">
+                                   <tr class="text-center">
+						
+									<th class="font-12">상품이미지</th>
+									<th class="font-12">입찰내용</th>
+									<th class="font-12">입찰일시</th>
+									<th class="font-12">상태</th>
+									<th class="font-12">판매자</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="bvo" items="${list }">
 									<tr class="bg-transparent">
-										<td ><a class="img_a" href="/product/detail?pno=${bvo.pno }&mno=${ses.mno}"><img
+										<td><a href="/product/detail?pno=${bvo.pno }&mno=${ses.mno}"><img
 												src="/upload/${fn:replace(bvo.productImg,'\\','/')}" alt="img" class="mypage_img"/></a></td>
 										<td class="text-start">
 											<a href="/product/detail?pno=${bvo.pno }&mno=${ses.mno}">${bvo.pname }</a>
@@ -67,14 +71,14 @@
 												<div>경매진행중</div>
 											</c:if> <c:if test="${bvo.bidStatus eq 1 }">
 												<div>낙찰완료</div>
-												<a href="/review/register?pno=${bvo.pno }&mno=${bvo.writer }" class="butn-style2 small text-nowrap">거래후기 남기기</a>
+												<a href="/review/register?pno=${bvo.pno }&mno=${bvo.writer }" class="btn btn-sm btn-dark text-nowrap">거래후기</a>
 											</c:if> <c:if test="${bvo.bidStatus eq 2 }">
 												<div>낙찰실패</div>
 											</c:if></td>
 										<td>
 											<div>${bvo.nickName }</div>
 											<c:if test="${bvo.bidStatus eq 1}">
-											<a href="/chat/list?mno=${bvo.writer }" class="butn-style2 small text-nowrap">채팅하기</a>
+											<a href="/chat/list?mno=${bvo.writer }" class="btn btn-sm btn-dark text-nowrap">채팅하기</a>
 											</c:if>
 											</td>
 									</tr>

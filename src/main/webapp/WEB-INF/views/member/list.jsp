@@ -15,30 +15,30 @@
 				<jsp:include page="../common/mypageMenu.jsp"/>
 				<!-- end left panel -->
 				<!-- right panel -->
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                 <div class="common-block border-0">
 
-                    <div class="position-relative elements-block">
+                   
 
-                        <div class="inner-title">
+                        <div class="mb-5">
                             <h4 class="mb-0">회원 리스트</h4>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>회원번호</th>
-                                        <th>아이디</th>
-                                        <th>이메일</th>
-                                        <th>닉네임</th>
-                                        <th>등급</th>
-                                        <th>신고횟수</th>
+                            <table class="table mb-4 text-center">
+                                <thead class="font-14">
+                                    <tr class="text-center">
+                                        <th class="font-12">회원번호</th>
+                                        <th class="font-12">아이디</th>
+                                        <th class="font-12">이메일</th>
+                                        <th class="font-12">닉네임</th>
+                                        <th class="font-12">등급</th>
+                                        <th class="font-12">신고횟수</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach items="${list }" var="mvo">
-                                    <tr>
+                                    <tr class="bg-transparent text-centers">
                                         <td>${mvo.mno }</td>
                                         <td>${mvo.id }</td>
                                         <td>${mvo.email }</td>
@@ -59,7 +59,7 @@
                                 </li>
                             </c:if>
                             <c:forEach begin="${pgn.startPage }" end="${pgn.endPage }" var="i">
-                                <li class="page-item ${pgn.pgvo.pageNo == i ? 'active': '' }"><a href="/member/list?pageNo=${i }&qty=${pgn.pgvo.qty}">${i }</a></li>
+                                <li class="page-item ${pgn.pgvo.pageNo == i ? 'active': '' }"><a href="/member/list?pageNo=${i }&qty=${pgn.pgvo.qty}" class="border-0 bg-transparent">${i }</a></li>
                             </c:forEach>
                             <c:if test="${pgn.next }">
                                 <li class="page-item">
@@ -72,7 +72,7 @@
                         </div>
                         </div>
 
-                    </div>
+                    
 
 				</div>
                 </div>
@@ -93,8 +93,8 @@
 			                        <h2>권한이 필요한 페이지입니다.</h2>
 			                    </div>
 			
-			                    <a href="/member/mypage?mno=${ses.mno }" class="btn btn-dark wide m-1"><span><i class="fas fa-arrow-left me-2"></i>마이페이지로 돌아가기</span></a>
-			                    <a href="/product/list" class="btn btn-dark wide m-1"><span>다른 상품 둘러보기<i class="fas fa-arrow-right me-2"></i></span></a>
+			                    <a href="/member/mypage?mno=${ses.mno }" class="btn btn-dark wide m-1 py-3"><span><i class="fas fa-arrow-left me-2"></i>마이페이지로 돌아가기</span></a>
+			                    <a href="/product/list" class="btn btn-dark wide m-1 py-3"><span>다른 상품 둘러보기<i class="fas fa-arrow-right me-2"></i></span></a>
 			
 			                </div>
 			

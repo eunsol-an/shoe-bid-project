@@ -7,25 +7,28 @@
 	<div class="container">
 		<div class="row justify-content-center">
 
-			<div class="col-lg-6">
+			<div class="col-lg-4 mx-auto">
 
-				<div class="common-block">
-					<div class="inner-title">
-						<h4 class="mb-0">비밀번호 변경 결과</h4>
+				<div class="common-block border-0">
 
+					<div class="mb-5">
+						<h4 class="mb-0 text-center">비밀번호 변경</h4>
 					</div>
+					
+					
 					<div class="row">
-						<div class="col-sm-12">
-					<p class="mb-0">비밀번호가 변경되었습니다</p>
-						
+						<div class="text-center">
+							<span class="font-14">비밀번호가 변경되었습니다.</span>	
 						</div>
 
 					</div>
-					<button type="button" class="butn-style2 mt-4"
+					
+					<div class="d-flex justify-content-center mt-4">
+					<button type="button" class="col-5 btn btn-dark display-30 py-3 me-1 mt-1"
 					onclick="location.href='/member/login';">로그인
 					</button>
 					
-					<button type="button" class="butn-style2 mt-4"
+					<button type="button" class="col-5 btn btn-dark display-30 py-3 me-1 mt-1"
 						onclick="location.href='/';">메인화면으로가기</button>
 
 				</div>
@@ -33,6 +36,7 @@
 			</div>
 
 		</div>
+	</div>
 	</div>
 </section>
 <jsp:include page="../common/footer.jsp"/>

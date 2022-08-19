@@ -50,8 +50,8 @@
                                         <button type="submit" class="col-sm-12 btn btn-dark mt-2 mb-0 display-30 py-3">로그인</button>
                                         <ul style="text-align: center" class="p-0 font-13">
                                         	<li style="display: inline;"><a href="/member/register">회원가입</a></li>&nbsp;|
-                                        	<li style="display: inline;"><a href="/member/searchID">아이디찾기</a></li>&nbsp;|
-                                        	<li style="display: inline;"><a href="/member/searchPwd">비밀번호재설정</a>
+                                        	<li style="display: inline;"><a href="/member/searchID">아이디 찾기</a></li>&nbsp;|
+                                        	<li style="display: inline;"><a href="/member/searchPwd">비밀번호 찾기</a>
                                         </ul>
                                         </div>
                                     </div>
