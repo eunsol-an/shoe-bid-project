@@ -98,13 +98,13 @@
         .chat_wrap .inner{border-radius:5px; padding:10px;}
         .chat_wrap .item{margin-top:0px}
         .chat_wrap .item:first-child{margin-top:0px}
-        .chat_wrap .item .box{display:inline-block; max-width:280px; position:relative; bottom: 5px;}
-        .chat_wrap .item .box .msg {background:whitesmoke; border-radius:0px 10px 10px 10px; padding:9px; text-align:left; margin: 10px 0 20px;}
-        .chat_wrap .item .box .time {font-size:11px;  position:absolute; bottom:1px; width:130px;}
+        .chat_wrap .item .chatbox{display:inline-block; max-width:280px; position:relative; bottom: 5px;}
+        .chat_wrap .item .chatbox .msg {background:whitesmoke; border-radius:0px 10px 10px 10px; padding:9px; text-align:left; margin: 10px 0 20px;}
+        .chat_wrap .item .chatbox .time {font-size:11px;  position:absolute; bottom:1px; width:130px;}
         .chat_wrap .item.mymsg{text-align:right; margin-bottom: -20px;}
-        .chat_wrap .item.mymsg .box .msg{background-color:#03a9f5; border-radius:10px 0px 10px 10px; color:white;}
-        .chat_wrap .item.mymsg .box .time{right:auto; left:-135px; top: -30px; width:130px;}
-        .chat_wrap .item.on .box{margin:0; opacity: 1;} 
+        .chat_wrap .item.mymsg .chatbox .msg{background-color:#03a9f5; border-radius:10px 0px 10px 10px; color:white;}
+        .chat_wrap .item.mymsg .chatbox .time{right:auto; left:-135px; top: -30px; width:130px;}
+        .chat_wrap .item.on .chatbox{margin:0; opacity: 1;} 
 </style>
 <script src="/resources/js/chat.send.js"></script>
 <script>

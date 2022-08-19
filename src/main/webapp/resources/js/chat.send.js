@@ -41,9 +41,9 @@ function trimSendAt(sendAt){
           if(cvo.recvNick == sesmno){
               
             tag += `<div class="item mymsg">`
-            tag += `<div class="box">`
+            tag += `<div class="chatbox">`
             tag += ` <p class="msg text-break">${cvo.content}</p>`
-            tag += `<div class="box">`
+            tag += `<div class="chatbox">`
             tag += `<span class="time">${trimSendAt(cvo.sendAt)}</span>`
             tag += `</div>`
             tag += `</div>`
@@ -51,7 +51,7 @@ function trimSendAt(sendAt){
             
           } else  {
             tag += `<div class="item">`
-            tag += `<div class="box">`
+            tag += `<div class="chatbox">`
             tag += ` <p class="msg text-break">${cvo.content}</p>`
             tag += `<span class="time">${trimSendAt(cvo.sendAt)}</span>`
             tag += `</div>`
