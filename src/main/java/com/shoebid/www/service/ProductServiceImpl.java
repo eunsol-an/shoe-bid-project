@@ -22,6 +22,7 @@ import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
 import com.shoebid.www.repository.BidDAO;
 import com.shoebid.www.repository.ImageFileDAO;
+import com.shoebid.www.repository.InterestDAO;
 import com.shoebid.www.repository.MemberDAO;
 import com.shoebid.www.repository.ProductDAO;
 
@@ -34,6 +35,8 @@ public class ProductServiceImpl implements ProductService {
 	private ProductDAO pdao;
 	@Inject
 	private ImageFileDAO idao;
+	@Inject
+	private InterestDAO itdao;
 
 	@Transactional
 	@Override
@@ -59,7 +62,8 @@ public class ProductServiceImpl implements ProductService {
 		return new ProductDTO(pdao.selectDetail(pno),
 				pdao.selectMaxPrice(pno), 
 				pdao.selectNickName(pno),
-				idao.selectListPImage(pno));
+				idao.selectListPImage(pno),
+				itdao.selectItQty(pno));
 	}
 
 	@Transactional

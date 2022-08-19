@@ -18,6 +18,7 @@ public class ProductDTO {
 	private ProductVO pvo;
 	private int maxPrice;
 	private MemberVO mvo;
+	private int itQty;
 		
 	private List<ImageFileVO> imageList;
 	
@@ -30,11 +31,12 @@ public class ProductDTO {
 	}
 	
 	//detail
-	public ProductDTO(ProductVO pvo, int maxPrice, MemberVO mvo, List<ImageFileVO> imageList) {
+	public ProductDTO(ProductVO pvo, int maxPrice, MemberVO mvo, List<ImageFileVO> imageList, int itQty) {
 		this.pvo = pvo;
 		this.maxPrice = maxPrice;
 		this.mvo = mvo;
 		this.imageList = imageList;
+		this.itQty = itQty;
 	}
 
 	
