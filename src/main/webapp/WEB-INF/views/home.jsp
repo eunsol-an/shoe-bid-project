@@ -103,7 +103,7 @@
 							<span class="badge bg-primary">현재가</span>
 							<span class="font-weight-600 display-29 text-muted"><fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</span>
 						</div>
-	                    <div class="display-29 text-muted mt-2"><i class="far fa-clock"></i> ${pvo.endTime }</div>
+	                    <div class="display-30 text-muted mt-2"><i class="far fa-clock"></i> <span class="me-2">등록일</span>${pvo.modAt }</div>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
 							<span class="badge bg-primary">현재가</span>
 							<span class="font-weight-600 display-29 text-muted"><fmt:formatNumber value="${pvo.highestPrice }" pattern="#,###" />원</span>
 						</div>
-	                    <div class="display-29 text-muted mt-2"><i class="far fa-clock"></i> ${pvo.endTime }</div>
+	                    <div class="display-30 text-muted mt-2"><i class="far fa-clock"></i>  <span class="me-2">마감일</span>${pvo.endTime }</div>
                     </div>
                 </div>
             </div>
