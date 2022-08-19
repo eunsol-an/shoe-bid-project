@@ -59,7 +59,7 @@
 											<h3 class="mt-2">${rvvo.score }/5</h3>
 										</td>
 										<td class="text-start">
-											<a href="/product/detail?pno=${rvvo.pno }" class="h6">[상품명] ${rvvo.pname }</a>
+											<a href="/product/detail?pno=${rvvo.pno }&mno=${ses.mno}" class="h6">[상품명] ${rvvo.pname }</a>
 											<div class="mt-3">${rvvo.content }</div>
 											<c:if test="${rvvo.sendMno eq ses.mno }">
 											<a href="/review/modify?pno=${rvvo.pno }&mno=${ses.mno}&rvno=${rvvo.rvno}"><small>수정</small></a>
