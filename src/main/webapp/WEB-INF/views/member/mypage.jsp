@@ -56,11 +56,9 @@
 						<div class="col-5 p-4">
 							<div class="text-center">
 								<div class="pb-3">
-									<c:forEach items="${mdto.imageList }" var="ivo">
-										<img class="img-fluid rounded-circle img-thumbnail"
-											src="/upload/${fn:replace(mdto.imageList[0].saveDir,'\\','/')}/${mdto.imageList[0].uuid }_${mdto.imageList[0].imageName }"
-											alt="...">
-									</c:forEach>
+									<img class="img-fluid rounded-circle img-thumbnail"
+										src="/upload/${fn:replace(mdto.imageList[0].saveDir,'\\','/')}/${mdto.imageList[0].uuid }_${mdto.imageList[0].imageName }"
+										alt="...">
 								</div>
 								<%-- <h6 class="mb-0 display-28">${mvo.nickName }</h6>
 								<small>가입일 ${mvo.regAt }</small> --%>
