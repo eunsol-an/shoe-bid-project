@@ -7,6 +7,30 @@
 
 <c:set var="mvo" value="${mdto.mvo }" />
 
+
+<!-- <button type="button" class="butn-style1 fill large" data-bs-toggle="modal" data-bs-target="#centered">
+                              Launch demo modal
+                            </button> -->
+<!-- Vertically centered -->
+<div class="modal fade" id="centered" tabindex="-1" aria-labelledby="centeredLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="centeredLabel">회원등급 안내</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul>
+                	<li>회원등급은 구매/판매 횟수와 리뷰/신고 횟수에 따라 결정됩니다.</li>
+                	<li>등급은 총 5단계이며 맨발 등급, 양말 등급, 운동화 등급, 롤러 등급, 슈퍼롤러 등급으로 구성되어 있습니다.</li>
+                	<li>회원등급 기준은 슈비드 운영 정책에 따라 변경될 수 있습니다.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+
 <!-- ACCOUNT ORDERS
         ================================================== -->
 <section class="md">
@@ -61,9 +85,53 @@
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-2 col-sm-12 p-4 ms-auto text-center">
-						<div>회원등급</div>
-						<h3>${mvo.grade }</h3>
-					</div>
+						<div class="mb-2">회원등급</div>
+								<button type="button" class="btn bg-white" data-bs-toggle="modal" data-bs-target="#centered">
+							<c:choose>
+								<c:when test="${mvo.grade <= 20 }">
+									<div class="modalLink">
+										<div class="mb-1">
+					                        <img src="/resources/bootstrap/img/icons/1.png" style="height:60px;">
+					                    </div>
+				                    	<small>맨발 등급</small>
+				                    </div>
+				                    
+								</c:when>
+								<c:when test="${mvo.grade <= 40 }">
+									<div class="modalLink">
+										<div class="mb-1">
+					                        <img src="/resources/bootstrap/img/icons/2.png" style="height:60px;">
+					                    </div>
+				                    	<small>양말 등급</small>
+				                    </div>
+								</c:when>
+								<c:when test="${mvo.grade <= 60 }">
+									<div class="modalLink">
+										<div class="mb-1">
+					                        <img src="/resources/bootstrap/img/icons/3.png" style="height:60px;">
+					                    </div>
+				                    	<small>운동화 등급</small>
+			                    	</div>
+								</c:when>
+								<c:when test="${mvo.grade <= 80 }">
+									<div class="modalLink">
+										<div class="mb-1">
+					                        <img src="/resources/bootstrap/img/icons/4.png" style="height:60px;">
+					                    </div>
+					                    <small>롤러 등급</small>
+				                    </div>
+								</c:when>
+								<c:otherwise>
+									<div class="modalLink">
+										<div class="mb-1">
+					                        <img src="/resources/bootstrap/img/icons/5.png" style="height:60px;">
+					                    </div>
+					                    <small>슈퍼롤러 등급</small>
+				                    </div>
+								</c:otherwise>
+							</c:choose>
+							</button>
+				</div>
 
 
 						<!-- 여기서부터 수정 예정 -->
