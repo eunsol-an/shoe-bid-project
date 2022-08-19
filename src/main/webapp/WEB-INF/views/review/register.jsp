@@ -40,7 +40,7 @@
 
                                     <div class="col-sm-9">
 
-                                        <h4><a href="/product/detail?pno=${pvo.pno }">${pvo.pname }</a></h4>
+                                        <h4>${pvo.pname }</h4>
                                         <div>
                                         	<span class="me-2 display-30">판매자</span>
                                         	<span>${pdto.mvo.nickName }</span>
