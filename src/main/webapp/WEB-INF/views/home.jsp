@@ -179,7 +179,7 @@
             <p class="text-muted">경매 마감 임박 상품</p>
         </div>
         <div class="row mt-n1-9">
-        <c:forEach items="${list }" var="pvo">
+        <c:forEach items="${endList }" var="pvo">
             <div class="col-sm-6 col-lg-3 mt-1-9 listBox">
                 <div class="product-grid-four">
                     <div class="product-img rounded-3 box">
