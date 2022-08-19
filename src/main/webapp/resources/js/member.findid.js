@@ -8,7 +8,7 @@ function checkEmail() {
   if(emailVal != ""){
     document.getElementById('emailCheck').innerText = "";
   }else{
-    document.getElementById('emailCheck').innerText = "이메일을 입력하세요";
+    document.getElementById('emailCheck').innerText = "이메일을 입력하세요.";
     document.getElementById('emailCheck').style.color = 'red';
   }
 }

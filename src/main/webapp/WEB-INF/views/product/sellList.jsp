@@ -17,15 +17,15 @@
 			<!-- end left panel -->
 
 			<!-- right panel -->
-			<div class="col-lg-10">
+			<div class="col-lg-9">
 
 				<div class="common-block border-0">
 
-					<div class="inner-title">
-						<h4 class="mb-0">판매 내역</h4>
+					<div class="mb-5">
+						<h4 class="mb-0">판매 내역 (${pgn.totalCount })</h4>
 					</div>
 
-					<form class="d-flex col-sm-12 col-md-6 mx-auto"
+					<form class="d-flex col-sm-12 col-md-2 ms-auto"
 						action="/product/sellList/${ses.mno }" method="get">
 						<input type="hidden" name="pageNo" value="1"> 
 						<input type="hidden" name="qty" value="${pgn.pgvo.qty }">
@@ -38,8 +38,8 @@
 								<option value="f" ${typed eq 'f' ? 'selected':'' }>유찰</option>
 								<option value="sf" ${typed eq 'sf' ? 'selected':'' }>낙찰/유찰</option>
 							</select>
-							<button class="btn butn-style2" type="submit">
-								보기 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">${pgn.totalCount }</span>
+							<button class="btn btn-sm btn-dark" type="submit">
+								<i class="ti-search"></i>
 							</button>
 						</div>
 					</form>
@@ -69,14 +69,14 @@
 												<div>경매진행중</div>
 											</c:if> <c:if test="${pvo.status eq 1 }">
 												<div>낙찰</div>
-												<a href="/review/register?pno=${pvo.pno }&mno=${pvo.buyerMno }" class="butn-style2 small text-nowrap">거래후기 남기기</a>
+												<a href="/review/register?pno=${pvo.pno }&mno=${pvo.buyerMno }" class="btn btn-sm btn-dark text-nowrap">거래후기</a>
 											</c:if> <c:if test="${pvo.status eq 2 }">
 												<div>유찰</div>
 											</c:if></td>
 											<td>
 											<c:if test="${pvo.buyerNick ne null }">
 											<div>${pvo.buyerNick }</div>
-											<a href="/chat/list?mno=${pvo.buyerMno }" class="butn-style2 small text-nowrap">쪽지보내기</a>
+											<a href="/chat/list?mno=${pvo.buyerMno }" class="btn btn-sm btn-dark text-nowrap">채팅하기</a>
 											</c:if>
 											</td>
 									</tr>

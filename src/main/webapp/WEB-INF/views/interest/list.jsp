@@ -17,11 +17,11 @@
 			<!-- end left panel -->
 
 			<!-- right panel -->
-			<div class="col-lg-10">
+			<div class="col-lg-9">
 
 				<div class="common-block border-0">
 
-					<div class="inner-title">
+					<div class="mb-5">
 						<h4 class="mb-0">관심 상품</h4>
 					</div>
 
@@ -53,7 +53,7 @@
 										<td class="product-quantity">${fn:substring(itvo.regAt, 0, (fn:length(itvo.regAt)-3)) }</td>
 										<td>${fn:substring(itvo.endTime, 0, (fn:length(itvo.endTime)-3)) }</td>
 										<td><button type="button" id="itDelBtn"
-											class="butn-style2 small">삭제</button>
+											class="btn btn-sm btn-dark">삭제</button>
 											<span id="readCk" style="display: none;">false</span>
 											<span id="mnoVal" style="display: none;">${ses.mno }</span>
 											<span id="pnoVal" style="display: none;">${itvo.pno }</span>

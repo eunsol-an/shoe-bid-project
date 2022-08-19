@@ -15,7 +15,7 @@
 <div class="modal fade" id="centered" tabindex="-1" aria-labelledby="centeredLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="centeredLabel">회원등급 안내</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -42,18 +42,18 @@
 			<!-- end left panel -->
 
 			<!-- right panel -->
-			<div class="col-lg-10">
+			<div class="col-lg-9">
 
 				<div class="common-block border-0">
 
-					<div class="inner-title">
+					<div class="mb-5">
 						<h4 class="mb-0">내 정보</h4>
 					</div>
 
 					<div class="row">
 					
 					<div class="row col-lg-8 col-md-10 col-sm-12">
-						<div class="col-5 p-4">
+						<div class="col-5">
 							<div class="text-center">
 								<div class="pb-3">
 									<img class="img-fluid rounded-circle img-thumbnail"
@@ -64,14 +64,14 @@
 								<small>가입일 ${mvo.regAt }</small> --%>
 							</div>
 						</div>
-						<div class="col-7 p-4">
+						<div class="col-7 p-3">
 							<input type="hidden" value="${mvo.mno }" id="mnoVal">
 							<h5>${mvo.nickName }<span>(${mvo.id })</span></h5>
 							<small>${mvo.email }</small>
-							<div class="my-4">
-								<c:if test="${ses.mno == mdto.mvo.mno || ses.grade == 0}">
-									<a href="/member/modify?mno=${mvo.mno }" class="btn butn-style2 small">회원정보 수정</a>
-									<button type="button" class="butn-style2 small"
+							<div class="my-3">
+								<c:if test="${ses.mno == mdto.mvo.mno || ses.grade == 99}">
+									<a href="/member/modify?mno=${mvo.mno }" class="btn btn-sm btn-dark">회원정보 수정</a>
+									<button type="button" class="btn btn-sm btn-dark"
 										data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 										id="Remove">회원탈퇴</button>
 									<form action="" id="memberRmForm" style="display: none;"
@@ -131,7 +131,7 @@
 								</c:otherwise>
 							</c:choose>
 							</button>
-					</div>
+				</div>
 
 
 						<!-- 여기서부터 수정 예정 -->

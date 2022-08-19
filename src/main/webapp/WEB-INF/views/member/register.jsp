@@ -29,7 +29,7 @@
 									<input type="text" class="form-control input-style" name="id" placeholder="5~12자 영문 소문자, 숫자" id="id" required="required">
 									<button type="button" class="btn btn-light-style" id="idDupleCheck">중복확인</button>
 								</div>
-									<div class="check_font mgs-caution" id="idCheck"></div>
+									<div class="check_font msg-caution" id="idCheck"></div>
 								</div>
 									
 								<div class="height-100">
@@ -38,7 +38,7 @@
 									<input type="text" class="form-control input-style" name="nickName" placeholder="2~8자" id="nickName" required="required">
 									<button type="button" class="btn btn-light-style" id="nickNameDupleCheck">중복확인</button>
 								</div>	
-									<div class="check_font mgs-caution" id="nickCheck"></div>
+									<div class="check_font msg-caution" id="nickCheck"></div>
 								</div>
 									
 								<div class="height-100">
@@ -47,7 +47,7 @@
 									<input type="email" class="form-control input-style" name="email" placeholder="shoebid@shoebid.com" id="email" required="required">
 									<button type="button" class="btn btn-light-style" id="emailDupleCheck">중복확인</button>
 								</div>
-									<div class="check_font mgs-caution" id="emailCheck"></div>
+									<div class="check_font msg-caution" id="emailCheck"></div>
 								</div>
 								
 								<div class="height-100">
@@ -68,7 +68,7 @@
 									<label class="font-12">비밀번호</label> 
 									<input type="password" class="form-control input-style" name="pwd" id="pwd" placeholder="8~20자" required="required">
 								</div>
-								<div class="check_font mgs-caution" id="pwdCheck"></div>
+								<div class="check_font msg-caution" id="pwdCheck"></div>
 							</div>
 							
 							<!-- 비밀번호 재확인 -->
@@ -77,7 +77,7 @@
 									<label class="font-12">비밀번호 확인</label>
 									<input type="password" class="form-control input-style" name="repwd" id="repwd" placeholder="8~20자" required="required">
 								</div>
-								<div class="check_font mgs-caution" id="repwdCheck"></div>
+								<div class="check_font msg-caution" id="repwdCheck"></div>
 							</div>
 
 						</div>
