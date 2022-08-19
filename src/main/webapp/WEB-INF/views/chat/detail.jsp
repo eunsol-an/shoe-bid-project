@@ -28,11 +28,11 @@
 									<span style="display: none;">${cvo.room }</span>
 									
 									<c:if test="${ses.mno eq cvo.sendNick}">
-									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.recvNickName }
+									<a href="/chat/detail?cno=${cvo.cno }" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.recvNickName }
 									</a>
 									</c:if>
 									<c:if test="${ses.mno ne cvo.sendNick}">
-									<a href="#" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.sendNickName }
+									<a href="/chat/detail?cno=${cvo.cno }" class="mb-1 font-weight-500 text-extra-dark-gray">${cvo.sendNickName }
 									</a>
 									</c:if>
 								</div>
