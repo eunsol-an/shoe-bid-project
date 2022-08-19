@@ -52,6 +52,10 @@
       <label for="description">상품설명:</label>
       <textarea rows="5" class="form-control" name="description" required></textarea>
     </div>
+    <label for="mainFileAttached">대표이미지:</label>
+   <input type="file" class="form-control" name="mainFileAttached" 
+   accept=".gif, .jpg, .png, .jpeg, .gif"  required>
+   <label for="fileAttached">서브이미지:</label>
    <input type="file" class="form-control" name="fileAttached" 
    accept=".gif, .jpg, .png, .jpeg, .gif"  multiple required>
     <button type="submit" class="btn btn-primary mt-3" id="regBtn">Submit</button>
