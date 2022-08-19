@@ -56,7 +56,7 @@ public class ImageFileHandler {
 					if (isProd) {
 						Thumbnails.of(storeFile).size(551, 551).toFile(thumbNail);
 					} else {
-						Thumbnails.of(storeFile).size(150, 150).toFile(thumbNail);
+						Thumbnails.of(storeFile).size(70, 70).toFile(thumbNail);
 					}
 				}
 			} catch (Exception e) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
@@ -19,7 +20,7 @@ public interface ProductDAO {
 	int updateReadCount( @Param("pno") long pno,@Param("i") int i);
 	int updateStatus(ProductVO pvo );
 	ProductVO selectDetail(long pno);
-	String selectNickName(long pno); 
+	MemberVO selectNickName(long pno); 
 	int selectMaxPrice(long pno);
 	int selectTotalCount(ProductPagingVO ppgvo);
 	long selectLastPno(); 

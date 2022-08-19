@@ -129,8 +129,8 @@
 		where pno = #{pno}
 	</select>
 	<select id="selectNickName" parameterType="long"
-		resultType="string">
-		select m.nick_name
+		resultType="mvo">
+		select m.nick_name, m.member_img
 		from product p left join `member`m
 		on
 		p.writer = m.mno

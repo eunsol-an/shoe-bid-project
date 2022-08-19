@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shoebid.www.domain.BidVO;
 import com.shoebid.www.domain.ImageFileVO;
+import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductPagingVO;
@@ -26,17 +27,13 @@ import com.shoebid.www.repository.ProductDAO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @Service
 public class ProductServiceImpl implements ProductService {
 	@Inject
 	private ProductDAO pdao;
 	@Inject
 	private ImageFileDAO idao;
-	@Inject
-	private BidDAO bdao;
-	@Inject
-	private MemberDAO mdao;
 
 	@Transactional
 	@Override
@@ -59,11 +56,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO getDetail(long pno) {
 		int isUp = pdao.updateReadCount(pno, 1);
-		String nick_name = pdao.selectNickName(pno);
-		int maxPrice = pdao.selectMaxPrice(pno);
-
-		List<ImageFileVO> imageList = idao.selectListPImage(pno);
-		return new ProductDTO(pdao.selectDetail(pno), maxPrice, nick_name, imageList);
+		return new ProductDTO(pdao.selectDetail(pno),
+				pdao.selectMaxPrice(pno), 
+				pdao.selectNickName(pno),
+				idao.selectListPImage(pno));
 	}
 
 	@Transactional
