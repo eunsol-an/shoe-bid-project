@@ -19,7 +19,7 @@
 	</div>
 </section>
 <div class="container"> 
-<form action="/product/modify" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 my-5">
+<form action="/product/modify" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 my-5" id="formTag">
      <div class="mb-3">
      <input type="hidden" value="${pdto.pvo.pno }" name="pno">
 	<input type="hidden" value="${pgvo.pageNo }" name="pageNo">
@@ -58,9 +58,14 @@
       <label for="description">상품설명:</label>
       <textarea rows="5" class="form-control" name="description" required>${pdto.pvo.description }</textarea>
     </div>
-    <input type="hidden" class="form-control" id="" placeholder="상품이름 입력" name="productImg" value=${pdto.pvo.productImg }>
-   <input type="file" class="form-control" name="fileAttached"  accept=".gif, .jpg, .png, .jpeg, .gif"  multiple >
-    <button type="submit" class="btn btn-primary" id="regBtn">Submit</button>
+    <input type="hidden" class="form-control" id="" placeholder="상품이름 입력" name="productImg" value="${pdto.pvo.productImg }">
+   <label for="mainFileAttached">대표이미지:</label>
+   <input type="file" class="form-control" id="mainFileAttached" name="mainFileAttached"  accept=".gif, .jpg, .png, .jpeg, .gif">
+   <label for="fileAttached">서브이미지:</label>
+   <input type="file" class="form-control" id="fileAttached" name="fileAttached"  accept=".gif, .jpg, .png, .jpeg, .gif"  multiple >
+    <button type="button" class="btn btn-primary" id="regBtn">수정</button>
+    <p id="errorMsg" class="text-danger"></p>
   </form>
 </div>
+<script src="/resources/js/product.modify.js"></script>
 <jsp:include page="../common/footer.jsp"/>  

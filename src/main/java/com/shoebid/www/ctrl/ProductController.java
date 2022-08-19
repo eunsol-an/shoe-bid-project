@@ -71,14 +71,17 @@ public class ProductController {
 	
 	@PostMapping("/register")
 	public String register(ProductVO pvo, RedirectAttributes rttr,
-			@RequestParam(name = "fileAttached", required = true) MultipartFile[] files) {
+			@RequestParam(name = "fileAttached", required = true) MultipartFile[] files,
+			@RequestParam(name = "mainFileAttached", required = true) MultipartFile mainFiles) {
 		Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         cal.add(Calendar.DATE, Integer.parseInt(pvo.getEndTime()));
         pvo.setEndTime(df.format(cal.getTime()).toString());
-			
+        
+		ImageFileVO ivo = fhd.getMainImageFileList(mainFiles, true);
 		List<ImageFileVO> fileList =fhd.getImageFileList(files, true);
+		fileList.add(0,ivo);
 		pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 		 int isUp = psv.register(new ProductDTO(pvo, fileList));
 		return "redirect:/product/list";
@@ -92,19 +95,26 @@ public class ProductController {
 	}
 
 	
-	@PostMapping("/modify")
+	@PostMapping("/modify") 
 	public String modify(ProductVO pvo,	@RequestParam(name="fileAttached", required = false) MultipartFile[] files,
+			@RequestParam(name = "mainFileAttached", required = false) MultipartFile mainFile,
 			RedirectAttributes rttr, ProductPagingVO ppgvo) {
 		Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         cal.add(Calendar.DATE, Integer.parseInt(pvo.getEndTime()));
         pvo.setEndTime(df.format(cal.getTime()).toString());
+        
+        ImageFileVO ivo = null;
 		List<ImageFileVO> fileList = null;
-		if(files[0].getSize() > 0) {
+		if(mainFile.getSize()>0 && files[0].getSize() > 0) {
+			ivo = fhd.getMainImageFileList(mainFile, true);
 			fileList = fhd.getImageFileList(files, true);
+			fileList.add(0, ivo);
+			log.info(">>>>>>>>>>>>>>>파일수정시 들어옴");
 			pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 		}
+		log.info(">>>>>>>>>>>>>>>파일이름{}",pvo.getProductImg());
 		int isUp = psv.modify(new ProductDTO(pvo, fileList));
 		rttr.addAttribute("pageNo", ppgvo.getPageNo());
 		rttr.addAttribute("qty", ppgvo.getQty());
