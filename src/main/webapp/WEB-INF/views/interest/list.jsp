@@ -43,7 +43,7 @@
 									<tr class="bg-transparent">
 										<td>
 										<a class="h5 mt-4" href="/product/detail?pno=${itvo.pno }&mno=${ses.mno}"><img
-												src="/upload/${fn:replace(itvo.productImg,'\\','/')}" alt="img" style="width:200px;"/></a>
+												src="/upload/${fn:replace(itvo.productImg,'\\','/')}" alt="img" class="mypage_img"/></a>
 										</td>
 										<td class="text-start">
 										<a class="h5 mt-4" href="/product/detail?pno=${itvo.pno }&mno=${ses.mno}">${itvo.pname }</a>
