@@ -19,7 +19,10 @@
       inner join product p 
       on (b.pno = p.pno)
       where b.mno = #{mno}
-      
+   </select>
+   <select id="selectItQty" parameterType="long" resultType="int">
+   	select count(pno) from interest
+   	where pno = #{pno}
    </select>
    <delete id="delete" parameterType="itvo">
       delete from interest where pno = #{pno} and mno = #{mno}

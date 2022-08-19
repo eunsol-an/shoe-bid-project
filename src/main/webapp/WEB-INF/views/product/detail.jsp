@@ -81,7 +81,7 @@
                   </div>
 					<div class="display-25 mb-2">${pvo.category }
 					</div>
-					<h2 class="mb-4">${pvo.pname }</h2>
+					<h2 class="mb-4">${pvo.pname } 좋아요:${pdto.itQty }</h2>
 					<p class="rating-text d-none">
 						<span>SKU:</span> <span class="font-500 theme-color" id="pnoVal">${pvo.pno }</span>
 					</p>

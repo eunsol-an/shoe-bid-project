@@ -14,4 +14,5 @@ public interface InterestDAO {
 	int remove(InterestVO itvo);
 	int selectTotalCount(long mno);
 	int itCheck(@Param("pno") long pno, @Param("mno") long mno);
+	int selectItQty(long pno);
 }
