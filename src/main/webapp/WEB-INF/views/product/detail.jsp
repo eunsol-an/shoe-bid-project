@@ -89,7 +89,7 @@
 					<div class="dropdown mb-5">
 						<a class="dropdown-toggle"
 							id="dropdownMenuButton1" data-bs-toggle="dropdown"
-							aria-expanded="false"><img src="/upload/${fn:replace(pdto.mvo.memberImg,'\\','/')}" alt="..." class="rounded-circle" style="width:36px; height:36px"><span class="d-inline-block mt-1 ms-1 display-28">${pdto.mvo.nickName }</span></a>
+							aria-expanded="false"><img src="/upload/${fn:replace(pdto.mvo.memberImg,'\\','/')}" alt="..." class="rounded-circle"><span class="d-inline-block mt-1 ms-1 display-28">${pdto.mvo.nickName }</span></a>
 						<c:if test="${ses.mno ne null }">
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 							<li><a class="dropdown-item" href="/chat/list?mno=${pvo.writer }">채팅하기</a></li>

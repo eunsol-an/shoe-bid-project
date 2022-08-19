@@ -30,7 +30,7 @@ function getQuestionList(pnoVal, pageNo = 1) {
           <div class="comment-info">
             <div class="d-flex">
               <div class="author-thumb me-2">
-                <img src="/upload/${stringReplace(String(qvo.memberImg))}" alt="…" class="img-fluid rounded-circle img-thumbnail">
+                <img src="/upload/${stringReplace(String(qvo.memberImg))}" alt="…" class="img-fluid rounded-circle">
               </div>
               <div>
                 <h6 class="mb-0">
@@ -73,7 +73,7 @@ function getQuestionList(pnoVal, pageNo = 1) {
         <div class="comment-info">
         <div class="d-flex">
           <div class="author-thumb me-2">
-            <img src="/upload/${stringReplace(String(qvo.memberImg))}" alt="…" class="img-fluid rounded-circle img-thumbnail">
+            <img src="/upload/${stringReplace(String(qvo.memberImg))}" alt="…" class="img-fluid rounded-circle">
           </div>
           <div>
             <h6 class="mb-0">
@@ -351,7 +351,7 @@ document.addEventListener('click', (e) => {
     <div class="comment-info">
       <div class="d-flex">
         <div class="author-thumb me-2">
-          <img src="/upload/${stringReplace(String(result.memberImg))}" alt="…" class="img-fluid rounded-circle img-thumbnail">
+          <img src="/upload/${stringReplace(String(result.memberImg))}" alt="…" class="img-fluid rounded-circle">
         </div>
         <div>
           <h6 class="mb-0">
