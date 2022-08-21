@@ -35,7 +35,7 @@ public class CloggingAuctionHandler {
 	private MemberDAO mdao;
 	
 	@Transactional
-	//@Scheduled(cron = "0/10 * * * * *")
+	@Scheduled(cron = "0/10 * * * * *")
 	public void cloggingAuction() throws Exception{
 		
 		List<ProductVO> list = pdao.selectAllList();

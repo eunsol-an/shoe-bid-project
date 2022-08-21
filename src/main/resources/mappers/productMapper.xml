@@ -3,100 +3,100 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shoebid.www.repository.ProductDAO">
-<sql id="search">
- <choose>
-<when test="type != null">
-			<trim prefix="and (" suffix=")" prefixOverrides="OR">
-				<foreach collection="typeToArray" item="type">
-					<trim prefix="OR">
-						<choose>
-							<when test="type == 's'.toString()">
-								category = 'sneakers' or pname like concat('%', #{kw}, '%')
-								or description like concat('%', #{kw}, '%')
-							</when>
-							<when test="type == 'a'.toString()">
-							category = 'sandals' or pname like concat('%', #{kw}, '%')
-								or description like concat('%', #{kw}, '%')
-							</when>
-							<when test="type == 'i'.toString()">
-							category = 'slippers' or pname like concat('%', #{kw}, '%')
-								or description like concat('%', #{kw}, '%')
-							</when>
-							<when test="type == 'l'.toString()">
-								category = 'loafers' or pname like concat('%', #{kw}, '%')
-								or description like concat('%', #{kw}, '%')
-							</when>
-							<when test="type == 'f'.toString()">
-								category = 'flat' or pname like concat('%', #{kw}, '%')
-								or description like concat('%', #{kw}, '%')
-							</when>
-							<when test="type == 'b'.toString()">
-							category = 'boots' or pname like concat('%', #{kw}, '%')
-								or description like concat('%', #{kw}, '%')
-							</when>
-						</choose>
-					</trim>
-				</foreach>
-			</trim>
-		</when>
-		<when test="kw != null">
-		and (pname like concat('%', #{kw}, '%')
-		or description like concat('%', #{kw}, '%'))
-		</when>
-	</choose>
+	<sql id="search">
+		<choose>
+			<when test="type != null">
+				<trim prefix="and (" suffix=")" prefixOverrides="OR">
+					<foreach collection="typeToArray" item="type">
+						<trim prefix="OR">
+							<choose>
+								<when test="type == 's'.toString()">
+									category = 'sneakers' or pname like concat('%', #{kw}, '%')
+									or description like concat('%', #{kw}, '%')
+								</when>
+								<when test="type == 'a'.toString()">
+									category = 'sandals' or pname like concat('%', #{kw}, '%')
+									or description like concat('%', #{kw}, '%')
+								</when>
+								<when test="type == 'i'.toString()">
+									category = 'slippers' or pname like concat('%', #{kw}, '%')
+									or description like concat('%', #{kw}, '%')
+								</when>
+								<when test="type == 'l'.toString()">
+									category = 'loafers' or pname like concat('%', #{kw}, '%')
+									or description like concat('%', #{kw}, '%')
+								</when>
+								<when test="type == 'f'.toString()">
+									category = 'flat' or pname like concat('%', #{kw}, '%')
+									or description like concat('%', #{kw}, '%')
+								</when>
+								<when test="type == 'b'.toString()">
+									category = 'boots' or pname like concat('%', #{kw}, '%')
+									or description like concat('%', #{kw}, '%')
+								</when>
+							</choose>
+						</trim>
+					</foreach>
+				</trim>
+			</when>
+			<when test="kw != null">
+				and (pname like concat('%', #{kw}, '%')
+				or description like concat('%', #{kw}, '%'))
+			</when>
+		</choose>
 	</sql>
 	<sql id="sellSearch">
-	<choose>
-<when test="pgvo.type != null">
-	<trim prefix="and (" suffix=")" prefixOverrides="OR">
-				<foreach collection="pgvo.typeToArray" item="type">
-					<trim prefix="OR">
-						<choose>
-							<when test="type == 'p'.toString()">
-							status = 0
-							</when>
-							<when test="type == 's'.toString()">
-							status = 1
-							</when>
-							<when test="type == 'f'.toString()">
-							status = 2
-							</when>
-						</choose>
-					</trim>
-				</foreach>
-			</trim>
+		<choose>
+			<when test="pgvo.type != null">
+				<trim prefix="and (" suffix=")" prefixOverrides="OR">
+					<foreach collection="pgvo.typeToArray" item="type">
+						<trim prefix="OR">
+							<choose>
+								<when test="type == 'p'.toString()">
+									status = 0
+								</when>
+								<when test="type == 's'.toString()">
+									status = 1
+								</when>
+								<when test="type == 'f'.toString()">
+									status = 2
+								</when>
+							</choose>
+						</trim>
+					</foreach>
+				</trim>
 			</when>
-			</choose>
+		</choose>
 	</sql>
 	<sql id="order">
-	<choose>
-		<when test="orderBy != null">
+		<choose>
+			<when test="orderBy != null">
 				<if test="orderBy == 'end'.toString()">
-					order by end_time 
-					</if>
-					<if test="orderBy == 'reg'.toString()">
+					order by end_time
+				</if>
+				<if test="orderBy == 'reg'.toString()">
 					order by mod_at desc
-					</if>
-					<if test="orderBy == 'highestDown'.toString()">
-					order by highest_price
-					</if>
-					<if test="orderBy == 'highestUp'.toString()">
-					order by highest_price desc
-					</if>
-					<if test="orderBy == 'reserveDown'.toString()">
+				</if>
+				<if test="orderBy == 'reserveDown'.toString()">
 					order by reserve_price
-					</if>
-					<if test="orderBy == 'reserveUp'.toString()">
+				</if>
+				<if test="orderBy == 'reserveUp'.toString()">
 					order by reserve_price desc
-					</if>
-					<if test="orderBy == ''">
+				</if>
+				<if test="orderBy == 'highestDown'.toString()">
+					order by highest_price
+				</if>
+				<if test="orderBy == 'highestUp'.toString()">
+					order by highest_price desc
+				</if>
+				<if test="orderBy == ''">
 					order by mod_at desc
-					</if>
-		</when>
-		<otherwise>
-		order by mod_at desc
-		</otherwise>
-	</choose>
+				</if>
+			</when>
+			<otherwise>
+				order by mod_at desc
+			</otherwise>
+		</choose>
 	</sql>
 	<insert id="insert" parameterType="pvo">
 		insert into product
@@ -109,20 +109,23 @@
 	</insert>
 	<select id="selectList" resultType="pvo" parameterType="ppgvo">
 		select a.pno, category ,pname ,
-		description , read_count ,writer ,product_img ,
-		status, reserve_price,
-		ifnull((select max(bid_price)
-		from buy_bid b
-		where a.pno = b.pno
-		),0) "highest_price",
+		description , read_count ,writer
+		,product_img ,
+		status, reserve_price, a.highest_price,
 		end_time, mod_at
 		from (
-		select pno from product where pno > 0 and status = 0
+		select pno,
+		ifnull((select max(bid_price)
+		from buy_bid b
+		where
+		b.pno = p.pno
+		),0) "highest_price"
+		from product p where pno > 0 and status = 0
 		<include refid="search" />
 		<include refid="order" />
 		limit #{pageStart}, #{qty}
 		) a left join product b
-		on a.pno = b.pno
+		on a.pno = b.pno;
 	</select>
 	<select id="selectDetail" parameterType="long" resultType="pvo">
 		select * from product
@@ -131,7 +134,8 @@
 	<select id="selectNickName" parameterType="long"
 		resultType="mvo">
 		select m.nick_name, m.member_img
-		from product p left join `member`m
+		from product p left join
+		`member`m
 		on
 		p.writer = m.mno
 		where p.pno= #{pno}
@@ -139,28 +143,31 @@
 	<select id="selectMaxPrice" parameterType="long"
 		resultType="int">
 		select ifnull(max(b.bid_price),0)
-		from product p left join buy_bid b
+		from product p left join
+		buy_bid b
 		on p.pno = b.pno
 		where b.pno = #{pno};
 	</select>
-	<select id="selectTotalCount" resultType="int" parameterType="ppgvo">
-	select count(pno)
-	from product
-	where pno > 0 and status = 0
-	 <include refid="search" />
+	<select id="selectTotalCount" resultType="int"
+		parameterType="ppgvo">
+		select count(pno)
+		from product
+		where pno > 0 and status = 0
+		<include refid="search" />
 	</select>
 	<select id="selectSellTotalCount" resultType="int">
-	select count(pno)
-	from product
-	where pno > 0 and writer = #{mno}
-	 <include refid="sellSearch" />
+		select count(pno)
+		from product
+		where pno > 0 and writer = #{mno}
+		<include refid="sellSearch" />
 	</select>
 	<select id="selectLastPno" resultType="long">
-	select max(pno) from product
+		select max(pno) from product
 	</select>
 	<select id="selectAllList" resultType="pvo">
-	select a.pno, category ,pname ,
-		description , read_count ,writer ,product_img ,
+		select a.pno, category ,pname ,
+		description , read_count ,writer ,product_img
+		,
 		status, reserve_price,
 		ifnull(
 		(select max(bid_price)
@@ -172,21 +179,22 @@
 		where status = 0
 	</select>
 	<select id="selectSallList" resultType="pvo">
-	select p.pno, category ,pname , description , read_count 
-	,p.writer ,product_img , status, reserve_price,
-	(select max(bid_price)
+		select p.pno, category ,pname , description , read_count
+		,p.writer ,product_img , status, reserve_price,
+		(select max(bid_price)
 		from buy_bid b
 		where p.pno = b.pno
-		) "highest_price",	
-		end_time, mod_at, b.buyer buyer_mno, m.nick_name  buyer_nick
-	from  product p 
-	left join buy_bid b on (p.highest_price = b.bid_price) 
-	left  join `member` m 
-	on (m.mno = b.buyer)
-	where writer = #{mno} <include refid="sellSearch" />
-	order by mod_at desc
-	limit #{pgvo.pageStart}, #{pgvo.qty}
-	
+		) "highest_price",
+		end_time, mod_at, b.buyer buyer_mno, m.nick_name buyer_nick
+		from product p
+		left join buy_bid b on (p.highest_price = b.bid_price)
+		left join `member` m
+		on (m.mno = b.buyer)
+		where writer = #{mno}
+		<include refid="sellSearch" />
+		order by mod_at desc
+		limit #{pgvo.pageStart}, #{pgvo.qty}
+
 	</select>
 	<update id="update" parameterType="pvo">
 		update product set category =
@@ -208,7 +216,8 @@
 		where pno = #{pno}
 	</update>
 	<update id="updateStatus" parameterType="pvo">
-		update product set status = #{status},
+		update product set
+		status = #{status},
 		highest_price = #{highestPrice}
 		where pno = #{pno}
 	</update>
