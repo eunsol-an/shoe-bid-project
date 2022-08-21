@@ -37,7 +37,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		registration.setInitParameter("throwExceptionIfNoHandlerFound", "true");
 		
 		String uploadLocation = "C:\\_java\\lec\\_spring\\file_uploaded";
-		int maxFileSize = 2 * 1024 * 1024; // 2MB
+		int maxFileSize = 20 * 1024 * 1024; // 20MB
 		int maxReqSize = maxFileSize * 5; // 파일 전송요청 가능 최대 크기
 		int fileSizeThreshold = maxFileSize; // 메모리에서 파일을 전송할 때 만들어지는 임시저장공간의 크기
 		
