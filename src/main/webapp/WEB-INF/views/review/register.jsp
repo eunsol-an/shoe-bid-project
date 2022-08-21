@@ -13,11 +13,11 @@
                 <div class="row justify-content-center">
 
                     <!-- right panel -->
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
 
-                        <div class="common-block">
+                        <div>
 
-                            <div class="inner-title">
+                            <div class="mb-5">
                                 <h4 class="mb-0">${nickName }님에게 보내는 후기</h4>
                             </div>
 
@@ -42,18 +42,17 @@
 
                                         <h4>${pvo.pname }</h4>
                                         <div>
-                                        	<span class="me-2 display-30">판매자</span>
-                                        	<span>${pdto.mvo.nickName }</span>
+											<span class="me-2 display-30">낙찰가</span>
+											<span class="display-28 font-weight-700" id="maxPrice"><fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" /></span>원
+										</div>
+                                        <div>
+                                        	<span class="me-2 display-30 ">판매자</span>
+                                        	<span class="display-28 font-weight-700">${pdto.mvo.nickName }</span>
                                        	</div>
                                         <div>
                                         	<span class="me-2 display-30">낙찰자</span>
-                                        	<span>${buyerNick }</span>
+                                        	<span class="display-28 font-weight-700">${buyerNick }</span>
                                        	</div>
-                                        <div>
-											<span class="me-2 display-30">낙찰가</span>
-											<span class="display-25 font-weight-700" id="maxPrice"><fmt:formatNumber value="${pdto.maxPrice }" pattern="#,###" /></span>원
-										</div>
-
                                     </div>
 
                                 </div>
@@ -79,14 +78,13 @@
 
                                         <div class="form-group">
                                             <label>후기 작성</label>
-                                            <textarea rows="5" class="form-control" maxlength="50" placeholder="50자내로 입력해주세요" name="content"></textarea>
+                                            <textarea rows="5" class="form-control" maxlength="50" placeholder="50자내로 입력해주세요" name="content" style="resize:none;" required></textarea>
                                         </div>
 
                                     </div>
 
                                 </div>
-
-                                <button type="submit" class="butn-style2 mt-4">작성하기</button>
+                                <button type="submit" class="btn btn-dark col-12 py-3">작성하기</button>
 
                             </form>
 

@@ -6,15 +6,15 @@
 
 <!-- PAGE TITLE
 ================================================== -->
-<section class="page-title-section bg-img cover-background" data-background="img/bg/page-title.jpg">
+<section class="page-title-section bg-img cover-background" data-background="/resources/bootstrap/img/bg/page-title.png">
     <div class="container">
 
-        <div class="title-info">
+        <div class="title-info text-center">
             <h1>Success!</h1></div>
-        <div class="breadcrumbs-info">
+        <div class="breadcrumbs-info text-center">
             <ul class="ps-0">
-                <li><a href="home-shop-1.html">Home</a></li>
-                <li><a href="#">Success!</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Success</a></li>
             </ul>
         </div>
 
@@ -28,9 +28,9 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
 
-                <div class="common-block text-center">
+                <div class=" text-center">
 
-                    <div class="inner-title">
+                    <div class="mb-5">
                         <h3 class="mb-0">입찰이 완료되었습니다.</h3>
                     </div>
 
@@ -38,8 +38,8 @@
                         입찰 내역은 마이페이지에서 확인하실 수 있습니다.
                     </p>
 
-                    <a href="/buy_bid/list/${ses.mno }" class="butn-style2 wide m-1">입찰내역확인</a>
-                    <a href="/product/list" class="butn-style2 wide m-1">다른상품둘러보기</a>
+                    <a href="/buy_bid/list/${ses.mno }" class="btn btn-dark">입찰내역확인</a>
+                    <a href="/product/list" class="btn btn-dark">다른상품둘러보기</a>
 
                 </div>
 
