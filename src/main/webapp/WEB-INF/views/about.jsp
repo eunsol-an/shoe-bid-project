@@ -4,6 +4,6 @@
 <jsp:include page="common/header.jsp"/>
 <jsp:include page="common/nav.jsp"/>
 
-<img src="/resources/bootstrap/img/bg/about_ing.png">
+<img src="/resources/bootstrap/img/bg/about_pg.png">
 
 <jsp:include page="common/footer.jsp"/>
