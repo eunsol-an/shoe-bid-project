@@ -130,18 +130,18 @@
 						<!-- end seconds -->
 					</ul>
 
-					<div class="row mt-2">
-						<div class="col-5 col-md-4">
+					<div class="row mt-3">
+						<div class="col-5 col-md-4 display-30">
 							<!-- <label>시작시간:</label> -->
 							<div class="mb-4 ">
-								<i class="far fa-clock"></i> <span>${pvo.regAt } ~</span>
+								<i class="far fa-clock"></i> <span class="me-2">등록일</span><span>${pvo.regAt }</span>
 							</div>
 
 						</div>
-						<div class="col-5 col-md-4">
+						<div class="col-5 col-md-4 display-30">
 							<!-- <label>종료시간:</label> -->
 							<div class="mb-4 ">
-								<i class="far fa-clock"></i> <span id="endTime">${pvo.endTime }</span>
+								<i class="far fa-clock"></i> <span class="me-2">마감일</span><span id="endTime">${pvo.endTime }</span>
 							</div>
 						</div>
 						<%-- <div class="row">
@@ -159,7 +159,7 @@
 										
 											
 										<button type="button" id="bidModal"
-											class="btn btn-dark me-3 mb-2 mb-md-0" data-bs-toggle="modal"
+											class="col-sm-12 btn btn-dark me-3 mb-2 mb-md-0 py-3" data-bs-toggle="modal"
 											data-bs-target="#centered">입찰하기</button>
 										
 									</c:when>
@@ -308,7 +308,7 @@
 									
 									<!-- form -->
 							<div class="col-lg-12 mb-1-9 mb-lg-0">
-                            <div class="common-block ">
+                            <div class="">
                             <div class="inner-title">
                                 <h4 class="mb-0">QnA</h4>
                             </div>
@@ -329,7 +329,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="butn-style2" id="questionSbmBtn" style="float: right;">완료</button>
+                                <button type="button" class="btn btn-sm btn-dark" id="questionSbmBtn" style="float: right;">완료</button>
                             </form>
 								<div class="comments-area mb-3" id="qnaZone"></div>
 								
@@ -355,7 +355,7 @@
 
 									<div class="col-lg-12 mb-1-9 mb-lg-0">
 
-										<div class="common-block border-0">
+										<div class="">
 						
 											<div class="inner-title">
 												<h4 class="mb-0">후기 내역</h4>
