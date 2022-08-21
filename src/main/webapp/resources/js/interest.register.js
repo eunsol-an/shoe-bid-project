@@ -67,3 +67,20 @@ if(document.getElementById('itDelBtn') != null){
         });
     });
 };
+
+
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('listDelBtn')){
+        let itData = {
+          mno : document.getElementById('mnoVal').innerText,
+          pno : e.target.dataset.pno,
+          readCk : document.getElementById('readCk').innerText
+      };
+          interestRemoveFromServer(itData).then(result => {
+              if(parseInt(result)){
+                  location.reload();
+              }
+          });
+      }
+    });

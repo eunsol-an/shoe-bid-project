@@ -52,17 +52,18 @@
 										</td>
 										<td class="product-quantity">${fn:substring(itvo.regAt, 0, (fn:length(itvo.regAt)-3)) }</td>
 										<td>${fn:substring(itvo.endTime, 0, (fn:length(itvo.endTime)-3)) }</td>
-										<td><button type="button" id="itDelBtn"
-											class="btn btn-sm btn-dark">삭제</button>
-											<span id="readCk" style="display: none;">false</span>
-											<span id="mnoVal" style="display: none;">${ses.mno }</span>
-											<span id="pnoVal" style="display: none;">${itvo.pno }</span>
-											<span id="sesVal" style="display: none;">${ses.mno }</span></td>
+										<td><button type="button"
+											class="listDelBtn btn btn-sm btn-dark" data-pno="${itvo.pno }">삭제</button>
+											</td>
 									</tr>
 									</c:if>
 								</c:forEach>
+								
 							</tbody>
 						</table>
+											<span id="readCk" style="display: none;">false</span>
+											<span id="mnoVal" style="display: none;">${ses.mno }</span>
+											<span id="sesVal" style="display: none;">${ses.mno }</span>
 								<c:if test="${list.size() eq 0}">
 										<div class="text-center">
 											<p class="lead mb-4 mt-3">추가하신 관심 상품이 없습니다.</p>
