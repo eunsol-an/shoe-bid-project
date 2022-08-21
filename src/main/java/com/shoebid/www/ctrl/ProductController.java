@@ -98,7 +98,8 @@ public class ProductController {
 	@PostMapping("/modify") 
 	public String modify(ProductVO pvo,	@RequestParam(name="fileAttached", required = false) MultipartFile[] files,
 			@RequestParam(name = "mainFileAttached", required = false) MultipartFile mainFile,
-			RedirectAttributes rttr, ProductPagingVO ppgvo) {
+			RedirectAttributes rttr, ProductPagingVO ppgvo,
+			@RequestParam(name="mno", required = false) long mno) {
 		Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -121,7 +122,7 @@ public class ProductController {
 		rttr.addAttribute("type", ppgvo.getType());
 		rttr.addAttribute("kw", ppgvo.getKw());
 		rttr.addAttribute("orderBy", ppgvo.getOrderBy());
-		rttr.addAttribute("mno", 0);
+		rttr.addAttribute("mno", mno);
 		return "redirect:/product/detail?pno="+pvo.getPno();
 	}
 	@PostMapping("/remove")
