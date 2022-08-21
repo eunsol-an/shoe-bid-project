@@ -34,14 +34,14 @@
 								<input type="hidden" name="targetMno" value=${mvo.mno }>
 								<div class="form-group">
 									<label>제목</label> 
-									<input type="text" class="form-control" name="reportTitle" placeholder="제목">
+									<input type="text" class="form-control" name="reportTitle" placeholder="제목" required="required">
 								</div>
 							</div>
 							<div class="col-12 mb-2">
 								<div class="form-group">
 									 <label>신고 내용</label>
                                         <div class="form-group mb-1">
-                                            <textarea rows="2" class="form-control" name="reportContent" placeholder="신고할 내용을 작성해주세요"></textarea>
+                                            <textarea rows="2" class="form-control" name="reportContent" placeholder="신고할 내용을 작성해주세요" required="required"></textarea>
                                         </div>
 								</div>
 							</div>
