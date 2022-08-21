@@ -51,6 +51,10 @@
 
 						<div style="float: right;">
 							<i class="eyei fa-solid fa-eye fa-lg"></i> <span> ${pvo.readCount }</span>&nbsp;
+							<c:if test="${ses eq null}">
+							<span><i class="far fa-heart fa-lg" style="color: red;"></i></span>
+							${pdto.itQty }
+							</c:if> 
 							<c:choose>
 								<c:when test="${pvo.status == 0 && ses ne null}">
 									<c:if test="${itck eq 0}">
