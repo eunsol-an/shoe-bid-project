@@ -32,7 +32,7 @@
 					</div>
 
 					<div class="container">
-						<form action="/product/modify" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 my-5">
+						<form action="/product/modify" method="post" enctype="multipart/form-data" class="mx-auto col-sm-9 my-5" id="formTag">
 							<div class="mb-3">
 								<input type="hidden" value="${pdto.pvo.pno }" name="pno"> 
 								<input type="hidden" value="${pgvo.pageNo }" name="pageNo"> 
@@ -80,7 +80,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<div style="text-align: center" class="font-13">
-										<button type="submit" class="col-sm-12 btn btn-dark mt-2 mb-0 display-30 py-3" id="regBtn">수정</button>
+										<button type="button" class="col-sm-12 btn btn-dark mt-2 mb-0 display-30 py-3" id="regBtn">수정</button>
 										<p id="errorMsg" class="text-danger"></p>
 									</div>
 								</div>
