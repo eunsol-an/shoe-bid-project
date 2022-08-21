@@ -36,7 +36,7 @@
 <section class="pt-1 pb-3">
    <div class="container">
    <!-- search area -->
-         <div class="col-12 col-lg-3 order-3 order-lg-2 ms-auto my-5">
+         <div class="col-12 col-lg-4 order-3 order-lg-2 ms-auto my-5">
             <div class="product-search">
                <form action="/product/list" method="get">
                   <div class="psearch-content">
@@ -51,11 +51,11 @@
                                             <option value="reserveDown" ${pgn.ppgvo.orderBy eq 'reserveDown' ? 'selected':'' }>시작가순↓</option>
                                         </select>
                                     </div>
-                     <div class="search-wrapper">
+                     <div class="search-wrapper" style="height:38px">
                         <input type="text" name="kw"
-                           class="search-field border-start rounded" value=${pgn.ppgvo.kw }>
+                           class="search-field border-start rounded" value="${pgn.ppgvo.kw }" style="height:38px;">
                      </div>
-                     <button type="submit" class="search-submit"
+                     <button type="submit" class="btn btn-dark"
                         style="min-width: auto;">
                         <i class="ti-search"></i>
                      </button>
