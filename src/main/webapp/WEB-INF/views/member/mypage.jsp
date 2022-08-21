@@ -197,15 +197,15 @@
 						aria-labelledby="staticBackdropLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
+								<div class="modal-header border-0">
 									<h5 class="modal-title" id="staticBackdropLabel">회원탈퇴</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
 								<div class="modal-body">정말 탈퇴하시겠습니까?</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-primary" id="memberRemove">예</button>
-									<button type="button" class="btn btn-secondary"
+								<div class="modal-footer border-0">
+									<button type="button" class="btn btn-sm btn-dark" id="memberRemove">예</button>
+									<button type="button" class="btn btn-sm btn-dark"
 										data-bs-dismiss="modal">아니요</button>
 								</div>
 							</div>

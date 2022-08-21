@@ -50,11 +50,11 @@
 							<thead class="font-14">
                                    <tr class="text-center">
 						
-									<th class="font-12">상품이미지</th>
-									<th class="font-12">입찰내용</th>
-									<th class="font-12">입찰일시</th>
-									<th class="font-12">상태</th>
-									<th class="font-12">판매자</th>
+									<th>상품이미지</th>
+									<th>입찰내용</th>
+									<th>입찰일시</th>
+									<th>상태</th>
+									<th>판매자</th>
 								</tr>
 							</thead>
 							<tbody>
