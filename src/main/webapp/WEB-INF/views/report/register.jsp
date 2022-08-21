@@ -10,8 +10,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 mx-auto">
-				<div class="common-block">
-					<div class="inner-title">
+				<div>
+					<div class="mb-5">
 						<h2 class="mb-0 display-26 display-lg-24">신고 할 내용을 작성해주세요.</h2>
 					</div>
 					<!-- order tracking form -->
@@ -46,7 +46,7 @@
 								</div>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-dark">신고하기</button>
+						<button type="submit" class="col-12 btn btn-dark py-3">신고하기</button>
 						
 
 					</form>
