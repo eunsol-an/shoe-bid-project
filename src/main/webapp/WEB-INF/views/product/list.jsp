@@ -52,6 +52,7 @@
                                         </select>
                                     </div>
                      <div class="search-wrapper" style="height:38px">
+                     <input type="hidden" name="type" value="${pgn.ppgvo.type}">
                         <input type="text" name="kw"
                            class="search-field border-start rounded" value="${pgn.ppgvo.kw }" style="height:38px;">
                      </div>

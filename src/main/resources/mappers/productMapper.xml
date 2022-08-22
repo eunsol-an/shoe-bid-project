@@ -11,38 +11,59 @@
 						<trim prefix="OR">
 							<choose>
 								<when test="type == 's'.toString()">
-									category = 'sneakers' or pname like concat('%', #{kw}, '%')
-									or description like concat('%', #{kw}, '%')
+									category = 'sneakers'
 								</when>
 								<when test="type == 'a'.toString()">
-									category = 'sandals' or pname like concat('%', #{kw}, '%')
-									or description like concat('%', #{kw}, '%')
+									category = 'sandals'
 								</when>
 								<when test="type == 'i'.toString()">
-									category = 'slippers' or pname like concat('%', #{kw}, '%')
-									or description like concat('%', #{kw}, '%')
+									category = 'slippers'
 								</when>
 								<when test="type == 'l'.toString()">
-									category = 'loafers' or pname like concat('%', #{kw}, '%')
-									or description like concat('%', #{kw}, '%')
+									category = 'loafers' 
 								</when>
 								<when test="type == 'f'.toString()">
-									category = 'flat' or pname like concat('%', #{kw}, '%')
-									or description like concat('%', #{kw}, '%')
+									category = 'flat' 
 								</when>
 								<when test="type == 'b'.toString()">
-									category = 'boots' or pname like concat('%', #{kw}, '%')
-									or description like concat('%', #{kw}, '%')
+									category = 'boots'
 								</when>
+								<when test="kw != null">
+							<if test="type == 's'.toString()">
+								category = 'sneakers' and (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+							<if test="type == 'a'.toString()">
+								category = 'sandals' and (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+							<if test="type == 'i'.toString()">
+								 category = 'slippers' and (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+							<if test="type == 'l'.toString()">
+								 category = 'loafers'  and (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+							<if test="type == 'f'.toString()">
+								 category = 'flat'  and (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+							<if test="type == 'b'.toString()">
+								 category = 'boots' and (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+							<if test="type != null">
+								  (pname like concat('%', #{kw}, '%')
+								or description like concat('%', #{kw}, '%'))
+								</if>
+									</when> 
 							</choose>
 						</trim>
 					</foreach>
 				</trim>
 			</when>
-			<when test="kw != null">
-				and (pname like concat('%', #{kw}, '%')
-				or description like concat('%', #{kw}, '%'))
-			</when>
+			
 		</choose>
 	</sql>
 	<sql id="sellSearch">
