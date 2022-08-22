@@ -198,7 +198,7 @@
 		where status = 0
 	</select>
 	<select id="selectSallList" resultType="pvo">
-		select p.pno, category ,pname , description , read_count
+		select distinct p.pno, category ,pname , description , read_count
 		,p.writer ,product_img , status, reserve_price,
 		(select max(bid_price)
 		from buy_bid b
