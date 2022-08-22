@@ -34,7 +34,7 @@ public class CloggingAuctionHandler {
 	@Inject
 	private MemberDAO mdao;
 	
-	@Transactional
+	@Transactional 
 	@Scheduled(cron = "0/10 * * * * *")
 	public void cloggingAuction() throws Exception{
 		
