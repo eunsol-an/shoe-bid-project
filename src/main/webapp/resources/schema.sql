@@ -134,6 +134,3 @@ CREATE TABLE report (
 	reg_at datetime default current_timestamp,
 	primary key(rpno)
 ) default CHARSET=utf8mb4;
-
---ALTER TABLE chat ADD constraint fk_send_nick foreign key (send_nick) references member(mno);
---ALTER TABLE chat ADD constraint fk_recv_nick foreign key (recv_nick) references member(mno);

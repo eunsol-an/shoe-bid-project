@@ -198,7 +198,7 @@
 		where status = 0
 	</select>
 	<select id="selectSallList" resultType="pvo">
-		select distinct p.pno, category ,pname , description , read_count
+		select p.pno, category ,pname , description , read_count
 		,p.writer ,product_img , status, reserve_price,
 		(select max(bid_price)
 		from buy_bid b
@@ -206,7 +206,7 @@
 		) "highest_price",
 		end_time, mod_at, b.buyer buyer_mno, m.nick_name buyer_nick
 		from product p
-		left join buy_bid b on (p.highest_price = b.bid_price)
+		left join buy_bid b on (p.highest_price = b.bid_price and p.pno = b.pno)
 		left join `member` m
 		on (m.mno = b.buyer)
 		where writer = #{mno}

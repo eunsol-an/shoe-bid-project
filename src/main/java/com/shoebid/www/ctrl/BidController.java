@@ -26,11 +26,6 @@ public class BidController {
 	@Inject
 	private BidService bsv;
 	
-	@GetMapping("/add")
-	public void add() {
-		log.info(">>> BidController > add - GET");
-	}
-	
 	@PostMapping("/add")
 	public String add(BidVO bvo) {
 		int isUp = bsv.register(bvo);
