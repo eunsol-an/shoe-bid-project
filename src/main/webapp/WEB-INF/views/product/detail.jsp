@@ -121,14 +121,12 @@
 
 							<div class="row">
 								<div class="col">
-									<!-- <label>시작시간:</label> -->
 									<div class="mb-4 ca text-center">
 										<i class="far fa-clock"> 등록일 </i> <span class="msg-13">${pvo.regAt }</span>
 									</div>
 								</div>
 
 								<div class="col">
-									<!-- <label>종료시간:</label> -->
 									<div class="mb-4 ca text-center">
 										<i class="far fa-clock"> 마감일 </i> <span class="msg-13" id="endTime">${pvo.endTime }</span>
 									</div>
@@ -398,7 +396,6 @@
 <script src="/resources/js/product.qna.js"></script>
 <script src="/resources/js/interest.register.js"></script>
 <script src="/resources/js/review.list.js"></script>
-<!-- <script src="/resources/js/buy_bid.add.js"></script> -->
 <script>
 	document
 			.addEventListener(

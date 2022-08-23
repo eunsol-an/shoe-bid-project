@@ -60,8 +60,6 @@
 										src="/upload/${fn:replace(mdto.imageList[0].saveDir,'\\','/')}/${mdto.imageList[0].uuid }_${mdto.imageList[0].imageName }"
 										alt="...">
 								</div>
-								<%-- <h6 class="mb-0 display-28">${mvo.nickName }</h6>
-								<small>가입일 ${mvo.regAt }</small> --%>
 							</div>
 						</div>
 						<div class="col-7 p-3">
@@ -133,63 +131,6 @@
 							</button>
 				</div>
 
-
-						<!-- 여기서부터 수정 예정 -->
-						<%-- <div class="col-sm-6">
-							<input type="hidden" value="${mvo.mno }" id="mnoVal">
-							<div class="form-group">
-								<label>아이디</label> <input type="text" class="form-control"
-									name="id" value="${mvo.id }" disabled="disabled">
-							</div>
-
-						</div>
-
-						<div class="col-sm-6">
-
-							<div class="form-group">
-								<label>닉네임</label> <input type="text" class="form-control"
-									name="nickName" value="${mvo.nickName }" disabled="disabled">
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="row">
-
-						<div class="col-sm-6">
-
-							<div class="form-group">
-								<label>이메일</label> <input type="email" class="form-control"
-									name="email" value="${mvo.email }" disabled="disabled">
-							</div>
-
-						</div>
-
-						<div class="col-sm-6">
-
-							<div class="form-group">
-								<label>등급</label> <input type="text" class="form-control"
-									name="grade" value="${mvo.grade }" disabled="disabled">
-							</div>
-
-						</div>
-
-					</div>
-					<div>
-						<c:if test="${ses.mno == mdto.mvo.mno || ses.grade == 99}">
-							<a href="/member/modify?mno=${mvo.mno }" class="btn butn-style2 small">회원정보 수정</a>
-							<button type="button" class="butn-style2 small"
-								data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-								id="Remove">회원탈퇴</button>
-							<form action="" id="memberRmForm" style="display: none;"
-								method="post">
-								<input type="hidden" id="membernum" value="" name="mno">
-								<input type="hidden" value="${pgvo.pageNo }" name="pageNo">
-								<input type="hidden" value="${pgvo.qty }" name="qty">
-							</form>
-						</c:if>
-					</div> --%>
 					<!-- static Modal -->
 
 					<div class="modal fade" id="staticBackdrop"
