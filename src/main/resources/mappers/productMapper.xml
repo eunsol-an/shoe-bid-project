@@ -185,8 +185,7 @@
 	</select>
 	<select id="selectAllList" resultType="pvo">
 		select a.pno, category ,pname ,
-		description , read_count ,writer ,product_img
-		,
+		description , read_count ,writer ,product_img,
 		status, reserve_price,
 		ifnull(
 		(select max(bid_price)

@@ -1,10 +1,6 @@
 package com.shoebid.www.service;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,20 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shoebid.www.domain.BidVO;
 import com.shoebid.www.domain.ImageFileVO;
-import com.shoebid.www.domain.MemberVO;
 import com.shoebid.www.domain.PagingVO;
 import com.shoebid.www.domain.ProductDTO;
 import com.shoebid.www.domain.ProductPagingVO;
 import com.shoebid.www.domain.ProductVO;
-import com.shoebid.www.repository.BidDAO;
 import com.shoebid.www.repository.ImageFileDAO;
 import com.shoebid.www.repository.InterestDAO;
-import com.shoebid.www.repository.MemberDAO;
 import com.shoebid.www.repository.ProductDAO;
 
-import lombok.extern.slf4j.Slf4j;
 
 
 @Service

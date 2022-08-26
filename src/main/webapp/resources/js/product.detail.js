@@ -43,7 +43,7 @@ async function  updateProductStatus(statusData){
 try {
   const url = "/product/" + statusData.pno;
         const config = {
-            method: 'PUT', // PATCH도 가능
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             },
