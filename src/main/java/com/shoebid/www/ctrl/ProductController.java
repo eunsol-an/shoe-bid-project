@@ -112,10 +112,8 @@ public class ProductController {
 			ivo = fhd.getMainImageFileList(mainFile, true);
 			fileList = fhd.getImageFileList(files, true);
 			fileList.add(0, ivo);
-			log.info(">>>>>>>>>>>>>>>파일수정시 들어옴");
 			pvo.setProductImg(fileList.get(0).getSaveDir()+"\\" +fileList.get(0).getUuid()+"_th"+fileList.get(0).getImageName());
 		}
-		log.info(">>>>>>>>>>>>>>>파일이름{}",pvo.getProductImg());
 		int isUp = psv.modify(new ProductDTO(pvo, fileList));
 		rttr.addAttribute("pageNo", ppgvo.getPageNo());
 		rttr.addAttribute("qty", ppgvo.getQty());
