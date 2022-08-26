@@ -16,9 +16,6 @@
 	<div class="row">
 		<div class="col-lg-11 mx-auto">
 			<div class="common-block">
-				<!-- <div class="inner-title">
-					<h2 class="mb-0 display-26 display-lg-24">신고 내용</h2>
-				</div> -->
 				<!-- order tracking form -->
 				<div class="row">
 					<div class="col-12 mb-2 inner-title">

@@ -33,13 +33,6 @@ public class ChatController {
 
 	
 	
-	
-//	@GetMapping("/list")
-//	public void list(Model model) {
-//		model.addAttribute("list", csv.getList());
-//	}
-	
-	
 	 @GetMapping("/list") public void list(Model model, @RequestParam("mno") long mno) { 
 		 model.addAttribute("list", csv.getList()); 
 		 MemberDTO mdto = msv.getDetail(mno); 

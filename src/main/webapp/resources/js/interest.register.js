@@ -1,5 +1,4 @@
 async function registerInterestToServer(itData){
-    console.log(itData);
     try {
       const url = '/interest/register';
       const config = {
