@@ -1,5 +1,4 @@
 async function postChatToServer(ctData){
-    console.log(ctData);
     try {
       const url = '/chat/post';
       const config = {
@@ -33,7 +32,6 @@ function trimSendAt(sendAt){
 
   function getChatList(roomVal){
     spreadChatFromServer(roomVal).then(result => {
-      console.log(result);
       if (result.length) {
        const sesmno = document.getElementById('ctmno').innerText;
        let tag = '';

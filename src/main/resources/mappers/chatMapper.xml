@@ -37,13 +37,6 @@
 	<select id="selectLastRoom" resultType="cvo" parameterType="long">
 	select max(room) as maxroom from chat
 	</select>
-	
-		<!-- <update id="update" parameterType="cvo">
-		update chat set
-		read_chk = 0
-		where cno = #{cno}
-	</update>
-	<delete id="delete" parameterType="long">
-		delete from chat where cno = #{cno}
-	</delete> -->
+
+		
 </mapper>

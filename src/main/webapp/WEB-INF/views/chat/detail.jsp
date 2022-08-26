@@ -14,7 +14,6 @@
 						<h4 class="mb-0 font-weight-500 text-extra-dark-gray">Message<a class="h6 ms-2" href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a></h4>
 					</div>
 <div class="container mt-5 mb-5">
-<%-- <a href="/chat/list?mno=${ses.mno}"><i class="fa fa-refresh" aria-hidden="true"></i></a> --%>
 	<div>
 		<div class="row">
 			<div class="col-lg-5 order-lg-1">
@@ -91,7 +90,6 @@
 		</div>
 	</div>
 </div>
-	<!-- </div> -->
 </section>
 <style>
         .chat_wrap { border:1px solid lightgray;  padding:0px 10px 0 10px; font-size:15px;}
